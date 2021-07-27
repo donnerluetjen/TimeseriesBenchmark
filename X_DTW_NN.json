@@ -1,0 +1,254 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 2,
+                  "num_of_classes": 3
+            },
+            "dtw": {
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 0.019544828999999986
+            },
+            "ddtw": {
+                  "accuracy": 0.125,
+                  "recall": 0.16666666666666666,
+                  "f1-score": 0.08333333333333333,
+                  "auroc": 0.375,
+                  "runtime": 0.01615324699999965
+            },
+            "wdtw": {
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 0.013430532000000106
+            },
+            "wddtw": {
+                  "accuracy": 0.125,
+                  "recall": 0.16666666666666666,
+                  "f1-score": 0.08333333333333333,
+                  "auroc": 0.375,
+                  "runtime": 0.015342768000000007
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 2,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.5769230769230769,
+                  "recall": 0.5803571428571428,
+                  "f1-score": 0.576923076923077,
+                  "auroc": 0.5803571428571429,
+                  "runtime": 4.042518513999999
+            },
+            "ddtw": {
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.49404761904761907,
+                  "f1-score": 0.4903374942209894,
+                  "auroc": 0.49404761904761896,
+                  "runtime": 4.693564896999998
+            },
+            "wdtw": {
+                  "accuracy": 0.5769230769230769,
+                  "recall": 0.5803571428571428,
+                  "f1-score": 0.576923076923077,
+                  "auroc": 0.5803571428571429,
+                  "runtime": 13.856965238
+            },
+            "wddtw": {
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.49404761904761907,
+                  "f1-score": 0.4903374942209894,
+                  "auroc": 0.49404761904761896,
+                  "runtime": 18.310801127999994
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 2,
+                  "num_of_classes": 4
+            },
+            "dtw": {
+                  "accuracy": 0.1864406779661017,
+                  "recall": 0.18170248868778283,
+                  "f1-score": 0.16701305544171888,
+                  "auroc": 0.4544683257918552,
+                  "runtime": 1.076821771000013
+            },
+            "ddtw": {
+                  "accuracy": 0.288135593220339,
+                  "recall": 0.28718891402714936,
+                  "f1-score": 0.2863228517213337,
+                  "auroc": 0.5247926093514329,
+                  "runtime": 1.027440475000006
+            },
+            "wdtw": {
+                  "accuracy": 0.1864406779661017,
+                  "recall": 0.18170248868778283,
+                  "f1-score": 0.16701305544171888,
+                  "auroc": 0.4544683257918552,
+                  "runtime": 1.4216581769999976
+            },
+            "wddtw": {
+                  "accuracy": 0.288135593220339,
+                  "recall": 0.28718891402714936,
+                  "f1-score": 0.2863228517213337,
+                  "auroc": 0.5247926093514329,
+                  "runtime": 1.5195278319999943
+            }
+      },
+      "Heartbeat": {
+            "properties": {
+                  "num_of_dimensions": 61,
+                  "num_of_instances": 306,
+                  "num_of_timestamps": 405,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.6213592233009708,
+                  "recall": 0.45379620379620383,
+                  "f1-score": 0.4455486542443064,
+                  "auroc": 0.4537962037962038,
+                  "runtime": 126.02579642500001
+            },
+            "ddtw": {
+                  "accuracy": 0.7087378640776699,
+                  "recall": 0.5122377622377622,
+                  "f1-score": 0.4950980392156863,
+                  "auroc": 0.5122377622377622,
+                  "runtime": 124.93789910200002
+            },
+            "wdtw": {
+                  "accuracy": 0.6213592233009708,
+                  "recall": 0.45379620379620383,
+                  "f1-score": 0.4455486542443064,
+                  "auroc": 0.4537962037962038,
+                  "runtime": 181.92293072299992
+            },
+            "wddtw": {
+                  "accuracy": 0.7087378640776699,
+                  "recall": 0.5122377622377622,
+                  "f1-score": 0.4950980392156863,
+                  "auroc": 0.5122377622377622,
+                  "runtime": 173.29173371800005
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 2,
+                  "num_of_classes": 4
+            },
+            "dtw": {
+                  "accuracy": 0.8,
+                  "recall": 0.75,
+                  "f1-score": 0.6781045751633987,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.0534830689998671
+            },
+            "ddtw": {
+                  "accuracy": 0.8,
+                  "recall": 0.75,
+                  "f1-score": 0.6781045751633987,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.07000103199993646
+            },
+            "wdtw": {
+                  "accuracy": 0.8,
+                  "recall": 0.75,
+                  "f1-score": 0.6781045751633987,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.0909323900000345
+            },
+            "wddtw": {
+                  "accuracy": 0.8,
+                  "recall": 0.75,
+                  "f1-score": 0.6781045751633987,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.11731456799998341
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.7943262411347518,
+                  "recall": 0.7946680080482897,
+                  "f1-score": 0.7939531368102797,
+                  "auroc": 0.7946680080482897,
+                  "runtime": 4.488407761999952
+            },
+            "ddtw": {
+                  "accuracy": 0.5460992907801419,
+                  "recall": 0.5463782696177062,
+                  "f1-score": 0.5455278001611603,
+                  "auroc": 0.5463782696177062,
+                  "runtime": 5.661988797000049
+            },
+            "wdtw": {
+                  "accuracy": 0.7943262411347518,
+                  "recall": 0.7946680080482897,
+                  "f1-score": 0.7939531368102797,
+                  "auroc": 0.7946680080482897,
+                  "runtime": 5.4700411540000005
+            },
+            "wddtw": {
+                  "accuracy": 0.5460992907801419,
+                  "recall": 0.5463782696177062,
+                  "f1-score": 0.5455278001611603,
+                  "auroc": 0.5463782696177062,
+                  "runtime": 5.6793173050000405
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.48136645962732916,
+                  "f1-score": 0.4784313725490196,
+                  "auroc": 0.48136645962732916,
+                  "runtime": 2.6705523010000434
+            },
+            "ddtw": {
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5268411712511092,
+                  "f1-score": 0.5263157894736842,
+                  "auroc": 0.5268411712511091,
+                  "runtime": 3.1690357910001694
+            },
+            "wdtw": {
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.48136645962732916,
+                  "f1-score": 0.4784313725490196,
+                  "auroc": 0.48136645962732916,
+                  "runtime": 3.76531993399999
+            },
+            "wddtw": {
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5268411712511092,
+                  "f1-score": 0.5263157894736842,
+                  "auroc": 0.5268411712511091,
+                  "runtime": 3.5876611740000044
+            }
+      }
+}

@@ -1,0 +1,17 @@
+{
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4
+            },
+            "sdtw": {
+                  "accuracy": 0.55,
+                  "recall": 0.75,
+                  "f1-score": 0.6176470588235294,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 1.0947465929999995
+            }
+      }
+}
