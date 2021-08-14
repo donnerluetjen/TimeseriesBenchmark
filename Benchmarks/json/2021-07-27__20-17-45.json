@@ -1,0 +1,53 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 0.017198008000000042
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "accuracy": 0.6,
+                  "recall": 0.7,
+                  "f1-score": 0.5595238095238095,
+                  "auroc": 0.8000000000000002,
+                  "runtime": 0.05902643499999982
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "accuracy": 0.5865384615384616,
+                  "recall": 0.5868274582560297,
+                  "f1-score": 0.5861941334320349,
+                  "auroc": 0.5868274582560297,
+                  "runtime": 2.7916900789999994
+            }
+      }
+}

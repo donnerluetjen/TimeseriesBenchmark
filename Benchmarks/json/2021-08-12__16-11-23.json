@@ -1,0 +1,408 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.375,
+                  "recall": 0.38888888888888884,
+                  "f1-score": 0.31746031746031744,
+                  "auroc": 0.5416666666666666,
+                  "runtime": 0.6877646639999995,
+                  "memory_footprint": "143.97266 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.2222222222222222,
+                  "f1-score": 0.1904761904761905,
+                  "auroc": 0.4166666666666667,
+                  "runtime": 0.816807989,
+                  "memory_footprint": "144.27344 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.375,
+                  "recall": 0.38888888888888884,
+                  "f1-score": 0.31746031746031744,
+                  "auroc": 0.5416666666666666,
+                  "runtime": 0.6028889960000008,
+                  "memory_footprint": "144.29688 MB"
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.6,
+                  "f1-score": 0.4866071428571429,
+                  "auroc": 0.7333333333333334,
+                  "runtime": 0.5373537630000005,
+                  "memory_footprint": "145.86719 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.65,
+                  "recall": 0.75,
+                  "f1-score": 0.6153846153846154,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.5365263149999997,
+                  "memory_footprint": "145.95703 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.6,
+                  "recall": 0.7,
+                  "f1-score": 0.5793650793650793,
+                  "auroc": 0.7999999999999999,
+                  "runtime": 0.5626152879999999,
+                  "memory_footprint": "145.97266 MB"
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5096153846153846,
+                  "recall": 0.5274582560296847,
+                  "f1-score": 0.4682706766917293,
+                  "auroc": 0.5274582560296845,
+                  "runtime": 16.227185763999998,
+                  "memory_footprint": "171.72266 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5384615384615384,
+                  "recall": 0.5424860853432282,
+                  "f1-score": 0.5377777777777778,
+                  "auroc": 0.5424860853432283,
+                  "runtime": 19.565143461999995,
+                  "memory_footprint": "172.83594 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5673076923076923,
+                  "recall": 0.5742115027829313,
+                  "f1-score": 0.5640428504890544,
+                  "auroc": 0.5742115027829313,
+                  "runtime": 18.190331414,
+                  "memory_footprint": "173.23438 MB"
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 400,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.3728813559322034,
+                  "recall": 0.3352029914529915,
+                  "f1-score": 0.3204360370422076,
+                  "auroc": 0.5568019943019943,
+                  "runtime": 55.963281709,
+                  "memory_footprint": "174.12109 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.3898305084745763,
+                  "recall": 0.359775641025641,
+                  "f1-score": 0.34913419913419913,
+                  "auroc": 0.5731837606837606,
+                  "runtime": 60.57472989499999,
+                  "memory_footprint": "174.61328 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.3898305084745763,
+                  "recall": 0.35443376068376076,
+                  "f1-score": 0.34238996297819824,
+                  "auroc": 0.5696225071225072,
+                  "runtime": 56.12210200100003,
+                  "memory_footprint": "178.54688 MB"
+            }
+      },
+      "Heartbeat": {
+            "properties": {
+                  "num_of_dimensions": 61,
+                  "num_of_instances": 306,
+                  "num_of_timestamps": 405,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.6310679611650486,
+                  "recall": 0.523976023976024,
+                  "f1-score": 0.5231481481481481,
+                  "auroc": 0.523976023976024,
+                  "runtime": 1325.0938246169999,
+                  "memory_footprint": "390.74609 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.6796116504854369,
+                  "recall": 0.5437062937062938,
+                  "f1-score": 0.5451625853071056,
+                  "auroc": 0.5437062937062936,
+                  "runtime": 1306.528759678,
+                  "memory_footprint": "398.03516 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.6699029126213593,
+                  "recall": 0.5244755244755245,
+                  "f1-score": 0.5241847826086957,
+                  "auroc": 0.5244755244755244,
+                  "runtime": 1160.0132042939995,
+                  "memory_footprint": "398.03516 MB"
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.4397163120567376,
+                  "recall": 0.44535024154589375,
+                  "f1-score": 0.4006456820016142,
+                  "auroc": 0.44535024154589375,
+                  "runtime": 990.0211365259993,
+                  "memory_footprint": "398.03516 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.4397163120567376,
+                  "recall": 0.44565217391304346,
+                  "f1-score": 0.39583446330747957,
+                  "auroc": 0.4456521739130435,
+                  "runtime": 976.595110364,
+                  "memory_footprint": "398.03516 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.44680851063829785,
+                  "recall": 0.45259661835748793,
+                  "f1-score": 0.4058988764044944,
+                  "auroc": 0.45259661835748793,
+                  "runtime": 974.1911122549991,
+                  "memory_footprint": "398.03516 MB"
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 1,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5157894736842106,
+                  "recall": 0.5153061224489797,
+                  "f1-score": 0.5153061224489797,
+                  "auroc": 0.5153061224489797,
+                  "runtime": 960.7182363779993,
+                  "memory_footprint": "398.03516 MB"
+            },
+            "sagdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 2,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5157894736842106,
+                  "recall": 0.5146406388642413,
+                  "f1-score": 0.5144444444444445,
+                  "auroc": 0.5146406388642413,
+                  "runtime": 974.8071008339994,
+                  "memory_footprint": "398.03516 MB"
+            },
+            "sagdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.1,
+                        "distance_composition": 3,
+                        "njobs": -1
+                  },
+                  "accuracy": 0.5052631578947369,
+                  "recall": 0.5051020408163265,
+                  "f1-score": 0.5050437867198758,
+                  "auroc": 0.5051020408163265,
+                  "runtime": 961.2084925009985,
+                  "memory_footprint": "398.03516 MB"
+            }
+      }
+}

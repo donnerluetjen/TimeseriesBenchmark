@@ -1,0 +1,184 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 0.026407818000000027,
+                  "memory_footprint": "137.05859 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.125,
+                  "recall": 0.16666666666666666,
+                  "f1-score": 0.08333333333333333,
+                  "auroc": 0.375,
+                  "runtime": 0.015379365000000256,
+                  "memory_footprint": "137.85156 MB"
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.6,
+                  "recall": 0.7,
+                  "f1-score": 0.5595238095238095,
+                  "auroc": 0.8000000000000002,
+                  "runtime": 0.07356269299999951,
+                  "memory_footprint": "139.35156 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.5,
+                  "recall": 0.6,
+                  "f1-score": 0.4722222222222222,
+                  "auroc": 0.7333333333333334,
+                  "runtime": 0.08797930500000017,
+                  "memory_footprint": "139.56641 MB"
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.5769230769230769,
+                  "recall": 0.5777365491651205,
+                  "f1-score": 0.5767665556788752,
+                  "auroc": 0.5777365491651206,
+                  "runtime": 15.649640190000001,
+                  "memory_footprint": "169.46875 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.5096153846153846,
+                  "recall": 0.5174397031539888,
+                  "f1-score": 0.5040673211781206,
+                  "auroc": 0.5174397031539888,
+                  "runtime": 15.824742315999998,
+                  "memory_footprint": "171.11719 MB"
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 400,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.3389830508474576,
+                  "recall": 0.34134615384615385,
+                  "f1-score": 0.31101556101556105,
+                  "auroc": 0.560897435897436,
+                  "runtime": 1.4194536319999997,
+                  "memory_footprint": "187.90234 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.2711864406779661,
+                  "recall": 0.2625534188034188,
+                  "f1-score": 0.26089181286549706,
+                  "auroc": 0.5083689458689459,
+                  "runtime": 1.3558163870000044,
+                  "memory_footprint": "189.37109 MB"
+            }
+      },
+      "Heartbeat": {
+            "properties": {
+                  "num_of_dimensions": 61,
+                  "num_of_instances": 306,
+                  "num_of_timestamps": 405,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.5436893203883495,
+                  "recall": 0.3891108891108891,
+                  "f1-score": 0.3876027830487033,
+                  "auroc": 0.3891108891108891,
+                  "runtime": 166.150649455,
+                  "memory_footprint": "405.23828 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.5825242718446602,
+                  "recall": 0.4660339660339661,
+                  "f1-score": 0.4667068031306441,
+                  "auroc": 0.4660339660339661,
+                  "runtime": 161.68921305299995,
+                  "memory_footprint": "461.37500 MB"
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.7872340425531915,
+                  "recall": 0.7883454106280193,
+                  "f1-score": 0.7869661563255439,
+                  "auroc": 0.7883454106280193,
+                  "runtime": 5.126563292000014,
+                  "memory_footprint": "461.37500 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.6312056737588653,
+                  "recall": 0.6304347826086956,
+                  "f1-score": 0.6302944735780556,
+                  "auroc": 0.6304347826086956,
+                  "runtime": 6.122025213999905,
+                  "memory_footprint": "461.37500 MB"
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "wdtw": {
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.48136645962732916,
+                  "f1-score": 0.4784313725490196,
+                  "auroc": 0.48136645962732916,
+                  "runtime": 3.2347141229998897,
+                  "memory_footprint": "461.37500 MB"
+            },
+            "wddtw": {
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5268411712511092,
+                  "f1-score": 0.5263157894736842,
+                  "auroc": 0.5268411712511091,
+                  "runtime": 3.027560276000031,
+                  "memory_footprint": "461.37500 MB"
+            }
+      }
+}

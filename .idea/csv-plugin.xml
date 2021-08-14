@@ -3,7 +3,28 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/One_NN.csv">
+        <entry key="/Benchmarks/csv/2021-08-05__15-25-16.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-12__13-28-48.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-12__22-33-48.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/One_NN_short.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -1,0 +1,107 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3
+            },
+            "dtw": {
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 0.02554016899999989
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.5769230769230769,
+                  "recall": 0.5803571428571428,
+                  "f1-score": 0.576923076923077,
+                  "auroc": 0.5803571428571429,
+                  "runtime": 2.4307955190000006
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 400,
+                  "num_of_classes": 4
+            },
+            "dtw": {
+                  "accuracy": 0.1864406779661017,
+                  "recall": 0.18170248868778283,
+                  "f1-score": 0.16701305544171888,
+                  "auroc": 0.4544683257918552,
+                  "runtime": 0.7237787449999988
+            }
+      },
+      "Heartbeat": {
+            "properties": {
+                  "num_of_dimensions": 61,
+                  "num_of_instances": 306,
+                  "num_of_timestamps": 405,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.6213592233009708,
+                  "recall": 0.45379620379620383,
+                  "f1-score": 0.4455486542443064,
+                  "auroc": 0.4537962037962038,
+                  "runtime": 112.91718283699998
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4
+            },
+            "dtw": {
+                  "accuracy": 0.8,
+                  "recall": 0.75,
+                  "f1-score": 0.6781045751633987,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.06880400299999678
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.7943262411347518,
+                  "recall": 0.7946680080482897,
+                  "f1-score": 0.7939531368102797,
+                  "auroc": 0.7946680080482897,
+                  "runtime": 3.7530077119999987
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2
+            },
+            "dtw": {
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.48136645962732916,
+                  "f1-score": 0.4784313725490196,
+                  "auroc": 0.48136645962732916,
+                  "runtime": 2.567353575000027
+            }
+      }
+}
