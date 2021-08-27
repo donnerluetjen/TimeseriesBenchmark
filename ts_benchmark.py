@@ -11,10 +11,13 @@ import resource
 import time
 import logging
 import tracemalloc
+import os
+from datetime import datetime
 
 import numpy as np
 from sktime.classification.distance_based import KNeighborsTimeSeriesClassifier
 from sktime.datasets import load_UCR_UEA_dataset
+from sktime.utils.data_io import load_from_arff_to_dataframe
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     accuracy_score,
@@ -25,11 +28,13 @@ from sklearn.metrics import (
 
 from memory_monitor import get_max_memory_usage
 from sktime_dataset_analyses import dataset_properties, \
+    z_normalize, \
     has_equal_length_in_all_time_series
 
 
 class TimeseriesBenchmark:
-    def __init__(self, window=-1, njobs=-1):
+    def __init__(self, window=-1, njobs=-1, normalized=False):
+        self.normalized = normalized
         self.njobs = njobs
         self.window = window
         self.json_file_path = time.strftime('./Benchmarks/json/' + "%Y-%m-%d__%H-%M-%S" + '.json')
@@ -47,23 +52,42 @@ class TimeseriesBenchmark:
         self.result_dict = {}
         self.metric_arguments = {}
         np.random.seed(1)  # required to get reproducible results
+        # set filepath and suffix for arff files
+        self.dataset_path = '/Users/Developer' \
+                            '/.local/lib/python3.8/site-packages' \
+                            '/sktime-0.5.0-py3.8-macosx-10.9-x86_64.egg' \
+                            '/sktime/datasets/data'
+        self.arff_file_suffix = '.arff'
 
     def loadDataset(self, dataset):
+        # try:
         X, y = load_UCR_UEA_dataset(dataset, return_X_y=True)
+        # except:
+            # file_path = os.path.join(self.dataset_path, dataset,
+            #                          dataset + self.arff_file_suffix)
+            # X, y = load_from_arff_to_dataframe(file_path,
+            #                                    return_separate_X_and_y=True)
+        X_train_test = z_normalize(X) if self.normalized else X
         self.X_train, self.X_test, self.y_train, self.y_test = \
-            train_test_split(X, y)
-        print(f'loaded dataset {dataset}')
+            train_test_split(X_train_test, y)
+
+        print(f'{self.current_timestamp()}loaded dataset {dataset}')
+
+    def current_timestamp(self):
+        timestamp = datetime.now().strftime("%Y-%b-%d %H:%M:%S")
+        return f'{timestamp}\t'
 
     def prepareClassifier(self, metric, **kwargs):
         self.metric_arguments = kwargs.copy()
         self.metric_arguments['njobs'] = self.njobs
+        self.metric_arguments['z-normalized'] = self.normalized
         self.classifier = \
             KNeighborsTimeSeriesClassifier(n_jobs=self.njobs, n_neighbors=1,
                                            metric=metric, metric_params=kwargs)
         self.classifier.fit(self.X_train, self.y_train)
 
     def setMetric(self, metric):
-        print(f'      running metric {metric}')
+        print(f'{self.current_timestamp()}      running metric {metric}')
         try:
             getattr(self, metric)()
         except AttributeError:
@@ -81,7 +105,7 @@ class TimeseriesBenchmark:
     def score_recall(self):
         self.recall_score = recall_score(self.y_test, self.y_test_pred,
                                          average='macro')
-        print(f'            reacll score is:     {self.recall_score}')
+        print(f'            recall score is:     {self.recall_score}')
 
     def score_f1(self):
         self.f1_score = f1_score(self.y_test, self.y_test_pred,
@@ -110,18 +134,6 @@ class TimeseriesBenchmark:
         self.score_auroc()
         print(f'            run time was:        {self.runtime}')
 
-    def get_accuracy_score(self):
-        return self.accuracy_score
-
-    def get_recall_score(self):
-        return self.recall_score
-
-    def get_f1_score(self):
-        return self.f1_score
-
-    def get_auroc_score(self):
-        return self.auroc_score
-
     def properties(self):
         return dataset_properties(self.X_train, self.y_train)
 
@@ -145,8 +157,9 @@ class TimeseriesBenchmark:
             for metric in metrics:
                 self.result_dict[dataset][metric] = {}
                 self.setMetric(metric)
-                self.result_dict[dataset][metric]['arguments'] = self.metric_arguments
-                memory_used = get_max_memory_usage(self.predict)
+                self.result_dict[dataset][metric][
+                    'arguments'] = self.metric_arguments
+                self.predict()
                 self.score()
                 self.result_dict[dataset][metric][
                     'accuracy'] = self.accuracy_score
@@ -154,9 +167,7 @@ class TimeseriesBenchmark:
                 self.result_dict[dataset][metric]['f1-score'] = self.f1_score
                 self.result_dict[dataset][metric]['auroc'] = self.auroc_score
                 self.result_dict[dataset][metric]['runtime'] = self.runtime
-                self.result_dict[dataset][metric][
-                    'memory_footprint'] = self.memory_footprint(memory_used)
-                # self.writeJson()
+                self.writeJson()
 
     def writeJson(self):
         with open(self.json_file_path, "w") as json_file:
@@ -306,6 +317,9 @@ class TimeseriesBenchmark:
                   'average_aggregation': True}
         self.prepareClassifier(metric, **kwargs)
 
+    def dagdtw(self):
+        return self.sagdtw_manhattan()
+
     def sagdtw_manhattan(self):
         metric = 'sagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
@@ -333,6 +347,9 @@ class TimeseriesBenchmark:
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 3}
         self.prepareClassifier(metric, **kwargs)
+
+    def agdtw(self):
+        return self.agdtw_manhattan()
 
     def agdtw_manhattan(self):
         metric = 'agdtw'
@@ -364,50 +381,119 @@ class TimeseriesBenchmark:
 
     def dtw(self):
         metric = 'dtw'
-        kwargs = {}
+        kwargs = {'w': self.window}
         self.prepareClassifier(metric, **kwargs)
 
     def ddtw(self):
         metric = 'ddtw'
-        kwargs = {}
+        kwargs = {'w': self.window}
         self.prepareClassifier(metric, **kwargs)
 
     def wdtw(self):
         metric = 'wdtw'
-        kwargs = {'g': 0.05}
+        kwargs = {'g': 1}
         self.prepareClassifier(metric, **kwargs)
 
     def wddtw(self):
         metric = 'wddtw'
-        kwargs = {'g': 0.05}
+        kwargs = {'g': 1}
         self.prepareClassifier(metric, **kwargs)
 
     def sdtw(self):
         metric = 'sdtw'
-        kwargs = {}
+        kwargs = {'gamma': 1.0}
         self.prepareClassifier(metric, **kwargs)
 
 
 if __name__ == '__main__':
-    bm = TimeseriesBenchmark(window=0.1, njobs=-1)
+    bm = TimeseriesBenchmark(window=-1, njobs=-1, normalized=True)
     datasets = [
+        # datasets from UEA archive (multivariate)
+        "ArticularyWordRecognition",
         "AtrialFibrillation",
-        "BasicMotions", "FingerMovements",
-        "HandMovementDirection", "Heartbeat", "SelfRegulationSCP1",
-        "SelfRegulationSCP2"
+        "BasicMotions",
+        "Cricket",
+        "Epilepsy",
+        "EyesOpenShut",
+        "FingerMovements",
+        "HandMovementDirection",
+        "Libras",
+        "NATOPS",
+        "RacketSports",
+        "SelfRegulationSCP1",
+        "SelfRegulationSCP2",
+        "StandWalkJump",
+        "UWaveGestureLibrary",
+
+        # datasets from UCR archive (univariate)
+        "ACSF1",
+        "ArrowHead",
+        "Beef",
+        "BeetleFly",
+        "BirdChicken",
+        "BME",
+        "Car",
+        "CBF",
+        "Chinatown",
+        "Coffee",
+        "Computers",
+        "CricketX",
+        "CricketY",
+        "CricketZ",
+        "EOGHorizontalSignal",
+        "EOGVerticalSignal",
+        "FaceAll",
+        "Fish",
+        "FreezerRegularTrain",
+        "FreezerSmallTrain",
+        "Fungi",
+        "GunPoint",
+        "GunPointAgeSpan",
+        "GunPointMaleVersusFemale",
+        "GunPointOldVersusYoung",
+        "Ham",
+        "Haptics",
+        "ItalyPowerDemand",
+        "LargeKitchenAppliances",
+        "Meat",
+        "MoteStrain",
+        "PowerCons",
+        "RefrigerationDevices",
+        "Rock",
+        "ScreenType",
+        "SemgHandGenderCh2",
+        "SemgHandMovementCh2",
+        "SemgHandSubjectCh2",
+        "ShapeletSim",
+        "ShapesAll",
+        "SmallKitchenAppliances",
+        "SmoothSubspace",
+        "SonyAIBORobotSurface2",
+        "SwedishLeaf",
+        "SyntheticControl",
+        "ToeSegmentation1",
+        "ToeSegmentation2",
+        "Trace",
+        "TwoLeadECG",
+        "TwoPatterns",
+        "UMD",
+        "UWaveGestureLibraryAll",
+        "UWaveGestureLibraryX",
+        "UWaveGestureLibraryY",
+        "UWaveGestureLibraryZ",
+        "Wine",
+        "WormsTwoClass",
+        "Yoga"
     ]
-    # 'CharacterTrajectories', 'JapaneseVowels','SpokenArabicDigits'
+    # 'CharacterTrajectories', 'JapaneseVowels','SpokenArabicDigits',
+    # 'GesturePebbleZ2'
     # variable length datasets are not supported by sktime
 
     metrics = [
-                # 'sagdtw_manhattan',
-                # 'sagdtw_euclidean', 'sagdtw_chebyshev',
-                # 'sagdtw_minkowski',
-               'agdtw_manhattan', 'agdtw_euclidean', 'agdtw_chebyshev',
-               'agdtw_minkowski',
-               'dtw', 'sdtw', 'ddtw',
+                'dagdtw', 'agdtw',
+                'dtw', 'sdtw', 'ddtw',
                 'wdtw', 'wddtw'
     ]
 
     bm.run_benchmark_over(datasets, metrics)
-    bm.writeJson()
+    # bm.writeJson()

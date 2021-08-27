@@ -1,0 +1,1198 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5555555555555555,
+                  "auroc": 0.6666666666666666,
+                  "runtime": 2.2633548539999992
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 5.448821362
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7777777777777777,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.015189998999996845
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.125,
+                  "recall": 0.1111111111111111,
+                  "auroc": 0.3333333333333333,
+                  "runtime": 3.9003727549999994
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.2222222222222222,
+                  "auroc": 0.4166666666666667,
+                  "runtime": 0.016454818999999787
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7777777777777777,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.014010018000000457
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.2222222222222222,
+                  "auroc": 0.4166666666666667,
+                  "runtime": 0.01571691399999864
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5857142857142857,
+                  "auroc": 0.7238095238095239,
+                  "runtime": 1.2583848240000002
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 2.7440999149999996
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7738095238095238,
+                  "auroc": 0.8492063492063493,
+                  "runtime": 0.058609788999994805
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.95,
+                  "recall": 0.9166666666666666,
+                  "auroc": 0.9444444444444445,
+                  "runtime": 0.9792762379999971
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4,
+                  "recall": 0.3619047619047619,
+                  "auroc": 0.5746031746031747,
+                  "runtime": 0.08172012400000028
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7738095238095238,
+                  "auroc": 0.8492063492063493,
+                  "runtime": 0.08173941500000126
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4,
+                  "recall": 0.3619047619047619,
+                  "auroc": 0.5746031746031747,
+                  "runtime": 0.08761792800000023
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.49369202226345077,
+                  "auroc": 0.4936920222634508,
+                  "runtime": 38.389773780999995
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.47115384615384615,
+                  "recall": 0.4710575139146568,
+                  "auroc": 0.4710575139146568,
+                  "runtime": 88.349073939
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4230769230769231,
+                  "recall": 0.4222634508348794,
+                  "auroc": 0.42226345083487943,
+                  "runtime": 3.100910670000019
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.4914656771799629,
+                  "auroc": 0.4914656771799629,
+                  "runtime": 10.658097881000003
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5288461538461539,
+                  "recall": 0.5322820037105751,
+                  "auroc": 0.5322820037105751,
+                  "runtime": 5.047213038999985
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4230769230769231,
+                  "recall": 0.4222634508348794,
+                  "auroc": 0.42226345083487943,
+                  "runtime": 14.714501810000002
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5288461538461539,
+                  "recall": 0.5322820037105751,
+                  "auroc": 0.5322820037105751,
+                  "runtime": 16.523590259000002
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 400,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2033898305084746,
+                  "recall": 0.21033653846153846,
+                  "auroc": 0.4735576923076923,
+                  "runtime": 214.63395009399994
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2542372881355932,
+                  "recall": 0.2485309829059829,
+                  "auroc": 0.49902065527065526,
+                  "runtime": 631.006159116
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4067796610169492,
+                  "recall": 0.420940170940171,
+                  "auroc": 0.613960113960114,
+                  "runtime": 0.8786767719998352
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2033898305084746,
+                  "recall": 0.22102029914529914,
+                  "auroc": 0.48068019943019946,
+                  "runtime": 90.88258736700027
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3050847457627119,
+                  "recall": 0.3182425213675214,
+                  "auroc": 0.5454950142450142,
+                  "runtime": 1.078715633000229
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4067796610169492,
+                  "recall": 0.420940170940171,
+                  "auroc": 0.613960113960114,
+                  "runtime": 1.2333838810000088
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3050847457627119,
+                  "recall": 0.3182425213675214,
+                  "auroc": 0.5454950142450142,
+                  "runtime": 1.465279394999925
+            }
+      },
+      "Heartbeat": {
+            "properties": {
+                  "num_of_dimensions": 61,
+                  "num_of_instances": 306,
+                  "num_of_timestamps": 405,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5145631067961165,
+                  "recall": 0.5097402597402597,
+                  "auroc": 0.5097402597402597,
+                  "runtime": 3872.874359986
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5533980582524272,
+                  "recall": 0.39560439560439564,
+                  "auroc": 0.3956043956043956,
+                  "runtime": 12267.943581882002
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5728155339805825,
+                  "recall": 0.4595404595404595,
+                  "auroc": 0.4595404595404596,
+                  "runtime": 186.05303908600035
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5825242718446602,
+                  "recall": 0.4532967032967033,
+                  "auroc": 0.4532967032967033,
+                  "runtime": 361.87884720400325
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5825242718446602,
+                  "recall": 0.4532967032967033,
+                  "auroc": 0.4532967032967033,
+                  "runtime": 187.2855913329986
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5728155339805825,
+                  "recall": 0.4595404595404595,
+                  "auroc": 0.4595404595404596,
+                  "runtime": 245.22594982800365
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5825242718446602,
+                  "recall": 0.4532967032967033,
+                  "auroc": 0.4532967032967033,
+                  "runtime": 251.01554448699608
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7943262411347518,
+                  "recall": 0.792572463768116,
+                  "auroc": 0.792572463768116,
+                  "runtime": 4423.948970152
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8297872340425532,
+                  "recall": 0.8291062801932367,
+                  "auroc": 0.8291062801932367,
+                  "runtime": 11677.378698975997
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8209541062801933,
+                  "auroc": 0.8209541062801932,
+                  "runtime": 8.925575247994857
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7801418439716312,
+                  "recall": 0.7771739130434783,
+                  "auroc": 0.7771739130434782,
+                  "runtime": 3110.8300539960037
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6099290780141844,
+                  "recall": 0.6092995169082125,
+                  "auroc": 0.6092995169082125,
+                  "runtime": 6.117236171994591
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8209541062801933,
+                  "auroc": 0.8209541062801932,
+                  "runtime": 5.457859694011859
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6099290780141844,
+                  "recall": 0.6092995169082125,
+                  "auroc": 0.6092995169082125,
+                  "runtime": 7.185674010004732
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5894736842105263,
+                  "recall": 0.5880656610470275,
+                  "auroc": 0.5880656610470275,
+                  "runtime": 3170.6240494079975
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6,
+                  "recall": 0.6009316770186335,
+                  "auroc": 0.6009316770186336,
+                  "runtime": 8294.325551622009
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.4826974267968057,
+                  "auroc": 0.4826974267968057,
+                  "runtime": 4.466850675991736
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5684210526315789,
+                  "recall": 0.5649955634427684,
+                  "auroc": 0.5649955634427685,
+                  "runtime": 2426.149502362008
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4631578947368421,
+                  "recall": 0.4622892635314996,
+                  "auroc": 0.4622892635314996,
+                  "runtime": 6.634715438005514
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.4826974267968057,
+                  "auroc": 0.4826974267968057,
+                  "runtime": 5.87751913399552
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4631578947368421,
+                  "recall": 0.4622892635314996,
+                  "auroc": 0.4622892635314996,
+                  "runtime": 7.279433108007652
+            }
+      },
+      "SwedishLeaf": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 843,
+                  "num_of_timestamps": 128,
+                  "num_of_classes": 15,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6560283687943262,
+                  "recall": 0.647193657414212,
+                  "auroc": 0.810996602186185,
+                  "runtime": 100.84154519200092
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8049645390070922,
+                  "recall": 0.8031974356165363,
+                  "auroc": 0.8945700547945732,
+                  "runtime": 216.93069828399166
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.776595744680851,
+                  "recall": 0.7815386839794566,
+                  "auroc": 0.8829671521318518,
+                  "runtime": 9.358956258001854
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8297872340425532,
+                  "recall": 0.8301081639080023,
+                  "auroc": 0.908986516379287,
+                  "runtime": 351.66348914499395
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.03900709219858156,
+                  "recall": 0.06666666666666667,
+                  "auroc": 0.5,
+                  "runtime": 14.428826338000363
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.776595744680851,
+                  "recall": 0.7815386839794566,
+                  "auroc": 0.8829671521318518,
+                  "runtime": 11.07317024799704
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.03900709219858156,
+                  "recall": 0.06666666666666667,
+                  "auroc": 0.5,
+                  "runtime": 18.09540198800096
+            }
+      },
+      "ArrowHead": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 158,
+                  "num_of_timestamps": 251,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7358490566037735,
+                  "recall": 0.719017094017094,
+                  "auroc": 0.7892628205128206,
+                  "runtime": 12.141828726002132
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7358490566037735,
+                  "recall": 0.7003205128205128,
+                  "auroc": 0.7752403846153846,
+                  "runtime": 24.735845770002925
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8490566037735849,
+                  "recall": 0.844551282051282,
+                  "auroc": 0.8834134615384616,
+                  "runtime": 0.3330094519915292
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9245283018867925,
+                  "recall": 0.9139957264957266,
+                  "auroc": 0.935496794871795,
+                  "runtime": 34.839663765000296
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3018867924528302,
+                  "recall": 0.3333333333333333,
+                  "auroc": 0.5,
+                  "runtime": 0.5275431709887926
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8490566037735849,
+                  "recall": 0.844551282051282,
+                  "auroc": 0.8834134615384616,
+                  "runtime": 0.40357648399367463
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3018867924528302,
+                  "recall": 0.3333333333333333,
+                  "auroc": 0.5,
+                  "runtime": 0.5866651010001078
+            }
+      },
+      "BirdChicken": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 30,
+                  "num_of_timestamps": 512,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8,
+                  "recall": 0.8,
+                  "auroc": 0.8,
+                  "runtime": 1.4616305499948794
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8,
+                  "recall": 0.8,
+                  "auroc": 0.8,
+                  "runtime": 3.5190449010115117
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.021677576005458832
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8,
+                  "recall": 0.8,
+                  "auroc": 0.8,
+                  "runtime": 4.980191077003838
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.030923405996873043
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.029108246002579108
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.026996666012564674
+            }
+      },
+      "NATOPS": {
+            "properties": {
+                  "num_of_dimensions": 24,
+                  "num_of_instances": 270,
+                  "num_of_timestamps": 51,
+                  "num_of_classes": 6,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6222222222222222,
+                  "recall": 0.6160453216374269,
+                  "auroc": 0.7696271929824561,
+                  "runtime": 35.337020129998564
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6111111111111112,
+                  "recall": 0.6039839181286549,
+                  "auroc": 0.7623903508771932,
+                  "runtime": 72.69506825899589
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5333333333333333,
+                  "recall": 0.5399036807705538,
+                  "auroc": 0.7239422084623325,
+                  "runtime": 4.021081204991788
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5086536807705538,
+                  "auroc": 0.7051922084623324,
+                  "runtime": 13.915049436007394
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2777777777777778,
+                  "recall": 0.2663162194702442,
+                  "auroc": 0.5597897316821465,
+                  "runtime": 5.256908530995133
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5333333333333333,
+                  "recall": 0.5399036807705538,
+                  "auroc": 0.7239422084623325,
+                  "runtime": 12.709753130999161
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2777777777777778,
+                  "recall": 0.2663162194702442,
+                  "auroc": 0.5597897316821465,
+                  "runtime": 13.958017650002148
+            }
+      },
+      "UWaveGestureLibrary": {
+            "properties": {
+                  "num_of_dimensions": 3,
+                  "num_of_instances": 330,
+                  "num_of_timestamps": 315,
+                  "num_of_classes": 8,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6,
+                  "recall": 0.6563783438783439,
+                  "auroc": 0.8036447679304822,
+                  "runtime": 206.7343908490002
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5909090909090909,
+                  "recall": 0.6494338994338994,
+                  "auroc": 0.7996765139622284,
+                  "runtime": 468.67239081300795
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6363636363636364,
+                  "recall": 0.7065157065157066,
+                  "auroc": 0.8322946894375466,
+                  "runtime": 2.3940285830030916
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6727272727272727,
+                  "recall": 0.7350496725496725,
+                  "auroc": 0.8485998128855272,
+                  "runtime": 233.8580235749978
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.33636363636363636,
+                  "recall": 0.37821553446553446,
+                  "auroc": 0.6446945911231625,
+                  "runtime": 3.580307251002523
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6363636363636364,
+                  "recall": 0.7065157065157066,
+                  "auroc": 0.8322946894375466,
+                  "runtime": 3.2284922789986013
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.33636363636363636,
+                  "recall": 0.37821553446553446,
+                  "auroc": 0.6446945911231625,
+                  "runtime": 4.118124852000619
+            }
+      },
+      "Coffee": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 42,
+                  "num_of_timestamps": 286,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 0.8568479240057059
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 1.9758388689951971
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 0.028527604998089373
+            },
+            "sdtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 2.9553497199958656
+            },
+            "ddtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5714285714285714,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.04636439100431744
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 0.03425982299086172
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5714285714285714,
+                  "recall": 0.5,
+                  "auroc": 0.5,
+                  "runtime": 0.04604756900516804
+            }
+      }
+}

@@ -1,0 +1,23 @@
+{
+      "Fungi": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 153,
+                  "num_of_timestamps": 201,
+                  "num_of_classes": 18,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "f1-score": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 0.24681137300000033
+            }
+      }
+}

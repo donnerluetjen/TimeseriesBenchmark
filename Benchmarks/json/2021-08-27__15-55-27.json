@@ -1,0 +1,212 @@
+{
+      "LargeKitchenAppliances": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 562,
+                  "num_of_timestamps": 720,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5691489361702128,
+                  "recall": 0.5668546365914787,
+                  "f1-score": 0.556434685882865,
+                  "auroc": 0.6751409774436091,
+                  "runtime": 4.059391849000001
+            }
+      },
+      "Meat": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 90,
+                  "num_of_timestamps": 448,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9666666666666667,
+                  "recall": 0.9722222222222222,
+                  "f1-score": 0.9696342305037957,
+                  "auroc": 0.9791666666666666,
+                  "runtime": 0.0665502
+            }
+      },
+      "MoteStrain": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 954,
+                  "num_of_timestamps": 84,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8742138364779874,
+                  "recall": 0.874510424496578,
+                  "f1-score": 0.8741939312418403,
+                  "auroc": 0.874510424496578,
+                  "runtime": 7.163307702000001
+            }
+      },
+      "PowerCons": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 270,
+                  "num_of_timestamps": 144,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9555555555555556,
+                  "recall": 0.9552015928322548,
+                  "f1-score": 0.9552015928322548,
+                  "auroc": 0.9552015928322548,
+                  "runtime": 0.6300933129999997
+            }
+      },
+      "RefrigerationDevices": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 562,
+                  "num_of_timestamps": 720,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.425531914893617,
+                  "recall": 0.42066441999537446,
+                  "f1-score": 0.41906265376414625,
+                  "auroc": 0.5654983149965309,
+                  "runtime": 3.8445080979999986
+            }
+      },
+      "Rock": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 52,
+                  "num_of_timestamps": 2844,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8333333333333334,
+                  "recall": 0.85,
+                  "f1-score": 0.8571428571428572,
+                  "auroc": 0.9,
+                  "runtime": 0.045332645000002
+            }
+      },
+      "ShapeletSim": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 150,
+                  "num_of_timestamps": 500,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.58,
+                  "recall": 0.5801282051282051,
+                  "f1-score": 0.5798319327731092,
+                  "auroc": 0.5801282051282051,
+                  "runtime": 0.187688528999999
+            }
+      },
+      "SmoothSubspace": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 225,
+                  "num_of_timestamps": 15,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9333333333333333,
+                  "recall": 0.9340501792114696,
+                  "f1-score": 0.9346619760193461,
+                  "auroc": 0.9505376344086022,
+                  "runtime": 0.38369724100000013
+            }
+      },
+      "SyntheticControl": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 450,
+                  "num_of_timestamps": 60,
+                  "num_of_classes": 6,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9066666666666666,
+                  "recall": 0.9135802469135802,
+                  "f1-score": 0.8975022375490759,
+                  "auroc": 0.9481481481481481,
+                  "runtime": 1.5814011840000006
+            }
+      },
+      "TwoLeadECG": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 871,
+                  "num_of_timestamps": 82,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 1.0,
+                  "recall": 1.0,
+                  "f1-score": 1.0,
+                  "auroc": 1.0,
+                  "runtime": 6.795623808000002
+            }
+      }
+}

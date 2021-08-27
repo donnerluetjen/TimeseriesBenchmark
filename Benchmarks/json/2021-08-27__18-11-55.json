@@ -1,0 +1,104 @@
+{
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "sagdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5555555555555555,
+                  "f1-score": 0.49999999999999994,
+                  "auroc": 0.6666666666666666,
+                  "runtime": 2.6908908570000003
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.375,
+                  "recall": 0.4444444444444444,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5833333333333334,
+                  "runtime": 5.20315418
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": -1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7777777777777777,
+                  "f1-score": 0.7555555555555555,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.013989516000002311
+            },
+            "sdtw": {
+                  "arguments": {
+                        "gamma": 1.0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.125,
+                  "recall": 0.1111111111111111,
+                  "f1-score": 0.09523809523809525,
+                  "auroc": 0.3333333333333333,
+                  "runtime": 4.355902512999997
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": -1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.2222222222222222,
+                  "f1-score": 0.13333333333333333,
+                  "auroc": 0.4166666666666667,
+                  "runtime": 0.01714356299999764
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.75,
+                  "recall": 0.7777777777777777,
+                  "f1-score": 0.7555555555555555,
+                  "auroc": 0.8333333333333334,
+                  "runtime": 0.015102496000000798
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.2222222222222222,
+                  "f1-score": 0.13333333333333333,
+                  "auroc": 0.4166666666666667,
+                  "runtime": 0.02792575900000216
+            }
+      }
+}

@@ -1,0 +1,23 @@
+{
+      "StandWalkJump": {
+            "properties": {
+                  "num_of_dimensions": 4,
+                  "num_of_instances": 20,
+                  "num_of_timestamps": 2500,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dtw": {
+                  "arguments": {
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.1111111111111111,
+                  "f1-score": 0.16666666666666666,
+                  "auroc": 0.3333333333333333,
+                  "runtime": 0.02965678599999988
+            }
+      }
+}

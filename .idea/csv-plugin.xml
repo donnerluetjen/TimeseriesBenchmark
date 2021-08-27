@@ -3,7 +3,28 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/Benchmarks/csv/2021-07-30__00-34-56.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-02__17-19-26.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Benchmarks/csv/2021-08-05__15-25-16.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-05__15-56-07.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -17,7 +38,476 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/Benchmarks/csv/2021-08-12__16-11-23.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/Benchmarks/csv/2021-08-12__22-33-48.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/ArrowHead.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/AtrialFibrillation.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/BasicMotions.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/BirdChicken.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/FingerMovements.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/HandMovementDirection.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/Heartbeat.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/SelfRegulationSCP1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/SelfRegulationSCP2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/SwedishLeaf.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/accuracy_over_dataets/agdtw_chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/accuracy_over_datasets/sagdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw-chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw-euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw-manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw-minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw_chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw_euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw_minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtwchebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtweuclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtwmanhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtwminkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/ddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/dtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw-chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw-euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw-manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw-minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw_chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw_euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtw_minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtwchebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtweuclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtwmanhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sagdtwminkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/sdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/wddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/wdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/agdtw_chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/agdtw_euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/agdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/agdtw_minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/ddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/dtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/sagdtw_chebyshev.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/sagdtw_euclidean.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/sagdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/sagdtw_minkowski.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/sdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/wddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/f1-score/wdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/ranking.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/agdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/ddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/dtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/sagdtw_manhattan.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/sdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/wddtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-25__16-08-17/average_ranking_over_average_runtime/wdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-27__13-26-20/accuracy/dtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/2021-08-27__13-26-20/average_ranking_over_average_runtime/dtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/One_NN.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

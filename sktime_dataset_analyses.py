@@ -9,6 +9,19 @@ __email__ = "s2092795@stud.uni-frankfurt.de"
 import numpy as np
 
 
+def z_normalize(sktime_dataframe):
+    num_instances = sktime_dataframe.shape[0]
+    num_dimensions = sktime_dataframe.shape[1]
+    for loc_instance in range(num_instances):
+        instance = sktime_dataframe.iloc[loc_instance]
+        for loc_dimension in range(num_dimensions):
+            dimension = instance.iloc[0]
+            dim_mean = dimension.mean()
+            dim_std_dev = dimension.std()
+            dimension = (dimension - dim_mean) / dim_std_dev
+            sktime_dataframe.iat[loc_instance, loc_dimension] = dimension
+    return sktime_dataframe
+
 def dataset_properties(X_train, y_train):
     '''
     retrieve characteristics from the given dataset
