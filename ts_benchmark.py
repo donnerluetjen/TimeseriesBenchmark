@@ -97,20 +97,25 @@ class TimeseriesBenchmark:
         start_time = time.perf_counter()
         self.y_test_pred = self.classifier.predict(self.X_test)
         self.runtime = time.perf_counter() - start_time
+        print(f'{self.current_timestamp()}            run time was:        '
+              f'{self.runtime}')
 
     def score_accuracy(self):
         self.accuracy_score = accuracy_score(self.y_test, self.y_test_pred)
-        print(f'            accuracy score is:   {self.accuracy_score}')
+        print(f'{self.current_timestamp()}            accuracy score is:   '
+              f'{self.accuracy_score}')
 
     def score_recall(self):
         self.recall_score = recall_score(self.y_test, self.y_test_pred,
                                          average='macro')
-        print(f'            recall score is:     {self.recall_score}')
+        print(f'{self.current_timestamp()}            recall score is:     '
+              f'{self.recall_score}')
 
     def score_f1(self):
         self.f1_score = f1_score(self.y_test, self.y_test_pred,
                                  average='macro')
-        print(f'            f1 score is:         {self.f1_score}')
+        print(f'{self.current_timestamp()}            f1 score is:         '
+              f'{self.f1_score}')
 
     def score_auroc(self):
         if len(np.unique(self.y_train)) == 2:
@@ -125,14 +130,14 @@ class TimeseriesBenchmark:
                 roc_auc_score(self.y_test,
                               self.classifier.predict_proba(self.X_test),
                               average='macro', multi_class="ovo")
-        print(f'            auroc score is:      {self.auroc_score}')
+        print(f'{self.current_timestamp()}            auroc score is:      '
+              f'{self.auroc_score}')
 
     def score(self):
         self.score_accuracy()
         self.score_recall()
         self.score_f1()
         self.score_auroc()
-        print(f'            run time was:        {self.runtime}')
 
     def properties(self):
         return dataset_properties(self.X_train, self.y_train)
@@ -409,33 +414,33 @@ if __name__ == '__main__':
     bm = TimeseriesBenchmark(window=-1, njobs=-1, normalized=True)
     datasets = [
         # datasets from UEA archive (multivariate)
-        "ArticularyWordRecognition",
-        "AtrialFibrillation",
-        "BasicMotions",
-        "Cricket",
-        "Epilepsy",
-        "EyesOpenShut",
-        "FingerMovements",
-        "HandMovementDirection",
-        "Libras",
-        "NATOPS",
-        "RacketSports",
-        "SelfRegulationSCP1",
-        "SelfRegulationSCP2",
-        "StandWalkJump",
-        "UWaveGestureLibrary",
+        # "ArticularyWordRecognition",
+        # "AtrialFibrillation",
+        # "BasicMotions",
+        # "Cricket", # needs prediction except for dagdtw
+        # "Epilepsy",
+        # "EyesOpenShut",
+        # "FingerMovements",
+        # "HandMovementDirection",
+        # "Libras",
+        # "NATOPS",
+        # "RacketSports",
+        # "SelfRegulationSCP1",
+        # "SelfRegulationSCP2",
+        # "StandWalkJump",
+        # "UWaveGestureLibrary",
 
         # datasets from UCR archive (univariate)
-        "ACSF1",
-        "ArrowHead",
-        "Beef",
-        "BeetleFly",
-        "BirdChicken",
-        "BME",
-        "Car",
-        "CBF",
-        "Chinatown",
-        "Coffee",
+        # "ACSF1",
+        # "ArrowHead",
+        # "Beef",
+        # "BeetleFly",
+        # "BirdChicken",
+        # "BME",
+        # "Car",
+        # "CBF",
+        # "Chinatown",
+        # "Coffee",
         "Computers",
         "CricketX",
         "CricketY",
