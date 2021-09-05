@@ -501,7 +501,7 @@ if __name__ == '__main__':
         # "TwoLeadECG",
         # "TwoPatterns",
         # "UMD",
-        # # "UWaveGestureLibraryAll",
+        "UWaveGestureLibraryAll",
         "UWaveGestureLibraryX",
         "UWaveGestureLibraryY",
         "UWaveGestureLibraryZ",

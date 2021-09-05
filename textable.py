@@ -15,20 +15,26 @@ def open_score_table(tex_path, metrics=[], scores=[]):
     algorithm_columns = len(metrics) * len(scores)
     with open(tex_path, 'w') as tex_table_file:
         tex_table_file.write('\\begin{table}[h]\n')
+        tex_table_file.write('\\setlength{\\tabcolsep}{1pt}\n')
+        tex_table_file.write('\\tiny\n')
+        tex_table_file.write('\\center\n')
         tex_table_file.write(f'\t\\begin{{tabular}}{{l{"c"*algorithm_columns}}}\n')
         tex_table_file.write(f'\t\tDatasets & \\multicolumn{{{algorithm_columns}}}{{|c|}}{{Algorithms}} {eol}\n')
         metrics_header = '\t\t\t'
         for metric in metrics:
-            metrics_header += f'& \\multicolumn{{len(scores)}}{{|c|}}{{{metric}}} '
+            metrics_header += f'& \\multicolumn{{{len(scores)}}}{{|c|}}{{{metric}}} '
         tex_table_file.write(f'{metrics_header}{eol}\n')
-        tex_table_file.write(f'\t\t\t& {" & ".join(scores * len(metrics))} {eol}\n')
+        short_scores = []
+        for score in scores:
+            short_scores.append(label_formatted(score))
+        tex_table_file.write(f'\t\t\t& {" & ".join(short_scores * len(metrics))} {eol}\n')
         tex_table_file.write('\t\t\\hline\n')
 
 
 def close_score_table(tex_path, caption=''):
     with open(tex_path, 'a') as tex_table_file:
         tex_table_file.write('\t\t\\hline\n')
-        tex_table_file.write('\t\\endtabular\n')
+        tex_table_file.write('\t\\end{tabular}\n')
         tex_table_file.write('\t\\label{{tab:scores_details}}\n')
         tex_table_file.write(f'\t\\caption{{{caption}}}\n')
         tex_table_file.write('\\end{table}\n')
@@ -42,3 +48,6 @@ def add_table_line(tex_path, data=[]):
 def data_formatted(data):
     pattern = "%.4f"
     return [data[0]] + [pattern % i for i in data[1:]]
+
+def label_formatted(label=''):
+    return label[:5]
