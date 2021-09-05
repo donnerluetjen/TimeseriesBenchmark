@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 __author__ = "6541262: Ansgar Asseburg"
 __copyright__ = "Copyright 2021 – Ansgar Asseburg; " \
                 "You may use and copy this document (including changing it) " \
@@ -13,6 +14,7 @@ from math import sqrt
 from pathlib import Path
 
 import pgfplots as pp
+import textable as tt
 
 
 def transformFloat(value):
@@ -23,20 +25,21 @@ def generate_legend_dict(legend_array):
     result = {}
 
 
-def ranking(scores):
+def ranking(scores, do_not_rank=[]):
     keys = scores.keys()
     squared_result = 0
     for key in keys:
 
         # do not evaluate arguments and runtime
-        if key in ['arguments', 'runtime']:
+        # and skip this scores in do_not rank for ranking
+        if key in ['arguments', 'runtime'] + do_not_rank:
             continue
 
         squared_result += scores[key] ** 2
     return sqrt(squared_result)
 
 
-def generate_average_ranking_diagram(json_path, score_name='Unknown'):
+def generate_average_diagram(json_path, score_name='ranking', do_not_rank=[]):
     path_dict = path_dictionary(json_path, score_name)
     with open(json_path) as json_file:
         data = json.load(json_file)
@@ -46,10 +49,10 @@ def generate_average_ranking_diagram(json_path, score_name='Unknown'):
         metrics = list(data[datasets[0]].keys())
         metrics.remove('properties')
 
-        header = ['average-ranking', 'average-runtime']
+        header = ['metric', f'average-{score_name}', 'average-runtime']
         pp.open_pgfplots_file(path_dict['tex_path'],
-                              'Average Ranking over Average Runtime',
-                              'Average Runtime', 'Average Ranking')
+                              f'Average {score_name.capitalize()} over Average Runtime',
+                              'Average Runtime', f'Average {score_name.capitalize()}')
         pp.add_legend_to_pgfplots_file(path_dict['tex_path'], metrics)
 
         for metric in metrics:
@@ -64,32 +67,23 @@ def generate_average_ranking_diagram(json_path, score_name='Unknown'):
                 csv_writer.writerow(header)
 
                 # iterate over datasets for metric and find averages
-                accumulated_ranking = 0
+                accumulated_scoring = 0
                 accumulated_runtime = 0
                 for dataset in datasets:
-                    accumulated_ranking += ranking(data[dataset][metric])
+                    if score_name == 'ranking':
+                        accumulated_scoring += ranking(data[dataset][metric], do_not_rank)
+                    else:
+                        accumulated_scoring += data[dataset][metric][score_name]
                     accumulated_runtime += data[dataset][metric]['runtime']
 
                 csv_writer.writerow([metric,
-                                     accumulated_ranking / len(datasets),
+                                     accumulated_scoring / len(datasets),
                                      accumulated_runtime / len(datasets)])
         pp.close_pgfplots_file(path_dict['tex_path'])
 
-def path_dictionary(json_path, score_name):
-    csv_converted_json_path = Path(json_path.replace('json', 'csv'))
-    csv_dir = Path(csv_converted_json_path.parent,
-                   csv_converted_json_path.stem, score_name)
-    csv_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = Path(csv_dir, csv_converted_json_path.stem + '.csv')
-    tex_path = Path(csv_dir, f'pgfplots.tex')
-    return {'csv_dir': csv_dir, 'csv_path': csv_path, 'tex_path': tex_path}
 
-def csv_path_for(metric, path_dict):
-    return Path(path_dict['csv_dir'],
-                f'{metric}{path_dict["csv_path"].suffix}')
-
-def generate_single_score_diagram(json_path, score_name='Unknown'):
-    path_dict = path_dictionary(json_path, score_name)
+def generate_table(json_path, do_not_rank=[]):
+    path_dict = path_dictionary(json_path, 'score_table')
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -98,39 +92,51 @@ def generate_single_score_diagram(json_path, score_name='Unknown'):
         metrics = list(data[datasets[0]].keys())
         metrics.remove('properties')
 
-        header = ['dataset', score_name]
+        # read scores and drop arguments
+        scores = list(data[datasets[0]][metrics[0]].keys())
+        scores.remove('arguments')
+        for remove in do_not_rank:
+            scores.remove(remove)
+        
+        tt.open_score_table(path_dict['tex_table_path'], metrics, scores)
+        
+        for dataset in datasets:
+            dataset_data = [dataset]
+            for metric in metrics:
+                for score in scores:
+                    
+                    if score in do_not_rank:
+                        continue
+                        
+                    score_value = data[dataset][metric][score]
+                    dataset_data.append(score_value)
+            tt.add_table_line(path_dict['tex_table_path'], dataset_data)
+            
+        
+        tt.close_score_table(path_dict['tex_table_path'], 'UEA Datasets')
+    
 
-        for metric in metrics:
-            metric_csv_path = csv_path_for(metric, path_dict)
-            with open(metric_csv_path, 'w') as csv_file:
-                csv_writer = csv.writer(csv_file)
-                csv_writer.writerow(header)
+def path_dictionary(json_path, score_name):
+    csv_converted_json_path = Path(json_path.replace('json', 'csv'))
+    csv_dir = Path(csv_converted_json_path.parent,
+                   csv_converted_json_path.stem, score_name)
+    csv_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = Path(csv_dir, csv_converted_json_path.stem + '.csv')
+    tex_path = Path(csv_dir, f'pgfplots.tex')
+    tex_table_path = Path(csv_dir, f'scores_table.tex')
+    return {'csv_dir': csv_dir, 'csv_path': csv_path, 'tex_path': tex_path, 'tex_table_path': tex_table_path}
 
-                for dataset in datasets:
-                    csv_writer.writerow(
-                        [dataset, data[dataset][metric][score_name]]
-                    )
-
-        # write pgfplots file
-        capital_score_name = score_name.capitalize()
-        pp.open_single_score_pgfplots_file(
-            path_dict['tex_path'],
-            f'{capital_score_name} over Dataset', 'Dataset',
-            capital_score_name, metric_csv_path)
-        pp.add_legend_to_pgfplots_file(path_dict['tex_path'], metrics)
-        for metric in metrics:
-            pp.addplot_line_to_single_score_pgfplots_file_for(
-                path_dict['tex_path'], f'{metric}.csv', x_col=0, y_col=1
-            )
-        pp.close_pgfplots_file(path_dict['tex_path'])
+def csv_path_for(metric, path_dict):
+    return Path(path_dict['csv_dir'],
+                f'{metric}{path_dict["csv_path"].suffix}')
 
 
 if __name__ == '__main__':
     json_store = './Benchmarks/json/'
     json_file = '2021-08-27__18-45-44.json'
-    generate_average_ranking_diagram(json_store + json_file,
-                                     'average_ranking_over_average_runtime')
-    generate_single_score_diagram(json_store + json_file, 'accuracy')
-    generate_single_score_diagram(json_store + json_file, 'recall')
-    generate_single_score_diagram(json_store + json_file, 'f1-score')
-    generate_single_score_diagram(json_store + json_file, 'auroc')
+    generate_table(json_store + json_file, do_not_rank=['recall', 'runtime'])
+    generate_average_diagram(json_store + json_file, 'ranking', do_not_rank=[])
+    generate_average_diagram(json_store + json_file, 'accuracy')
+    generate_average_diagram(json_store + json_file, 'recall')
+    generate_average_diagram(json_store + json_file, 'f1-score')
+    generate_average_diagram(json_store + json_file, 'auroc')

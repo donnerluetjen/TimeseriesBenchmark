@@ -105,6 +105,25 @@ class TimeseriesBenchmark:
         print(f'{self.current_timestamp()}            accuracy score is:   '
               f'{self.accuracy_score}')
 
+    # in the following argument avaerage is set to 'macro' since we're dealing with fairly balanced datasets
+    # from the scikit documentation:
+    """
+    average{‘micro’, ‘macro’, ‘samples’, ‘weighted’} or None, default=’macro’
+    If None, the scores for each class are returned. Otherwise, this determines the type of averaging performed on the data: Note: multiclass ROC AUC currently only handles the ‘macro’ and ‘weighted’ averages.
+
+    'micro':
+    Calculate metrics globally by considering each element of the label indicator matrix as a label.
+
+    'macro':
+    Calculate metrics for each label, and find their unweighted mean. This does not take label imbalance into account.
+
+    'weighted':
+    Calculate metrics for each label, and find their average, weighted by support (the number of true instances for each label).
+
+    'samples':
+    Calculate metrics for each instance, and find their average.
+    """
+        
     def score_recall(self):
         self.recall_score = recall_score(self.y_test, self.y_test_pred,
                                          average='macro')
