@@ -66,9 +66,10 @@ def generate_average_diagram(json_path, score_name='ranking', do_not_rank=[]):
             pp.add_table(pgf_path, metric, table_data)
 
 
-def generate_table(json_path, do_not_rank=[]):
+def generate_table(json_path, table_name_specific='', split_table_metrics=[], do_not_rank=[]):
     path_dict = path_dictionary(json_path)
-    table_path = Path(path_dict['tex_dir'], 'scores_table.tex')
+    dataset_archive = path_dict['archive']
+    
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -76,6 +77,9 @@ def generate_table(json_path, do_not_rank=[]):
         # read metrics and drop properties
         metrics = list(data[datasets[0]].keys())
         metrics.remove('properties')
+        
+        # split metrics into schemes for the two tables
+        table_metrics_schemes = [sorted(split_table_metrics), sorted(list(set(metrics) - set(split_table_metrics)))]
 
         # read scores and drop arguments
         scores = list(data[datasets[0]][metrics[0]].keys())
@@ -83,29 +87,52 @@ def generate_table(json_path, do_not_rank=[]):
         for remove in do_not_rank:
             scores.remove(remove)
         
-        tt.open_score_table(table_path, metrics, scores)
-        
-        for dataset in datasets:
-            dataset_data = [dataset]
-            for metric in metrics:
-                for score in scores:
-                    
-                    if score in do_not_rank:
-                        continue
-                        
-                    score_value = data[dataset][metric][score]
-                    dataset_data.append(score_value)
-            tt.add_table_line(table_path, dataset_data)
+        for table_metrics_scheme in table_metrics_schemes:
+            if len(table_metrics_scheme) == 0: continue
+            table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
+            table_path = Path(path_dict['tex_dir'], table_file_name)
             
+            tt.open_score_table(table_path, table_metrics_scheme, scores)
         
-        tt.close_score_table(table_path, 'UEA Datasets')
-    
+            for dataset in datasets:
+                dataset_data = [dataset]
+                
+                # get highscores for this dqtaset
+                highscore_dict = {key:0 if key != 'runtime' else float('inf') for key in scores}
+                for metric in metrics:
+                    for score in scores:
+                        highscore_dict = highscores(score, data[dataset][metric][score], highscore_dict)
+                        
+                for metric in table_metrics_scheme:
+                    for score in scores:
+                    
+                        if score in do_not_rank:
+                            continue
+                        
+                        score_value = data[dataset][metric][score]
+                        dataset_data.append(score_value)
+                tt.add_table_line(table_path, dataset_data, list(highscore_dict.values()))
+            
+            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' ({table_name_specific})'
+            table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_{"".join([c for c in table_name_specific if c != " "])}'
+            tt.close_score_table(table_path, table_caption, table_label)
+
+
+def highscores(score, value, dict):
+    highscore = dict[score]
+    if score == 'runtime':
+        if value < highscore: dict[score] = value
+    else:
+        if value > highscore: dict[score] = value
+    return dict
+
 
 def path_dictionary(json_path):
     tex_converted_json_path = Path(json_path.replace('json', 'tex'))
+    archive = tex_converted_json_path.stem[0:3]
     tex_dir = Path(tex_converted_json_path.parent, tex_converted_json_path.stem)
     tex_dir.mkdir(parents=True, exist_ok=True)
-    return {'tex_dir': tex_dir}
+    return {'tex_dir': tex_dir, 'archive': archive}
 
 
 def csv_path_for(metric, path_dict):
@@ -117,7 +144,7 @@ if __name__ == '__main__':
     json_store = './Benchmarks/json/'
     json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
     for json_file in json_files:
-        generate_table(json_store + json_file, do_not_rank=['recall', 'runtime'])
+        generate_table(json_store + json_file, 'warping window = 1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
         generate_average_diagram(json_store + json_file, 'ranking',
                                  do_not_rank=['recall'])
         generate_average_diagram(json_store + json_file, 'accuracy')
