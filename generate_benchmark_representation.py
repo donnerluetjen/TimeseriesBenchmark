@@ -92,7 +92,10 @@ def generate_table(json_path, table_name_specific='', split_table_metrics=[], do
             table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
             table_path = Path(path_dict['tex_dir'], table_file_name)
             
-            tt.open_score_table(table_path, table_metrics_scheme, scores)
+            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' ({table_name_specific})'
+            table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_{"".join([c for c in table_name_specific if c != " "])}'
+            
+            tt.open_score_table(table_path, table_metrics_scheme, scores, table_caption)
         
             for dataset in datasets:
                 dataset_data = [dataset]
@@ -112,9 +115,7 @@ def generate_table(json_path, table_name_specific='', split_table_metrics=[], do
                         score_value = data[dataset][metric][score]
                         dataset_data.append(score_value)
                 tt.add_table_line(table_path, dataset_data, list(highscore_dict.values()))
-            
-            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' ({table_name_specific})'
-            table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_{"".join([c for c in table_name_specific if c != " "])}'
+                
             tt.close_score_table(table_path, table_caption, table_label)
 
 
