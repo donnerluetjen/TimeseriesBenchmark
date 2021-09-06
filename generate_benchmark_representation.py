@@ -35,9 +35,9 @@ def ranking(scores, do_not_rank=[]):
     return sqrt(squared_result)
 
 
-def generate_average_diagram(json_path, score_name='ranking', do_not_rank=[]):
+def generate_average_diagram(json_path, table_name_specific='', score_name='ranking', do_not_rank=[]):
     path_dict = path_dictionary(json_path)
-    pgf_path = Path(path_dict['tex_dir'], f'{score_name}_pgfplots.tex')
+    pgf_path = Path(path_dict['tex_dir'], f'pgfplot_{score_name}_{"".join([c for c in table_name_specific if c != " "])}.tex')
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -146,8 +146,8 @@ if __name__ == '__main__':
     json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
     for json_file in json_files:
         generate_table(json_store + json_file, 'warping window = 1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'ranking',
+        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'ranking',
                                  do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'accuracy')
-        generate_average_diagram(json_store + json_file, 'f1-score')
-        generate_average_diagram(json_store + json_file, 'auroc')
+        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'accuracy')
+        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'f1-score')
+        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'auroc')

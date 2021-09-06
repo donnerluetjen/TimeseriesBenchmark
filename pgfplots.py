@@ -25,6 +25,7 @@ def init_pgfplots_file(tex_path, title="", x_label='x', y_label='y',
         pgf_file.write('\t\tminor tick num=5,\n')
         pgf_file.write('\t\tlegend cell align={left},\n')
         pgf_file.write('\t\tlegend pos = south east,\n')
+        pgf_file.write('legend style={nodes={scale=0.7, transform shape}},\n')
         pgf_file.write('\t\tclip=false, % avoid clipping at edge of diagram\n')
         pgf_file.write('\t\tnodes near coords, % print the value near node\n')
         pgf_file.write('\t]\n')
