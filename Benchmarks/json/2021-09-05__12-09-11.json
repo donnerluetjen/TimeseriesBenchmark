@@ -1,0 +1,104 @@
+{
+      "UWaveGestureLibraryAll": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 3358,
+                  "num_of_timestamps": 945,
+                  "num_of_classes": 8,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9357142857142857,
+                  "recall": 0.9342532769690463,
+                  "f1-score": 0.9337128030245931,
+                  "auroc": 0.9624304439823123,
+                  "runtime": 61142.572685930994
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9392857142857143,
+                  "recall": 0.9379839279444492,
+                  "f1-score": 0.9376579503192355,
+                  "auroc": 0.9645622445396852,
+                  "runtime": 110581.239423171
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": -1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9660714285714286,
+                  "recall": 0.9656574122900625,
+                  "f1-score": 0.9659860434098357,
+                  "auroc": 0.9803756641657503,
+                  "runtime": 209.74746160500217
+            },
+            "sdtw": {
+                  "arguments": {
+                        "gamma": 1.0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9758928571428571,
+                  "recall": 0.9756643962624324,
+                  "f1-score": 0.9758723877980231,
+                  "auroc": 0.98609394072139,
+                  "runtime": 183168.42775506902
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": -1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.13035714285714287,
+                  "recall": 0.125,
+                  "f1-score": 0.02883096366508689,
+                  "auroc": 0.5,
+                  "runtime": 164.94830450200243
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9660714285714286,
+                  "recall": 0.9656574122900625,
+                  "f1-score": 0.9659860434098357,
+                  "auroc": 0.9803756641657503,
+                  "runtime": 163.51954232598655
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.13035714285714287,
+                  "recall": 0.125,
+                  "f1-score": 0.02883096366508689,
+                  "auroc": 0.5,
+                  "runtime": 177.7674736250192
+            }
+      }
+}

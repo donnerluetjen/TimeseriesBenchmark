@@ -129,20 +129,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/accuracy_over_dataets/agdtw_chebyshev.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/Benchmarks/csv/2021-08-16__15-18-35/accuracy_over_datasets/sagdtw_manhattan.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="/Benchmarks/csv/2021-08-16__15-18-35/average_ranking_over_average_runtime/agdtw-chebyshev.csv">
           <value>
             <Attribute>
@@ -515,6 +501,20 @@
           </value>
         </entry>
         <entry key="/Benchmarks/csv/One_NN_short.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/UEA_archive_2021-08-27/ranking/agdtw.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/Benchmarks/csv/UEA_archive_2021-08-27/ranking/dagdtw.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
