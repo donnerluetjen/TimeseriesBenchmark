@@ -133,7 +133,7 @@ def csv_path_for(metric, path_dict):
 
 if __name__ == '__main__':
     json_store = './Benchmarks/json/'
-    json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
+    json_files = ['UEA_archive_2021-08-27_wws--1.json', 'UCR_archive_2021-08-28_wws--1.json']
     for json_file in json_files:
         generate_table(json_store + json_file, do_not_rank=['recall', 'runtime'])
         generate_average_diagram(json_store + json_file, 'ranking',
