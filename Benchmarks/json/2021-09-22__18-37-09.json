@@ -1,0 +1,88 @@
+{
+      "SemgHandMovementCh2": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 675,
+                  "num_of_timestamps": 1500,
+                  "num_of_classes": 6,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.36,
+                  "recall": 0.3676842564197216,
+                  "f1-score": 0.35419990232642373,
+                  "auroc": 0.620610553851833,
+                  "runtime": 8482.906688101
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.37333333333333335,
+                  "recall": 0.3745499628493815,
+                  "f1-score": 0.36794044368754447,
+                  "auroc": 0.6247299777096289,
+                  "runtime": 6.107265353999537
+            },
+            "sdtw": {
+                  "arguments": {
+                        "gamma": 1.0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.39555555555555555,
+                  "recall": 0.4082222068413928,
+                  "f1-score": 0.3971254906749846,
+                  "auroc": 0.6449333241048356,
+                  "runtime": 18962.488326462
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.19111111111111112,
+                  "recall": 0.16666666666666666,
+                  "f1-score": 0.053482587064676616,
+                  "auroc": 0.5,
+                  "runtime": 6.581069403000583
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.37333333333333335,
+                  "recall": 0.3745499628493815,
+                  "f1-score": 0.36794044368754447,
+                  "auroc": 0.6247299777096289,
+                  "runtime": 6.644332223004312
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.19111111111111112,
+                  "recall": 0.16666666666666666,
+                  "f1-score": 0.053482587064676616,
+                  "auroc": 0.5,
+                  "runtime": 7.329505326997605
+            }
+      }
+}

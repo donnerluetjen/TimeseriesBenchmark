@@ -1,0 +1,28 @@
+{
+      "UWaveGestureLibraryAll": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 3358,
+                  "num_of_timestamps": 945,
+                  "num_of_classes": 8,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.94375,
+                  "recall": 0.9425058578581339,
+                  "f1-score": 0.9423228866032293,
+                  "auroc": 0.9671462044903623,
+                  "runtime": 31942.367847547
+            }
+      }
+}

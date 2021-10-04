@@ -1,0 +1,206 @@
+{
+      "SemgHandSubjectCh2": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 675,
+                  "num_of_timestamps": 1500,
+                  "num_of_classes": 5,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.21333333333333335,
+                  "recall": 0.2,
+                  "f1-score": 0.07058823529411765,
+                  "auroc": 0.5,
+                  "runtime": 3248.257238842
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4533333333333333,
+                  "recall": 0.44179292440920354,
+                  "f1-score": 0.39349935159817795,
+                  "auroc": 0.6511205777557522,
+                  "runtime": 8571.723977288999
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.43555555555555553,
+                  "recall": 0.4183235158235158,
+                  "f1-score": 0.35428591160982226,
+                  "auroc": 0.6364521973896974,
+                  "runtime": 5.981868643997586
+            },
+            "sdtw": {
+                  "arguments": {
+                        "gamma": 1.0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4666666666666667,
+                  "recall": 0.44827440141393626,
+                  "f1-score": 0.4083742214955713,
+                  "auroc": 0.6551715008837102,
+                  "runtime": 18976.324117959004
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2311111111111111,
+                  "recall": 0.2,
+                  "f1-score": 0.07509025270758123,
+                  "auroc": 0.5,
+                  "runtime": 6.591468643004191
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.43555555555555553,
+                  "recall": 0.4183235158235158,
+                  "f1-score": 0.35428591160982226,
+                  "auroc": 0.6364521973896974,
+                  "runtime": 6.877005508002185
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2311111111111111,
+                  "recall": 0.2,
+                  "f1-score": 0.07509025270758123,
+                  "auroc": 0.5,
+                  "runtime": 7.166314331996546
+            }
+      },
+      "ShapeletSim": {
+            "properties": {
+                  "num_of_dimensions": 1,
+                  "num_of_instances": 150,
+                  "num_of_timestamps": 500,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5,
+                  "runtime": 18.216654178999306
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.78,
+                  "recall": 0.78,
+                  "f1-score": 0.7726333195535344,
+                  "auroc": 0.78,
+                  "runtime": 45.956364301004214
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.68,
+                  "recall": 0.68,
+                  "f1-score": 0.68,
+                  "auroc": 0.68,
+                  "runtime": 0.21095065300323768
+            },
+            "sdtw": {
+                  "arguments": {
+                        "gamma": 1.0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.54,
+                  "recall": 0.54,
+                  "f1-score": 0.4165398274987316,
+                  "auroc": 0.54,
+                  "runtime": 105.44868414100347
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5,
+                  "runtime": 0.3182351089999429
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.68,
+                  "recall": 0.68,
+                  "f1-score": 0.68,
+                  "auroc": 0.68,
+                  "runtime": 0.24960048500361154
+            },
+            "wddtw": {
+                  "arguments": {
+                        "g": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5,
+                  "runtime": 0.3473488789968542
+            }
+      }
+}
