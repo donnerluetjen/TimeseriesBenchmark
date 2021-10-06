@@ -321,8 +321,9 @@ if __name__ == '__main__':
         ]
     dataset_json_file_name = 'datasets_details'
     json_store = './Benchmarks/json/'
-
+    # generate json file with dataset details
     # datasets_props = generate_datasets_details_dict(json_store + 'datasets_details', datasets)
+    # generate the datsets details table
     # generate_datasets_table(json_store + dataset_json_file_name)
 
     json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
