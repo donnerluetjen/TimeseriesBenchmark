@@ -13,8 +13,14 @@ import math
 from math import sqrt
 from pathlib import Path
 
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sktime.datasets import load_UCR_UEA_dataset
+
 import pgfplots as pp
 import textable as tt
+from sktime_dataset_analyses import count_of_missing_values_in_sktime_df, \
+    has_equal_length_in_all_time_series
 
 
 def transformFloat(value):
@@ -66,9 +72,13 @@ def generate_average_diagram(json_path, table_name_specific='', score_name='rank
             pp.add_table(pgf_path, metric, table_data)
 
 
-def generate_table(json_path, table_name_specific='', split_table_metrics=[], do_not_rank=[]):
+def generate_table(json_path, dataset_details_file, table_name_specific='', split_table_metrics=[], do_not_rank=[]):
     path_dict = path_dictionary(json_path)
     dataset_archive = path_dict['archive']
+
+    # load dataset details
+    with open(dataset_details_file) as dd_file:
+        dataset_details = json.load(dd_file)
     
     with open(json_path) as json_file:
         data = json.load(json_file)
@@ -98,7 +108,7 @@ def generate_table(json_path, table_name_specific='', split_table_metrics=[], do
             tt.open_score_table(table_path, table_metrics_scheme, scores, table_caption)
         
             for dataset in datasets:
-                dataset_data = [dataset]
+                dataset_data = [dataset_details[dataset]['short_name']]
                 
                 # get highscores for this dqtaset
                 highscore_dict = {key:0 if key != 'runtime' else float('inf') for key in scores}
@@ -128,6 +138,100 @@ def highscores(score, value, dict):
     return dict
 
 
+def generate_datasets_details_dict(json_path, datasets):
+    """
+    loads datasets and generates analytics for them
+    :param datasets: a list of dataset names to be analyzed
+    :return: a dictionary containing the following analytics
+        - # dimensions
+        - # instances
+        - # timestamps
+        - # classes
+        - unique length
+        - # missing values
+        - len train set
+        - len test set
+        - imbalance ratio
+    """
+    result_dict = {}
+    # load dataset
+    for index, dataset in enumerate(datasets):
+        result_dict[dataset] = {}
+        short_name = f'DS {index + 1}'
+        result_dict[dataset]['short_name'] = short_name
+        result_dict[dataset]['name'] = dataset
+        # load dataset
+        X, y = load_UCR_UEA_dataset(dataset, return_X_y=True)
+        X_train, X_test, y_train, y_test = \
+            train_test_split(X, y)
+        properties = dataset_properties(X_train, y_train, y_test)
+        result_dict[dataset].update(properties)
+        writeJson(json_path, result_dict)
+    return result_dict
+
+
+def writeJson(json_file_path, property_dict):
+    with open(json_file_path, "w") as json_file:
+        json.dump(property_dict, json_file, indent=6)
+        json_file.flush()
+
+
+def dataset_properties(X_train, y_train, X_test):
+    """
+    retrieve characteristics from the given dataset
+    :param self:
+    :param X_train: an sktime numpy ndarray
+    :param y_train: an sktime numpy ndarray
+    :return: a dictionary containing the following keys:
+        num_of_dimensions, num_of_instances,
+        num_of_timestamps, num_of_classes
+    """
+    distribution = y_train.value_counts().values
+    imbalance = (distribution.max() - distribution.min())/distribution.sum()
+    imbalance_str = f'{imbalance * 100:.2f}%'
+    return {
+
+        'num_of_dimensions': X_train.shape[1],
+        'num_of_instances': X_train.shape[0],
+        'num_of_timestamps': len(X_train.iloc[0, 0]),
+        'num_of_classes': len(np.unique(y_train)),
+        'imbalance': imbalance_str,
+        'unique_lengths': has_equal_length_in_all_time_series(X_train),
+        'missing_values_count': int(
+            count_of_missing_values_in_sktime_df(X_train)
+        ),
+        'len train set': len(X_train),
+        'len test set': len(X_test)
+    }
+
+
+def generate_datasets_table(json_path):
+    path_dict = path_dictionary(json_path)
+    dataset_archive = path_dict['archive']
+
+    with open(json_path) as json_file:
+        data = json.load(json_file)
+
+        datasets = list(data.keys())
+        # read properties
+        properties = list(data[datasets[0]].keys())
+
+        table_file_name = f'table_{dataset_archive}_datasets.tex'
+        table_path = Path(path_dict['tex_dir'], table_file_name)
+
+        table_caption = dataset_archive + ' Datasets Details'
+        table_label = dataset_archive + '_details'
+
+        tt.open_details_table(table_path, properties, table_caption)
+
+        # iterate through all datasets
+        for dataset in datasets:
+            dataset_data = data[dataset]
+            tt.add_details_table_line(table_path, dataset_data.values())
+
+        tt.close_details_table(table_path, table_caption, table_label)
+
+
 def path_dictionary(json_path):
     tex_converted_json_path = Path(json_path.replace('json', 'tex'))
     archive = tex_converted_json_path.stem[0:3]
@@ -142,12 +246,91 @@ def csv_path_for(metric, path_dict):
 
 
 if __name__ == '__main__':
+    datasets = [
+        # datasets from UEA archive (multivariate)
+        "ArticularyWordRecognition",
+        "AtrialFibrillation",
+        "BasicMotions",
+        "Cricket", # needs prediction except for dagdtw
+        "Epilepsy",
+        "EyesOpenShut",
+        "FingerMovements",
+        "HandMovementDirection",
+        "Libras",
+        "NATOPS",
+        "RacketSports",
+        "SelfRegulationSCP1",
+        "SelfRegulationSCP2",
+        "StandWalkJump",
+        "UWaveGestureLibrary",
+
+        # datasets from UCR archive (univariate)
+        "ACSF1",
+        "ArrowHead",
+        "Beef",
+        "BeetleFly",
+        "BirdChicken",
+        "BME",
+        "Car",
+        "CBF",
+        "Chinatown",
+        "Coffee",
+        "Computers",
+        "CricketX",
+        "CricketY",
+        "CricketZ",
+        "EOGHorizontalSignal",
+        "EOGVerticalSignal",
+        "FaceAll",
+        "Fish",
+        "FreezerRegularTrain",
+        "FreezerSmallTrain",
+        "GunPoint",
+        "GunPointAgeSpan",
+        "GunPointMaleVersusFemale",
+        "GunPointOldVersusYoung",
+        "Ham",
+        "Haptics",
+        "ItalyPowerDemand",
+        "LargeKitchenAppliances",
+        "Meat",
+        "MoteStrain",
+        "PowerCons",
+        "RefrigerationDevices",
+        "Rock",
+        "ScreenType",
+        "SemgHandGenderCh2",
+        "SemgHandMovementCh2",
+        "SemgHandSubjectCh2",
+        "ShapeletSim",
+        "ShapesAll",
+        "SmallKitchenAppliances",
+        "SmoothSubspace",
+        "SonyAIBORobotSurface2",
+        "SwedishLeaf",
+        "SyntheticControl",
+        "ToeSegmentation1",
+        "ToeSegmentation2",
+        "Trace",
+        "TwoLeadECG",
+        "TwoPatterns",
+        "UMD",
+        "UWaveGestureLibraryAll",
+        "Wine",
+        "WormsTwoClass",
+        ]
+    dataset_json_file_name = 'datasets_details'
     json_store = './Benchmarks/json/'
+
+    # datasets_props = generate_datasets_details_dict(json_store + 'datasets_details', datasets)
+    # generate_datasets_table(json_store + dataset_json_file_name)
+
     json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
     for json_file in json_files:
-        generate_table(json_store + json_file, 'warping window = 1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'ranking',
-                                 do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'accuracy')
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'f1-score')
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'auroc')
+        generate_table(json_store + json_file, json_store + dataset_json_file_name,
+                       'warping window = 1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
+        # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'ranking',
+        #                          do_not_rank=['recall'])
+        # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'accuracy')
+        # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'f1-score')
+        # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'auroc')

@@ -22,7 +22,7 @@ def z_normalize(sktime_dataframe):
             sktime_dataframe.iat[loc_instance, loc_dimension] = dimension
     return sktime_dataframe
 
-def dataset_properties(X_train, y_train):
+def dataset_properties(X_train, y_train, X_test):
     '''
     retrieve characteristics from the given dataset
     :param self:
@@ -41,7 +41,10 @@ def dataset_properties(X_train, y_train):
         'unique_lengths': has_equal_length_in_all_time_series(X_train),
         'missing_values_count': int(
             count_of_missing_values_in_sktime_df(X_train)
-        )
+        ),
+        'len train set': len(X_train),
+        'len test set': len(X_test),
+        'imbalance': 0
     }
 
 

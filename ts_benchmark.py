@@ -159,7 +159,7 @@ class TimeseriesBenchmark:
         self.score_auroc()
 
     def properties(self):
-        return dataset_properties(self.X_train, self.y_train)
+        return dataset_properties(self.X_train, self.y_train, self.X_test)
 
     def memory_footprint(self, usage):
         dividers = {

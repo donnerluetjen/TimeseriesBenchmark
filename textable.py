@@ -43,7 +43,48 @@ def open_score_table(tex_path, metrics=[], scores=[], caption=''):
         tex_table_file.write('\n')
 
 
+def open_details_table(tex_path, properties=[], caption=''):
+    tex_path = Path(tex_path)
+    property_columns = len(properties)
+    with open(tex_path, 'w') as tex_table_file:
+        tex_table_file.write('{{\\tiny\n')
+        # construct the columns
+        property_columns = len(properties)
+        properties_cols = f'|{"r" * (property_columns - 2)}|'
+        tex_table_file.write(f'\t\\begin{{longtable}}{{ll{properties_cols}}}\n')
+        table_head = details_table_header(properties)
+        # endfirsthead
+        tex_table_file.write('\n')
+        tex_table_file.write(table_head)
+        tex_table_file.write(f'\t\t\\endfirsthead\n')
+        #endhead
+        tex_table_file.write('\n')
+        tex_table_file.write(f'\t\t\\multicolumn{{{property_columns + 1}}}{{c}}{{\\bfseries \\tablename \\thetable{{}}, .. continued from previous page}} {eol}\n')
+        tex_table_file.write(f'\t\t\\multicolumn{{{property_columns + 1}}}{{c}}{{}} {eol}\n')
+        tex_table_file.write(table_head)
+        tex_table_file.write(f'\t\t\\endhead\n')
+        # endfoot
+        tex_table_file.write('\n')
+        tex_table_file.write(f'\t\t\\multicolumn{{{property_columns + 1}}}{{c}}{{}} {eol}\n')
+        tex_table_file.write(f'\t\t\\multicolumn{{{property_columns + 1}}}{{c}}{{\\bfseries  .. continued on next page}} {eol}\n')
+        tex_table_file.write(f'\t\t\\endfoot\n')
+        # endlastfoot
+        tex_table_file.write('\n')
+        tex_table_file.write(f'\t\t\\multicolumn{{{property_columns + 1}}}{{c}}{{}} {eol}\n')
+        tex_table_file.write(f'\t\t\\caption{{{caption}}}\n')
+        tex_table_file.write(f'\t\t\\endlastfoot\n')
+        tex_table_file.write('\n')
+
+
 def close_score_table(tex_path, caption='', label=''):
+    with open(tex_path, 'a') as tex_table_file:
+        tex_table_file.write(f'\t\t\\hline\n')
+        tex_table_file.write(f'\t\t\\label{{tab:{label}}}\n')
+        tex_table_file.write(f'\t\\end{{longtable}}\n')
+        tex_table_file.write('}}\n')
+
+
+def close_details_table(tex_path, caption='', label=''):
     with open(tex_path, 'a') as tex_table_file:
         tex_table_file.write(f'\t\t\\hline\n')
         tex_table_file.write(f'\t\t\\label{{tab:{label}}}\n')
@@ -54,6 +95,39 @@ def close_score_table(tex_path, caption='', label=''):
 def add_table_line(tex_path, data=[], highscores=[]):
     with open(tex_path, 'a') as tex_table_file:
         tex_table_file.write(f'\t\t{" & ".join(data_formatted(data, highscores))} {eol}\n')
+
+
+def add_details_table_line(tex_path, data=[]):
+    with open(tex_path, 'a') as tex_table_file:
+        tex_table_file.write(f'\t\t {" & ".join(details_data_formatted(data))} {eol}\n')
+
+
+def details_table_header(properties=[]):
+    header = f'\t\t\\multicolumns{{2}}{{c}}Datasets & \\multicolumn{{{len(properties) - 2}}}{{c}}{{' \
+             f'Properties}} {eol}\n'
+    properties_header = f'\t\t{properties.pop(0)} & {properties.pop(0)} '
+    for property in properties:
+        properties_header += f'& {formatted_property(property)} '
+
+    header += f'{properties_header}{eol}\n'
+    header += '\t\t\\hline\n'
+    return header
+
+
+def formatted_property(property):
+    # replace num_of_ and _count with # and always put at beginning
+    # capitalize the rest
+    count_prop = False
+    # split string
+    property_parts = property.split('_')
+    for removable in ['num', 'of', 'count']:
+        if property_parts.count(removable):
+            property_parts.remove(removable)
+            count_prop = True
+    if count_prop:
+        property_parts.insert(0, '#')
+    return ' '.join([pp.capitalize() for pp in property_parts])
+
 
 
 def table_header(metrics=[], scores=[]):
@@ -72,6 +146,13 @@ def table_header(metrics=[], scores=[]):
     header += f'\t\tDatasets & {" & ".join(short_scores * len(metrics))} {eol}\n'
     header += '\t\t\\hline\n'
     return header
+
+
+def details_data_formatted(data):
+    result = []
+    for datum in data:
+        result.append(str(datum))
+    return result
 
 
 def data_formatted(data, highscores=[]):
