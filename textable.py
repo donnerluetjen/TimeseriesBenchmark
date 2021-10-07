@@ -10,6 +10,13 @@ from pathlib import Path
 
 eol = '\\\\'
 
+
+############################# 
+#                           #
+#    score table methods    #
+#                           #
+#############################
+
 def open_score_table(tex_path, metrics=[], scores=[], caption=''):
     tex_path = Path(tex_path)
     algorithm_columns = len(metrics) * len(scores)
@@ -19,7 +26,7 @@ def open_score_table(tex_path, metrics=[], scores=[], caption=''):
         scores_cols = 'r' * len(scores)
         metrics_cols = '|'.join([scores_cols for i in range(len(metrics))])
         tex_table_file.write(f'\t\\begin{{longtable}}{{l|{metrics_cols}}}\n')
-        table_head = table_header(metrics, scores)
+        table_head = score_table_header(metrics, scores)
         # endfirsthead
         tex_table_file.write('\n')
         tex_table_file.write(table_head)
@@ -43,6 +50,54 @@ def open_score_table(tex_path, metrics=[], scores=[], caption=''):
         tex_table_file.write('\n')
 
 
+def add_score_table_line(tex_path, data=[], highscores=[]):
+    with open(tex_path, 'a') as tex_table_file:
+        tex_table_file.write(f'\t\t{" & ".join(score_data_formatted(data, highscores))} {eol}\n')
+
+
+def close_score_table(tex_path, caption='', label=''):
+    with open(tex_path, 'a') as tex_table_file:
+        tex_table_file.write(f'\t\t\\hline\n')
+        tex_table_file.write(f'\t\t\\label{{tab:{label}}}\n')
+        tex_table_file.write(f'\t\\end{{longtable}}\n')
+        tex_table_file.write('}}\n')
+
+
+def score_table_header(metrics=[], scores=[]):
+    header = f'\t\t& \\multicolumn{{{len(metrics) * len(scores)}}}{{c}}{{Algorithms}} {eol}\n'
+    
+    metrics_header = '\t\t'
+    for metric in metrics:
+        metrics_header += f'& \\multicolumn{{{len(scores)}}}{{c}}{{{metric}}} '
+    
+    header += f'{metrics_header}{eol}\n'
+    
+    short_scores = []
+    for score in scores:
+        short_scores.append(label_formatted(score))
+        
+    header += f'\t\tDatasets & {" & ".join(short_scores * len(metrics))} {eol}\n'
+    header += '\t\t\\hline\n'
+    return header
+
+
+def score_data_formatted(data, highscores=[]):
+    pattern = "%.4f"
+    result = [data.pop(0)]
+    for index, datum in enumerate(data):
+        if datum == highscores[index % len(highscores)]:
+            result.append(f'$\\boldsymbol{{{pattern % datum}}}$')
+        else:
+            result.append(f'${pattern % datum}$')     
+    return result
+
+
+############################# 
+#                           #
+#    details table methods  #
+#                           #
+#############################
+    
 def open_details_table(tex_path, properties=[], caption=''):
     tex_path = Path(tex_path)
     property_columns = len(properties)
@@ -76,12 +131,9 @@ def open_details_table(tex_path, properties=[], caption=''):
         tex_table_file.write('\n')
 
 
-def close_score_table(tex_path, caption='', label=''):
+def add_details_table_line(tex_path, data=[]):
     with open(tex_path, 'a') as tex_table_file:
-        tex_table_file.write(f'\t\t\\hline\n')
-        tex_table_file.write(f'\t\t\\label{{tab:{label}}}\n')
-        tex_table_file.write(f'\t\\end{{longtable}}\n')
-        tex_table_file.write('}}\n')
+        tex_table_file.write(f'\t\t {" & ".join(details_data_formatted(data))} {eol}\n')
 
 
 def close_details_table(tex_path, caption='', label=''):
@@ -92,35 +144,26 @@ def close_details_table(tex_path, caption='', label=''):
         tex_table_file.write('}}\n')
 
 
-def add_table_line(tex_path, data=[], highscores=[]):
-    with open(tex_path, 'a') as tex_table_file:
-        tex_table_file.write(f'\t\t{" & ".join(data_formatted(data, highscores))} {eol}\n')
-
-
-def add_details_table_line(tex_path, data=[]):
-    with open(tex_path, 'a') as tex_table_file:
-        tex_table_file.write(f'\t\t {" & ".join(details_data_formatted(data))} {eol}\n')
-
-
 def details_table_header(properties=[]):
     header = f'\t\t\\multicolumns{{2}}{{c}}Datasets & \\multicolumn{{{len(properties) - 2}}}{{c}}{{' \
              f'Properties}} {eol}\n'
     properties_header = f'\t\t{properties.pop(0)} & {properties.pop(0)} '
     for property in properties:
-        properties_header += f'& {formatted_property(property)} '
+        properties_header += f'& {replace_keywords_capitalize(property)} '
 
     header += f'{properties_header}{eol}\n'
     header += '\t\t\\hline\n'
     return header
 
 
-def formatted_property(property):
+def replace_keywords_capitalize(property):
     # replace num_of_ and _count with # and always put at beginning
     # capitalize the rest
+    keywords = ['num', 'of', 'count']
     count_prop = False
     # split string
     property_parts = property.split('_')
-    for removable in ['num', 'of', 'count']:
+    for removable in keywords:
         if property_parts.count(removable):
             property_parts.remove(removable)
             count_prop = True
@@ -129,40 +172,10 @@ def formatted_property(property):
     return ' '.join([pp.capitalize() for pp in property_parts])
 
 
-
-def table_header(metrics=[], scores=[]):
-    header = f'\t\t& \\multicolumn{{{len(metrics) * len(scores)}}}{{c}}{{Algorithms}} {eol}\n'
-    
-    metrics_header = '\t\t'
-    for metric in metrics:
-        metrics_header += f'& \\multicolumn{{{len(scores)}}}{{c}}{{{metric}}} '
-    
-    header += f'{metrics_header}{eol}\n'
-    
-    short_scores = []
-    for score in scores:
-        short_scores.append(label_formatted(score))
-        
-    header += f'\t\tDatasets & {" & ".join(short_scores * len(metrics))} {eol}\n'
-    header += '\t\t\\hline\n'
-    return header
-
-
 def details_data_formatted(data):
     result = []
     for datum in data:
         result.append(str(datum))
-    return result
-
-
-def data_formatted(data, highscores=[]):
-    pattern = "%.4f"
-    result = [data.pop(0)]
-    for index, datum in enumerate(data):
-        if datum == highscores[index % len(highscores)]:
-            result.append(f'$\\boldsymbol{{{pattern % datum}}}$')
-        else:
-            result.append(f'${pattern % datum}$')     
     return result
 
 def label_formatted(label=''):

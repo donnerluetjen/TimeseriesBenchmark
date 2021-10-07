@@ -5,3 +5,5 @@ Benchmarks/csv/
 __pycache__/
 
 Benchmarks/tex/
+
+.DS_Store
