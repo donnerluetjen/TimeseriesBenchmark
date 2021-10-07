@@ -183,8 +183,10 @@ def replace_keywords_capitalize(property):
 
 def details_data_formatted(data):
     result = []
-    for datum in data:
+    for index, datum in enumerate(data):
         str_datum = str(datum).replace('%', '\\%')
+        if index > 1:
+            str_datum = f'${str_datum}$'
         result.append(str_datum)
     return result
 
