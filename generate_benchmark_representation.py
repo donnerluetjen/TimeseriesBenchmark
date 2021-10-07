@@ -143,13 +143,14 @@ def highscores(score, value, dict):
 if __name__ == '__main__':
     
     json_store = './Benchmarks/json/'
+    wws = '1.0'
 
-    json_files = ['UEA_archive_2021_09_19_wws-0-3.json', 'UCR_archive_2021-09-19_wws-0-3.json']
+    json_files = ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json']
     for json_file in json_files:
         generate_table(json_store + json_file, datasets_details_json_path,
-                       'size=0.3', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'ranking',
+                       f'size={wws}', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
+        generate_average_diagram(json_store + json_file, f'wws={wws}', 'ranking',
                                   do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'accuracy')
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'f1-score')
-        generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'auroc')
+        generate_average_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+        generate_average_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+        generate_average_diagram(json_store + json_file, f'wws={wws}', 'auroc')
