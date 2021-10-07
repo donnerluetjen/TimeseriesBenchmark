@@ -1,4 +1,5 @@
 import sys
+import time
 
 
 def transformFloatToGermanKomma(value):
@@ -15,4 +16,7 @@ def progress_increase():
 
 def progress_end():
     print('\nDone', flush=True)
-    
+
+
+def timestamp():
+    return time.strftime("%Y-%m-%d %H:%M:%S")

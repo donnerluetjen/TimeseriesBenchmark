@@ -21,6 +21,9 @@ from sktime_dataset_analyses import count_of_missing_values_in_sktime_df, \
     has_equal_length_in_all_time_series
 import file_ops as fo
 from selected_datasets import datasets
+from dataset_details import datasets_details_json_path
+import formatting as frm
+import json
 
 
 def ranking(scores, do_not_rank=[]):
@@ -76,6 +79,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
     with open(dataset_details_file) as dd_file:
         dataset_details = json.load(dd_file)
     
+    frm.progress_start('Writing datasets scoring tables')
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -98,10 +102,10 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
             table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
             table_path = Path(path_dict['tex_dir'], table_file_name)
             
-            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' ({table_name_specific})'
-            table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_{"".join([c for c in table_name_specific if c != " "])}'
+            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' \\gls{{scb}} {table_name_specific}'
+            table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_scb_{"".join([c for c in table_name_specific if c != " "])}'
             
-            tt.open_score_table(table_path, table_metrics_scheme, scores, table_caption)
+            tt.open_score_table(table_path, table_metrics_scheme, scores)
         
             for dataset in datasets:
                 dataset_data = [dataset_details[dataset]['short_name']]
@@ -120,9 +124,11 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
                         
                         score_value = data[dataset][metric][score]
                         dataset_data.append(score_value)
-                tt.add_table_line(table_path, dataset_data, list(highscore_dict.values()))
+                frm.progress_increase()
+                tt.add_score_table_line(table_path, dataset_data, list(highscore_dict.values()))
                 
             tt.close_score_table(table_path, table_caption, table_label)
+        frm.progress_end()
 
 
 def highscores(score, value, dict):
@@ -140,8 +146,8 @@ if __name__ == '__main__':
 
     json_files = ['UEA_archive_2021-08-27.json', 'UCR_archive_2021-08-28.json']
     for json_file in json_files:
-        generate_table(json_store + json_file, json_store + dataset_json_file_name,
-                       'warping window = 1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
+        generate_table(json_store + json_file, datasets_details_json_path,
+                       'size=1.0', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
         # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'ranking',
         #                          do_not_rank=['recall'])
         # generate_average_diagram(json_store + json_file, 'warping window = 1.0', 'accuracy')
