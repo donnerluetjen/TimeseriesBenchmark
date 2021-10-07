@@ -7,12 +7,14 @@ __copyright__ = "Copyright 2020 – Ansgar Asseburg; " \
 __email__ = "s2092795@stud.uni-frankfurt.de"
 
 from pathlib import Path
+from formatting import timestamp
 
 
 def init_pgfplots_file(tex_path, title="", x_label='x', y_label='y',
                        data_path=None):
     tex_path = Path(tex_path)
     with open(tex_path, 'w') as pgf_file:
+        pgf_file.write(f'%{timestamp()}\n')
         pgf_file.write('\\begin{tikzpicture}\n')
         pgf_file.write('\t\\begin{axis}[\n')
         pgf_file.write('\t\ttable/col sep = comma,\n')
