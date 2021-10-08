@@ -29,6 +29,7 @@ def generate_datasets_details(json_path, datasets):
         - len train set
         - len test set
         - imbalance ratio
+        - class ratios
     """
     result_dict = {}
     frm.progress_start('Processing datasets')
@@ -62,9 +63,11 @@ def dataset_properties(X_train, y_train, X_test):
         len train set, len test set,
         imbalance
     """
-    distribution = y_train.value_counts().values
-    imbalance = (distribution.max() - distribution.min())/distribution.sum()
+    distribution = list(y_train.value_counts())
+    distribution_sum = sum(distribution)
+    imbalance = (max(distribution) - min(distribution))/distribution_sum
     imbalance_str = f'{imbalance * 100:.2f}%'
+    ratio_string = [f'{x/distribution_sum*100:.2f}%' for x in distribution]
     return {
 
         'num_of_train_instances': len(X_train),
@@ -74,7 +77,8 @@ def dataset_properties(X_train, y_train, X_test):
         'num_of_classes': len(np.unique(y_train)),
         'missing_values_count': int(count_of_missing_values_in_sktime_df(X_train)),
         'unique_lengths': has_equal_length_in_all_time_series(X_train),
-        'imbalance': imbalance_str
+        'imbalance': imbalance_str,
+        'class_ratios': ratio_string
     }
 
 
@@ -89,6 +93,7 @@ def generate_datasets_table(json_path):
         datasets = list(data.keys())
         # read properties
         properties = list(data[datasets[0]].keys())
+        properties.pop() # remove class_ratios
 
         table_file_name = f'table_{dataset_archive}_datasets.tex'
         table_path = Path(path_dict['tex_dir'], table_file_name)
@@ -102,7 +107,9 @@ def generate_datasets_table(json_path):
         for dataset in datasets:
             frm.progress_increase()
             dataset_data = data[dataset]
-            tt.add_details_table_line(table_path, dataset_data.values())
+            dataset_values = list(dataset_data.values())
+            dataset_values.pop() # remove class_ratios
+            tt.add_details_table_line(table_path, dataset_values)
 
         tt.close_details_table(table_path, table_caption, table_label)
         frm.progress_end()

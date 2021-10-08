@@ -7,9 +7,36 @@
             "num_of_dimensions": 9,
             "num_of_timestamps": 144,
             "num_of_classes": 25,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.32%"
+            "unique_lengths": true,
+            "imbalance": "1.86%",
+            "class_ratio": [
+                  "4.87%",
+                  "4.87%",
+                  "4.64%",
+                  "4.64%",
+                  "4.64%",
+                  "4.41%",
+                  "4.41%",
+                  "4.41%",
+                  "4.18%",
+                  "4.18%",
+                  "4.18%",
+                  "4.18%",
+                  "3.94%",
+                  "3.94%",
+                  "3.71%",
+                  "3.71%",
+                  "3.71%",
+                  "3.71%",
+                  "3.71%",
+                  "3.48%",
+                  "3.48%",
+                  "3.48%",
+                  "3.25%",
+                  "3.25%",
+                  "3.02%"
+            ]
       },
       "AtrialFibrillation": {
             "short_name": "DS 2",
@@ -19,9 +46,14 @@
             "num_of_dimensions": 2,
             "num_of_timestamps": 640,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "4.55%"
+            "unique_lengths": true,
+            "imbalance": "4.55%",
+            "class_ratio": [
+                  "36.36%",
+                  "31.82%",
+                  "31.82%"
+            ]
       },
       "BasicMotions": {
             "short_name": "DS 3",
@@ -31,9 +63,15 @@
             "num_of_dimensions": 6,
             "num_of_timestamps": 100,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "5.00%"
+            "unique_lengths": true,
+            "imbalance": "6.67%",
+            "class_ratio": [
+                  "28.33%",
+                  "25.00%",
+                  "25.00%",
+                  "21.67%"
+            ]
       },
       "Cricket": {
             "short_name": "DS 4",
@@ -43,9 +81,23 @@
             "num_of_dimensions": 6,
             "num_of_timestamps": 1197,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.70%"
+            "unique_lengths": true,
+            "imbalance": "3.70%",
+            "class_ratio": [
+                  "10.37%",
+                  "8.89%",
+                  "8.89%",
+                  "8.89%",
+                  "8.89%",
+                  "8.15%",
+                  "8.15%",
+                  "8.15%",
+                  "8.15%",
+                  "7.41%",
+                  "7.41%",
+                  "6.67%"
+            ]
       },
       "Epilepsy": {
             "short_name": "DS 5",
@@ -55,9 +107,15 @@
             "num_of_dimensions": 3,
             "num_of_timestamps": 206,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "8.74%"
+            "unique_lengths": true,
+            "imbalance": "8.74%",
+            "class_ratio": [
+                  "30.10%",
+                  "25.24%",
+                  "23.30%",
+                  "21.36%"
+            ]
       },
       "EyesOpenShut": {
             "short_name": "DS 6",
@@ -67,9 +125,13 @@
             "num_of_dimensions": 14,
             "num_of_timestamps": 128,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "15.07%"
+            "unique_lengths": true,
+            "imbalance": "9.59%",
+            "class_ratio": [
+                  "54.79%",
+                  "45.21%"
+            ]
       },
       "FingerMovements": {
             "short_name": "DS 7",
@@ -79,9 +141,13 @@
             "num_of_dimensions": 28,
             "num_of_timestamps": 50,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "5.13%"
+            "unique_lengths": true,
+            "imbalance": "1.92%",
+            "class_ratio": [
+                  "50.96%",
+                  "49.04%"
+            ]
       },
       "HandMovementDirection": {
             "short_name": "DS 8",
@@ -91,9 +157,15 @@
             "num_of_dimensions": 10,
             "num_of_timestamps": 400,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "8.57%"
+            "unique_lengths": true,
+            "imbalance": "13.71%",
+            "class_ratio": [
+                  "33.14%",
+                  "24.00%",
+                  "23.43%",
+                  "19.43%"
+            ]
       },
       "Libras": {
             "short_name": "DS 9",
@@ -103,9 +175,26 @@
             "num_of_dimensions": 2,
             "num_of_timestamps": 45,
             "num_of_classes": 15,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.59%"
+            "unique_lengths": true,
+            "imbalance": "2.22%",
+            "class_ratio": [
+                  "7.41%",
+                  "7.41%",
+                  "7.41%",
+                  "7.41%",
+                  "7.04%",
+                  "7.04%",
+                  "6.67%",
+                  "6.67%",
+                  "6.67%",
+                  "6.67%",
+                  "6.67%",
+                  "6.30%",
+                  "5.93%",
+                  "5.56%",
+                  "5.19%"
+            ]
       },
       "NATOPS": {
             "short_name": "DS 10",
@@ -115,9 +204,17 @@
             "num_of_dimensions": 24,
             "num_of_timestamps": 51,
             "num_of_classes": 6,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.96%"
+            "unique_lengths": true,
+            "imbalance": "2.22%",
+            "class_ratio": [
+                  "17.78%",
+                  "17.41%",
+                  "16.67%",
+                  "16.30%",
+                  "16.30%",
+                  "15.56%"
+            ]
       },
       "RacketSports": {
             "short_name": "DS 11",
@@ -127,9 +224,15 @@
             "num_of_dimensions": 6,
             "num_of_timestamps": 30,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "10.13%"
+            "unique_lengths": true,
+            "imbalance": "9.25%",
+            "class_ratio": [
+                  "31.28%",
+                  "23.35%",
+                  "23.35%",
+                  "22.03%"
+            ]
       },
       "SelfRegulationSCP1": {
             "short_name": "DS 12",
@@ -139,9 +242,13 @@
             "num_of_dimensions": 6,
             "num_of_timestamps": 896,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.00%"
+            "unique_lengths": true,
+            "imbalance": "4.29%",
+            "class_ratio": [
+                  "52.14%",
+                  "47.86%"
+            ]
       },
       "SelfRegulationSCP2": {
             "short_name": "DS 13",
@@ -151,9 +258,13 @@
             "num_of_dimensions": 7,
             "num_of_timestamps": 1152,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.67%"
+            "unique_lengths": true,
+            "imbalance": "3.16%",
+            "class_ratio": [
+                  "51.58%",
+                  "48.42%"
+            ]
       },
       "StandWalkJump": {
             "short_name": "DS 14",
@@ -163,9 +274,14 @@
             "num_of_dimensions": 4,
             "num_of_timestamps": 2500,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "15.00%"
+            "unique_lengths": true,
+            "imbalance": "5.00%",
+            "class_ratio": [
+                  "35.00%",
+                  "35.00%",
+                  "30.00%"
+            ]
       },
       "UWaveGestureLibrary": {
             "short_name": "DS 15",
@@ -175,9 +291,19 @@
             "num_of_dimensions": 3,
             "num_of_timestamps": 315,
             "num_of_classes": 8,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.42%"
+            "unique_lengths": true,
+            "imbalance": "3.64%",
+            "class_ratio": [
+                  "14.24%",
+                  "13.94%",
+                  "13.03%",
+                  "12.42%",
+                  "12.42%",
+                  "11.82%",
+                  "11.52%",
+                  "10.61%"
+            ]
       },
       "ACSF1": {
             "short_name": "DS 16",
@@ -187,9 +313,21 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1460,
             "num_of_classes": 10,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.33%"
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratio": [
+                  "11.33%",
+                  "11.33%",
+                  "10.67%",
+                  "10.67%",
+                  "10.00%",
+                  "10.00%",
+                  "9.33%",
+                  "9.33%",
+                  "8.67%",
+                  "8.67%"
+            ]
       },
       "ArrowHead": {
             "short_name": "DS 17",
@@ -199,9 +337,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 251,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "8.23%"
+            "unique_lengths": true,
+            "imbalance": "11.39%",
+            "class_ratio": [
+                  "40.51%",
+                  "30.38%",
+                  "29.11%"
+            ]
       },
       "Beef": {
             "short_name": "DS 18",
@@ -211,9 +354,16 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 470,
             "num_of_classes": 5,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.67%"
+            "unique_lengths": true,
+            "imbalance": "6.67%",
+            "class_ratio": [
+                  "22.22%",
+                  "22.22%",
+                  "20.00%",
+                  "20.00%",
+                  "15.56%"
+            ]
       },
       "BeetleFly": {
             "short_name": "DS 19",
@@ -223,9 +373,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 512,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.00%"
+            "unique_lengths": true,
+            "imbalance": "0.00%",
+            "class_ratio": [
+                  "50.00%",
+                  "50.00%"
+            ]
       },
       "BirdChicken": {
             "short_name": "DS 20",
@@ -235,9 +389,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 512,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.67%"
+            "unique_lengths": true,
+            "imbalance": "0.00%",
+            "class_ratio": [
+                  "50.00%",
+                  "50.00%"
+            ]
       },
       "BME": {
             "short_name": "DS 21",
@@ -247,9 +405,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 128,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "4.44%"
+            "unique_lengths": true,
+            "imbalance": "0.00%",
+            "class_ratio": [
+                  "33.33%",
+                  "33.33%",
+                  "33.33%"
+            ]
       },
       "Car": {
             "short_name": "DS 22",
@@ -259,9 +422,15 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 577,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.22%"
+            "unique_lengths": true,
+            "imbalance": "3.33%",
+            "class_ratio": [
+                  "26.67%",
+                  "25.56%",
+                  "24.44%",
+                  "23.33%"
+            ]
       },
       "CBF": {
             "short_name": "DS 23",
@@ -271,9 +440,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 128,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.57%"
+            "unique_lengths": true,
+            "imbalance": "4.88%",
+            "class_ratio": [
+                  "35.29%",
+                  "34.29%",
+                  "30.42%"
+            ]
       },
       "Chinatown": {
             "short_name": "DS 24",
@@ -283,9 +457,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 24,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "47.79%"
+            "unique_lengths": true,
+            "imbalance": "38.24%",
+            "class_ratio": [
+                  "69.12%",
+                  "30.88%"
+            ]
       },
       "Coffee": {
             "short_name": "DS 25",
@@ -295,9 +473,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 286,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "9.52%"
+            "unique_lengths": true,
+            "imbalance": "4.76%",
+            "class_ratio": [
+                  "52.38%",
+                  "47.62%"
+            ]
       },
       "Computers": {
             "short_name": "DS 26",
@@ -307,9 +489,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 720,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.33%"
+            "unique_lengths": true,
+            "imbalance": "1.33%",
+            "class_ratio": [
+                  "50.67%",
+                  "49.33%"
+            ]
       },
       "CricketX": {
             "short_name": "DS 27",
@@ -319,9 +505,23 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 300,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.05%"
+            "unique_lengths": true,
+            "imbalance": "1.88%",
+            "class_ratio": [
+                  "9.23%",
+                  "9.06%",
+                  "9.06%",
+                  "8.55%",
+                  "8.55%",
+                  "8.38%",
+                  "8.38%",
+                  "8.03%",
+                  "8.03%",
+                  "8.03%",
+                  "7.35%",
+                  "7.35%"
+            ]
       },
       "CricketY": {
             "short_name": "DS 28",
@@ -331,9 +531,23 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 300,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.37%"
+            "unique_lengths": true,
+            "imbalance": "1.71%",
+            "class_ratio": [
+                  "9.06%",
+                  "8.72%",
+                  "8.72%",
+                  "8.72%",
+                  "8.55%",
+                  "8.55%",
+                  "8.55%",
+                  "8.38%",
+                  "7.86%",
+                  "7.86%",
+                  "7.69%",
+                  "7.35%"
+            ]
       },
       "CricketZ": {
             "short_name": "DS 29",
@@ -343,9 +557,23 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 300,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.08%"
+            "unique_lengths": true,
+            "imbalance": "1.88%",
+            "class_ratio": [
+                  "9.06%",
+                  "8.89%",
+                  "8.55%",
+                  "8.38%",
+                  "8.38%",
+                  "8.38%",
+                  "8.38%",
+                  "8.21%",
+                  "8.21%",
+                  "8.21%",
+                  "8.21%",
+                  "7.18%"
+            ]
       },
       "EOGHorizontalSignal": {
             "short_name": "DS 30",
@@ -355,9 +583,23 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1250,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.47%"
+            "unique_lengths": true,
+            "imbalance": "2.03%",
+            "class_ratio": [
+                  "9.39%",
+                  "9.02%",
+                  "8.66%",
+                  "8.66%",
+                  "8.47%",
+                  "8.29%",
+                  "8.29%",
+                  "8.10%",
+                  "7.92%",
+                  "7.92%",
+                  "7.92%",
+                  "7.37%"
+            ]
       },
       "EOGVerticalSignal": {
             "short_name": "DS 31",
@@ -367,9 +609,23 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1250,
             "num_of_classes": 12,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.66%"
+            "unique_lengths": true,
+            "imbalance": "2.03%",
+            "class_ratio": [
+                  "9.39%",
+                  "9.02%",
+                  "8.66%",
+                  "8.66%",
+                  "8.66%",
+                  "8.47%",
+                  "8.10%",
+                  "8.10%",
+                  "8.10%",
+                  "7.92%",
+                  "7.55%",
+                  "7.37%"
+            ]
       },
       "FaceAll": {
             "short_name": "DS 32",
@@ -379,9 +635,25 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 131,
             "num_of_classes": 14,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "11.91%"
+            "unique_lengths": true,
+            "imbalance": "12.27%",
+            "class_ratio": [
+                  "14.34%",
+                  "11.74%",
+                  "8.48%",
+                  "8.42%",
+                  "8.12%",
+                  "7.71%",
+                  "7.17%",
+                  "6.82%",
+                  "6.11%",
+                  "6.11%",
+                  "5.33%",
+                  "4.74%",
+                  "2.85%",
+                  "2.07%"
+            ]
       },
       "Fish": {
             "short_name": "DS 33",
@@ -391,9 +663,18 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 463,
             "num_of_classes": 7,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.67%"
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratio": [
+                  "16.03%",
+                  "15.27%",
+                  "14.50%",
+                  "14.12%",
+                  "13.36%",
+                  "13.36%",
+                  "13.36%"
+            ]
       },
       "FreezerRegularTrain": {
             "short_name": "DS 34",
@@ -403,9 +684,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 301,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.69%"
+            "unique_lengths": true,
+            "imbalance": "1.07%",
+            "class_ratio": [
+                  "50.53%",
+                  "49.47%"
+            ]
       },
       "FreezerSmallTrain": {
             "short_name": "DS 35",
@@ -415,9 +700,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 301,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.19%"
+            "unique_lengths": true,
+            "imbalance": "0.46%",
+            "class_ratio": [
+                  "50.23%",
+                  "49.77%"
+            ]
       },
       "GunPoint": {
             "short_name": "DS 36",
@@ -427,9 +716,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 150,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.33%"
+            "unique_lengths": true,
+            "imbalance": "1.33%",
+            "class_ratio": [
+                  "50.67%",
+                  "49.33%"
+            ]
       },
       "GunPointAgeSpan": {
             "short_name": "DS 37",
@@ -439,9 +732,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 150,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.55%"
+            "unique_lengths": true,
+            "imbalance": "3.55%",
+            "class_ratio": [
+                  "51.78%",
+                  "48.22%"
+            ]
       },
       "GunPointMaleVersusFemale": {
             "short_name": "DS 38",
@@ -451,9 +748,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 150,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.96%"
+            "unique_lengths": true,
+            "imbalance": "7.10%",
+            "class_ratio": [
+                  "53.55%",
+                  "46.45%"
+            ]
       },
       "GunPointOldVersusYoung": {
             "short_name": "DS 39",
@@ -463,9 +764,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 150,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "7.10%"
+            "unique_lengths": true,
+            "imbalance": "8.28%",
+            "class_ratio": [
+                  "54.14%",
+                  "45.86%"
+            ]
       },
       "Ham": {
             "short_name": "DS 40",
@@ -475,9 +780,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 431,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.25%"
+            "unique_lengths": true,
+            "imbalance": "1.25%",
+            "class_ratio": [
+                  "50.62%",
+                  "49.38%"
+            ]
       },
       "Haptics": {
             "short_name": "DS 41",
@@ -487,9 +796,16 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1092,
             "num_of_classes": 5,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.63%"
+            "unique_lengths": true,
+            "imbalance": "5.76%",
+            "class_ratio": [
+                  "22.19%",
+                  "21.61%",
+                  "20.46%",
+                  "19.31%",
+                  "16.43%"
+            ]
       },
       "ItalyPowerDemand": {
             "short_name": "DS 42",
@@ -499,9 +815,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 24,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.95%"
+            "unique_lengths": true,
+            "imbalance": "1.22%",
+            "class_ratio": [
+                  "50.61%",
+                  "49.39%"
+            ]
       },
       "LargeKitchenAppliances": {
             "short_name": "DS 43",
@@ -511,9 +831,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 720,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.18%"
+            "unique_lengths": true,
+            "imbalance": "1.60%",
+            "class_ratio": [
+                  "34.34%",
+                  "32.92%",
+                  "32.74%"
+            ]
       },
       "Meat": {
             "short_name": "DS 44",
@@ -523,9 +848,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 448,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "5.56%"
+            "unique_lengths": true,
+            "imbalance": "4.44%",
+            "class_ratio": [
+                  "35.56%",
+                  "33.33%",
+                  "31.11%"
+            ]
       },
       "MoteStrain": {
             "short_name": "DS 45",
@@ -535,9 +865,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 84,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "5.87%"
+            "unique_lengths": true,
+            "imbalance": "6.92%",
+            "class_ratio": [
+                  "53.46%",
+                  "46.54%"
+            ]
       },
       "PowerCons": {
             "short_name": "DS 46",
@@ -547,9 +881,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 144,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.22%"
+            "unique_lengths": true,
+            "imbalance": "2.22%",
+            "class_ratio": [
+                  "51.11%",
+                  "48.89%"
+            ]
       },
       "RefrigerationDevices": {
             "short_name": "DS 47",
@@ -559,9 +897,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 720,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.42%"
+            "unique_lengths": true,
+            "imbalance": "0.18%",
+            "class_ratio": [
+                  "33.45%",
+                  "33.27%",
+                  "33.27%"
+            ]
       },
       "Rock": {
             "short_name": "DS 48",
@@ -571,9 +914,15 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 2844,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "25.00%"
+            "unique_lengths": true,
+            "imbalance": "25.00%",
+            "class_ratio": [
+                  "38.46%",
+                  "28.85%",
+                  "19.23%",
+                  "13.46%"
+            ]
       },
       "ScreenType": {
             "short_name": "DS 49",
@@ -583,9 +932,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 720,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.31%"
+            "unique_lengths": true,
+            "imbalance": "2.14%",
+            "class_ratio": [
+                  "34.16%",
+                  "33.81%",
+                  "32.03%"
+            ]
       },
       "SemgHandGenderCh2": {
             "short_name": "DS 50",
@@ -595,9 +949,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1500,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "23.85%"
+            "unique_lengths": true,
+            "imbalance": "17.33%",
+            "class_ratio": [
+                  "58.67%",
+                  "41.33%"
+            ]
       },
       "SemgHandMovementCh2": {
             "short_name": "DS 51",
@@ -607,9 +965,17 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1500,
             "num_of_classes": 6,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.41%"
+            "unique_lengths": true,
+            "imbalance": "1.19%",
+            "class_ratio": [
+                  "17.19%",
+                  "17.04%",
+                  "16.74%",
+                  "16.74%",
+                  "16.30%",
+                  "16.00%"
+            ]
       },
       "SemgHandSubjectCh2": {
             "short_name": "DS 52",
@@ -619,9 +985,16 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 1500,
             "num_of_classes": 5,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.37%"
+            "unique_lengths": true,
+            "imbalance": "1.63%",
+            "class_ratio": [
+                  "21.04%",
+                  "20.15%",
+                  "19.85%",
+                  "19.56%",
+                  "19.41%"
+            ]
       },
       "ShapeletSim": {
             "short_name": "DS 53",
@@ -631,9 +1004,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 500,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "4.00%"
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratio": [
+                  "51.33%",
+                  "48.67%"
+            ]
       },
       "ShapesAll": {
             "short_name": "DS 54",
@@ -643,9 +1020,71 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 512,
             "num_of_classes": 60,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.00%"
+            "unique_lengths": true,
+            "imbalance": "0.89%",
+            "class_ratio": [
+                  "2.11%",
+                  "2.00%",
+                  "2.00%",
+                  "2.00%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.78%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.67%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.56%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.44%",
+                  "1.33%",
+                  "1.33%",
+                  "1.33%",
+                  "1.33%",
+                  "1.33%",
+                  "1.22%"
+            ]
       },
       "SmallKitchenAppliances": {
             "short_name": "DS 55",
@@ -655,9 +1094,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 720,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "2.67%"
+            "unique_lengths": true,
+            "imbalance": "0.18%",
+            "class_ratio": [
+                  "33.45%",
+                  "33.27%",
+                  "33.27%"
+            ]
       },
       "SmoothSubspace": {
             "short_name": "DS 56",
@@ -667,9 +1111,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 15,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.11%"
+            "unique_lengths": true,
+            "imbalance": "3.11%",
+            "class_ratio": [
+                  "34.67%",
+                  "33.78%",
+                  "31.56%"
+            ]
       },
       "SonyAIBORobotSurface2": {
             "short_name": "DS 57",
@@ -679,9 +1128,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 65,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "21.63%"
+            "unique_lengths": true,
+            "imbalance": "25.17%",
+            "class_ratio": [
+                  "62.59%",
+                  "37.41%"
+            ]
       },
       "SwedishLeaf": {
             "short_name": "DS 58",
@@ -691,9 +1144,26 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 128,
             "num_of_classes": 15,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.54%"
+            "unique_lengths": true,
+            "imbalance": "1.42%",
+            "class_ratio": [
+                  "7.47%",
+                  "7.24%",
+                  "7.12%",
+                  "7.12%",
+                  "7.00%",
+                  "6.76%",
+                  "6.64%",
+                  "6.64%",
+                  "6.52%",
+                  "6.52%",
+                  "6.52%",
+                  "6.17%",
+                  "6.17%",
+                  "6.05%",
+                  "6.05%"
+            ]
       },
       "SyntheticControl": {
             "short_name": "DS 59",
@@ -703,9 +1173,17 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 60,
             "num_of_classes": 6,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.56%"
+            "unique_lengths": true,
+            "imbalance": "2.00%",
+            "class_ratio": [
+                  "17.56%",
+                  "17.11%",
+                  "16.89%",
+                  "16.67%",
+                  "16.22%",
+                  "15.56%"
+            ]
       },
       "ToeSegmentation1": {
             "short_name": "DS 60",
@@ -715,9 +1193,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 277,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "9.45%"
+            "unique_lengths": true,
+            "imbalance": "5.47%",
+            "class_ratio": [
+                  "52.74%",
+                  "47.26%"
+            ]
       },
       "ToeSegmentation2": {
             "short_name": "DS 61",
@@ -727,9 +1209,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 343,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "51.61%"
+            "unique_lengths": true,
+            "imbalance": "51.61%",
+            "class_ratio": [
+                  "75.81%",
+                  "24.19%"
+            ]
       },
       "Trace": {
             "short_name": "DS 62",
@@ -739,9 +1225,15 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 275,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.67%"
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratio": [
+                  "26.00%",
+                  "25.33%",
+                  "25.33%",
+                  "23.33%"
+            ]
       },
       "TwoLeadECG": {
             "short_name": "DS 63",
@@ -751,9 +1243,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 82,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "3.10%"
+            "unique_lengths": true,
+            "imbalance": "0.11%",
+            "class_ratio": [
+                  "50.06%",
+                  "49.94%"
+            ]
       },
       "TwoPatterns": {
             "short_name": "DS 64",
@@ -763,9 +1259,15 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 128,
             "num_of_classes": 4,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "1.12%"
+            "unique_lengths": true,
+            "imbalance": "1.95%",
+            "class_ratio": [
+                  "25.79%",
+                  "25.47%",
+                  "24.91%",
+                  "23.84%"
+            ]
       },
       "UMD": {
             "short_name": "DS 65",
@@ -775,9 +1277,14 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 150,
             "num_of_classes": 3,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "6.67%"
+            "unique_lengths": true,
+            "imbalance": "3.70%",
+            "class_ratio": [
+                  "35.56%",
+                  "32.59%",
+                  "31.85%"
+            ]
       },
       "UWaveGestureLibraryAll": {
             "short_name": "DS 66",
@@ -787,9 +1294,19 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 945,
             "num_of_classes": 8,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "0.86%"
+            "unique_lengths": true,
+            "imbalance": "0.68%",
+            "class_ratio": [
+                  "12.92%",
+                  "12.60%",
+                  "12.60%",
+                  "12.45%",
+                  "12.42%",
+                  "12.39%",
+                  "12.39%",
+                  "12.24%"
+            ]
       },
       "Wine": {
             "short_name": "DS 67",
@@ -799,9 +1316,13 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 234,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "15.66%"
+            "unique_lengths": true,
+            "imbalance": "1.20%",
+            "class_ratio": [
+                  "50.60%",
+                  "49.40%"
+            ]
       },
       "WormsTwoClass": {
             "short_name": "DS 68",
@@ -811,8 +1332,12 @@
             "num_of_dimensions": 1,
             "num_of_timestamps": 900,
             "num_of_classes": 2,
-            "unique_lengths": true,
             "missing_values_count": 0,
-            "imbalance": "23.32%"
+            "unique_lengths": true,
+            "imbalance": "16.06%",
+            "class_ratio": [
+                  "58.03%",
+                  "41.97%"
+            ]
       }
 }
