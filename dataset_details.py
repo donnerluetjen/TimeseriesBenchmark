@@ -101,17 +101,18 @@ def generate_datasets_table(json_path):
         table_caption = 'Datasets Details'
         table_label = 'datasets_details'
 
-        tt.open_details_table(table_path, properties)
+        columns_formatter = f'|ll|{"r" * (len(properties) - 2)}'
+        details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties)
 
         # iterate through all datasets
         for dataset in datasets:
             frm.progress_increase()
             dataset_data = data[dataset]
             dataset_values = list(dataset_data.values())
-            dataset_values.pop() # remove class_ratios
-            tt.add_details_table_line(table_path, dataset_values)
+            dataset_values.pop()  # remove class_ratios
+            details_table.add_line(details_table.format_details(dataset_values))
 
-        tt.close_details_table(table_path, table_caption, table_label)
+        del details_table
         frm.progress_end()
 
 if __name__ == '__main__':

@@ -94,8 +94,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
         # read scores and drop arguments
         scores = list(data[datasets[0]][metrics[0]].keys())
         scores.remove('arguments')
-        for remove in do_not_rank:
-            scores.remove(remove)
+        scores = [score for score in scores if score not in do_not_rank]
         
         for table_metrics_scheme in table_metrics_schemes:
             if len(table_metrics_scheme) == 0: continue
@@ -104,40 +103,42 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
             
             table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(table_metrics_scheme).upper() + f' \\gls{{scb}} {table_name_specific}'
             table_label = dataset_archive + '_' + '-'.join(table_metrics_scheme) + f'_scb_{"".join([c for c in table_name_specific if c != " "])}'
-            
-            tt.open_score_table(table_path, table_metrics_scheme, scores)
+
+            score_columns_formatter = 'c' * len(scores)
+            table_column_formatter = f'|l{"|".join(score_columns_formatter for i in range(len(table_metrics_scheme)))}'
+            scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
+                                            table_caption, table_label, table_metrics_scheme, scores)
+            # tt.open_score_table(table_path, table_metrics_scheme, scores)
         
             for dataset in datasets:
-                dataset_data = [dataset_details[dataset]['short_name']]
+                table_line_list = [dataset_details[dataset]['short_name']]
                 
-                # get highscores for this dqtaset
-                highscore_dict = {key:0 if key != 'runtime' else float('inf') for key in scores}
-                for metric in metrics:
-                    for score in scores:
-                        highscore_dict = highscores(score, data[dataset][metric][score], highscore_dict)
+                # get high scores for this dataset
+                highscore_dict = dataset_high_scores(data[dataset], metrics, scores)
                         
                 for metric in table_metrics_scheme:
                     for score in scores:
-                    
-                        if score in do_not_rank:
-                            continue
-                        
-                        score_value = data[dataset][metric][score]
-                        dataset_data.append(score_value)
+                        table_line_list.append(data[dataset][metric][score])
+                table_line_list = scores_table.format_data(table_line_list, list(highscore_dict.values()))
+                scores_table.add_line(table_line_list)
+                # tt.add_score_table_line(table_path, table_line_list, list(highscore_dict.values()))
+
                 frm.progress_increase()
-                tt.add_score_table_line(table_path, dataset_data, list(highscore_dict.values()))
-                
-            tt.close_score_table(table_path, table_caption, table_label)
+            del scores_table  # to make sure destructor is called
+            #tt.close_score_table(table_path, table_caption, table_label)
         frm.progress_end()
 
 
-def highscores(score, value, dict):
-    highscore = dict[score]
-    if score == 'runtime':
-        if value < highscore: dict[score] = value
-    else:
-        if value > highscore: dict[score] = value
-    return dict
+def dataset_high_scores(dataset, metrics, scores):
+    high_score_dict = {key: 0 if key != 'runtime' else float('inf') for key in scores}
+    for score in scores:
+        for metric in metrics:
+            high_score = high_score_dict[score]
+            if score == 'runtime':
+                high_score_dict[score] = min(dataset[metric][score], high_score)
+            else:
+                high_score_dict[score] = max(dataset[metric][score], high_score)
+    return high_score_dict
 
 
 if __name__ == '__main__':
@@ -149,8 +150,8 @@ if __name__ == '__main__':
     for json_file in json_files:
         generate_table(json_store + json_file, datasets_details_json_path,
                        f'size={wws}', ['agdtw', 'dagdtw', 'sdtw'], do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, f'wws={wws}', 'ranking',
-                                  do_not_rank=['recall'])
-        generate_average_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-        generate_average_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
-        generate_average_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+        # generate_average_diagram(json_store + json_file, f'wws={wws}', 'ranking',
+        #                           do_not_rank=['recall'])
+        # generate_average_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+        # generate_average_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+        # generate_average_diagram(json_store + json_file, f'wws={wws}', 'auroc')
