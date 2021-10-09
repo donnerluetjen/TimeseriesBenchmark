@@ -14,11 +14,13 @@ class TexTable:
     
     EOL = '\\\\'
     
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lll', caption='abstract table', label='tab:abstract-table'):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lll',
+                 caption='abstract table', label='abstract-table'):
         """
-            this method opens the tex file for writing and sets up the table head
-            :param tex_path: string containing the path to the desired tex file
-            :param table_column: string containing the tex formatting for the table columns (eg. '|ll|cccc|')
+        :param tex_path: string containing the tex file path
+        :param table_columns_formatter: string containing the tex columns format
+        :param caption: string containing the table caption
+        :param label: string containing the table label, will be expanded to tab:<label>
         """
         self.table_columns_formatter = table_columns_formatter
         self.tex_path = Path(tex_path)
@@ -33,16 +35,18 @@ class TexTable:
             tex_table.write('\n')
             tex_table.write(self.table_header())
             tex_table.write(f'\t\t\\endfirsthead\n')
-            #endhead
+            # endhead
             tex_table.write('\n')
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{\\bfseries \\tablename \\thetable{{}}, .. continued from previous page}} {self.EOL}\n')
+            column_content = '\\bfseries \\tablename \\thetable{}, .. continued from previous page'
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{{column_content}}} {self.EOL}\n')
             tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
             tex_table.write(self.table_header())
             tex_table.write(f'\t\t\\endhead\n')
             # endfoot
             tex_table.write('\n')
+            column_content = '\\bfseries  .. continued on next page'
             tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{\\bfseries  .. continued on next page}} {self.EOL}\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{{column_content}}} {self.EOL}\n')
             tex_table.write(f'\t\t\\endfoot\n')
             # endlastfoot
             tex_table.write('\n')
@@ -62,16 +66,18 @@ class TexTable:
             tex_table.write('}}\n')
     
     def table_header(self):
-        header = '\t\t\hline\n'
+        header = '\t\t\\hline\n'
         header += f'\t\t\\multicolumn{{{self.table_column_count}}}{{c|}}{{Abstract Table}} {self.EOL}\n'
         header += '\t\t\\hline\n'
         return header
 
-    def add_line(self, data=['An', 'abstract', 'table']):
+    def add_line(self, data=None):
+        if data is None:
+            data = ['An', 'abstract', 'table']
         with open(self.tex_path, 'a') as tex_table:
             tex_table.write(f'\t\t{" & ".join(data)} {self.EOL}\n')
 
-    def format_data(self, data, highscores=[]):
+    def format_data(self, data, highscores=None):
         result = []
         index_offset = 0
         for index, datum in enumerate(data):
@@ -112,27 +118,36 @@ class TexTable:
 class ScoreTexTable(TexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lcccccc',
                  caption='abstract table', label='tab:abstract-table',
-                 metrics=['placeholder', 'metric'], scores=['initialize', 'header', 'columns']):
-        self.metrics = metrics
-        self.scores = scores
+                 metrics=None, scores=None):
+        """
+
+        :param tex_path: string containing the tex file path
+        :param table_columns_formatter: string containing the tex columns format
+        :param caption: string containing the table caption
+        :param label: string containing the table label, will be expanded to tab:<label>
+        :param metrics: list containing the strings with metric names
+        :param scores: list containing strings with score names
+        """
+        self.metrics = ['placeholder', 'metric'] if metrics is None else  metrics
+        self.scores = ['initialize', 'header', 'columns'] if scores is None else scores
         super().__init__(tex_path, table_columns_formatter, caption, label)
 
     def table_header(self):
         len_metrics = len(self.metrics)
         len_scores = len(self.scores)
 
-        header = '\t\t\hline\n'
-        header += f'\t\t& \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {eol}\n'
+        header = '\t\t\\hline\n'
+        header += f'\t\t& \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {self.EOL}\n'
 
         metrics_header = '\t\t'
         for metric in self.metrics:
             metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{metric}}} '
 
-        header += f'{metrics_header}{eol}\n'
+        header += f'{metrics_header}{self.EOL}\n'
 
         capitalized_scores = [score.capitalize() for score in self.scores]
 
-        header += f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {eol}\n'
+        header += f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}\n'
         header += '\t\t\\hline\n'
         return header
 
@@ -141,15 +156,23 @@ class DetailsTexTable(TexTable):
 
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lcccccc',
                  caption='abstract table', label='tab:abstract-table',
-                 properties=['placeholder', 'properties']):
-        self.properties = properties
+                 properties=None):
+        """
+
+        :param tex_path: string containing the tex file path
+        :param table_columns_formatter: string containing the tex columns format
+        :param caption: string containing the table caption
+        :param label: string containing the table label, will be expanded to tab:<label>
+        :param properties: list containing strings with property names
+        """
+        self.properties = ['placeholder', 'properties'] if properties is None else properties
         super().__init__(tex_path, table_columns_formatter, caption, label)
 
     def table_header(self):
         len_names = 2  # Short Name and Name
         len_properties = len(self.properties) - len_names
 
-        header = '\t\t\hline\n'
+        header = '\t\t\\hline\n'
         names_header = f'\\multicolumn{{{len_names}}}{{|c}}{{Datasets}}'
         properties_header = f'\\multicolumn{{{len_properties}}}{{|c|}}{{Properties}}'
         header += f'\t\t{names_header} & {properties_header} {self.EOL}\n'
@@ -171,3 +194,18 @@ class DetailsTexTable(TexTable):
                 str_datum = f'${str_datum}$'
             result.append(str_datum)
         return result
+
+
+class ImbalanceTexTable(DetailsTexTable):
+
+    def format_details(self, data):
+        connector = ' - '
+        return data[:2] + [connector.join([self.format_percent(str(x)) for x in data[-1]])]
+
+    def format_percent(self, data_string):
+        return data_string.replace('%', '\\%')
+
+
+if __name__ == '__main__':
+    t = TexTable()
+    del t

@@ -18,8 +18,10 @@ datasets_details_json_path = './Benchmarks/json/datasets_details.json'
 def generate_datasets_details(json_path, datasets):
     """
     loads datasets and generates analytics for them
-    :param datasets: a list of dataset names to be analyzed
+    :param datasets: a list of datasets to be analyzed
     :return: a dictionary containing the following analytics
+        - short_name
+        - name
         - # dimensions
         - # instances
         - # timestamps
@@ -61,13 +63,13 @@ def dataset_properties(X_train, y_train, X_test):
         num_of_timestamps, num_of_classes,
         unique_lengths, missing_values_count,
         len train set, len test set,
-        imbalance
+        imbalance, class_ratios
     """
     distribution = list(y_train.value_counts())
     distribution_sum = sum(distribution)
     imbalance = (max(distribution) - min(distribution))/distribution_sum
     imbalance_str = f'{imbalance * 100:.2f}%'
-    ratio_string = [f'{x/distribution_sum*100:.2f}%' for x in distribution]
+    ratios = [f'{x/distribution_sum*100:.2f}%' for x in distribution]
     return {
 
         'num_of_train_instances': len(X_train),
@@ -78,7 +80,7 @@ def dataset_properties(X_train, y_train, X_test):
         'missing_values_count': int(count_of_missing_values_in_sktime_df(X_train)),
         'unique_lengths': has_equal_length_in_all_time_series(X_train),
         'imbalance': imbalance_str,
-        'class_ratios': ratio_string
+        'class_ratios': ratios
     }
 
 
@@ -93,7 +95,7 @@ def generate_datasets_table(json_path):
         datasets = list(data.keys())
         # read properties
         properties = list(data[datasets[0]].keys())
-        properties.pop() # remove class_ratios
+        properties.pop()  # remove class_ratios
 
         table_file_name = f'table_{dataset_archive}_datasets.tex'
         table_path = Path(path_dict['tex_dir'], table_file_name)
@@ -115,9 +117,43 @@ def generate_datasets_table(json_path):
         del details_table
         frm.progress_end()
 
+
+def generate_imbalance_table(json_path):
+    path_dict = fo.path_dictionary(json_path)
+    dataset_archive = path_dict['archive']
+
+    frm.progress_start('Writing datasets details table')
+    with open(json_path) as json_file:
+        data = json.load(json_file)
+
+        datasets = list(data.keys())
+        # read properties short_name, name, class_ratios
+        properties = [prop for prop in list(data[datasets[0]].keys()) if prop in ['short_name', 'name', 'class_ratios']]
+
+        table_file_name = f'table_datasets_imbalance.tex'
+        table_path = Path(path_dict['tex_dir'], table_file_name)
+
+        table_caption = 'Datasets Class Ratios'
+        table_label = 'datasets-class-ratios'
+
+        columns_formatter = '|ll|l|'
+        imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties)
+
+        # iterate through all datasets
+        for dataset in datasets:
+            frm.progress_increase()
+            dataset_data = data[dataset]
+            dataset_values = [dataset_data[prop] for prop in properties]
+            imbalance_table.add_line(imbalance_table.format_details(dataset_values))
+
+        del imbalance_table
+        frm.progress_end()
+
 if __name__ == '__main__':
     # generate json file with dataset details
     # generate_datasets_details(datasets_details_json_path, datasets)
-    # generate the datsets details table
-    generate_datasets_table(datasets_details_json_path)
+    # generate the datasets details table
+    # generate_datasets_table(datasets_details_json_path)
+    # generate datasets imbalance table
+    generate_imbalance_table(datasets_details_json_path)
     

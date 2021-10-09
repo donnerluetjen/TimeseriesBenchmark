@@ -9,18 +9,17 @@
             "num_of_classes": 25,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.86%",
-            "class_ratio": [
-                  "4.87%",
-                  "4.87%",
+            "imbalance": "2.09%",
+            "class_ratios": [
+                  "5.10%",
+                  "4.64%",
                   "4.64%",
                   "4.64%",
                   "4.64%",
                   "4.41%",
                   "4.41%",
                   "4.41%",
-                  "4.18%",
-                  "4.18%",
+                  "4.41%",
                   "4.18%",
                   "4.18%",
                   "3.94%",
@@ -30,10 +29,11 @@
                   "3.71%",
                   "3.71%",
                   "3.71%",
+                  "3.71%",
                   "3.48%",
                   "3.48%",
                   "3.48%",
-                  "3.25%",
+                  "3.48%",
                   "3.25%",
                   "3.02%"
             ]
@@ -49,7 +49,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "4.55%",
-            "class_ratio": [
+            "class_ratios": [
                   "36.36%",
                   "31.82%",
                   "31.82%"
@@ -65,12 +65,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "6.67%",
-            "class_ratio": [
-                  "28.33%",
+            "imbalance": "3.33%",
+            "class_ratios": [
+                  "26.67%",
                   "25.00%",
                   "25.00%",
-                  "21.67%"
+                  "23.33%"
             ]
       },
       "Cricket": {
@@ -83,19 +83,19 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.70%",
-            "class_ratio": [
-                  "10.37%",
+            "imbalance": "2.96%",
+            "class_ratios": [
+                  "9.63%",
+                  "9.63%",
+                  "9.63%",
                   "8.89%",
                   "8.89%",
                   "8.89%",
-                  "8.89%",
-                  "8.15%",
-                  "8.15%",
                   "8.15%",
                   "8.15%",
                   "7.41%",
                   "7.41%",
+                  "6.67%",
                   "6.67%"
             ]
       },
@@ -109,12 +109,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "8.74%",
-            "class_ratio": [
-                  "30.10%",
+            "imbalance": "3.88%",
+            "class_ratios": [
+                  "26.70%",
                   "25.24%",
-                  "23.30%",
-                  "21.36%"
+                  "25.24%",
+                  "22.82%"
             ]
       },
       "EyesOpenShut": {
@@ -127,10 +127,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "9.59%",
-            "class_ratio": [
-                  "54.79%",
-                  "45.21%"
+            "imbalance": "15.07%",
+            "class_ratios": [
+                  "57.53%",
+                  "42.47%"
             ]
       },
       "FingerMovements": {
@@ -144,7 +144,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "1.92%",
-            "class_ratio": [
+            "class_ratios": [
                   "50.96%",
                   "49.04%"
             ]
@@ -159,12 +159,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "13.71%",
-            "class_ratio": [
-                  "33.14%",
-                  "24.00%",
-                  "23.43%",
-                  "19.43%"
+            "imbalance": "8.00%",
+            "class_ratios": [
+                  "29.71%",
+                  "26.29%",
+                  "22.29%",
+                  "21.71%"
             ]
       },
       "Libras": {
@@ -177,23 +177,23 @@
             "num_of_classes": 15,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.22%",
-            "class_ratio": [
-                  "7.41%",
-                  "7.41%",
+            "imbalance": "2.96%",
+            "class_ratios": [
+                  "7.78%",
+                  "7.78%",
                   "7.41%",
                   "7.41%",
                   "7.04%",
                   "7.04%",
-                  "6.67%",
-                  "6.67%",
-                  "6.67%",
+                  "7.04%",
                   "6.67%",
                   "6.67%",
                   "6.30%",
+                  "6.30%",
+                  "6.30%",
                   "5.93%",
                   "5.56%",
-                  "5.19%"
+                  "4.81%"
             ]
       },
       "NATOPS": {
@@ -207,12 +207,12 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "2.22%",
-            "class_ratio": [
+            "class_ratios": [
                   "17.78%",
                   "17.41%",
-                  "16.67%",
+                  "17.04%",
                   "16.30%",
-                  "16.30%",
+                  "15.93%",
                   "15.56%"
             ]
       },
@@ -226,12 +226,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "9.25%",
-            "class_ratio": [
-                  "31.28%",
-                  "23.35%",
-                  "23.35%",
-                  "22.03%"
+            "imbalance": "5.29%",
+            "class_ratios": [
+                  "27.75%",
+                  "25.11%",
+                  "24.67%",
+                  "22.47%"
             ]
       },
       "SelfRegulationSCP1": {
@@ -245,7 +245,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "4.29%",
-            "class_ratio": [
+            "class_ratios": [
                   "52.14%",
                   "47.86%"
             ]
@@ -260,10 +260,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.16%",
-            "class_ratio": [
-                  "51.58%",
-                  "48.42%"
+            "imbalance": "8.07%",
+            "class_ratios": [
+                  "54.04%",
+                  "45.96%"
             ]
       },
       "StandWalkJump": {
@@ -276,11 +276,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "5.00%",
-            "class_ratio": [
-                  "35.00%",
-                  "35.00%",
-                  "30.00%"
+            "imbalance": "20.00%",
+            "class_ratios": [
+                  "40.00%",
+                  "40.00%",
+                  "20.00%"
             ]
       },
       "UWaveGestureLibrary": {
@@ -293,16 +293,16 @@
             "num_of_classes": 8,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.64%",
-            "class_ratio": [
-                  "14.24%",
-                  "13.94%",
+            "imbalance": "1.21%",
+            "class_ratios": [
                   "13.03%",
-                  "12.42%",
-                  "12.42%",
-                  "11.82%",
-                  "11.52%",
-                  "10.61%"
+                  "13.03%",
+                  "13.03%",
+                  "12.73%",
+                  "12.12%",
+                  "12.12%",
+                  "12.12%",
+                  "11.82%"
             ]
       },
       "ACSF1": {
@@ -315,18 +315,18 @@
             "num_of_classes": 10,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.67%",
-            "class_ratio": [
-                  "11.33%",
-                  "11.33%",
+            "imbalance": "4.67%",
+            "class_ratios": [
+                  "12.00%",
+                  "10.67%",
+                  "10.67%",
                   "10.67%",
                   "10.67%",
                   "10.00%",
-                  "10.00%",
                   "9.33%",
                   "9.33%",
-                  "8.67%",
-                  "8.67%"
+                  "9.33%",
+                  "7.33%"
             ]
       },
       "ArrowHead": {
@@ -339,11 +339,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "11.39%",
-            "class_ratio": [
-                  "40.51%",
-                  "30.38%",
-                  "29.11%"
+            "imbalance": "3.80%",
+            "class_ratios": [
+                  "35.44%",
+                  "32.91%",
+                  "31.65%"
             ]
       },
       "Beef": {
@@ -356,13 +356,13 @@
             "num_of_classes": 5,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "6.67%",
-            "class_ratio": [
+            "imbalance": "11.11%",
+            "class_ratios": [
                   "22.22%",
                   "22.22%",
-                  "20.00%",
-                  "20.00%",
-                  "15.56%"
+                  "22.22%",
+                  "22.22%",
+                  "11.11%"
             ]
       },
       "BeetleFly": {
@@ -376,7 +376,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "0.00%",
-            "class_ratio": [
+            "class_ratios": [
                   "50.00%",
                   "50.00%"
             ]
@@ -392,7 +392,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "0.00%",
-            "class_ratio": [
+            "class_ratios": [
                   "50.00%",
                   "50.00%"
             ]
@@ -407,11 +407,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.00%",
-            "class_ratio": [
-                  "33.33%",
-                  "33.33%",
-                  "33.33%"
+            "imbalance": "3.70%",
+            "class_ratios": [
+                  "35.56%",
+                  "32.59%",
+                  "31.85%"
             ]
       },
       "Car": {
@@ -424,12 +424,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.33%",
-            "class_ratio": [
-                  "26.67%",
+            "imbalance": "5.56%",
+            "class_ratios": [
+                  "27.78%",
                   "25.56%",
                   "24.44%",
-                  "23.33%"
+                  "22.22%"
             ]
       },
       "CBF": {
@@ -442,11 +442,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "4.88%",
-            "class_ratio": [
-                  "35.29%",
-                  "34.29%",
-                  "30.42%"
+            "imbalance": "3.16%",
+            "class_ratios": [
+                  "35.15%",
+                  "32.86%",
+                  "31.99%"
             ]
       },
       "Chinatown": {
@@ -459,10 +459,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "38.24%",
-            "class_ratio": [
-                  "69.12%",
-                  "30.88%"
+            "imbalance": "40.44%",
+            "class_ratios": [
+                  "70.22%",
+                  "29.78%"
             ]
       },
       "Coffee": {
@@ -475,10 +475,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "4.76%",
-            "class_ratio": [
-                  "52.38%",
-                  "47.62%"
+            "imbalance": "14.29%",
+            "class_ratios": [
+                  "57.14%",
+                  "42.86%"
             ]
       },
       "Computers": {
@@ -491,10 +491,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.33%",
-            "class_ratio": [
-                  "50.67%",
-                  "49.33%"
+            "imbalance": "1.87%",
+            "class_ratios": [
+                  "50.93%",
+                  "49.07%"
             ]
       },
       "CricketX": {
@@ -507,20 +507,20 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.88%",
-            "class_ratio": [
-                  "9.23%",
+            "imbalance": "2.39%",
+            "class_ratios": [
                   "9.06%",
-                  "9.06%",
-                  "8.55%",
-                  "8.55%",
+                  "8.89%",
+                  "8.89%",
+                  "8.72%",
+                  "8.72%",
+                  "8.72%",
                   "8.38%",
                   "8.38%",
-                  "8.03%",
-                  "8.03%",
+                  "8.21%",
                   "8.03%",
                   "7.35%",
-                  "7.35%"
+                  "6.67%"
             ]
       },
       "CricketY": {
@@ -533,20 +533,20 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.71%",
-            "class_ratio": [
+            "imbalance": "1.54%",
+            "class_ratios": [
                   "9.06%",
+                  "8.89%",
+                  "8.89%",
                   "8.72%",
-                  "8.72%",
-                  "8.72%",
-                  "8.55%",
-                  "8.55%",
                   "8.55%",
                   "8.38%",
-                  "7.86%",
+                  "8.21%",
+                  "8.21%",
+                  "8.03%",
                   "7.86%",
                   "7.69%",
-                  "7.35%"
+                  "7.52%"
             ]
       },
       "CricketZ": {
@@ -559,20 +559,20 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.88%",
-            "class_ratio": [
-                  "9.06%",
+            "imbalance": "1.54%",
+            "class_ratios": [
                   "8.89%",
+                  "8.89%",
+                  "8.72%",
+                  "8.72%",
+                  "8.72%",
                   "8.55%",
                   "8.38%",
-                  "8.38%",
-                  "8.38%",
-                  "8.38%",
                   "8.21%",
                   "8.21%",
-                  "8.21%",
-                  "8.21%",
-                  "7.18%"
+                  "8.03%",
+                  "7.35%",
+                  "7.35%"
             ]
       },
       "EOGHorizontalSignal": {
@@ -585,20 +585,20 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.03%",
-            "class_ratio": [
-                  "9.39%",
+            "imbalance": "2.58%",
+            "class_ratios": [
+                  "9.58%",
                   "9.02%",
+                  "8.84%",
+                  "8.84%",
                   "8.66%",
-                  "8.66%",
-                  "8.47%",
                   "8.29%",
                   "8.29%",
                   "8.10%",
+                  "8.10%",
                   "7.92%",
-                  "7.92%",
-                  "7.92%",
-                  "7.37%"
+                  "7.37%",
+                  "7.00%"
             ]
       },
       "EOGVerticalSignal": {
@@ -611,20 +611,20 @@
             "num_of_classes": 12,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.03%",
-            "class_ratio": [
-                  "9.39%",
+            "imbalance": "2.76%",
+            "class_ratios": [
+                  "9.94%",
+                  "9.76%",
                   "9.02%",
                   "8.66%",
-                  "8.66%",
-                  "8.66%",
-                  "8.47%",
-                  "8.10%",
+                  "8.29%",
                   "8.10%",
                   "8.10%",
                   "7.92%",
+                  "7.73%",
+                  "7.73%",
                   "7.55%",
-                  "7.37%"
+                  "7.18%"
             ]
       },
       "FaceAll": {
@@ -637,22 +637,22 @@
             "num_of_classes": 14,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "12.27%",
-            "class_ratio": [
-                  "14.34%",
-                  "11.74%",
-                  "8.48%",
-                  "8.42%",
-                  "8.12%",
-                  "7.71%",
-                  "7.17%",
-                  "6.82%",
-                  "6.11%",
-                  "6.11%",
-                  "5.33%",
-                  "4.74%",
-                  "2.85%",
-                  "2.07%"
+            "imbalance": "12.51%",
+            "class_ratios": [
+                  "14.40%",
+                  "11.91%",
+                  "9.13%",
+                  "8.18%",
+                  "7.94%",
+                  "7.77%",
+                  "7.53%",
+                  "6.52%",
+                  "6.16%",
+                  "5.93%",
+                  "5.10%",
+                  "4.45%",
+                  "3.08%",
+                  "1.90%"
             ]
       },
       "Fish": {
@@ -665,15 +665,15 @@
             "num_of_classes": 7,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.67%",
-            "class_ratio": [
-                  "16.03%",
-                  "15.27%",
+            "imbalance": "3.44%",
+            "class_ratios": [
+                  "16.41%",
                   "14.50%",
-                  "14.12%",
+                  "14.50%",
+                  "14.50%",
+                  "13.74%",
                   "13.36%",
-                  "13.36%",
-                  "13.36%"
+                  "12.98%"
             ]
       },
       "FreezerRegularTrain": {
@@ -686,10 +686,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.07%",
-            "class_ratio": [
-                  "50.53%",
-                  "49.47%"
+            "imbalance": "0.27%",
+            "class_ratios": [
+                  "50.13%",
+                  "49.87%"
             ]
       },
       "FreezerSmallTrain": {
@@ -702,10 +702,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.46%",
-            "class_ratio": [
-                  "50.23%",
-                  "49.77%"
+            "imbalance": "1.02%",
+            "class_ratios": [
+                  "50.51%",
+                  "49.49%"
             ]
       },
       "GunPoint": {
@@ -718,10 +718,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.33%",
-            "class_ratio": [
-                  "50.67%",
-                  "49.33%"
+            "imbalance": "0.00%",
+            "class_ratios": [
+                  "50.00%",
+                  "50.00%"
             ]
       },
       "GunPointAgeSpan": {
@@ -734,10 +734,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.55%",
-            "class_ratio": [
-                  "51.78%",
-                  "48.22%"
+            "imbalance": "0.59%",
+            "class_ratios": [
+                  "50.30%",
+                  "49.70%"
             ]
       },
       "GunPointMaleVersusFemale": {
@@ -750,10 +750,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "7.10%",
-            "class_ratio": [
-                  "53.55%",
-                  "46.45%"
+            "imbalance": "2.37%",
+            "class_ratios": [
+                  "51.18%",
+                  "48.82%"
             ]
       },
       "GunPointOldVersusYoung": {
@@ -767,7 +767,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "8.28%",
-            "class_ratio": [
+            "class_ratios": [
                   "54.14%",
                   "45.86%"
             ]
@@ -782,10 +782,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.25%",
-            "class_ratio": [
-                  "50.62%",
-                  "49.38%"
+            "imbalance": "6.25%",
+            "class_ratios": [
+                  "53.12%",
+                  "46.88%"
             ]
       },
       "Haptics": {
@@ -798,13 +798,13 @@
             "num_of_classes": 5,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "5.76%",
-            "class_ratio": [
-                  "22.19%",
-                  "21.61%",
-                  "20.46%",
+            "imbalance": "6.34%",
+            "class_ratios": [
+                  "22.48%",
+                  "22.48%",
+                  "19.60%",
                   "19.31%",
-                  "16.43%"
+                  "16.14%"
             ]
       },
       "ItalyPowerDemand": {
@@ -817,10 +817,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.22%",
-            "class_ratio": [
-                  "50.61%",
-                  "49.39%"
+            "imbalance": "2.19%",
+            "class_ratios": [
+                  "51.09%",
+                  "48.91%"
             ]
       },
       "LargeKitchenAppliances": {
@@ -833,10 +833,10 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.60%",
-            "class_ratio": [
-                  "34.34%",
-                  "32.92%",
+            "imbalance": "1.07%",
+            "class_ratios": [
+                  "33.81%",
+                  "33.45%",
                   "32.74%"
             ]
       },
@@ -850,11 +850,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "4.44%",
-            "class_ratio": [
-                  "35.56%",
+            "imbalance": "2.22%",
+            "class_ratios": [
+                  "34.44%",
                   "33.33%",
-                  "31.11%"
+                  "32.22%"
             ]
       },
       "MoteStrain": {
@@ -867,10 +867,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "6.92%",
-            "class_ratio": [
-                  "53.46%",
-                  "46.54%"
+            "imbalance": "7.34%",
+            "class_ratios": [
+                  "53.67%",
+                  "46.33%"
             ]
       },
       "PowerCons": {
@@ -883,10 +883,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.22%",
-            "class_ratio": [
-                  "51.11%",
-                  "48.89%"
+            "imbalance": "3.70%",
+            "class_ratios": [
+                  "51.85%",
+                  "48.15%"
             ]
       },
       "RefrigerationDevices": {
@@ -899,11 +899,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.18%",
-            "class_ratio": [
-                  "33.45%",
-                  "33.27%",
-                  "33.27%"
+            "imbalance": "1.78%",
+            "class_ratios": [
+                  "33.99%",
+                  "33.81%",
+                  "32.21%"
             ]
       },
       "Rock": {
@@ -917,10 +917,10 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "25.00%",
-            "class_ratio": [
+            "class_ratios": [
                   "38.46%",
-                  "28.85%",
-                  "19.23%",
+                  "25.00%",
+                  "23.08%",
                   "13.46%"
             ]
       },
@@ -934,11 +934,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.14%",
-            "class_ratio": [
-                  "34.16%",
-                  "33.81%",
-                  "32.03%"
+            "imbalance": "3.02%",
+            "class_ratios": [
+                  "35.23%",
+                  "32.56%",
+                  "32.21%"
             ]
       },
       "SemgHandGenderCh2": {
@@ -951,10 +951,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "17.33%",
-            "class_ratio": [
-                  "58.67%",
-                  "41.33%"
+            "imbalance": "21.19%",
+            "class_ratios": [
+                  "60.59%",
+                  "39.41%"
             ]
       },
       "SemgHandMovementCh2": {
@@ -967,14 +967,14 @@
             "num_of_classes": 6,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.19%",
-            "class_ratio": [
-                  "17.19%",
-                  "17.04%",
-                  "16.74%",
-                  "16.74%",
+            "imbalance": "2.52%",
+            "class_ratios": [
+                  "17.93%",
+                  "17.33%",
+                  "16.59%",
+                  "16.44%",
                   "16.30%",
-                  "16.00%"
+                  "15.41%"
             ]
       },
       "SemgHandSubjectCh2": {
@@ -987,13 +987,13 @@
             "num_of_classes": 5,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.63%",
-            "class_ratio": [
+            "imbalance": "2.07%",
+            "class_ratios": [
                   "21.04%",
-                  "20.15%",
+                  "20.59%",
                   "19.85%",
                   "19.56%",
-                  "19.41%"
+                  "18.96%"
             ]
       },
       "ShapeletSim": {
@@ -1006,10 +1006,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.67%",
-            "class_ratio": [
-                  "51.33%",
-                  "48.67%"
+            "imbalance": "4.00%",
+            "class_ratios": [
+                  "52.00%",
+                  "48.00%"
             ]
       },
       "ShapesAll": {
@@ -1023,8 +1023,10 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "0.89%",
-            "class_ratio": [
-                  "2.11%",
+            "class_ratios": [
+                  "2.00%",
+                  "2.00%",
+                  "2.00%",
                   "2.00%",
                   "2.00%",
                   "2.00%",
@@ -1037,10 +1039,9 @@
                   "1.89%",
                   "1.89%",
                   "1.89%",
-                  "1.78%",
-                  "1.78%",
-                  "1.78%",
-                  "1.78%",
+                  "1.89%",
+                  "1.89%",
+                  "1.89%",
                   "1.78%",
                   "1.78%",
                   "1.78%",
@@ -1067,10 +1068,6 @@
                   "1.56%",
                   "1.56%",
                   "1.56%",
-                  "1.56%",
-                  "1.56%",
-                  "1.56%",
-                  "1.44%",
                   "1.44%",
                   "1.44%",
                   "1.44%",
@@ -1083,7 +1080,10 @@
                   "1.33%",
                   "1.33%",
                   "1.33%",
-                  "1.22%"
+                  "1.33%",
+                  "1.22%",
+                  "1.22%",
+                  "1.11%"
             ]
       },
       "SmallKitchenAppliances": {
@@ -1096,11 +1096,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.18%",
-            "class_ratio": [
-                  "33.45%",
-                  "33.27%",
-                  "33.27%"
+            "imbalance": "3.02%",
+            "class_ratios": [
+                  "34.52%",
+                  "33.99%",
+                  "31.49%"
             ]
       },
       "SmoothSubspace": {
@@ -1113,11 +1113,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.11%",
-            "class_ratio": [
-                  "34.67%",
-                  "33.78%",
-                  "31.56%"
+            "imbalance": "2.67%",
+            "class_ratios": [
+                  "35.11%",
+                  "32.44%",
+                  "32.44%"
             ]
       },
       "SonyAIBORobotSurface2": {
@@ -1130,10 +1130,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "25.17%",
-            "class_ratio": [
-                  "62.59%",
-                  "37.41%"
+            "imbalance": "24.35%",
+            "class_ratios": [
+                  "62.18%",
+                  "37.82%"
             ]
       },
       "SwedishLeaf": {
@@ -1147,22 +1147,22 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "1.42%",
-            "class_ratio": [
-                  "7.47%",
+            "class_ratios": [
+                  "7.35%",
+                  "7.24%",
                   "7.24%",
                   "7.12%",
-                  "7.12%",
-                  "7.00%",
+                  "6.88%",
+                  "6.88%",
+                  "6.88%",
                   "6.76%",
                   "6.64%",
-                  "6.64%",
                   "6.52%",
-                  "6.52%",
-                  "6.52%",
-                  "6.17%",
+                  "6.29%",
                   "6.17%",
                   "6.05%",
-                  "6.05%"
+                  "6.05%",
+                  "5.93%"
             ]
       },
       "SyntheticControl": {
@@ -1175,14 +1175,14 @@
             "num_of_classes": 6,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "2.00%",
-            "class_ratio": [
-                  "17.56%",
+            "imbalance": "1.33%",
+            "class_ratios": [
+                  "17.33%",
                   "17.11%",
-                  "16.89%",
+                  "16.67%",
                   "16.67%",
                   "16.22%",
-                  "15.56%"
+                  "16.00%"
             ]
       },
       "ToeSegmentation1": {
@@ -1196,7 +1196,7 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "5.47%",
-            "class_ratio": [
+            "class_ratios": [
                   "52.74%",
                   "47.26%"
             ]
@@ -1211,10 +1211,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "51.61%",
-            "class_ratio": [
-                  "75.81%",
-                  "24.19%"
+            "imbalance": "41.94%",
+            "class_ratios": [
+                  "70.97%",
+                  "29.03%"
             ]
       },
       "Trace": {
@@ -1228,11 +1228,11 @@
             "missing_values_count": 0,
             "unique_lengths": true,
             "imbalance": "2.67%",
-            "class_ratio": [
-                  "26.00%",
-                  "25.33%",
-                  "25.33%",
-                  "23.33%"
+            "class_ratios": [
+                  "26.67%",
+                  "24.67%",
+                  "24.67%",
+                  "24.00%"
             ]
       },
       "TwoLeadECG": {
@@ -1245,10 +1245,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.11%",
-            "class_ratio": [
-                  "50.06%",
-                  "49.94%"
+            "imbalance": "0.57%",
+            "class_ratios": [
+                  "50.29%",
+                  "49.71%"
             ]
       },
       "TwoPatterns": {
@@ -1261,12 +1261,12 @@
             "num_of_classes": 4,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.95%",
-            "class_ratio": [
-                  "25.79%",
-                  "25.47%",
-                  "24.91%",
-                  "23.84%"
+            "imbalance": "2.72%",
+            "class_ratios": [
+                  "26.48%",
+                  "25.17%",
+                  "24.59%",
+                  "23.76%"
             ]
       },
       "UMD": {
@@ -1279,11 +1279,11 @@
             "num_of_classes": 3,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "3.70%",
-            "class_ratio": [
+            "imbalance": "4.44%",
+            "class_ratios": [
                   "35.56%",
-                  "32.59%",
-                  "31.85%"
+                  "33.33%",
+                  "31.11%"
             ]
       },
       "UWaveGestureLibraryAll": {
@@ -1296,16 +1296,16 @@
             "num_of_classes": 8,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "0.68%",
-            "class_ratio": [
-                  "12.92%",
+            "imbalance": "0.98%",
+            "class_ratios": [
+                  "12.95%",
+                  "12.75%",
                   "12.60%",
-                  "12.60%",
-                  "12.45%",
-                  "12.42%",
+                  "12.54%",
+                  "12.48%",
                   "12.39%",
-                  "12.39%",
-                  "12.24%"
+                  "12.33%",
+                  "11.97%"
             ]
       },
       "Wine": {
@@ -1318,10 +1318,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "1.20%",
-            "class_ratio": [
-                  "50.60%",
-                  "49.40%"
+            "imbalance": "8.43%",
+            "class_ratios": [
+                  "54.22%",
+                  "45.78%"
             ]
       },
       "WormsTwoClass": {
@@ -1334,10 +1334,10 @@
             "num_of_classes": 2,
             "missing_values_count": 0,
             "unique_lengths": true,
-            "imbalance": "16.06%",
-            "class_ratio": [
-                  "58.03%",
-                  "41.97%"
+            "imbalance": "12.95%",
+            "class_ratios": [
+                  "56.48%",
+                  "43.52%"
             ]
       }
 }
