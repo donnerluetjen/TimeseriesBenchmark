@@ -11,6 +11,63 @@ from formatting import timestamp
 
 eol = '\\\\'
 
+class TexTable:
+    
+    EOL = '\\\\'
+    
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lll', caption='abstract table', label='tab:abstract-table'):
+        """
+            this method opens the tex file for writing and sets up the table head
+            :param tex_path: string containing the path to the desired tex file
+            :param table_column: string containing the tex formatting for the table columns (eg. '|ll|cccc|')
+        """
+        self.table_columns_formatter = table_columns_formatter
+        self.tex_path = tex_path
+        self.caption = caption
+        self.label = label
+        self.table_column_count = len(self.table_columns_formatter.replace('|', ''))
+        
+        with open(Path(self.tex_path), 'w') as tex_table:
+            tex_table.write('% This file is created by the python textable class.')
+            tex_table.write(f' It was created at {timestamp()}\n')
+            tex_table.write(f'\t\\begin{{longtable}}{{{table_columns_formatter}}}\n')
+            tex_table.write('\n')
+            tex_table.write(self.table_header())
+            tex_table.write(f'\t\t\\endfirsthead\n')
+            #endhead
+            tex_table.write('\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{\\bfseries \\tablename \\thetable{{}}, .. continued from previous page}} {self.EOL}\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
+            tex_table.write(self.table_header())
+            tex_table.write(f'\t\t\\endhead\n')
+            # endfoot
+            tex_table.write('\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{\\bfseries  .. continued on next page}} {self.EOL}\n')
+            tex_table.write(f'\t\t\\endfoot\n')
+            # endlastfoot
+            tex_table.write('\n')
+            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
+            tex_table.write(f'\t\t\\endlastfoot\n')
+            tex_table.write('\n')
+    
+    def __del__(self):
+        """
+            this function opens the tex file for writing and writes the table ending
+        """
+        with open(Path(self.tex_path), 'a') as tex_table:
+            tex_table.write(f'\t\t\\hline\n')
+            tex_table.write(f'\t\t\\caption{{{self.caption}}}\n')
+            tex_table.write(f'\t\t\\label{{{self.label}}}\n')
+            tex_table.write(f'\t\\end{{longtable}}\n')
+            tex_table.write('}}\n')
+    
+    def table_header(self):
+        header = '\t\t\hline\n'
+        header += f'\t\t\\multicolumn{{{self.table_column_count}}}{{c|}}{{Abstract Table}} {self.EOL}\n'
+        header += '\t\t\\hline\n'
+        return header
+
 
 ############################# 
 #                           #
@@ -192,3 +249,9 @@ def details_data_formatted(data):
 
 def label_formatted(label=''):
     return label[:6]
+
+
+if __name__ == '__main__':
+    t = TexTable()
+    del t
+    
