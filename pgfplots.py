@@ -7,7 +7,7 @@ __copyright__ = "Copyright 2020 – Ansgar Asseburg; " \
 __email__ = "s2092795@stud.uni-frankfurt.de"
 
 from pathlib import Path
-from formatting import timestamp
+import time
 
 
 def init_pgfplots_file(tex_path, title="", x_label='x', y_label='y',
@@ -75,3 +75,7 @@ def find_insertion_index_for(key, string_list):
     insertion_list = [s for s in string_list if insertion_points_to_find[key] in s]
     insertion_index = string_list.index(insertion_list[0])
     return string_list.index(insertion_list[0])
+
+
+def timestamp():
+    return time.strftime("%Y-%m-%d %H:%M:%S")

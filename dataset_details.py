@@ -69,7 +69,7 @@ def dataset_properties(X_train, y_train, X_test):
     distribution_sum = sum(distribution)
     imbalance = (max(distribution) - min(distribution))/distribution_sum
     imbalance_str = f'{imbalance * 100:.2f}%'
-    ratios = [f'{x/distribution_sum*100:.2f}%' for x in distribution]
+    ratios = [x/distribution_sum for x in distribution]
     return {
 
         'num_of_train_instances': len(X_train),
@@ -87,8 +87,7 @@ def dataset_properties(X_train, y_train, X_test):
 def generate_datasets_table(json_path):
     path_dict = fo.path_dictionary(json_path)
     dataset_archive = path_dict['archive']
-    
-    frm.progress_start('Writing datasets details table')
+
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -97,13 +96,16 @@ def generate_datasets_table(json_path):
         properties = list(data[datasets[0]].keys())
         properties.pop()  # remove class_ratios
 
-        table_file_name = f'table_{dataset_archive}_datasets.tex'
+        table_file_name = f'table_datasets_details.tex'
         table_path = Path(path_dict['tex_dir'], table_file_name)
 
         table_caption = 'Datasets Details'
         table_label = 'datasets_details'
 
-        columns_formatter = f'|ll|{"r" * (len(properties) - 2)}'
+        columns_formatter = f'|ll|{"r" * (len(properties) - 2)}|'  # works as list since all formats are single chars
+
+        frm.progress_start(f'Writing datasets imbalance table {table_file_name}')
+
         details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties)
 
         # iterate through all datasets
@@ -122,7 +124,6 @@ def generate_imbalance_table(json_path):
     path_dict = fo.path_dictionary(json_path)
     dataset_archive = path_dict['archive']
 
-    frm.progress_start('Writing datasets details table')
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -136,7 +137,10 @@ def generate_imbalance_table(json_path):
         table_caption = 'Datasets Class Ratios'
         table_label = 'datasets-class-ratios'
 
-        columns_formatter = '|ll|l|'
+        columns_formatter = ['|', 'l', 'l', '|', 'p{17cm}', '|']
+
+        frm.progress_start(f'Writing datasets details table {table_file_name}')
+
         imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties)
 
         # iterate through all datasets
@@ -152,8 +156,10 @@ def generate_imbalance_table(json_path):
 if __name__ == '__main__':
     # generate json file with dataset details
     # generate_datasets_details(datasets_details_json_path, datasets)
+
     # generate the datasets details table
-    # generate_datasets_table(datasets_details_json_path)
+    generate_datasets_table(datasets_details_json_path)
+
     # generate datasets imbalance table
     generate_imbalance_table(datasets_details_json_path)
     

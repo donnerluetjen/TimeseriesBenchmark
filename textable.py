@@ -14,7 +14,7 @@ class TexTable:
     
     EOL = '\\\\'
     
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lll',
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table'):
         """
         :param tex_path: string containing the tex file path
@@ -22,16 +22,19 @@ class TexTable:
         :param caption: string containing the table caption
         :param label: string containing the table label, will be expanded to tab:<label>
         """
-        self.table_columns_formatter = table_columns_formatter
+        if table_columns_formatter is None:
+            table_columns_formatter = 'lll'
+        self.table_columns_formatter = ''.join(table_columns_formatter)
         self.tex_path = Path(tex_path)
         self.caption = caption
         self.label = label
-        self.table_column_count = len(self.table_columns_formatter.replace('|', ''))
+        self.table_column_count = len([cf for cf in table_columns_formatter if cf != '|'])
         
         with open(self.tex_path, 'w') as tex_table:
             tex_table.write('% This file is created by the python textable class.')
             tex_table.write(f' It was created at {self.timestamp()}\n')
-            tex_table.write(f'\t\\begin{{longtable}}{{{table_columns_formatter}}}\n')
+            tex_table.write('{\\tiny\n')
+            tex_table.write(f'\t\\begin{{longtable}}{{{self.table_columns_formatter}}}\n')
             tex_table.write('\n')
             tex_table.write(self.table_header())
             tex_table.write(f'\t\t\\endfirsthead\n')
@@ -63,7 +66,7 @@ class TexTable:
             tex_table.write(f'\t\t\\caption{{{self.caption}}}\n')
             tex_table.write(f'\t\t\\label{{tab:{self.label}}}\n')
             tex_table.write(f'\t\\end{{longtable}}\n')
-            tex_table.write('}}\n')
+            tex_table.write('}\n')
     
     def table_header(self):
         header = '\t\t\\hline\n'
@@ -71,24 +74,30 @@ class TexTable:
         header += '\t\t\\hline\n'
         return header
 
-    def add_line(self, data=None):
+    def add_line(self, data=None, bold=None):
+        """
+        :param data: list of data to be added
+        :param bold: list that indicate which data to print bold
+        :return: nothing
+        """
         if data is None:
             data = ['An', 'abstract', 'table']
+        formatted_data = self.format_data(data, bold)
         with open(self.tex_path, 'a') as tex_table:
-            tex_table.write(f'\t\t{" & ".join(data)} {self.EOL}\n')
+            tex_table.write(f'\t\t{" & ".join(formatted_data)} {self.EOL}\n')
 
-    def format_data(self, data, highscores=None):
+    def format_data(self, data, bold=None):
+        if bold is None:
+            bold = [False for _ in data]
         result = []
         index_offset = 0
         for index, datum in enumerate(data):
             if isinstance(datum, str):
-                result.append(datum)
+                result.append(datum if not bold[index] else f'\\textbf{{{datum}}}')
                 index_offset += 1
             else:
-                if datum == highscores[(index - index_offset) % len(highscores)]:
-                    result.append(f'$\\boldsymbol{{{self.float_format_pattern() % datum}}}$')
-                else:
-                    result.append(f'${self.float_format_pattern() % datum}$')
+                number_data = f'{self.float_format_pattern() % datum}'
+                result.append(f'${number_data}$' if not bold[index] else f'$\\boldsymbol{{{number_data}}}$')
         return result
 
     def float_format_pattern(self):
@@ -116,8 +125,8 @@ class TexTable:
 
 
 class ScoreTexTable(TexTable):
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lcccccc',
-                 caption='abstract table', label='tab:abstract-table',
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table',
                  metrics=None, scores=None):
         """
 
@@ -154,7 +163,7 @@ class ScoreTexTable(TexTable):
 
 class DetailsTexTable(TexTable):
 
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter='lcccccc',
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='tab:abstract-table',
                  properties=None):
         """
@@ -200,10 +209,11 @@ class ImbalanceTexTable(DetailsTexTable):
 
     def format_details(self, data):
         connector = ' - '
-        return data[:2] + [connector.join([self.format_percent(str(x)) for x in data[-1]])]
+        number_formatted_data_strings_list = self.format_ratios(data[2])
+        return data[:2] + [connector.join(number_formatted_data_strings_list)]
 
-    def format_percent(self, data_string):
-        return data_string.replace('%', '\\%')
+    def format_ratios(self, data):
+        return [f'{x*100:.0f}\\%' for x in data]
 
 
 if __name__ == '__main__':
