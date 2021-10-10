@@ -13,9 +13,8 @@ from pathlib import Path
 import pgfplots as pp
 import textable as tt
 import file_ops as fo
-from selected_datasets import datasets
 from dataset_details import datasets_details_json_path
-import formatting as frm
+import progress as p
 import json
 
 
@@ -104,7 +103,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
             # table_column_formatter works as formatter list since all formats are single chars
             table_column_formatter = f'|l|{"|".join(score_columns_formatter for i in range(len(table_metrics_scheme)))}|'
 
-            frm.progress_start(f'Writing datasets scoring table {table_file_name}')
+            p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
             scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
                                             table_caption, table_label, table_metrics_scheme, scores)
@@ -120,9 +119,9 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
                         format_bold.append(True if high_scores[dataset][score] == metric else False)
                 scores_table.add_line(table_line_list, format_bold)
 
-                frm.progress_increase()
+                p.progress_increase()
             del scores_table  # to make sure destructor is called
-            frm.progress_end()
+            p.progress_end()
 
 
 def datasets_high_scores(data=None):

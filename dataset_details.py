@@ -9,7 +9,7 @@ from sktime_dataset_analyses import count_of_missing_values_in_sktime_df, \
     has_equal_length_in_all_time_series
 
 from selected_datasets import datasets
-import formatting as frm
+import progress as p
 import textable as tt
 
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'
@@ -34,10 +34,10 @@ def generate_datasets_details(json_path, datasets):
         - class ratios
     """
     result_dict = {}
-    frm.progress_start('Processing datasets')
+    p.progress_start('Processing datasets')
     # load dataset
     for index, dataset in enumerate(datasets):
-        frm.progress_increase()
+        p.progress_increase()
         result_dict[dataset] = {}
         short_name = f'DS {index + 1}'
         result_dict[dataset]['short_name'] = short_name
@@ -49,7 +49,7 @@ def generate_datasets_details(json_path, datasets):
         properties = dataset_properties(X_train, y_train, y_test)
         result_dict[dataset].update(properties)
         fo.writeJson(datasets_details_json_path, result_dict)
-    frm.progress_end()
+    p.progress_end()
 
 
 def dataset_properties(X_train, y_train, X_test):
@@ -101,22 +101,22 @@ def generate_details_tables(json_path):
         table_caption = 'Datasets Details'
         table_label = 'datasets_details'
 
-        columns_formatter = f'|ll|{"r" * (len(properties) - 2)}|'  # works as list since all formats are single chars
+        columns_formatter = f'|ll|{"c" * (len(properties) - 2)}|'  # works as list since all formats are single chars
 
-        frm.progress_start(f'Writing datasets imbalance table {table_file_name}')
+        p.progress_start(f'Writing datasets imbalance table {table_file_name}')
 
         details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties)
 
         # iterate through all datasets
         for dataset in datasets:
-            frm.progress_increase()
+            p.progress_increase()
             dataset_data = data[dataset]
             dataset_values = list(dataset_data.values())
             dataset_values.pop()  # remove class_ratios
             details_table.add_line(details_table.format_details(dataset_values))
 
         del details_table
-        frm.progress_end()
+        p.progress_end()
 
 
 def generate_imbalance_table(json_path):
@@ -137,19 +137,19 @@ def generate_imbalance_table(json_path):
 
         columns_formatter = ['|', 'l', 'l', '|', 'p{17cm}', '|']
 
-        frm.progress_start(f'Writing datasets details table {table_file_name}')
+        p.progress_start(f'Writing datasets details table {table_file_name}')
 
         imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties)
 
         # iterate through all datasets
         for dataset in datasets:
-            frm.progress_increase()
+            p.progress_increase()
             dataset_data = data[dataset]
             dataset_values = [dataset_data[prop] for prop in properties]
             imbalance_table.add_line(imbalance_table.format_details(dataset_values))
 
         del imbalance_table
-        frm.progress_end()
+        p.progress_end()
 
 if __name__ == '__main__':
     # generate json file with dataset details
