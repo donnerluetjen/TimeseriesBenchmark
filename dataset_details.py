@@ -59,10 +59,9 @@ def dataset_properties(X_train, y_train, X_test):
     :param y_train: an sktime numpy ndarray
     :param X_test: an sktime numpy ndarray
     :return: a dictionary containing the following keys:
-        num_of_dimensions, num_of_instances,
+        num_of_train_instances, num_of_test_instances, num_of_dimensions,
         num_of_timestamps, num_of_classes,
-        unique_lengths, missing_values_count,
-        len train set, len test set,
+        missing_values_count, unique_lengths,
         imbalance, class_ratios
     """
     distribution = list(y_train.value_counts())
