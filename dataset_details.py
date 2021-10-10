@@ -84,9 +84,8 @@ def dataset_properties(X_train, y_train, X_test):
     }
 
 
-def generate_datasets_table(json_path):
+def generate_details_tables(json_path):
     path_dict = fo.path_dictionary(json_path)
-    dataset_archive = path_dict['archive']
 
     with open(json_path) as json_file:
         data = json.load(json_file)
@@ -122,7 +121,6 @@ def generate_datasets_table(json_path):
 
 def generate_imbalance_table(json_path):
     path_dict = fo.path_dictionary(json_path)
-    dataset_archive = path_dict['archive']
 
     with open(json_path) as json_file:
         data = json.load(json_file)
@@ -158,7 +156,7 @@ if __name__ == '__main__':
     # generate_datasets_details(datasets_details_json_path, datasets)
 
     # generate the datasets details table
-    generate_datasets_table(datasets_details_json_path)
+    generate_details_tables(datasets_details_json_path)
 
     # generate datasets imbalance table
     generate_imbalance_table(datasets_details_json_path)
