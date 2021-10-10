@@ -99,7 +99,7 @@ def generate_details_tables(json_path):
         table_path = Path(path_dict['tex_dir'], table_file_name)
 
         table_caption = 'Datasets Details'
-        table_label = 'datasets_details'
+        table_label = 'datasets-details'
 
         columns_formatter = f'|ll|{"c" * (len(properties) - 2)}|'  # works as list since all formats are single chars
 
