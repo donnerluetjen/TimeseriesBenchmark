@@ -9,3 +9,5 @@ Benchmarks/tex/
 .DS_Store
 
 Benchmarks/json/datasets_details.json
+
+.idea/
