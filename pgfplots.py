@@ -15,6 +15,7 @@ class TexPlots:
         self.caption = caption
         self.x_label = x_label
         self.y_label = y_label
+        self.marks_only = ''  # or '[only marks]'
         self.inline_tables = []
         self.inline_plots = []
         self.inline_legends = []
@@ -60,9 +61,7 @@ class TexPlots:
             self.plot_line(data_name)
 
     def plot_line(self, plot_entry):
-        marks_only = '[only marks]'
-        marks_only = ''
-        inline_plot = [f'\t\t\\addplot+ {marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{plot_entry}}};']
+        inline_plot = [f'\t\t\\addplot+ {self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{plot_entry}}};']
         self.inline_plots.append(inline_plot)
         legend = [f'\t\t\\addlegendentry{{{plot_entry}}}']
         self.inline_legends.append(legend)
