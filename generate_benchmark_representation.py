@@ -32,10 +32,10 @@ def ranking(scores, do_not_rank=[]):
     return sqrt(squared_result)
 
 
-def generate_average_diagram(json_path, table_name_specific='', score_name='ranking', do_not_rank=[]):
+def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking', do_not_rank=[]):
     path_dict = fo.path_dictionary(json_path)
-    pgf_path = Path(path_dict['tex_dir'],
-                    f'pgfplot_{score_name}_{"".join([c for c in table_name_specific if c != " "])}.tex')
+    plot_file_name = f'pgfplot_{score_name}_{"".join([c for c in plot_name_specific if c != " "])}.tex'
+    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
     with open(json_path) as json_file:
         data = json.load(json_file)
 
@@ -44,10 +44,8 @@ def generate_average_diagram(json_path, table_name_specific='', score_name='rank
         metrics = list(data[datasets[0]].keys())
         metrics.remove('properties')
 
-        header = ['metric', f'average-{score_name}', 'average-runtime']
-        pp.init_pgfplots_file(pgf_path,
-                              f'Mean {score_name.capitalize()} vs. Mean Runtime',
-                              'Mean Runtime', f'Mean {score_name.capitalize()}')
+        p.progress_start(f'Writing datasets plots {plot_file_name}')
+        plot = pp.TexPlots(pgf_path, score_name.capitalize(), 'Mean Runtime', f'Mean {score_name.capitalize()}')
 
         for metric in metrics:
             # iterate over datasets for metric and find averages
@@ -61,7 +59,10 @@ def generate_average_diagram(json_path, table_name_specific='', score_name='rank
                 accumulated_runtime += data[dataset][metric]['runtime']
 
             table_data = [[accumulated_runtime / len(datasets), accumulated_scoring / len(datasets)]]
-            pp.add_table(pgf_path, metric, table_data)
+            plot.add_data(metric, table_data)
+            p.progress_increase()
+        del plot  # to ensure destructor is called before program exits
+        p.progress_end()
 
 
 def generate_table(json_path, dataset_details_file, table_name_specific='', split_table_metrics=[], do_not_rank=[]):
@@ -166,8 +167,8 @@ if __name__ == '__main__':
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
                            f'size={wws}', ['agdtw', 'dagdtw', 'sdtw'])
-            generate_average_diagram(json_store + json_file, f'wws={wws}', 'ranking')
-            generate_average_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-            generate_average_diagram(json_store + json_file, f'wws={wws}', 'recall')
-            generate_average_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
-            generate_average_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')

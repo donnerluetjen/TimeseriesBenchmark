@@ -1,5 +1,5 @@
 __author__ = "6541262: Ansgar Asseburg"
-__copyright__ = "Copyright 2020 – Ansgar Asseburg; " \
+__copyright__ = "Copyright 2021 – Ansgar Asseburg; " \
                 "You may use and copy this document (including changing it) " \
                 "for non-commercial and educational purposes" \
                 "as long as you leave the author and this copyright " \

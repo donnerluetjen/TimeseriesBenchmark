@@ -185,8 +185,7 @@ class TimeseriesBenchmark:
                     'arguments'] = self.metric_arguments
                 self.predict()
                 self.score()
-                self.result_dict[dataset][metric][
-                    'accuracy'] = self.accuracy_score
+                self.result_dict[dataset][metric]['accuracy'] = self.accuracy_score
                 self.result_dict[dataset][metric]['recall'] = self.recall_score
                 self.result_dict[dataset][metric]['f1-score'] = self.f1_score
                 self.result_dict[dataset][metric]['auroc'] = self.auroc_score
