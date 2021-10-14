@@ -11,9 +11,8 @@ import time
 
 
 class TexTable:
-    
     EOL = '\\\\'
-    
+
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table'):
         """
@@ -29,7 +28,7 @@ class TexTable:
         self.caption = caption
         self.label = label
         self.table_column_count = len([cf for cf in table_columns_formatter if cf != '|'])
-        
+
         with open(self.tex_path, 'w') as tex_table:
             tex_table.write('% This file is created by the python textable class.')
             tex_table.write(f' It was created at {self.timestamp()}\n')
@@ -56,7 +55,7 @@ class TexTable:
             tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
             tex_table.write(f'\t\t\\endlastfoot\n')
             tex_table.write('\n')
-    
+
     def __del__(self):
         """
             this function opens the tex file for writing and writes the table ending
@@ -67,7 +66,7 @@ class TexTable:
             tex_table.write(f'\t\t\\label{{tab:{self.label}}}\n')
             tex_table.write(f'\t\\end{{longtable}}\n')
             tex_table.write('}\n')
-    
+
     def table_header(self):
         header = '\t\t\\hline\n'
         header += f'\t\t\\multicolumn{{{self.table_column_count}}}{{c|}}{{Abstract Table}} {self.EOL}\n'
@@ -137,7 +136,7 @@ class ScoreTexTable(TexTable):
         :param metrics: list containing the strings with metric names
         :param scores: list containing strings with score names
         """
-        self.metrics = ['placeholder', 'metric'] if metrics is None else  metrics
+        self.metrics = ['placeholder', 'metric'] if metrics is None else metrics
         self.scores = ['initialize', 'header', 'columns'] if scores is None else scores
         super().__init__(tex_path, table_columns_formatter, caption, label)
 
@@ -150,7 +149,7 @@ class ScoreTexTable(TexTable):
 
         metrics_header = '\t\t'
         for metric in self.metrics:
-            metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{metric}}} '
+            metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{self.header_translation(metric)}}} '
 
         header += f'{metrics_header}{self.EOL}\n'
 
@@ -159,6 +158,16 @@ class ScoreTexTable(TexTable):
         header += f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}\n'
         header += '\t\t\\hline\n'
         return header
+
+    def header_translation(self, header=''):
+        header_translations = {'dagdtw': 'DAGDTW \\cite{{xue2017altered}}',
+                               'agdtw': 'AGDTW \\cite{{xue2017altered}}',
+                               'dtw': 'DTW',
+                               'sdtw': 'SDTW \\cite{{cuturi2017soft}}',
+                               'ddtw': 'DDTW \\cite{{keogh2001derivative}}',
+                               'wdtw': 'WDTW \\cite{{jeong2011weighted}}',
+                               'wddtw': 'WWDTW \\cite{{jeong2011weighted}}'}
+        return header_translations[header]
 
 
 class DetailsTexTable(TexTable):
@@ -213,7 +222,7 @@ class ImbalanceTexTable(DetailsTexTable):
         return data[:2] + [connector.join(number_formatted_data_strings_list)]
 
     def format_ratios(self, data):
-        return [f'{x*100:.0f}\\%' for x in data]
+        return [f'{x * 100:.0f}\\%' for x in data]
 
 
 if __name__ == '__main__':
