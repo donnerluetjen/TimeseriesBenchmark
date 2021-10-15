@@ -161,7 +161,7 @@ class ScoreTexTable(TexTable):
 
     def header_translation(self, header=''):
         header_translations = {'dagdtw': 'DAGDTW (sect. \\ref{sct:dagdtw})',
-                               'agdtw': 'BAGDTW (sect. \\ref{sct:bagdtw})',
+                               'bagdtw': 'BAGDTW (sect. \\ref{sct:bagdtw})',
                                'dtw': 'DTW \\cite{bellman1959adaptive}',
                                'sdtw': 'SDTW \\cite{cuturi2017soft}',
                                'ddtw': 'DDTW \\cite{keogh2001derivative}',

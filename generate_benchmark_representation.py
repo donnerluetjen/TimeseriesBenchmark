@@ -166,7 +166,7 @@ if __name__ == '__main__':
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}', ['agdtw', 'dagdtw', 'sdtw'])
+                           f'size={wws}', ['bagdtw', 'dagdtw', 'sdtw'])
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
             # generate_score_diagram(json_store + json_file, f'wws={wws}', 'specificity')
