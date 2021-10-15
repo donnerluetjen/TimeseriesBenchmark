@@ -47,5 +47,5 @@ if __name__ == '__main__':
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
-            # update_agdtw_key(json_store + json_file)
+            update_agdtw_key(json_store + json_file)
             sort_keys(json_store + json_file)

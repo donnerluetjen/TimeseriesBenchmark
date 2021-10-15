@@ -8,6 +8,22 @@
                   "unique_lengths": true,
                   "missing_values_count": 0
             },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3611111111111111,
+                  "recall": 0.3844603174603175,
+                  "f1-score": 0.32963192328827007,
+                  "auroc": 0.6794064153439153,
+                  "runtime": 248.81951001999997
+            },
             "dagdtw": {
                   "arguments": {
                         "sigma": 1,
@@ -24,21 +40,17 @@
                   "auroc": 0.6184441137566138,
                   "runtime": 103.371065466
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.3611111111111111,
-                  "recall": 0.3844603174603175,
-                  "f1-score": 0.32963192328827007,
-                  "auroc": 0.6794064153439153,
-                  "runtime": 248.81951001999997
+                  "accuracy": 0.08333333333333333,
+                  "recall": 0.10242857142857142,
+                  "f1-score": 0.08577062619919763,
+                  "auroc": 0.532514880952381,
+                  "runtime": 5.692299900999956
             },
             "dtw": {
                   "arguments": {
@@ -64,9 +76,9 @@
                   "auroc": 0.6036871693121694,
                   "runtime": 93.44623999299995
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -74,7 +86,7 @@
                   "recall": 0.10242857142857142,
                   "f1-score": 0.08577062619919763,
                   "auroc": 0.532514880952381,
-                  "runtime": 5.692299900999956
+                  "runtime": 7.7565286459999925
             },
             "wdtw": {
                   "arguments": {
@@ -87,18 +99,6 @@
                   "f1-score": 0.3034837006818431,
                   "auroc": 0.6696593915343916,
                   "runtime": 7.124943936000022
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.08333333333333333,
-                  "recall": 0.10242857142857142,
-                  "f1-score": 0.08577062619919763,
-                  "auroc": 0.532514880952381,
-                  "runtime": 7.7565286459999925
             }
       },
       "AtrialFibrillation": {
@@ -109,6 +109,22 @@
                   "num_of_classes": 3,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.4166666666666667,
+                  "f1-score": 0.4166666666666667,
+                  "auroc": 0.5625,
+                  "runtime": 3.1074046140000746
             },
             "dagdtw": {
                   "arguments": {
@@ -126,21 +142,17 @@
                   "auroc": 0.6875,
                   "runtime": 1.1362876440000491
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5,
-                  "recall": 0.4166666666666667,
-                  "f1-score": 0.4166666666666667,
-                  "auroc": 0.5625,
-                  "runtime": 3.1074046140000746
+                  "accuracy": 0.25,
+                  "recall": 0.25,
+                  "f1-score": 0.21666666666666667,
+                  "auroc": 0.4375,
+                  "runtime": 0.0159227420000434
             },
             "dtw": {
                   "arguments": {
@@ -166,9 +178,9 @@
                   "auroc": 0.5625,
                   "runtime": 4.0139851249999765
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -176,7 +188,7 @@
                   "recall": 0.25,
                   "f1-score": 0.21666666666666667,
                   "auroc": 0.4375,
-                  "runtime": 0.0159227420000434
+                  "runtime": 0.01633552599992072
             },
             "wdtw": {
                   "arguments": {
@@ -189,18 +201,6 @@
                   "f1-score": 0.5,
                   "auroc": 0.625,
                   "runtime": 0.01455759499992837
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.25,
-                  "recall": 0.25,
-                  "f1-score": 0.21666666666666667,
-                  "auroc": 0.4375,
-                  "runtime": 0.01633552599992072
             }
       },
       "BasicMotions": {
@@ -211,6 +211,22 @@
                   "num_of_classes": 4,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9,
+                  "f1-score": 0.8647727272727272,
+                  "auroc": 0.9333333333333332,
+                  "runtime": 1.968291188999956
             },
             "dagdtw": {
                   "arguments": {
@@ -228,21 +244,17 @@
                   "auroc": 0.75,
                   "runtime": 0.9419015450000643
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.9,
-                  "recall": 0.9,
-                  "f1-score": 0.8647727272727272,
-                  "auroc": 0.9333333333333332,
-                  "runtime": 1.968291188999956
+                  "accuracy": 0.4,
+                  "recall": 0.38125,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5875,
+                  "runtime": 0.084897318000003
             },
             "dtw": {
                   "arguments": {
@@ -268,9 +280,9 @@
                   "auroc": 0.9666666666666668,
                   "runtime": 1.1387145459999601
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -278,7 +290,7 @@
                   "recall": 0.38125,
                   "f1-score": 0.3333333333333333,
                   "auroc": 0.5875,
-                  "runtime": 0.084897318000003
+                  "runtime": 0.100516209000034
             },
             "wdtw": {
                   "arguments": {
@@ -291,18 +303,6 @@
                   "f1-score": 0.9226190476190477,
                   "auroc": 0.9583333333333334,
                   "runtime": 0.1279525969999895
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.4,
-                  "recall": 0.38125,
-                  "f1-score": 0.3333333333333333,
-                  "auroc": 0.5875,
-                  "runtime": 0.100516209000034
             }
       },
       "Epilepsy": {
@@ -313,6 +313,22 @@
                   "num_of_classes": 4,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8260869565217391,
+                  "recall": 0.807843137254902,
+                  "f1-score": 0.8014583333333334,
+                  "auroc": 0.8718954248366014,
+                  "runtime": 42.633575486000005
             },
             "dagdtw": {
                   "arguments": {
@@ -330,21 +346,17 @@
                   "auroc": 0.9080065359477124,
                   "runtime": 18.905051942
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.8260869565217391,
-                  "recall": 0.807843137254902,
-                  "f1-score": 0.8014583333333334,
-                  "auroc": 0.8718954248366014,
-                  "runtime": 42.633575486000005
+                  "accuracy": 0.37681159420289856,
+                  "recall": 0.37720588235294117,
+                  "f1-score": 0.36140530925013686,
+                  "auroc": 0.5848039215686275,
+                  "runtime": 0.878662079999998
             },
             "dtw": {
                   "arguments": {
@@ -370,9 +382,9 @@
                   "auroc": 0.9287581699346407,
                   "runtime": 36.93992184300001
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -380,7 +392,7 @@
                   "recall": 0.37720588235294117,
                   "f1-score": 0.36140530925013686,
                   "auroc": 0.5848039215686275,
-                  "runtime": 0.878662079999998
+                  "runtime": 0.9766173470000012
             },
             "wdtw": {
                   "arguments": {
@@ -393,18 +405,6 @@
                   "f1-score": 0.7571490845684394,
                   "auroc": 0.8437908496732026,
                   "runtime": 0.7429845909999813
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.37681159420289856,
-                  "recall": 0.37720588235294117,
-                  "f1-score": 0.36140530925013686,
-                  "auroc": 0.5848039215686275,
-                  "runtime": 0.9766173470000012
             }
       },
       "EyesOpenShut": {
@@ -415,6 +415,22 @@
                   "num_of_classes": 2,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.52,
+                  "recall": 0.5160256410256411,
+                  "f1-score": 0.512987012987013,
+                  "auroc": 0.516025641025641,
+                  "runtime": 9.420303512999993
             },
             "dagdtw": {
                   "arguments": {
@@ -432,21 +448,17 @@
                   "auroc": 0.6057692307692308,
                   "runtime": 3.8558998869999925
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.52,
-                  "recall": 0.5160256410256411,
-                  "f1-score": 0.512987012987013,
-                  "auroc": 0.516025641025641,
-                  "runtime": 9.420303512999993
+                  "accuracy": 0.56,
+                  "recall": 0.5641025641025641,
+                  "f1-score": 0.5571658615136876,
+                  "auroc": 0.5641025641025642,
+                  "runtime": 0.20676265700001295
             },
             "dtw": {
                   "arguments": {
@@ -472,9 +484,9 @@
                   "auroc": 0.5961538461538461,
                   "runtime": 2.401152214000007
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -482,7 +494,7 @@
                   "recall": 0.5641025641025641,
                   "f1-score": 0.5571658615136876,
                   "auroc": 0.5641025641025642,
-                  "runtime": 0.20676265700001295
+                  "runtime": 0.37524315899997873
             },
             "wdtw": {
                   "arguments": {
@@ -495,18 +507,6 @@
                   "f1-score": 0.5833333333333334,
                   "auroc": 0.592948717948718,
                   "runtime": 0.39716181299999676
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.56,
-                  "recall": 0.5641025641025641,
-                  "f1-score": 0.5571658615136876,
-                  "auroc": 0.5641025641025642,
-                  "runtime": 0.37524315899997873
             }
       },
       "FingerMovements": {
@@ -517,6 +517,22 @@
                   "num_of_classes": 2,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5014814814814815,
+                  "f1-score": 0.49981502034776176,
+                  "auroc": 0.5014814814814814,
+                  "runtime": 60.76225792600002
             },
             "dagdtw": {
                   "arguments": {
@@ -534,21 +550,17 @@
                   "auroc": 0.544074074074074,
                   "runtime": 29.777294619000003
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5,
-                  "recall": 0.5014814814814815,
-                  "f1-score": 0.49981502034776176,
-                  "auroc": 0.5014814814814814,
-                  "runtime": 60.76225792600002
+                  "accuracy": 0.5192307692307693,
+                  "recall": 0.5170370370370371,
+                  "f1-score": 0.5163690476190476,
+                  "auroc": 0.517037037037037,
+                  "runtime": 4.613065445000018
             },
             "dtw": {
                   "arguments": {
@@ -574,9 +586,9 @@
                   "auroc": 0.5548148148148148,
                   "runtime": 11.975146316999997
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -584,7 +596,7 @@
                   "recall": 0.5170370370370371,
                   "f1-score": 0.5163690476190476,
                   "auroc": 0.517037037037037,
-                  "runtime": 4.613065445000018
+                  "runtime": 16.414906330999997
             },
             "wdtw": {
                   "arguments": {
@@ -597,18 +609,6 @@
                   "f1-score": 0.48806538497260155,
                   "auroc": 0.48851851851851846,
                   "runtime": 15.162060777000022
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.5192307692307693,
-                  "recall": 0.5170370370370371,
-                  "f1-score": 0.5163690476190476,
-                  "auroc": 0.517037037037037,
-                  "runtime": 16.414906330999997
             }
       },
       "HandMovementDirection": {
@@ -619,6 +619,22 @@
                   "num_of_classes": 4,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.22033898305084745,
+                  "recall": 0.22435897435897437,
+                  "f1-score": 0.22369727047146404,
+                  "auroc": 0.4829059829059829,
+                  "runtime": 346.73546772099985
             },
             "dagdtw": {
                   "arguments": {
@@ -636,21 +652,17 @@
                   "auroc": 0.493080993080993,
                   "runtime": 125.71245033999992
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.22033898305084745,
-                  "recall": 0.22435897435897437,
-                  "f1-score": 0.22369727047146404,
-                  "auroc": 0.4829059829059829,
-                  "runtime": 346.73546772099985
+                  "accuracy": 0.15254237288135594,
+                  "recall": 0.16224053724053725,
+                  "f1-score": 0.14936155913978497,
+                  "auroc": 0.4414936914936915,
+                  "runtime": 1.2837289889998829
             },
             "dtw": {
                   "arguments": {
@@ -676,9 +688,9 @@
                   "auroc": 0.4776149776149776,
                   "runtime": 97.35554078199993
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -686,7 +698,7 @@
                   "recall": 0.16224053724053725,
                   "f1-score": 0.14936155913978497,
                   "auroc": 0.4414936914936915,
-                  "runtime": 1.2837289889998829
+                  "runtime": 1.7665340769999602
             },
             "wdtw": {
                   "arguments": {
@@ -699,18 +711,6 @@
                   "f1-score": 0.22048212005108558,
                   "auroc": 0.48911273911273917,
                   "runtime": 1.8381214219998583
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.15254237288135594,
-                  "recall": 0.16224053724053725,
-                  "f1-score": 0.14936155913978497,
-                  "auroc": 0.4414936914936915,
-                  "runtime": 1.7665340769999602
             }
       },
       "Libras": {
@@ -721,6 +721,22 @@
                   "num_of_classes": 15,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5666666666666667,
+                  "recall": 0.563953823953824,
+                  "f1-score": 0.5053163795269059,
+                  "auroc": 0.766403834260977,
+                  "runtime": 4.233650649999845
             },
             "dagdtw": {
                   "arguments": {
@@ -738,21 +754,17 @@
                   "auroc": 0.6936572356215214,
                   "runtime": 2.707687126999872
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5666666666666667,
-                  "recall": 0.563953823953824,
-                  "f1-score": 0.5053163795269059,
-                  "auroc": 0.766403834260977,
-                  "runtime": 4.233650649999845
+                  "accuracy": 0.28888888888888886,
+                  "recall": 0.2454617604617605,
+                  "f1-score": 0.2545560478169174,
+                  "auroc": 0.5957830859616573,
+                  "runtime": 1.031729327999983
             },
             "dtw": {
                   "arguments": {
@@ -778,9 +790,9 @@
                   "auroc": 0.736556895485467,
                   "runtime": 7.370659371999864
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -788,7 +800,7 @@
                   "recall": 0.2454617604617605,
                   "f1-score": 0.2545560478169174,
                   "auroc": 0.5957830859616573,
-                  "runtime": 1.031729327999983
+                  "runtime": 1.16541480900014
             },
             "wdtw": {
                   "arguments": {
@@ -801,18 +813,6 @@
                   "f1-score": 0.43787974209026836,
                   "auroc": 0.7263102968460112,
                   "runtime": 0.8984593150000819
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.28888888888888886,
-                  "recall": 0.2454617604617605,
-                  "f1-score": 0.2545560478169174,
-                  "auroc": 0.5957830859616573,
-                  "runtime": 1.16541480900014
             }
       },
       "NATOPS": {
@@ -823,6 +823,22 @@
                   "num_of_classes": 6,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5777777777777777,
+                  "recall": 0.5979271094402674,
+                  "f1-score": 0.547360400682012,
+                  "auroc": 0.7587562656641604,
+                  "runtime": 40.112581340999895
             },
             "dagdtw": {
                   "arguments": {
@@ -840,21 +856,17 @@
                   "auroc": 0.7629229323308271,
                   "runtime": 20.406801372000018
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5777777777777777,
-                  "recall": 0.5979271094402674,
-                  "f1-score": 0.547360400682012,
-                  "auroc": 0.7587562656641604,
-                  "runtime": 40.112581340999895
+                  "accuracy": 0.37777777777777777,
+                  "recall": 0.37130486472591734,
+                  "f1-score": 0.3691713288487482,
+                  "auroc": 0.6227829188355505,
+                  "runtime": 3.1961440039999616
             },
             "dtw": {
                   "arguments": {
@@ -880,9 +892,9 @@
                   "auroc": 0.7109179197994988,
                   "runtime": 9.0765810769999
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -890,7 +902,7 @@
                   "recall": 0.37130486472591734,
                   "f1-score": 0.3691713288487482,
                   "auroc": 0.6227829188355505,
-                  "runtime": 3.1961440039999616
+                  "runtime": 10.275343181999915
             },
             "wdtw": {
                   "arguments": {
@@ -903,18 +915,6 @@
                   "f1-score": 0.45272335282477266,
                   "auroc": 0.7078477443609023,
                   "runtime": 9.320877057999951
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.37777777777777777,
-                  "recall": 0.37130486472591734,
-                  "f1-score": 0.3691713288487482,
-                  "auroc": 0.6227829188355505,
-                  "runtime": 10.275343181999915
             }
       },
       "RacketSports": {
@@ -925,6 +925,22 @@
                   "num_of_classes": 4,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7763157894736842,
+                  "recall": 0.7745915967454868,
+                  "f1-score": 0.7707945742989548,
+                  "auroc": 0.8497277311636579,
+                  "runtime": 3.668080848000045
             },
             "dagdtw": {
                   "arguments": {
@@ -942,21 +958,17 @@
                   "auroc": 0.698968132892618,
                   "runtime": 2.0728139929999543
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.7763157894736842,
-                  "recall": 0.7745915967454868,
-                  "f1-score": 0.7707945742989548,
-                  "auroc": 0.8497277311636579,
-                  "runtime": 3.668080848000045
+                  "accuracy": 0.32894736842105265,
+                  "recall": 0.3222492372234935,
+                  "f1-score": 0.31398601398601395,
+                  "auroc": 0.5481661581489956,
+                  "runtime": 1.0428850979999424
             },
             "dtw": {
                   "arguments": {
@@ -982,9 +994,9 @@
                   "auroc": 0.7514169633019748,
                   "runtime": 4.113581893999935
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -992,7 +1004,7 @@
                   "recall": 0.3222492372234935,
                   "f1-score": 0.31398601398601395,
                   "auroc": 0.5481661581489956,
-                  "runtime": 1.0428850979999424
+                  "runtime": 1.4509564909999426
             },
             "wdtw": {
                   "arguments": {
@@ -1005,18 +1017,6 @@
                   "f1-score": 0.6303733031674208,
                   "auroc": 0.7530617001440799,
                   "runtime": 1.1850044489999618
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.32894736842105265,
-                  "recall": 0.3222492372234935,
-                  "f1-score": 0.31398601398601395,
-                  "auroc": 0.5481661581489956,
-                  "runtime": 1.4509564909999426
             }
       },
       "SelfRegulationSCP1": {
@@ -1027,6 +1027,22 @@
                   "num_of_classes": 2,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8297872340425532,
+                  "recall": 0.8290692989524577,
+                  "f1-score": 0.8293666801129488,
+                  "auroc": 0.8290692989524576,
+                  "runtime": 5914.5660561
             },
             "dagdtw": {
                   "arguments": {
@@ -1044,21 +1060,17 @@
                   "auroc": 0.8280620467365027,
                   "runtime": 2127.953879752
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.8297872340425532,
-                  "recall": 0.8290692989524577,
-                  "f1-score": 0.8293666801129488,
-                  "auroc": 0.8290692989524576,
-                  "runtime": 5914.5660561
+                  "accuracy": 0.5957446808510638,
+                  "recall": 0.5954875100725221,
+                  "f1-score": 0.595419078781777,
+                  "auroc": 0.5954875100725221,
+                  "runtime": 6.745015280001098
             },
             "dtw": {
                   "arguments": {
@@ -1084,9 +1096,9 @@
                   "auroc": 0.7839443996776793,
                   "runtime": 2822.9155515580023
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -1094,7 +1106,7 @@
                   "recall": 0.5954875100725221,
                   "f1-score": 0.595419078781777,
                   "auroc": 0.5954875100725221,
-                  "runtime": 6.745015280001098
+                  "runtime": 8.174889112000528
             },
             "wdtw": {
                   "arguments": {
@@ -1107,18 +1119,6 @@
                   "f1-score": 0.8645670087457662,
                   "auroc": 0.8638195004029009,
                   "runtime": 6.865475217000494
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.5957446808510638,
-                  "recall": 0.5954875100725221,
-                  "f1-score": 0.595419078781777,
-                  "auroc": 0.5954875100725221,
-                  "runtime": 8.174889112000528
             }
       },
       "SelfRegulationSCP2": {
@@ -1129,6 +1129,22 @@
                   "num_of_classes": 2,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4842105263157895,
+                  "recall": 0.4865831842576029,
+                  "f1-score": 0.4839818201973174,
+                  "auroc": 0.48658318425760294,
+                  "runtime": 5228.703598413002
             },
             "dagdtw": {
                   "arguments": {
@@ -1146,21 +1162,17 @@
                   "auroc": 0.46533989266547404,
                   "runtime": 1927.9817022790012
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.4842105263157895,
-                  "recall": 0.4865831842576029,
-                  "f1-score": 0.4839818201973174,
-                  "auroc": 0.48658318425760294,
-                  "runtime": 5228.703598413002
+                  "accuracy": 0.5157894736842106,
+                  "recall": 0.5154293381037567,
+                  "f1-score": 0.5144444444444445,
+                  "auroc": 0.5154293381037567,
+                  "runtime": 3.917844725001487
             },
             "dtw": {
                   "arguments": {
@@ -1186,9 +1198,9 @@
                   "auroc": 0.5330948121645797,
                   "runtime": 2137.1051732729975
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -1196,7 +1208,7 @@
                   "recall": 0.5154293381037567,
                   "f1-score": 0.5144444444444445,
                   "auroc": 0.5154293381037567,
-                  "runtime": 3.917844725001487
+                  "runtime": 4.6074145669990685
             },
             "wdtw": {
                   "arguments": {
@@ -1209,18 +1221,6 @@
                   "f1-score": 0.5254745254745254,
                   "auroc": 0.5270572450805009,
                   "runtime": 4.495968023002206
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.5157894736842106,
-                  "recall": 0.5154293381037567,
-                  "f1-score": 0.5144444444444445,
-                  "auroc": 0.5154293381037567,
-                  "runtime": 4.6074145669990685
             }
       },
       "StandWalkJump": {
@@ -1231,6 +1231,22 @@
                   "num_of_classes": 3,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.42857142857142855,
+                  "recall": 0.5555555555555555,
+                  "f1-score": 0.43333333333333335,
+                  "auroc": 0.6666666666666666,
+                  "runtime": 77.91166233900003
             },
             "dagdtw": {
                   "arguments": {
@@ -1248,21 +1264,17 @@
                   "auroc": 0.6666666666666666,
                   "runtime": 28.199606574999052
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.42857142857142855,
-                  "recall": 0.5555555555555555,
-                  "f1-score": 0.43333333333333335,
-                  "auroc": 0.6666666666666666,
-                  "runtime": 77.91166233900003
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.3333333333333333,
+                  "f1-score": 0.09523809523809523,
+                  "auroc": 0.5000000000000001,
+                  "runtime": 0.01995640099630691
             },
             "dtw": {
                   "arguments": {
@@ -1288,9 +1300,9 @@
                   "auroc": 0.6666666666666666,
                   "runtime": 48.413520327005244
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -1298,7 +1310,7 @@
                   "recall": 0.3333333333333333,
                   "f1-score": 0.09523809523809523,
                   "auroc": 0.5000000000000001,
-                  "runtime": 0.01995640099630691
+                  "runtime": 0.026628658997651655
             },
             "wdtw": {
                   "arguments": {
@@ -1311,18 +1323,6 @@
                   "f1-score": 0.5793650793650794,
                   "auroc": 0.75,
                   "runtime": 0.024869926004612353
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.14285714285714285,
-                  "recall": 0.3333333333333333,
-                  "f1-score": 0.09523809523809523,
-                  "auroc": 0.5000000000000001,
-                  "runtime": 0.026628658997651655
             }
       },
       "UWaveGestureLibrary": {
@@ -1333,6 +1333,22 @@
                   "num_of_classes": 8,
                   "unique_lengths": true,
                   "missing_values_count": 0
+            },
+            "bagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.3,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6909090909090909,
+                  "recall": 0.7238839285714286,
+                  "f1-score": 0.6600808578394786,
+                  "auroc": 0.8422193877551021,
+                  "runtime": 236.58901100400544
             },
             "dagdtw": {
                   "arguments": {
@@ -1350,21 +1366,17 @@
                   "auroc": 0.8466836734693878,
                   "runtime": 92.96900440499303
             },
-            "agdtw": {
+            "ddtw": {
                   "arguments": {
-                        "sigma": 1,
-                        "pseudo_distance": true,
-                        "average_aggregation": false,
-                        "window": 0.3,
-                        "distance_composition": 0,
+                        "w": 0.3,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.6909090909090909,
-                  "recall": 0.7238839285714286,
-                  "f1-score": 0.6600808578394786,
-                  "auroc": 0.8422193877551021,
-                  "runtime": 236.58901100400544
+                  "accuracy": 0.2545454545454545,
+                  "recall": 0.28809523809523807,
+                  "f1-score": 0.24993996188049897,
+                  "auroc": 0.5931972789115647,
+                  "runtime": 2.3844453119963873
             },
             "dtw": {
                   "arguments": {
@@ -1390,9 +1402,9 @@
                   "auroc": 0.8389030612244899,
                   "runtime": 206.91821570900356
             },
-            "ddtw": {
+            "wddtw": {
                   "arguments": {
-                        "w": 0.3,
+                        "g": 1,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -1400,7 +1412,7 @@
                   "recall": 0.28809523809523807,
                   "f1-score": 0.24993996188049897,
                   "auroc": 0.5931972789115647,
-                  "runtime": 2.3844453119963873
+                  "runtime": 2.7035456240046187
             },
             "wdtw": {
                   "arguments": {
@@ -1413,18 +1425,6 @@
                   "f1-score": 0.5951214008638686,
                   "auroc": 0.8077097505668933,
                   "runtime": 1.9924111340005766
-            },
-            "wddtw": {
-                  "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.2545454545454545,
-                  "recall": 0.28809523809523807,
-                  "f1-score": 0.24993996188049897,
-                  "auroc": 0.5931972789115647,
-                  "runtime": 2.7035456240046187
             }
       }
 }
