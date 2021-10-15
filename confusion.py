@@ -30,7 +30,7 @@ def add_confusion_values(input_json, output_json):
 
                 # derive confusion values
                 derived_precision = (f1 * recall) / (2 * recall - f1)
-                tp = total * (1 - auroc) / (1 / derived_precision + 1 / recall - 2)
+                tp = total * (1 - accuracy) / (1 / derived_precision + 1 / recall - 2)
                 tn = accuracy * total - tp
                 fp = tp / derived_precision - tp
                 fn = tp / recall - tp
@@ -43,12 +43,12 @@ def add_confusion_values(input_json, output_json):
                 derived_auroc = (fpr * tpr / 2) + (specificity * (1 - tpr) / 2) + (specificity * tpr)
 
                 # store in data
-                data[dataset][metric]['precision'] = derived_precision
-                data[dataset][metric]['specificity'] = specificity
                 data[dataset][metric]['derived-accuracy'] = derived_accuracy
                 data[dataset][metric]['derived-recall'] = derived_recall
                 data[dataset][metric]['derived-f1-score'] = derived_f1_score
                 data[dataset][metric]['derived-auroc'] = derived_auroc
+                data[dataset][metric]['precision'] = derived_precision
+                data[dataset][metric]['specificity'] = specificity
                 data[dataset][metric]['tp'] = tp
                 data[dataset][metric]['tn'] = tn
                 data[dataset][metric]['fp'] = fp
