@@ -74,7 +74,7 @@ class TexPlots:
 
     def create_inline_legend(self):
         for data_name in self.data.keys():
-            legend = [f'\t\t\\addlegendentry{{{data_name}}}']
+            legend = [f'\t\t\\addlegendentry{{{self.header_translation(data_name)}}}']
             self.inline_legends.append(legend)
 
     def add_data(self, data_name, data=None):
@@ -105,6 +105,16 @@ class TexPlots:
                     shift = int(max((min_x_distance - abs(distance)) / 2, 0) * shift_factor)
                     if shift:  # only if <> 0
                         self.plot_shifts[data_to_shift] = -shift if distance < 0 else shift
+
+    def header_translation(self, header=''):
+        header_translations = {'dagdtw': 'DAGDTW (sect. \\ref{sct:dagdtw})',
+                               'agdtw': 'BAGDTW (sect. \\ref{sct:bagdtw})',
+                               'dtw': 'DTW \\cite{bellman1959adaptive}',
+                               'sdtw': 'SDTW \\cite{cuturi2017soft}',
+                               'ddtw': 'DDTW \\cite{keogh2001derivative}',
+                               'wdtw': 'WDTW \\cite{jeong2011weighted}',
+                               'wddtw': 'WWDTW \\cite{jeong2011weighted}'}
+        return header_translations[header]
 
     def timestamp(self):
         return time.strftime("%Y-%m-%d %H:%M:%S")
