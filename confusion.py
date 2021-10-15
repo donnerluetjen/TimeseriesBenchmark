@@ -30,6 +30,7 @@ def add_confusion_values(input_json, output_json):
 
                 # derive confusion values
                 derived_precision = (f1 * recall) / (2 * recall - f1)
+                # FixMe: with accuracy = 1 tp would be 0 ??? if precision = 1 and recall = 1 -> division by zero !!!
                 tp = total * (1 - accuracy) / (1 / derived_precision + 1 / recall - 2)
                 tn = accuracy * total - tp
                 fp = tp / derived_precision - tp
@@ -61,8 +62,16 @@ def add_confusion_values(input_json, output_json):
 
 if __name__ == '__main__':
     json_store = './Benchmarks/json/'
-    json_raw_file = 'UEA_archive_wws--1.json'
-    json_confusion_added_file = 'UEA_archive_wws--1_plus_derived.json'
+    json_files_dict = {
+        '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
+        '0.3': ['UEA_archive_wws-0-3.json', 'UCR_archive_wws-0-3.json'],
+        '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json']
+    }
+    wws_list = ['1.0', '0.3']
 
-    add_confusion_values(json_store + json_raw_file,
-                         json_store + json_confusion_added_file)
+    for wws in wws_list:
+        for json_file in json_files_dict[wws]:
+            json_confusion_added_file = json_file.replace('.', '_plus-derived.')
+
+            add_confusion_values(json_store + json_file,
+                                 json_store + json_confusion_added_file)
