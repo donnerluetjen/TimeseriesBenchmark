@@ -8,6 +8,8 @@ __email__ = "s2092795@stud.uni-frankfurt.de"
 
 from pathlib import Path
 import time
+import math
+
 
 class TexPlots:
     def __init__(self, tex_path='', caption='', x_label='x', y_label='y'):
@@ -16,14 +18,20 @@ class TexPlots:
         self.x_label = x_label
         self.y_label = y_label
         self.marks_only = ''  # or '[only marks]'
+        self.data = {}
+        self.plot_shifts = {}
         self.inline_tables = []
         self.inline_plots = []
         self.inline_legends = []
 
     def __del__(self):
+        self.set_xshift()
+        self.create_inline_table_list()
+        self.create_inline_plot_list()
+        self.create_inline_legend()
         with open(self.tex_path, 'w') as pgf_file:
-            pgf_file.write('% This file is created by the python TexPlots class.')
-            pgf_file.write(f' It was created at {self.timestamp()}\n\n')
+            pgf_file.write(f'% This the {"/".join(self.tex_path.parts[-2:])} file.\n')
+            pgf_file.write(f'% It was created by the python TexPlots class at {self.timestamp()}\n\n')
             pgf_file.write('\\begin{tikzpicture}\n')
             # generate inline tables
             pgf_file.write('\n'.join(['\n'.join(s) for s in self.inline_tables]) + '\n')
@@ -49,22 +57,54 @@ class TexPlots:
             pgf_file.write('\t\\end{axis}\n')
             pgf_file.write('\\end{tikzpicture}\n')
 
-    def add_data(self, data_name, data=None):
-        if data is not None:
-            # write table entry
+    def create_inline_table_list(self):
+        for data_name in self.data.keys():
             inline_table = ['\t\\pgfplotstableread[col sep=comma]{%']
-            for data_row in data:
+            for data_row in self.data[data_name]:
                 inline_table.append('\t\t' + ', '.join(map(str, data_row)))
             inline_table.append(f'\t}}\\{data_name}')
             self.inline_tables.append(inline_table)
-            # generate line for plot
-            self.plot_line(data_name)
 
-    def plot_line(self, plot_entry):
-        inline_plot = [f'\t\t\\addplot+ {self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{plot_entry}}};']
-        self.inline_plots.append(inline_plot)
-        legend = [f'\t\t\\addlegendentry{{{plot_entry}}}']
-        self.inline_legends.append(legend)
+    def create_inline_plot_list(self):
+        for data_name in self.data.keys():
+            xshift = self.plot_shifts[data_name]
+            inline_plot = f'\t\t\\addplot+ [every node/.append style={{xshift={xshift}pt}}] '
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
+            self.inline_plots.append([inline_plot])
+
+    def create_inline_legend(self):
+        for data_name in self.data.keys():
+            legend = [f'\t\t\\addlegendentry{{{data_name}}}']
+            self.inline_legends.append(legend)
+
+    def add_data(self, data_name, data=None):
+        if data is not None:
+            self.data[data_name] = data
+
+    def set_xshift(self):
+        min_y_distance = .02
+        min_x_distance = .5
+        shift_factor = 30
+        for data_to_shift in self.data:
+            shift = 0
+            self.plot_shifts[data_to_shift] = shift  # initialise xshift to 0
+            for comparing_data in self.data:
+                if comparing_data == data_to_shift:
+                    continue  # ignore same entry
+
+                # for easier reading
+                data_to_shift_y = self.data[data_to_shift][0][1]
+                comparing_data_y = self.data[comparing_data][0][1]
+
+                if abs(comparing_data_y - data_to_shift_y) <= min_y_distance:
+                    # for linear comparison
+                    data_to_shift_x = math.log10(self.data[data_to_shift][0][0])
+                    comparing_data_x = math.log10(self.data[comparing_data][0][0])
+                    distance = data_to_shift_x - comparing_data_x
+
+                    shift = int(max((min_x_distance - abs(distance)) / 2, 0) * shift_factor)
+                    if shift:  # only if <> 0
+                        self.plot_shifts[data_to_shift] = -shift if distance < 0 else shift
 
     def timestamp(self):
         return time.strftime("%Y-%m-%d %H:%M:%S")
