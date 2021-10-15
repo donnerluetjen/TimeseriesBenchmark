@@ -169,6 +169,7 @@ if __name__ == '__main__':
                            f'size={wws}', ['agdtw', 'dagdtw', 'sdtw'])
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+            # generate_score_diagram(json_store + json_file, f'wws={wws}', 'specificity')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
