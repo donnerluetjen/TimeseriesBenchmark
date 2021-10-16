@@ -1,0 +1,56 @@
+% This the UEA_archive_wws-0-3/pgfplot_accuracy_wws=0.3.tex file.
+% It was created by the python TexPlots class at 2021-10-16 13:33:42
+
+\begin{tikzpicture}
+	\pgfplotstableread[col sep=comma]{%
+		872.8022465117148, 0.584412540317192
+	}\bagdtw
+	\pgfplotstableread[col sep=comma]{%
+		320.42796049614236, 0.5603672295922861
+	}\dagdtw
+	\pgfplotstableread[col sep=comma]{%
+		2.2223828057139343, 0.34617634690528204
+	}\ddtw
+	\pgfplotstableread[col sep=comma]{%
+		1.8199050099285918, 0.5741559859255861
+	}\dtw
+	\pgfplotstableread[col sep=comma]{%
+		391.6559988592863, 0.5728286003689818
+	}\sdtw
+	\pgfplotstableread[col sep=comma]{%
+		3.9864909813572678, 0.34617634690528204
+	}\wddtw
+	\pgfplotstableread[col sep=comma]{%
+		3.58506056092912, 0.5741559859255861
+	}\wdtw
+	\begin{axis}[
+		table/col sep = comma,
+		xmode = log,
+		xlabel = {Mean Runtime},
+		ylabel = {Mean Accuracy},
+		grid = both,
+		grid style={line width=.2pt, draw=gray!10},
+		major grid style={line width=.2pt,draw=gray!50},
+		minor tick num=5,
+		legend cell align={left},
+		legend pos = south east,
+		legend style={nodes={scale=0.7, transform shape}},
+		clip=false, % avoid clipping at edge of diagram
+		nodes near coords, % print the value near node
+	]
+		\addplot+ [every node/.append style={xshift=2pt}]  table[ x index = {0}, y index = {1}]{\bagdtw};
+		\addplot+ [every node/.append style={xshift=-6pt}]  table[ x index = {0}, y index = {1}]{\dagdtw};
+		\addplot+ [every node/.append style={xshift=-3pt}]  table[ x index = {0}, y index = {1}]{\ddtw};
+		\addplot+ [every node/.append style={xshift=-3pt}]  table[ x index = {0}, y index = {1}]{\dtw};
+		\addplot+ [every node/.append style={xshift=6pt}]  table[ x index = {0}, y index = {1}]{\sdtw};
+		\addplot+ [every node/.append style={xshift=3pt}]  table[ x index = {0}, y index = {1}]{\wddtw};
+		\addplot+ [every node/.append style={xshift=3pt}]  table[ x index = {0}, y index = {1}]{\wdtw};
+		\addlegendentry{BAGDTW (sect. \ref{sct:bagdtw})}
+		\addlegendentry{DAGDTW (sect. \ref{sct:dagdtw})}
+		\addlegendentry{DDTW \cite{keogh2001derivative}}
+		\addlegendentry{DTW \cite{bellman1959adaptive}}
+		\addlegendentry{SDTW \cite{cuturi2017soft}}
+		\addlegendentry{WWDTW \cite{jeong2011weighted}}
+		\addlegendentry{WDTW \cite{jeong2011weighted}}
+	\end{axis}
+\end{tikzpicture}

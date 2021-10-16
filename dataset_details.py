@@ -15,7 +15,7 @@ import textable as tt
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'
 
 
-def generate_datasets_details(json_path, datasets):
+def generate_datasets_details(datasets):
     """
     loads datasets and generates analytics for them
     :param datasets: a list of datasets to be analyzed
@@ -152,7 +152,7 @@ def generate_imbalance_table(json_path):
 
 if __name__ == '__main__':
     # generate json file with dataset details
-    # generate_datasets_details(datasets_details_json_path, datasets)
+    generate_datasets_details(datasets)
 
     # generate the datasets details table
     generate_details_tables(datasets_details_json_path)

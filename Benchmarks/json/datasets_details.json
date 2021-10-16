@@ -1,0 +1,1343 @@
+{
+      "ArticularyWordRecognition": {
+            "short_name": "DS 1",
+            "name": "ArticularyWordRecognition",
+            "num_of_train_instances": 431,
+            "num_of_test_instances": 144,
+            "num_of_dimensions": 9,
+            "num_of_timestamps": 144,
+            "num_of_classes": 25,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.62%",
+            "class_ratios": [
+                  0.048723897911832945,
+                  0.04640371229698376,
+                  0.04640371229698376,
+                  0.04640371229698376,
+                  0.04640371229698376,
+                  0.04408352668213457,
+                  0.04408352668213457,
+                  0.04408352668213457,
+                  0.04408352668213457,
+                  0.04408352668213457,
+                  0.03944315545243619,
+                  0.03944315545243619,
+                  0.03944315545243619,
+                  0.03944315545243619,
+                  0.037122969837587005,
+                  0.037122969837587005,
+                  0.037122969837587005,
+                  0.037122969837587005,
+                  0.037122969837587005,
+                  0.03480278422273782,
+                  0.03480278422273782,
+                  0.03480278422273782,
+                  0.03248259860788863,
+                  0.03248259860788863,
+                  0.03248259860788863
+            ]
+      },
+      "AtrialFibrillation": {
+            "short_name": "DS 2",
+            "name": "AtrialFibrillation",
+            "num_of_train_instances": 22,
+            "num_of_test_instances": 8,
+            "num_of_dimensions": 2,
+            "num_of_timestamps": 640,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "4.55%",
+            "class_ratios": [
+                  0.36363636363636365,
+                  0.3181818181818182,
+                  0.3181818181818182
+            ]
+      },
+      "BasicMotions": {
+            "short_name": "DS 3",
+            "name": "BasicMotions",
+            "num_of_train_instances": 60,
+            "num_of_test_instances": 20,
+            "num_of_dimensions": 6,
+            "num_of_timestamps": 100,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "6.67%",
+            "class_ratios": [
+                  0.2833333333333333,
+                  0.26666666666666666,
+                  0.23333333333333334,
+                  0.21666666666666667
+            ]
+      },
+      "Cricket": {
+            "short_name": "DS 4",
+            "name": "Cricket",
+            "num_of_train_instances": 135,
+            "num_of_test_instances": 45,
+            "num_of_dimensions": 6,
+            "num_of_timestamps": 1197,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "5.19%",
+            "class_ratios": [
+                  0.1037037037037037,
+                  0.0962962962962963,
+                  0.0962962962962963,
+                  0.0962962962962963,
+                  0.08888888888888889,
+                  0.08888888888888889,
+                  0.08148148148148149,
+                  0.08148148148148149,
+                  0.07407407407407407,
+                  0.07407407407407407,
+                  0.06666666666666667,
+                  0.05185185185185185
+            ]
+      },
+      "Epilepsy": {
+            "short_name": "DS 5",
+            "name": "Epilepsy",
+            "num_of_train_instances": 206,
+            "num_of_test_instances": 69,
+            "num_of_dimensions": 3,
+            "num_of_timestamps": 206,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.46%",
+            "class_ratios": [
+                  0.25728155339805825,
+                  0.2524271844660194,
+                  0.24757281553398058,
+                  0.24271844660194175
+            ]
+      },
+      "EyesOpenShut": {
+            "short_name": "DS 6",
+            "name": "EyesOpenShut",
+            "num_of_train_instances": 73,
+            "num_of_test_instances": 25,
+            "num_of_dimensions": 14,
+            "num_of_timestamps": 128,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "17.81%",
+            "class_ratios": [
+                  0.589041095890411,
+                  0.410958904109589
+            ]
+      },
+      "FingerMovements": {
+            "short_name": "DS 7",
+            "name": "FingerMovements",
+            "num_of_train_instances": 312,
+            "num_of_test_instances": 104,
+            "num_of_dimensions": 28,
+            "num_of_timestamps": 50,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "7.05%",
+            "class_ratios": [
+                  0.5352564102564102,
+                  0.46474358974358976
+            ]
+      },
+      "HandMovementDirection": {
+            "short_name": "DS 8",
+            "name": "HandMovementDirection",
+            "num_of_train_instances": 175,
+            "num_of_test_instances": 59,
+            "num_of_dimensions": 10,
+            "num_of_timestamps": 400,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "9.14%",
+            "class_ratios": [
+                  0.3142857142857143,
+                  0.2342857142857143,
+                  0.22857142857142856,
+                  0.22285714285714286
+            ]
+      },
+      "Libras": {
+            "short_name": "DS 9",
+            "name": "Libras",
+            "num_of_train_instances": 270,
+            "num_of_test_instances": 90,
+            "num_of_dimensions": 2,
+            "num_of_timestamps": 45,
+            "num_of_classes": 15,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.59%",
+            "class_ratios": [
+                  0.07777777777777778,
+                  0.07407407407407407,
+                  0.07407407407407407,
+                  0.07037037037037037,
+                  0.07037037037037037,
+                  0.07037037037037037,
+                  0.07037037037037037,
+                  0.06666666666666667,
+                  0.06666666666666667,
+                  0.06666666666666667,
+                  0.06666666666666667,
+                  0.05925925925925926,
+                  0.05925925925925926,
+                  0.05555555555555555,
+                  0.05185185185185185
+            ]
+      },
+      "NATOPS": {
+            "short_name": "DS 10",
+            "name": "NATOPS",
+            "num_of_train_instances": 270,
+            "num_of_test_instances": 90,
+            "num_of_dimensions": 24,
+            "num_of_timestamps": 51,
+            "num_of_classes": 6,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "4.81%",
+            "class_ratios": [
+                  0.18518518518518517,
+                  0.18518518518518517,
+                  0.17037037037037037,
+                  0.16666666666666666,
+                  0.15555555555555556,
+                  0.13703703703703704
+            ]
+      },
+      "RacketSports": {
+            "short_name": "DS 11",
+            "name": "RacketSports",
+            "num_of_train_instances": 227,
+            "num_of_test_instances": 76,
+            "num_of_dimensions": 6,
+            "num_of_timestamps": 30,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.96%",
+            "class_ratios": [
+                  0.27312775330396477,
+                  0.2599118942731278,
+                  0.23348017621145375,
+                  0.23348017621145375
+            ]
+      },
+      "SelfRegulationSCP1": {
+            "short_name": "DS 12",
+            "name": "SelfRegulationSCP1",
+            "num_of_train_instances": 420,
+            "num_of_test_instances": 141,
+            "num_of_dimensions": 6,
+            "num_of_timestamps": 896,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "5.71%",
+            "class_ratios": [
+                  0.5285714285714286,
+                  0.4714285714285714
+            ]
+      },
+      "SelfRegulationSCP2": {
+            "short_name": "DS 13",
+            "name": "SelfRegulationSCP2",
+            "num_of_train_instances": 285,
+            "num_of_test_instances": 95,
+            "num_of_dimensions": 7,
+            "num_of_timestamps": 1152,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.16%",
+            "class_ratios": [
+                  0.5157894736842106,
+                  0.4842105263157895
+            ]
+      },
+      "StandWalkJump": {
+            "short_name": "DS 14",
+            "name": "StandWalkJump",
+            "num_of_train_instances": 20,
+            "num_of_test_instances": 7,
+            "num_of_dimensions": 4,
+            "num_of_timestamps": 2500,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "15.00%",
+            "class_ratios": [
+                  0.4,
+                  0.35,
+                  0.25
+            ]
+      },
+      "UWaveGestureLibrary": {
+            "short_name": "DS 15",
+            "name": "UWaveGestureLibrary",
+            "num_of_train_instances": 330,
+            "num_of_test_instances": 110,
+            "num_of_dimensions": 3,
+            "num_of_timestamps": 315,
+            "num_of_classes": 8,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.73%",
+            "class_ratios": [
+                  0.14242424242424243,
+                  0.13636363636363635,
+                  0.12727272727272726,
+                  0.12424242424242424,
+                  0.12121212121212122,
+                  0.11818181818181818,
+                  0.11515151515151516,
+                  0.11515151515151516
+            ]
+      },
+      "ACSF1": {
+            "short_name": "DS 16",
+            "name": "ACSF1",
+            "num_of_train_instances": 150,
+            "num_of_test_instances": 50,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1460,
+            "num_of_classes": 10,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.33%",
+            "class_ratios": [
+                  0.11333333333333333,
+                  0.11333333333333333,
+                  0.11333333333333333,
+                  0.10666666666666667,
+                  0.1,
+                  0.09333333333333334,
+                  0.09333333333333334,
+                  0.09333333333333334,
+                  0.09333333333333334,
+                  0.08
+            ]
+      },
+      "ArrowHead": {
+            "short_name": "DS 17",
+            "name": "ArrowHead",
+            "num_of_train_instances": 158,
+            "num_of_test_instances": 53,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 251,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "8.86%",
+            "class_ratios": [
+                  0.3924050632911392,
+                  0.3037974683544304,
+                  0.3037974683544304
+            ]
+      },
+      "Beef": {
+            "short_name": "DS 18",
+            "name": "Beef",
+            "num_of_train_instances": 45,
+            "num_of_test_instances": 15,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 470,
+            "num_of_classes": 5,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "11.11%",
+            "class_ratios": [
+                  0.26666666666666666,
+                  0.24444444444444444,
+                  0.17777777777777778,
+                  0.15555555555555556,
+                  0.15555555555555556
+            ]
+      },
+      "BeetleFly": {
+            "short_name": "DS 19",
+            "name": "BeetleFly",
+            "num_of_train_instances": 30,
+            "num_of_test_instances": 10,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 512,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "6.67%",
+            "class_ratios": [
+                  0.5333333333333333,
+                  0.4666666666666667
+            ]
+      },
+      "BirdChicken": {
+            "short_name": "DS 20",
+            "name": "BirdChicken",
+            "num_of_train_instances": 30,
+            "num_of_test_instances": 10,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 512,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "13.33%",
+            "class_ratios": [
+                  0.5666666666666667,
+                  0.43333333333333335
+            ]
+      },
+      "BME": {
+            "short_name": "DS 21",
+            "name": "BME",
+            "num_of_train_instances": 135,
+            "num_of_test_instances": 45,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 128,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "7.41%",
+            "class_ratios": [
+                  0.37037037037037035,
+                  0.3333333333333333,
+                  0.2962962962962963
+            ]
+      },
+      "Car": {
+            "short_name": "DS 22",
+            "name": "Car",
+            "num_of_train_instances": 90,
+            "num_of_test_instances": 30,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 577,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.33%",
+            "class_ratios": [
+                  0.26666666666666666,
+                  0.25555555555555554,
+                  0.24444444444444444,
+                  0.23333333333333334
+            ]
+      },
+      "CBF": {
+            "short_name": "DS 23",
+            "name": "CBF",
+            "num_of_train_instances": 697,
+            "num_of_test_instances": 233,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 128,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.87%",
+            "class_ratios": [
+                  0.3472022955523673,
+                  0.34433285509325684,
+                  0.3084648493543759
+            ]
+      },
+      "Chinatown": {
+            "short_name": "DS 24",
+            "name": "Chinatown",
+            "num_of_train_instances": 272,
+            "num_of_test_instances": 91,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 24,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "42.65%",
+            "class_ratios": [
+                  0.7132352941176471,
+                  0.2867647058823529
+            ]
+      },
+      "Coffee": {
+            "short_name": "DS 25",
+            "name": "Coffee",
+            "num_of_train_instances": 42,
+            "num_of_test_instances": 14,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 286,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "4.76%",
+            "class_ratios": [
+                  0.5238095238095238,
+                  0.47619047619047616
+            ]
+      },
+      "Computers": {
+            "short_name": "DS 26",
+            "name": "Computers",
+            "num_of_train_instances": 375,
+            "num_of_test_instances": 125,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 720,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.93%",
+            "class_ratios": [
+                  0.5146666666666667,
+                  0.48533333333333334
+            ]
+      },
+      "CricketX": {
+            "short_name": "DS 27",
+            "name": "CricketX",
+            "num_of_train_instances": 585,
+            "num_of_test_instances": 195,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 300,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.22%",
+            "class_ratios": [
+                  0.09230769230769231,
+                  0.0905982905982906,
+                  0.0905982905982906,
+                  0.08888888888888889,
+                  0.08717948717948718,
+                  0.08547008547008547,
+                  0.08547008547008547,
+                  0.08205128205128205,
+                  0.07863247863247863,
+                  0.07521367521367521,
+                  0.0735042735042735,
+                  0.07008547008547009
+            ]
+      },
+      "CricketY": {
+            "short_name": "DS 28",
+            "name": "CricketY",
+            "num_of_train_instances": 585,
+            "num_of_test_instances": 195,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 300,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.05%",
+            "class_ratios": [
+                  0.09230769230769231,
+                  0.08888888888888889,
+                  0.08717948717948718,
+                  0.08547008547008547,
+                  0.08376068376068375,
+                  0.08376068376068375,
+                  0.08205128205128205,
+                  0.08205128205128205,
+                  0.08205128205128205,
+                  0.08034188034188035,
+                  0.08034188034188035,
+                  0.07179487179487179
+            ]
+      },
+      "CricketZ": {
+            "short_name": "DS 29",
+            "name": "CricketZ",
+            "num_of_train_instances": 585,
+            "num_of_test_instances": 195,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 300,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.88%",
+            "class_ratios": [
+                  0.09230769230769231,
+                  0.0905982905982906,
+                  0.08888888888888889,
+                  0.08717948717948718,
+                  0.08547008547008547,
+                  0.08376068376068375,
+                  0.08376068376068375,
+                  0.08205128205128205,
+                  0.07863247863247863,
+                  0.07692307692307693,
+                  0.07692307692307693,
+                  0.0735042735042735
+            ]
+      },
+      "EOGHorizontalSignal": {
+            "short_name": "DS 30",
+            "name": "EOGHorizontalSignal",
+            "num_of_train_instances": 543,
+            "num_of_test_instances": 181,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1250,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.21%",
+            "class_ratios": [
+                  0.09576427255985268,
+                  0.09023941068139964,
+                  0.0865561694290976,
+                  0.0865561694290976,
+                  0.0847145488029466,
+                  0.0847145488029466,
+                  0.08287292817679558,
+                  0.08103130755064457,
+                  0.07918968692449356,
+                  0.07918968692449356,
+                  0.07550644567219153,
+                  0.07366482504604052
+            ]
+      },
+      "EOGVerticalSignal": {
+            "short_name": "DS 31",
+            "name": "EOGVerticalSignal",
+            "num_of_train_instances": 543,
+            "num_of_test_instances": 181,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1250,
+            "num_of_classes": 12,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.84%",
+            "class_ratios": [
+                  0.09208103130755065,
+                  0.09023941068139964,
+                  0.09023941068139964,
+                  0.08839779005524862,
+                  0.0865561694290976,
+                  0.0847145488029466,
+                  0.08287292817679558,
+                  0.08103130755064457,
+                  0.07734806629834254,
+                  0.07734806629834254,
+                  0.07550644567219153,
+                  0.07366482504604052
+            ]
+      },
+      "FaceAll": {
+            "short_name": "DS 32",
+            "name": "FaceAll",
+            "num_of_train_instances": 1687,
+            "num_of_test_instances": 563,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 131,
+            "num_of_classes": 14,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "12.86%",
+            "class_ratios": [
+                  0.15056312981624184,
+                  0.12329579134558388,
+                  0.07943094250148192,
+                  0.07883817427385892,
+                  0.07883817427385892,
+                  0.07409602845287493,
+                  0.07291049199762893,
+                  0.07291049199762893,
+                  0.06046235921754594,
+                  0.05868405453467694,
+                  0.05038529934795495,
+                  0.04682868998221695,
+                  0.03082394783639597,
+                  0.021932424422050976
+            ]
+      },
+      "Fish": {
+            "short_name": "DS 33",
+            "name": "Fish",
+            "num_of_train_instances": 262,
+            "num_of_test_instances": 88,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 463,
+            "num_of_classes": 7,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "4.96%",
+            "class_ratios": [
+                  0.16793893129770993,
+                  0.14885496183206107,
+                  0.1450381679389313,
+                  0.14122137404580154,
+                  0.14122137404580154,
+                  0.13740458015267176,
+                  0.1183206106870229
+            ]
+      },
+      "FreezerRegularTrain": {
+            "short_name": "DS 34",
+            "name": "FreezerRegularTrain",
+            "num_of_train_instances": 2250,
+            "num_of_test_instances": 750,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 301,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.51%",
+            "class_ratios": [
+                  0.5075555555555555,
+                  0.49244444444444446
+            ]
+      },
+      "FreezerSmallTrain": {
+            "short_name": "DS 35",
+            "name": "FreezerSmallTrain",
+            "num_of_train_instances": 2158,
+            "num_of_test_instances": 720,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 301,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.30%",
+            "class_ratios": [
+                  0.5064874884151993,
+                  0.49351251158480075
+            ]
+      },
+      "GunPoint": {
+            "short_name": "DS 36",
+            "name": "GunPoint",
+            "num_of_train_instances": 150,
+            "num_of_test_instances": 50,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 150,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratios": [
+                  0.5133333333333333,
+                  0.4866666666666667
+            ]
+      },
+      "GunPointAgeSpan": {
+            "short_name": "DS 37",
+            "name": "GunPointAgeSpan",
+            "num_of_train_instances": 338,
+            "num_of_test_instances": 113,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 150,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.18%",
+            "class_ratios": [
+                  0.5059171597633136,
+                  0.4940828402366864
+            ]
+      },
+      "GunPointMaleVersusFemale": {
+            "short_name": "DS 38",
+            "name": "GunPointMaleVersusFemale",
+            "num_of_train_instances": 338,
+            "num_of_test_instances": 113,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 150,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "6.51%",
+            "class_ratios": [
+                  0.5325443786982249,
+                  0.46745562130177515
+            ]
+      },
+      "GunPointOldVersusYoung": {
+            "short_name": "DS 39",
+            "name": "GunPointOldVersusYoung",
+            "num_of_train_instances": 338,
+            "num_of_test_instances": 113,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 150,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "5.33%",
+            "class_ratios": [
+                  0.5266272189349113,
+                  0.47337278106508873
+            ]
+      },
+      "Ham": {
+            "short_name": "DS 40",
+            "name": "Ham",
+            "num_of_train_instances": 160,
+            "num_of_test_instances": 54,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 431,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.50%",
+            "class_ratios": [
+                  0.5125,
+                  0.4875
+            ]
+      },
+      "Haptics": {
+            "short_name": "DS 41",
+            "name": "Haptics",
+            "num_of_train_instances": 347,
+            "num_of_test_instances": 116,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1092,
+            "num_of_classes": 5,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "5.48%",
+            "class_ratios": [
+                  0.23054755043227665,
+                  0.207492795389049,
+                  0.2017291066282421,
+                  0.1844380403458213,
+                  0.17579250720461095
+            ]
+      },
+      "ItalyPowerDemand": {
+            "short_name": "DS 42",
+            "name": "ItalyPowerDemand",
+            "num_of_train_instances": 822,
+            "num_of_test_instances": 274,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 24,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.22%",
+            "class_ratios": [
+                  0.5060827250608273,
+                  0.49391727493917276
+            ]
+      },
+      "LargeKitchenAppliances": {
+            "short_name": "DS 43",
+            "name": "LargeKitchenAppliances",
+            "num_of_train_instances": 562,
+            "num_of_test_instances": 188,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 720,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.78%",
+            "class_ratios": [
+                  0.34519572953736655,
+                  0.3274021352313167,
+                  0.3274021352313167
+            ]
+      },
+      "Meat": {
+            "short_name": "DS 44",
+            "name": "Meat",
+            "num_of_train_instances": 90,
+            "num_of_test_instances": 30,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 448,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "8.89%",
+            "class_ratios": [
+                  0.37777777777777777,
+                  0.3333333333333333,
+                  0.28888888888888886
+            ]
+      },
+      "MoteStrain": {
+            "short_name": "DS 45",
+            "name": "MoteStrain",
+            "num_of_train_instances": 954,
+            "num_of_test_instances": 318,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 84,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "7.34%",
+            "class_ratios": [
+                  0.5366876310272537,
+                  0.46331236897274636
+            ]
+      },
+      "PowerCons": {
+            "short_name": "DS 46",
+            "name": "PowerCons",
+            "num_of_train_instances": 270,
+            "num_of_test_instances": 90,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 144,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "0.00%",
+            "class_ratios": [
+                  0.5,
+                  0.5
+            ]
+      },
+      "RefrigerationDevices": {
+            "short_name": "DS 47",
+            "name": "RefrigerationDevices",
+            "num_of_train_instances": 562,
+            "num_of_test_instances": 188,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 720,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.49%",
+            "class_ratios": [
+                  0.34519572953736655,
+                  0.33451957295373663,
+                  0.3202846975088968
+            ]
+      },
+      "Rock": {
+            "short_name": "DS 48",
+            "name": "Rock",
+            "num_of_train_instances": 52,
+            "num_of_test_instances": 18,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 2844,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "23.08%",
+            "class_ratios": [
+                  0.40384615384615385,
+                  0.23076923076923078,
+                  0.19230769230769232,
+                  0.17307692307692307
+            ]
+      },
+      "ScreenType": {
+            "short_name": "DS 49",
+            "name": "ScreenType",
+            "num_of_train_instances": 562,
+            "num_of_test_instances": 188,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 720,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratios": [
+                  0.3487544483985765,
+                  0.3291814946619217,
+                  0.3220640569395018
+            ]
+      },
+      "SemgHandGenderCh2": {
+            "short_name": "DS 50",
+            "name": "SemgHandGenderCh2",
+            "num_of_train_instances": 675,
+            "num_of_test_instances": 225,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1500,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "17.04%",
+            "class_ratios": [
+                  0.5851851851851851,
+                  0.4148148148148148
+            ]
+      },
+      "SemgHandMovementCh2": {
+            "short_name": "DS 51",
+            "name": "SemgHandMovementCh2",
+            "num_of_train_instances": 675,
+            "num_of_test_instances": 225,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1500,
+            "num_of_classes": 6,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.07%",
+            "class_ratios": [
+                  0.1748148148148148,
+                  0.1748148148148148,
+                  0.17333333333333334,
+                  0.1674074074074074,
+                  0.15555555555555556,
+                  0.15407407407407409
+            ]
+      },
+      "SemgHandSubjectCh2": {
+            "short_name": "DS 52",
+            "name": "SemgHandSubjectCh2",
+            "num_of_train_instances": 675,
+            "num_of_test_instances": 225,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 1500,
+            "num_of_classes": 5,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.56%",
+            "class_ratios": [
+                  0.21777777777777776,
+                  0.21481481481481482,
+                  0.19703703703703704,
+                  0.18814814814814815,
+                  0.18222222222222223
+            ]
+      },
+      "ShapeletSim": {
+            "short_name": "DS 53",
+            "name": "ShapeletSim",
+            "num_of_train_instances": 150,
+            "num_of_test_instances": 50,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 500,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.67%",
+            "class_ratios": [
+                  0.5133333333333333,
+                  0.4866666666666667
+            ]
+      },
+      "ShapesAll": {
+            "short_name": "DS 54",
+            "name": "ShapesAll",
+            "num_of_train_instances": 900,
+            "num_of_test_instances": 300,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 512,
+            "num_of_classes": 60,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "0.89%",
+            "class_ratios": [
+                  0.021111111111111112,
+                  0.021111111111111112,
+                  0.02,
+                  0.02,
+                  0.02,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.01888888888888889,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.017777777777777778,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.016666666666666666,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.015555555555555555,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.014444444444444444,
+                  0.013333333333333334,
+                  0.013333333333333334,
+                  0.013333333333333334,
+                  0.012222222222222223
+            ]
+      },
+      "SmallKitchenAppliances": {
+            "short_name": "DS 55",
+            "name": "SmallKitchenAppliances",
+            "num_of_train_instances": 562,
+            "num_of_test_instances": 188,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 720,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.78%",
+            "class_ratios": [
+                  0.34341637010676157,
+                  0.3309608540925267,
+                  0.32562277580071175
+            ]
+      },
+      "SmoothSubspace": {
+            "short_name": "DS 56",
+            "name": "SmoothSubspace",
+            "num_of_train_instances": 225,
+            "num_of_test_instances": 75,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 15,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "6.22%",
+            "class_ratios": [
+                  0.36444444444444446,
+                  0.3333333333333333,
+                  0.3022222222222222
+            ]
+      },
+      "SonyAIBORobotSurface2": {
+            "short_name": "DS 57",
+            "name": "SonyAIBORobotSurface2",
+            "num_of_train_instances": 735,
+            "num_of_test_instances": 245,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 65,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "23.54%",
+            "class_ratios": [
+                  0.617687074829932,
+                  0.38231292517006804
+            ]
+      },
+      "SwedishLeaf": {
+            "short_name": "DS 58",
+            "name": "SwedishLeaf",
+            "num_of_train_instances": 843,
+            "num_of_test_instances": 282,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 128,
+            "num_of_classes": 15,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.90%",
+            "class_ratios": [
+                  0.07591933570581258,
+                  0.07354685646500593,
+                  0.07236061684460261,
+                  0.0711743772241993,
+                  0.06998813760379596,
+                  0.06998813760379596,
+                  0.06880189798339265,
+                  0.06761565836298933,
+                  0.06761565836298933,
+                  0.06524317912218268,
+                  0.06524317912218268,
+                  0.05931198102016608,
+                  0.05812574139976275,
+                  0.05812574139976275,
+                  0.05693950177935943
+            ]
+      },
+      "SyntheticControl": {
+            "short_name": "DS 59",
+            "name": "SyntheticControl",
+            "num_of_train_instances": 450,
+            "num_of_test_instances": 150,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 60,
+            "num_of_classes": 6,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "2.00%",
+            "class_ratios": [
+                  0.17555555555555555,
+                  0.17333333333333334,
+                  0.1711111111111111,
+                  0.1622222222222222,
+                  0.1622222222222222,
+                  0.15555555555555556
+            ]
+      },
+      "ToeSegmentation1": {
+            "short_name": "DS 60",
+            "name": "ToeSegmentation1",
+            "num_of_train_instances": 201,
+            "num_of_test_instances": 67,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 277,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "8.46%",
+            "class_ratios": [
+                  0.5422885572139303,
+                  0.4577114427860697
+            ]
+      },
+      "ToeSegmentation2": {
+            "short_name": "DS 61",
+            "name": "ToeSegmentation2",
+            "num_of_train_instances": 124,
+            "num_of_test_instances": 42,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 343,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "53.23%",
+            "class_ratios": [
+                  0.7661290322580645,
+                  0.23387096774193547
+            ]
+      },
+      "Trace": {
+            "short_name": "DS 62",
+            "name": "Trace",
+            "num_of_train_instances": 150,
+            "num_of_test_instances": 50,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 275,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "6.00%",
+            "class_ratios": [
+                  0.28,
+                  0.26666666666666666,
+                  0.23333333333333334,
+                  0.22
+            ]
+      },
+      "TwoLeadECG": {
+            "short_name": "DS 63",
+            "name": "TwoLeadECG",
+            "num_of_train_instances": 871,
+            "num_of_test_instances": 291,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 82,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "0.34%",
+            "class_ratios": [
+                  0.5017221584385764,
+                  0.49827784156142363
+            ]
+      },
+      "TwoPatterns": {
+            "short_name": "DS 64",
+            "name": "TwoPatterns",
+            "num_of_train_instances": 3750,
+            "num_of_test_instances": 1250,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 128,
+            "num_of_classes": 4,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "1.23%",
+            "class_ratios": [
+                  0.2544,
+                  0.252,
+                  0.25146666666666667,
+                  0.24213333333333334
+            ]
+      },
+      "UMD": {
+            "short_name": "DS 65",
+            "name": "UMD",
+            "num_of_train_instances": 135,
+            "num_of_test_instances": 45,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 150,
+            "num_of_classes": 3,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "11.85%",
+            "class_ratios": [
+                  0.3925925925925926,
+                  0.3333333333333333,
+                  0.2740740740740741
+            ]
+      },
+      "UWaveGestureLibraryAll": {
+            "short_name": "DS 66",
+            "name": "UWaveGestureLibraryAll",
+            "num_of_train_instances": 3358,
+            "num_of_test_instances": 1120,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 945,
+            "num_of_classes": 8,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "0.86%",
+            "class_ratios": [
+                  0.12864800476474092,
+                  0.12805241215008933,
+                  0.1262656343061346,
+                  0.12507444907683143,
+                  0.12477665276950566,
+                  0.1235854675402025,
+                  0.1235854675402025,
+                  0.12001191185229303
+            ]
+      },
+      "Wine": {
+            "short_name": "DS 67",
+            "name": "Wine",
+            "num_of_train_instances": 83,
+            "num_of_test_instances": 28,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 234,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "3.61%",
+            "class_ratios": [
+                  0.5180722891566265,
+                  0.4819277108433735
+            ]
+      },
+      "WormsTwoClass": {
+            "short_name": "DS 68",
+            "name": "WormsTwoClass",
+            "num_of_train_instances": 193,
+            "num_of_test_instances": 65,
+            "num_of_dimensions": 1,
+            "num_of_timestamps": 900,
+            "num_of_classes": 2,
+            "missing_values_count": 0,
+            "unique_lengths": true,
+            "imbalance": "8.81%",
+            "class_ratios": [
+                  0.5440414507772021,
+                  0.45595854922279794
+            ]
+      }
+}
