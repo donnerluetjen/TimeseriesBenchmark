@@ -1,4 +1,4 @@
-import progress as p
+import progress_indication as p
 import json
 from dataset_details import datasets_details_json_path
 

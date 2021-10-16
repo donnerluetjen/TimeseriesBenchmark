@@ -2,7 +2,7 @@ from pathlib import Path
 
 import file_ops as fo
 from dataset_details import datasets_details_json_path
-import progress as p
+import progress_indication as p
 import json
 
 

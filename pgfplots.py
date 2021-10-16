@@ -6,15 +6,12 @@ __copyright__ = "Copyright 2021 – Ansgar Asseburg; " \
                 "information in"
 __email__ = "s2092795@stud.uni-frankfurt.de"
 
-from pathlib import Path
-import time
+from texfile import TexFile
 import math
 
 
-class TexPlots:
-    def __init__(self, tex_path='', caption='', x_label='x', y_label='y'):
-        self.tex_path = Path(tex_path)
-        self.caption = caption
+class TexPlots(TexFile):
+    def __init__(self, tex_path='', x_label='x', y_label='y'):
         self.x_label = x_label
         self.y_label = y_label
         self.marks_only = ''  # or '[only marks]'
@@ -23,65 +20,64 @@ class TexPlots:
         self.inline_tables = []
         self.inline_plots = []
         self.inline_legends = []
-
-    def __del__(self):
-        self.set_xshift()
-        self.create_inline_table_list()
-        self.create_inline_plot_list()
-        self.create_inline_legend()
-        with open(self.tex_path, 'w') as pgf_file:
-            pgf_file.write(f'% This the {"/".join(self.tex_path.parts[-2:])} file.\n')
-            pgf_file.write(f'% It was created by the python TexPlots class at {self.timestamp()}\n\n')
-            pgf_file.write('\\begin{tikzpicture}\n')
-            # generate inline tables
-            pgf_file.write('\n'.join(['\n'.join(s) for s in self.inline_tables]) + '\n')
-            pgf_file.write('\t\\begin{axis}[\n')
-            pgf_file.write('\t\ttable/col sep = comma,\n')
-            pgf_file.write('\t\txmode = log,\n')
-            pgf_file.write(f'\t\txlabel = {{{self.x_label}}},\n')
-            pgf_file.write(f'\t\tylabel = {{{self.y_label}}},\n')
-            pgf_file.write('\t\tgrid = both,\n')
-            pgf_file.write('\t\tgrid style={line width=.2pt, draw=gray!10},\n')
-            pgf_file.write('\t\tmajor grid style={line width=.2pt,draw=gray!50},\n')
-            pgf_file.write('\t\tminor tick num=5,\n')
-            pgf_file.write('\t\tlegend cell align={left},\n')
-            pgf_file.write('\t\tlegend pos = south east,\n')
-            pgf_file.write('\t\tlegend style={nodes={scale=0.7, transform shape}},\n')
-            pgf_file.write('\t\tclip=false, % avoid clipping at edge of diagram\n')
-            pgf_file.write('\t\tnodes near coords, % print the value near node\n')
-            pgf_file.write('\t]\n')
-            # generate inline plots
-            pgf_file.write('\n'.join(['\n'.join(s) for s in self.inline_plots]) + '\n')
-            # generate inline legends
-            pgf_file.write('\n'.join(['\n'.join(s) for s in self.inline_legends]) + '\n')
-            pgf_file.write('\t\\end{axis}\n')
-            pgf_file.write('\\end{tikzpicture}\n')
-
-    def create_inline_table_list(self):
+        super().__init__(tex_path, 'tikzpicture')
+    
+    def compile_file_lines(self):
+        self.set_x_shifts()
+        self.compile_header()
+        self.compile_inline_table_lines()
+        self.compile_axis_header()
+        self.compile_inline_plot_lines()
+        self.compile_legend()
+        self.compile_footer()
+    
+    def compile_header(self):
+        self.file_lines.append('\\begin{tikzpicture}')
+    
+    def compile_axis_header(self):
+        self.file_lines.append('\t\\begin{axis}[')
+        self.file_lines.append('\t\ttable/col sep = comma,')
+        self.file_lines.append('\t\txmode = log,')
+        self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
+        self.file_lines.append(f'\t\tylabel = {{{self.y_label}}},')
+        self.file_lines.append('\t\tgrid = both,')
+        self.file_lines.append('\t\tgrid style={line width=.2pt, draw=gray!10},')
+        self.file_lines.append('\t\tmajor grid style={line width=.2pt,draw=gray!50},')
+        self.file_lines.append('\t\tminor tick num=5,')
+        self.file_lines.append('\t\tlegend cell align={left},')
+        self.file_lines.append('\t\tlegend pos = south east,')
+        self.file_lines.append('\t\tlegend style={nodes={scale=0.7, transform shape}},')
+        self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
+        self.file_lines.append('\t\tnodes near coords, % print the value near node')
+        self.file_lines.append('\t]')
+        
+    def compile_footer(self):
+        self.file_lines.append('\t\\end{axis}')
+        self.file_lines.append(f'\\end{{{self.tex_object}}}')
+    
+    def compile_inline_table_lines(self):
         for data_name in self.data.keys():
-            inline_table = ['\t\\pgfplotstableread[col sep=comma]{%']
+            self.file_lines.append('\t\\pgfplotstableread[col sep=comma]{%')
             for data_row in self.data[data_name]:
-                inline_table.append('\t\t' + ', '.join(map(str, data_row)))
-            inline_table.append(f'\t}}\\{data_name}')
-            self.inline_tables.append(inline_table)
+                self.file_lines.append('\t\t' + ', '.join(map(str, data_row)))
+            self.file_lines.append(f'\t}}\\{data_name}')
 
-    def create_inline_plot_list(self):
+    def compile_inline_plot_lines(self):
         for data_name in self.data.keys():
             xshift = self.plot_shifts[data_name]
             inline_plot = f'\t\t\\addplot+ [every node/.append style={{xshift={xshift}pt}}] '
             inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
-            self.inline_plots.append([inline_plot])
+            self.file_lines.append(inline_plot)
 
-    def create_inline_legend(self):
+    def compile_legend(self):
         for data_name in self.data.keys():
-            legend = [f'\t\t\\addlegendentry{{{self.header_translation(data_name)}}}']
-            self.inline_legends.append(legend)
+            self.file_lines.append(f'\t\t\\addlegendentry{{{self.header_translation(data_name)}}}')
 
     def add_data(self, data_name, data=None):
         if data is not None:
             self.data[data_name] = data
 
-    def set_xshift(self):
+    def set_x_shifts(self):
         min_y_distance = .02
         min_x_distance = .5
         shift_factor = 30
@@ -115,6 +111,3 @@ class TexPlots:
                                'wdtw': 'WDTW \\cite{jeong2011weighted}',
                                'wddtw': 'WWDTW \\cite{jeong2011weighted}'}
         return header_translations[header]
-
-    def timestamp(self):
-        return time.strftime("%Y-%m-%d %H:%M:%S")

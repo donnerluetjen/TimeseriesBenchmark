@@ -9,7 +9,7 @@ from sktime_dataset_analyses import count_of_missing_values_in_sktime_df, \
     has_equal_length_in_all_time_series
 
 from selected_datasets import datasets
-import progress as p
+import progress_indication as p
 import textable as tt
 
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'

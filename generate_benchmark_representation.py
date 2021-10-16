@@ -14,7 +14,7 @@ import pgfplots as pp
 import textable as tt
 import file_ops as fo
 from dataset_details import datasets_details_json_path
-import progress as p
+import progress_indication as p
 import json
 
 
@@ -45,7 +45,7 @@ def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking
         metrics.remove('properties')
 
         p.progress_start(f'Writing datasets plots {plot_file_name}')
-        plot = pp.TexPlots(pgf_path, score_name.capitalize(), 'Mean Runtime', f'Mean {score_name.capitalize()}')
+        plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}')
 
         for metric in metrics:
             # iterate over datasets for metric and find averages
