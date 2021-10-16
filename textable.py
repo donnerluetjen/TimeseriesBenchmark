@@ -6,72 +6,94 @@ __copyright__ = "Copyright 2021 – Ansgar Asseburg; " \
                 "information in"
 __email__ = "s2092795@stud.uni-frankfurt.de"
 
-from pathlib import Path
 import time
 
 
-class TexTable:
+class TexFile:
     EOL = '\\\\'
-
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
-                 caption='abstract table', label='abstract-table'):
-        """
-        :param tex_path: string containing the tex file path
-        :param table_columns_formatter: string containing the tex columns format
-        :param caption: string containing the table caption
-        :param label: string containing the table label, will be expanded to tab:<label>
-        """
-        if table_columns_formatter is None:
-            table_columns_formatter = 'lll'
-        self.table_columns_formatter = ''.join(table_columns_formatter)
-        self.tex_path = Path(tex_path)
+    CR = '\n'
+    def __init__(self, tex_path='abstract_table.tex',
+                 tex_object='dummy', caption='abstract file', label='abstract-file'):
+        self.tex_path = tex_path
+        self.tex_object = tex_object
         self.caption = caption
         self.label = label
-        self.table_column_count = len([cf for cf in table_columns_formatter if cf != '|'])
+        self.file_lines = self.timestamp()
 
-        with open(self.tex_path, 'w') as tex_table:
-            tex_table.write('% This file is created by the python textable class.')
-            tex_table.write(f' It was created at {self.timestamp()}\n')
-            tex_table.write('{\\tiny\n')
-            tex_table.write(f'\t\\begin{{longtable}}{{{self.table_columns_formatter}}}\n')
-            tex_table.write('\n')
-            tex_table.write(self.table_header())
-            tex_table.write(f'\t\t\\endfirsthead\n')
-            # endhead
-            tex_table.write('\n')
-            column_content = '\\bfseries \\tablename \\thetable{}, .. continued from previous page'
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{{column_content}}} {self.EOL}\n')
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
-            tex_table.write(self.table_header())
-            tex_table.write(f'\t\t\\endhead\n')
-            # endfoot
-            tex_table.write('\n')
-            column_content = '\\bfseries  .. continued on next page'
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{{column_content}}} {self.EOL}\n')
-            tex_table.write(f'\t\t\\endfoot\n')
-            # endlastfoot
-            tex_table.write('\n')
-            tex_table.write(f'\t\t\\multicolumn{{{self.table_column_count}}}{{c}}{{}} {self.EOL}\n')
-            tex_table.write(f'\t\t\\endlastfoot\n')
-            tex_table.write('\n')
+    def compile_file_lines(self):
+        pass
 
     def __del__(self):
-        """
-            this function opens the tex file for writing and writes the table ending
-        """
-        with open(self.tex_path, 'a') as tex_table:
-            tex_table.write(f'\t\t\\hline\n')
-            tex_table.write(f'\t\t\\caption{{{self.caption}}}\n')
-            tex_table.write(f'\t\t\\label{{tab:{self.label}}}\n')
-            tex_table.write(f'\t\\end{{longtable}}\n')
-            tex_table.write('}\n')
+        self.compile_file_lines()
+        with open(self.tex_path, 'w') as tex_object:
+            tex_object.write(self.CR.join(self.file_lines))
 
-    def table_header(self):
-        header = '\t\t\\hline\n'
-        header += f'\t\t\\multicolumn{{{self.table_column_count}}}{{c|}}{{Abstract Table}} {self.EOL}\n'
-        header += '\t\t\\hline\n'
+    def timestamp(self):
+        class_name = self.__class__.__name__
+        timestamp = [f'% This file is created by the python {class_name} class at {time.strftime("%Y-%m-%d %H:%M:%S")}.',
+                     '',
+                     ''
+                     ]
+        return timestamp
+
+
+class TexTable(TexFile):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table'):
+        self.table_columns_formatter = table_columns_formatter
+        self.payload_lines = []
+        super().__init__(tex_path, 'longtable', caption, label)
+        if table_columns_formatter is None:
+            raise ValueError('List of column formatters cannot be empty')
+    
+    def compile_file_lines(self):
+        self.compile_header()
+        self.compile_payload()
+        self.compile_footer()
+
+    def compile_header(self):
+        table_columns_formatter = ''.join(self.table_columns_formatter)
+        table_column_count = len([cf for cf in table_columns_formatter if cf != '|'])
+
+        self.file_lines.append('{\\tiny')
+        self.file_lines.append(f'\t\\begin{{{self.tex_object}}}{{{table_columns_formatter}}}')
+        self.file_lines.append('')
+        self.file_lines.extend(self.sub_header())
+        self.file_lines.append(f'\t\t\\endfirsthead')
+        # endhead
+        self.file_lines.append('')
+        column_content = '\\bfseries \\tablename \\thetable{}, .. continued from previous page'
+        self.file_lines.append(f'\t\t\\multicolumn{{{table_column_count}}}{{c}}{{{column_content}}} {self.EOL}')
+        self.file_lines.append(f'\t\t\\multicolumn{{{table_column_count}}}{{c}}{{}} {self.EOL}')
+        self.file_lines.extend(self.sub_header())
+        self.file_lines.append(f'\t\t\\endhead')
+        # endfoot
+        self.file_lines.append('')
+        column_content = '\\bfseries  .. continued on next page'
+        self.file_lines.append(f'\t\t\\multicolumn{{{table_column_count}}}{{c}}{{}} {self.EOL}')
+        self.file_lines.append(f'\t\t\\multicolumn{{{table_column_count}}}{{c}}{{{column_content}}} {self.EOL}')
+        self.file_lines.append(f'\t\t\\endfoot')
+        # endlastfoot
+        self.file_lines.append('')
+        self.file_lines.append(f'\t\t\\multicolumn{{{table_column_count}}}{{c}}{{}} {self.EOL}')
+        self.file_lines.append(f'\t\t\\endlastfoot')
+        self.file_lines.append('')
+
+    def sub_header(self):
+        header = ['\t\t\\hline']
+        header.append(f'\t\t\\multicolumn{{{3}}}{{c|}}{{Abstract Table}} {self.EOL}')
+        header.append('\t\t\\hline')
         return header
+
+    def compile_payload(self):
+        self.file_lines.extend(self.payload_lines)
+    
+    def compile_footer(self):
+        self.file_lines.append(f'\t\t\\hline')
+        self.file_lines.append(f'\t\t\\caption{{{self.caption}}}')
+        self.file_lines.append(f'\t\t\\label{{tab:{self.label}}}')
+        self.file_lines.append(f'\t\\end{{longtable}}')
+        self.file_lines.append('}')
 
     def add_line(self, data=None, bold=None):
         """
@@ -80,10 +102,9 @@ class TexTable:
         :return: nothing
         """
         if data is None:
-            data = ['An', 'abstract', 'table']
+            raise ValueError('Data cannot be None.')
         formatted_data = self.format_data(data, bold)
-        with open(self.tex_path, 'a') as tex_table:
-            tex_table.write(f'\t\t{" & ".join(formatted_data)} {self.EOL}\n')
+        self.payload_lines.append(f'\t\t{" & ".join(formatted_data)} {self.EOL}')
 
     def format_data(self, data, bold=None):
         if bold is None:
@@ -119,9 +140,6 @@ class TexTable:
     def replacements(self):
         return {'keywords': [], 'replacement': ''}
 
-    def timestamp(self):
-        return time.strftime("%Y-%m-%d %H:%M:%S")
-
 
 class ScoreTexTable(TexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
@@ -140,24 +158,25 @@ class ScoreTexTable(TexTable):
         self.scores = ['initialize', 'header', 'columns'] if scores is None else scores
         super().__init__(tex_path, table_columns_formatter, caption, label)
 
-    def table_header(self):
+    def sub_header(self):
         len_metrics = len(self.metrics)
         len_scores = len(self.scores)
 
-        header = '\t\t\\hline\n'
-        header += f'\t\t& \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {self.EOL}\n'
+
+        sub_header = ['\t\t\\hline']
+        sub_header.append(f'\t\t& \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {self.EOL}')
 
         metrics_header = '\t\t'
         for metric in self.metrics:
             metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{self.header_translation(metric)}}} '
 
-        header += f'{metrics_header}{self.EOL}\n'
+        sub_header.append(f'{metrics_header}{self.EOL}')
 
         capitalized_scores = [score.capitalize() for score in self.scores]
 
-        header += f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}\n'
-        header += '\t\t\\hline\n'
-        return header
+        sub_header.append(f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}')
+        sub_header.append('\t\t\\hline')
+        return sub_header
 
     def header_translation(self, header=''):
         header_translations = {'dagdtw': 'DAGDTW (sect. \\ref{sct:dagdtw})',
@@ -186,19 +205,19 @@ class DetailsTexTable(TexTable):
         self.properties = ['placeholder', 'properties'] if properties is None else properties
         super().__init__(tex_path, table_columns_formatter, caption, label)
 
-    def table_header(self):
+    def sub_header(self):
         len_names = 2  # Short Name and Name
         len_properties = len(self.properties) - len_names
 
-        header = '\t\t\\hline\n'
+        header = ['\t\t\\hline']
         names_header = f'\\multicolumn{{{len_names}}}{{|c}}{{Datasets}}'
         properties_header = f'\\multicolumn{{{len_properties}}}{{|c|}}{{Properties}}'
-        header += f'\t\t{names_header} & {properties_header} {self.EOL}\n'
+        header.append(f'\t\t{names_header} & {properties_header} {self.EOL}')
 
         props = [self.replace_keywords_capitalize(prop) for prop in self.properties]
 
-        header += f'\t\t{" & ".join(props)} {self.EOL}\n'
-        header += '\t\t\\hline\n'
+        header.append(f'\t\t{" & ".join(props)} {self.EOL}')
+        header.append('\t\t\\hline')
         return header
 
     def replacements(self):
@@ -223,8 +242,3 @@ class ImbalanceTexTable(DetailsTexTable):
 
     def format_ratios(self, data):
         return [f'{x * 100:.0f}\\%' for x in data]
-
-
-if __name__ == '__main__':
-    t = TexTable()
-    del t
