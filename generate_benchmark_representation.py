@@ -18,21 +18,21 @@ import progress_indication as p
 import json
 
 
-def ranking(scores, do_not_rank=[]):
+def ranking(scores, do_not_rank=None):
     keys = scores.keys()
     squared_result = 0
     for key in keys:
 
         # do not evaluate arguments and runtime
         # and skip this scores in do_not rank for ranking
-        if key in ['arguments', 'runtime'] + do_not_rank:
+        if key in ['arguments', 'runtime'] + (do_not_rank if do_not_rank is not None else []):
             continue
 
         squared_result += scores[key] ** 2
     return sqrt(squared_result)
 
 
-def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking', do_not_rank=[]):
+def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking', do_not_rank=None):
     path_dict = fo.path_dictionary(json_path)
     plot_file_name = f'pgfplot_{score_name}_{"".join([c for c in plot_name_specific if c != " "])}.tex'
     pgf_path = Path(path_dict['tex_dir'], plot_file_name)
@@ -65,9 +65,12 @@ def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking
         p.progress_end()
 
 
-def generate_table(json_path, dataset_details_file, table_name_specific='', split_table_metrics=[], do_not_rank=[]):
+def generate_table(json_path, dataset_details_file, table_name_specific='', split_table_metrics=None, do_not_rank=None):
     path_dict = fo.path_dictionary(json_path)
     dataset_archive = path_dict['archive']
+
+    if split_table_metrics is None:
+        split_table_metrics = []
 
     # load dataset details
     with open(dataset_details_file) as dd_file:
@@ -91,7 +94,8 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
         scores = [score for score in scores if score not in do_not_rank]
 
         for table_metrics_scheme in table_metrics_schemes:
-            if len(table_metrics_scheme) == 0: continue
+            if len(table_metrics_scheme) == 0:
+                continue
             table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
             table_path = Path(path_dict['tex_dir'], table_file_name)
 
@@ -102,7 +106,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
 
             score_columns_formatter = 'c' * len(scores)
             # table_column_formatter works as formatter list since all formats are single chars
-            table_column_formatter = f'|l|{"|".join(score_columns_formatter for i in range(len(table_metrics_scheme)))}|'
+            table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(table_metrics_scheme)))}|'
 
             p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
