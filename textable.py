@@ -53,7 +53,7 @@ class TexTable(TexFile):
 
     def compile_header(self):
         table_columns_formatter = ''.join(self.table_columns_formatter)
-        table_column_count = len([cf for cf in table_columns_formatter if cf != '|'])
+        table_column_count = len([cf for cf in self.table_columns_formatter if cf != '|'])
 
         self.file_lines.append('{\\tiny')
         self.file_lines.append(f'\t\\begin{{{self.tex_object}}}{{{table_columns_formatter}}}')
