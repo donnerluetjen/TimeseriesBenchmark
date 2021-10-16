@@ -32,6 +32,34 @@ def ranking(scores, do_not_rank=None):
     return sqrt(squared_result)
 
 
+def datasets_high_scores(data=None):
+    if data is None:
+        return None
+    datasets = list(data.keys())
+    dataset_keys = list(data[datasets[0]].keys())
+    dataset_keys.remove('properties')
+    metrics = dataset_keys
+    metric_keys = list(data[datasets[0]][metrics[0]].keys())
+    metric_keys.remove('arguments')
+    scores = metric_keys
+    high_score_dict = {}
+    for dataset in datasets:
+
+        high_score_dict[dataset] = {}
+
+        for score in scores:
+
+            high_score = 0 if score != 'runtime' else float('inf')
+            comparator = max if score != 'runtime' else min
+
+            for metric in metrics:
+                score_value = data[dataset][metric][score]
+                if score_value == comparator(score_value, high_score):
+                    high_score = score_value
+                    high_score_dict[dataset][score] = metric
+    return high_score_dict
+
+
 def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking', do_not_rank=None):
     path_dict = fo.path_dictionary(json_path)
     plot_file_name = f'pgfplot_{score_name}_{"".join([c for c in plot_name_specific if c != " "])}.tex'
@@ -127,34 +155,6 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
                 p.progress_increase()
             del scores_table  # to make sure destructor is called
             p.progress_end()
-
-
-def datasets_high_scores(data=None):
-    if data is None:
-        return None
-    datasets = list(data.keys())
-    dataset_keys = list(data[datasets[0]].keys())
-    dataset_keys.remove('properties')
-    metrics = dataset_keys
-    metric_keys = list(data[datasets[0]][metrics[0]].keys())
-    metric_keys.remove('arguments')
-    scores = metric_keys
-    high_score_dict = {}
-    for dataset in datasets:
-
-        high_score_dict[dataset] = {}
-
-        for score in scores:
-
-            high_score = 0 if score != 'runtime' else float('inf')
-            comparator = max if score != 'runtime' else min
-
-            for metric in metrics:
-                score_value = data[dataset][metric][score]
-                if score_value == comparator(score_value, high_score):
-                    high_score = score_value
-                    high_score_dict[dataset][score] = metric
-    return high_score_dict
 
 
 if __name__ == '__main__':
