@@ -99,6 +99,8 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
 
     if split_table_metrics is None:
         split_table_metrics = []
+    if do_not_rank is None:
+        do_not_rank = []
 
     # load dataset details
     with open(dataset_details_file) as dd_file:
@@ -165,7 +167,7 @@ if __name__ == '__main__':
         '0.3': ['UEA_archive_wws-0-3.json', 'UCR_archive_wws-0-3.json'],
         '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json']
     }
-    wws_list = ['1.0', '0.3']
+    wws_list = ['1.0', '0.3', '0.1']
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
@@ -173,7 +175,6 @@ if __name__ == '__main__':
                            f'size={wws}', ['bagdtw', 'dagdtw', 'sdtw'])
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-            # generate_score_diagram(json_store + json_file, f'wws={wws}', 'specificity')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')

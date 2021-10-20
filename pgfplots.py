@@ -78,7 +78,7 @@ class TexPlots(TexFile):
             self.data[data_name] = data
 
     def set_x_shifts(self):
-        min_y_distance = .02
+        min_y_distance = .04
         min_x_distance = .5
         shift_factor = 30
         for data_to_shift in self.data:

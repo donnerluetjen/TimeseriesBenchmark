@@ -33,19 +33,37 @@ def sort_keys(json_path):
         json.dump(data, json_file, indent=6)
         json_file.flush()
 
+def update_dict(json_path, update_from_json_path):
+    with open(json_path) as json_file:
+        data_to_update = json.load(json_file)
+
+    with open(update_from_json_path) as json_file:
+        update_from_data = json.load(json_file)
+
+    # iterate over datasets and update sub dictionaries
+    for key in data_to_update.keys():
+        data_to_update[key].update(update_from_data[key])
+
+    with open(json_path, 'w') as json_file:
+        json.dump(data_to_update, json_file, indent=6)
+        json_file.flush()
 
 if __name__ == '__main__':
 
     json_store = './Benchmarks/json/'
+
+    json_update_list = ['UEA_archive_wws--1_copy_update.json', 'UCR_archive_update.json']
+
     json_files_dict = {
         '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
         '0.3': ['UEA_archive_wws-0-3.json', 'UCR_archive_wws-0-3.json'],
         '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json'],
         'test': ['UEA_archive_wws--1_copy.json']
     }
-    wws_list = ['1.0', '0.3']
+    wws_list = ['test']  #'1.0', '0.3', '0.1']
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
-            update_agdtw_key(json_store + json_file)
-            sort_keys(json_store + json_file)
+            # update_agdtw_key(json_store + json_file)
+            # sort_keys(json_store + json_file)
+            update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
