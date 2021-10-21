@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     json_store = './Benchmarks/json/'
 
-    json_update_list = ['UEA_archive_wws--1_copy_update.json', 'UCR_archive_update.json']
+    json_update_list = ['UEA_archive_weight-115.json', 'UCR_archive_weight-115.json']
 
     json_files_dict = {
         '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json'],
         'test': ['UEA_archive_wws--1_copy.json']
     }
-    wws_list = ['test']  #'1.0', '0.3', '0.1']
+    wws_list = ['1.0', '0.3', '0.1']
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
