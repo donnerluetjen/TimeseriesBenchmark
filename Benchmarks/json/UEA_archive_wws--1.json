@@ -6,7 +6,10 @@
                   "num_of_timestamps": 144,
                   "num_of_classes": 25,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 431,
+                  "len test set": 144,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -78,7 +81,7 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -86,11 +89,11 @@
                   "recall": 0.10242857142857142,
                   "f1-score": 0.08577062619919763,
                   "auroc": 0.532514880952381,
-                  "runtime": 12.322539839000001
+                  "runtime": 7.067143198
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -98,7 +101,7 @@
                   "recall": 0.36574603174603176,
                   "f1-score": 0.3034837006818431,
                   "auroc": 0.6696593915343916,
-                  "runtime": 11.156026541999836
+                  "runtime": 6.336968335
             }
       },
       "AtrialFibrillation": {
@@ -108,7 +111,10 @@
                   "num_of_timestamps": 640,
                   "num_of_classes": 3,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 22,
+                  "len test set": 8,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -180,7 +186,7 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -188,11 +194,11 @@
                   "recall": 0.25,
                   "f1-score": 0.21666666666666667,
                   "auroc": 0.4375,
-                  "runtime": 0.022604831999842645
+                  "runtime": 0.015365089999995973
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -200,7 +206,7 @@
                   "recall": 0.5,
                   "f1-score": 0.5,
                   "auroc": 0.625,
-                  "runtime": 0.020316278000109378
+                  "runtime": 0.012702422000003821
             }
       },
       "BasicMotions": {
@@ -210,7 +216,10 @@
                   "num_of_timestamps": 100,
                   "num_of_classes": 4,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 60,
+                  "len test set": 20,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -282,7 +291,7 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -290,11 +299,11 @@
                   "recall": 0.38125,
                   "f1-score": 0.3333333333333333,
                   "auroc": 0.5875,
-                  "runtime": 0.15927009500001077
+                  "runtime": 0.0960854960000006
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
@@ -302,7 +311,7 @@
                   "recall": 0.9375,
                   "f1-score": 0.9226190476190477,
                   "auroc": 0.9583333333333334,
-                  "runtime": 0.139746470000091
+                  "runtime": 0.09605366199999565
             }
       },
       "Epilepsy": {
@@ -312,7 +321,10 @@
                   "num_of_timestamps": 206,
                   "num_of_classes": 4,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 206,
+                  "len test set": 69,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -384,27 +396,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.37681159420289856,
-                  "recall": 0.37720588235294117,
-                  "f1-score": 0.36140530925013686,
-                  "auroc": 0.5848039215686275,
-                  "runtime": 1.4759789869999622
+                  "accuracy": 0.43478260869565216,
+                  "recall": 0.4345588235294118,
+                  "f1-score": 0.425928815381148,
+                  "auroc": 0.6230392156862745,
+                  "runtime": 0.9217172740000006
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.7681159420289855,
-                  "recall": 0.7656862745098039,
-                  "f1-score": 0.7571490845684394,
-                  "auroc": 0.8437908496732026,
-                  "runtime": 1.0550630850000289
+                  "accuracy": 0.7246376811594203,
+                  "recall": 0.7134191176470588,
+                  "f1-score": 0.7091406677613574,
+                  "auroc": 0.8089460784313726,
+                  "runtime": 0.7278961189999986
             }
       },
       "EyesOpenShut": {
@@ -414,7 +426,10 @@
                   "num_of_timestamps": 128,
                   "num_of_classes": 2,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 73,
+                  "len test set": 25,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -486,27 +501,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
-                        "njobs": -1,
-                        "z-normalized": true
-                  },
-                  "accuracy": 0.56,
-                  "recall": 0.5641025641025641,
-                  "f1-score": 0.5571658615136876,
-                  "auroc": 0.5641025641025642,
-                  "runtime": 0.613381645000004
-            },
-            "wdtw": {
-                  "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
                   "accuracy": 0.6,
-                  "recall": 0.592948717948718,
-                  "f1-score": 0.5833333333333334,
-                  "auroc": 0.592948717948718,
-                  "runtime": 0.4767299250000292
+                  "recall": 0.6145833333333333,
+                  "f1-score": 0.5941558441558442,
+                  "auroc": 0.6145833333333333,
+                  "runtime": 0.34723738599999976
+            },
+            "wdtw": {
+                  "arguments": {
+                        "g": 0.115,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.36,
+                  "recall": 0.3784722222222222,
+                  "f1-score": 0.35897435897435903,
+                  "auroc": 0.3784722222222222,
+                  "runtime": 0.3600816079999998
             }
       },
       "FingerMovements": {
@@ -516,7 +531,10 @@
                   "num_of_timestamps": 50,
                   "num_of_classes": 2,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 312,
+                  "len test set": 104,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -588,27 +606,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5192307692307693,
-                  "recall": 0.5170370370370371,
-                  "f1-score": 0.5163690476190476,
-                  "auroc": 0.517037037037037,
-                  "runtime": 20.334537884000042
+                  "accuracy": 0.5480769230769231,
+                  "recall": 0.5462449130595635,
+                  "f1-score": 0.5429640018700328,
+                  "auroc": 0.5462449130595635,
+                  "runtime": 16.14064245
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.49038461538461536,
-                  "recall": 0.4885185185185186,
-                  "f1-score": 0.48806538497260155,
-                  "auroc": 0.48851851851851846,
-                  "runtime": 19.63082026199993
+                  "accuracy": 0.5288461538461539,
+                  "recall": 0.5273769885312616,
+                  "f1-score": 0.5252911038658594,
+                  "auroc": 0.5273769885312615,
+                  "runtime": 14.550161617999997
             }
       },
       "HandMovementDirection": {
@@ -618,7 +636,10 @@
                   "num_of_timestamps": 400,
                   "num_of_classes": 4,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 175,
+                  "len test set": 59,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -690,27 +711,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.15254237288135594,
-                  "recall": 0.16224053724053725,
-                  "f1-score": 0.14936155913978497,
-                  "auroc": 0.4414936914936915,
-                  "runtime": 3.034877074999713
+                  "accuracy": 0.2033898305084746,
+                  "recall": 0.20256410256410257,
+                  "f1-score": 0.1633402995471961,
+                  "auroc": 0.4683760683760683,
+                  "runtime": 1.6072450300000014
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.22033898305084745,
-                  "recall": 0.23366910866910867,
-                  "f1-score": 0.22048212005108558,
-                  "auroc": 0.48911273911273917,
-                  "runtime": 2.3088208669996675
+                  "accuracy": 0.288135593220339,
+                  "recall": 0.2811698717948718,
+                  "f1-score": 0.2701905937200055,
+                  "auroc": 0.5207799145299145,
+                  "runtime": 1.6003674149999938
             }
       },
       "Libras": {
@@ -720,7 +741,10 @@
                   "num_of_timestamps": 45,
                   "num_of_classes": 15,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 270,
+                  "len test set": 90,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -792,27 +816,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.28888888888888886,
-                  "recall": 0.2454617604617605,
-                  "f1-score": 0.2545560478169174,
-                  "auroc": 0.5957830859616573,
-                  "runtime": 1.5619577459997345
+                  "accuracy": 0.3111111111111111,
+                  "recall": 0.3768518518518518,
+                  "f1-score": 0.308976023976024,
+                  "auroc": 0.6661706349206349,
+                  "runtime": 1.1049851020000006
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
                   "accuracy": 0.5111111111111111,
-                  "recall": 0.4891125541125541,
-                  "f1-score": 0.43787974209026836,
-                  "auroc": 0.7263102968460112,
-                  "runtime": 1.2448378939998292
+                  "recall": 0.5445238095238096,
+                  "f1-score": 0.502040182040182,
+                  "auroc": 0.7559948979591836,
+                  "runtime": 0.8165239460000038
             }
       },
       "NATOPS": {
@@ -822,7 +846,10 @@
                   "num_of_timestamps": 51,
                   "num_of_classes": 6,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 270,
+                  "len test set": 90,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -894,27 +921,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
                   "accuracy": 0.37777777777777777,
-                  "recall": 0.37130486472591734,
-                  "f1-score": 0.3691713288487482,
-                  "auroc": 0.6227829188355505,
-                  "runtime": 12.5519829939999
+                  "recall": 0.4164242620124973,
+                  "f1-score": 0.3829229931664009,
+                  "auroc": 0.6498545572074984,
+                  "runtime": 9.523922753999997
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5,
-                  "recall": 0.513079573934837,
-                  "f1-score": 0.45272335282477266,
-                  "auroc": 0.7078477443609023,
-                  "runtime": 11.311959675000253
+                  "accuracy": 0.5111111111111111,
+                  "recall": 0.5315126050420168,
+                  "f1-score": 0.4731303779051615,
+                  "auroc": 0.7189075630252102,
+                  "runtime": 9.104841703000005
             }
       },
       "RacketSports": {
@@ -924,7 +951,10 @@
                   "num_of_timestamps": 30,
                   "num_of_classes": 4,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 227,
+                  "len test set": 76,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -996,27 +1026,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.32894736842105265,
-                  "recall": 0.3222492372234935,
-                  "f1-score": 0.31398601398601395,
-                  "auroc": 0.5481661581489956,
-                  "runtime": 2.16914603899977
+                  "accuracy": 0.47368421052631576,
+                  "recall": 0.48467404306220097,
+                  "f1-score": 0.4703764516225334,
+                  "auroc": 0.6564493620414673,
+                  "runtime": 1.4780170669999961
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.631578947368421,
-                  "recall": 0.6295925502161199,
-                  "f1-score": 0.6303733031674208,
-                  "auroc": 0.7530617001440799,
-                  "runtime": 1.750130254999931
+                  "accuracy": 0.6973684210526315,
+                  "recall": 0.6987141148325359,
+                  "f1-score": 0.6947229524357184,
+                  "auroc": 0.7991427432216905,
+                  "runtime": 1.0992784119999897
             }
       },
       "SelfRegulationSCP1": {
@@ -1026,7 +1056,10 @@
                   "num_of_timestamps": 896,
                   "num_of_classes": 2,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 420,
+                  "len test set": 141,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -1098,27 +1131,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5957446808510638,
-                  "recall": 0.5954875100725221,
-                  "f1-score": 0.595419078781777,
-                  "auroc": 0.5954875100725221,
-                  "runtime": 13.579989935002232
+                  "accuracy": 0.6099290780141844,
+                  "recall": 0.6068840579710145,
+                  "f1-score": 0.6001959065834923,
+                  "auroc": 0.6068840579710144,
+                  "runtime": 6.953272646000016
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.8652482269503546,
-                  "recall": 0.8638195004029008,
-                  "f1-score": 0.8645670087457662,
-                  "auroc": 0.8638195004029009,
-                  "runtime": 10.785995487996843
+                  "accuracy": 0.8297872340425532,
+                  "recall": 0.8288043478260869,
+                  "f1-score": 0.8290909090909091,
+                  "auroc": 0.828804347826087,
+                  "runtime": 8.435047174000005
             }
       },
       "SelfRegulationSCP2": {
@@ -1128,7 +1161,10 @@
                   "num_of_timestamps": 1152,
                   "num_of_classes": 2,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 285,
+                  "len test set": 95,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -1200,27 +1236,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5157894736842106,
-                  "recall": 0.5154293381037567,
-                  "f1-score": 0.5144444444444445,
-                  "auroc": 0.5154293381037567,
-                  "runtime": 7.229393018998962
+                  "accuracy": 0.5578947368421052,
+                  "recall": 0.5571808510638298,
+                  "f1-score": 0.5554812834224598,
+                  "auroc": 0.5571808510638298,
+                  "runtime": 3.774254840999987
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.5263157894736842,
-                  "recall": 0.5270572450805009,
-                  "f1-score": 0.5254745254745254,
-                  "auroc": 0.5270572450805009,
-                  "runtime": 6.02503561800404
+                  "accuracy": 0.49473684210526314,
+                  "recall": 0.49468085106382975,
+                  "f1-score": 0.49468085106382975,
+                  "auroc": 0.49468085106382975,
+                  "runtime": 3.939767826999997
             }
       },
       "StandWalkJump": {
@@ -1230,7 +1266,10 @@
                   "num_of_timestamps": 2500,
                   "num_of_classes": 3,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 20,
+                  "len test set": 7,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -1302,27 +1341,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.14285714285714285,
-                  "recall": 0.3333333333333333,
-                  "f1-score": 0.09523809523809523,
-                  "auroc": 0.5000000000000001,
-                  "runtime": 0.03902934200596064
+                  "accuracy": 0.42857142857142855,
+                  "recall": 0.38888888888888884,
+                  "f1-score": 0.3571428571428572,
+                  "auroc": 0.5416666666666666,
+                  "runtime": 0.021117110000005823
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
                   "accuracy": 0.5714285714285714,
-                  "recall": 0.6666666666666666,
+                  "recall": 0.5555555555555555,
                   "f1-score": 0.5793650793650794,
-                  "auroc": 0.75,
-                  "runtime": 0.03507807700952981
+                  "auroc": 0.6666666666666666,
+                  "runtime": 0.02577040900001748
             }
       },
       "UWaveGestureLibrary": {
@@ -1332,7 +1371,10 @@
                   "num_of_timestamps": 315,
                   "num_of_classes": 8,
                   "unique_lengths": true,
-                  "missing_values_count": 0
+                  "missing_values_count": 0,
+                  "len train set": 330,
+                  "len test set": 110,
+                  "imbalance": 0
             },
             "bagdtw": {
                   "arguments": {
@@ -1404,27 +1446,27 @@
             },
             "wddtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.2545454545454545,
-                  "recall": 0.28809523809523807,
-                  "f1-score": 0.24993996188049897,
-                  "auroc": 0.5931972789115647,
-                  "runtime": 3.769741777010495
+                  "accuracy": 0.3181818181818182,
+                  "recall": 0.32227319781667607,
+                  "f1-score": 0.32028723469512943,
+                  "auroc": 0.6127275416095292,
+                  "runtime": 2.409785435999993
             },
             "wdtw": {
                   "arguments": {
-                        "g": 1,
+                        "g": 0.115,
                         "njobs": -1,
                         "z-normalized": true
                   },
-                  "accuracy": 0.6272727272727273,
-                  "recall": 0.6634920634920636,
-                  "f1-score": 0.5951214008638686,
-                  "auroc": 0.8077097505668933,
-                  "runtime": 3.040638864011271
+                  "accuracy": 0.7090909090909091,
+                  "recall": 0.6969963008006486,
+                  "f1-score": 0.6648948174027256,
+                  "auroc": 0.8268550290289419,
+                  "runtime": 1.906744169999996
             }
       }
 }
