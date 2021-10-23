@@ -21,7 +21,7 @@ class TexPlots(TexFile):
         self.inline_plots = []
         self.inline_legends = []
         super().__init__(tex_path, 'tikzpicture', sources)
-    
+
     def compile_file_lines(self):
         self.set_x_shifts()
         self.compile_header()
@@ -30,10 +30,10 @@ class TexPlots(TexFile):
         self.compile_inline_plot_lines()
         self.compile_legend()
         self.compile_footer()
-    
+
     def compile_header(self):
         self.file_lines.append('\\begin{tikzpicture}')
-    
+
     def compile_axis_header(self):
         self.file_lines.append('\t\\begin{axis}[')
         self.file_lines.append('\t\ttable/col sep = comma,')
@@ -50,11 +50,11 @@ class TexPlots(TexFile):
         self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
         self.file_lines.append('\t\tnodes near coords, % print the value near node')
         self.file_lines.append('\t]')
-        
+
     def compile_footer(self):
         self.file_lines.append('\t\\end{axis}')
         self.file_lines.append(f'\\end{{{self.tex_object}}}')
-    
+
     def compile_inline_table_lines(self):
         for data_name in self.data.keys():
             self.file_lines.append('\t\\pgfplotstableread[col sep=comma]{%')
@@ -109,7 +109,7 @@ class TexPlots(TexFile):
                                'sdtw': 'SDTW \\cite{cuturi2017soft}',
                                'ddtw': 'DDTW \\cite{keogh2001derivative}',
                                'wdtw': 'WDTW \\cite{jeong2011weighted}',
-                               'wddtw': 'WWDTW \\cite{jeong2011weighted}'}
+                               'wddtw': 'WDDTW \\cite{jeong2011weighted}'}
         return header_translations[header]
 
 
@@ -117,7 +117,7 @@ class TrendPlots(TexPlots):
 
     def compile_axis_header(self):
         self.file_lines.append('\t\\begin{axis}[')
-        self.file_lines.append('\t\twidth = \\textwidth, height = 10cm,')
+        # self.file_lines.append('\t\twidth = \\textwidth, height = 8cm,')
         self.file_lines.append('\t\ttable/col sep = comma,')
         self.file_lines.append('\t\txmode = log,')
         self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
@@ -131,15 +131,16 @@ class TrendPlots(TexPlots):
         self.file_lines.append('\t\tlegend style={nodes={scale=0.7, transform shape}},')
         self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
         self.file_lines.append('\t\tnodes near coords, % print the value near node')
+        self.file_lines.append('\t\tpoint meta = explicit symbolic, % read printed value from separate column')
         self.file_lines.append('\t]')
 
     def compile_inline_plot_lines(self):
         for data_name in self.data.keys():
             xshift = self.plot_shifts[data_name]
-            scale = 0.4
+            scale = 1
             xshift_offset = -10
-            yshift = 14
+            yshift = 0
             style = f'scale = {scale}, xshift = {xshift + xshift_offset}pt, yshift = {yshift}pt'
             inline_plot = f'\t\t\\addplot+ [every node/.append style={{{style}}}] '
-            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}, meta = {{2}}]{{\\{data_name}}};'
             self.file_lines.append(inline_plot)
