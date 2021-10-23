@@ -1,0 +1,632 @@
+{
+      "BirdChicken": {
+            "Warping Window Size = 1.0": {
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "BME": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "CBF": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "Coffee": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "GunPoint": {
+            "Warping Window Size = 1.0": {
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "GunPointMaleVersusFemale": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "Trace": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "TwoLeadECG": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "TwoPatterns": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "UMD": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "Wine": {
+            "Warping Window Size = 1.0": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "Meat": {
+            "Warping Window Size = 0.3": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            },
+            "Warping Window Size = 0.1": {
+                  "bagdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "Rock": {
+            "Warping Window Size = 0.3": {
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      },
+      "PowerCons": {
+            "Warping Window Size = 0.1": {
+                  "dtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "sdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  },
+                  "wdtw": {
+                        "accuracy": 1.0,
+                        "recall": 1.0,
+                        "f1-score": 1.0,
+                        "auroc": 1.0
+                  }
+            }
+      }
+}
