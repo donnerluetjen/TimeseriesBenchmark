@@ -19,15 +19,12 @@ import json
 
 
 def ranking(scores, do_not_rank=None):
-    keys = scores.keys()
+    exclude = ['arguments', 'runtime']
+    if do_not_rank is not None:
+        exclude += do_not_rank
+    keys = [key for key in scores.keys() if key not in exclude]
     squared_result = 0
     for key in keys:
-
-        # do not evaluate arguments and runtime
-        # and skip this scores in do_not rank for ranking
-        if key in ['arguments', 'runtime'] + (do_not_rank if do_not_rank is not None else []):
-            continue
-
         squared_result += scores[key] ** 2
     return sqrt(squared_result)
 
@@ -60,37 +57,98 @@ def datasets_high_scores(data=None):
     return high_score_dict
 
 
+def generate_trend_diagram(folder='', file_list=None, name='', do_not_rank=None):
+    if file_list is None:
+        file_list = []
+    if do_not_rank is None:
+        do_not_rank = []
+    if name == '' or not len(file_list):
+        return
+
+    path_dict = fo.path_dictionary(folder + 'SCB_trends.json')
+    plot_file_name = f'pgfplot_{name}_scb_trend.tex'
+    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    sources = []
+    for file in file_list:
+        sources.append(folder + file)
+
+    all_files_data = {}  # initialize empty dictionary
+    # collect all data
+    for file in file_list:
+        file_path = folder + file
+
+        with open(file_path) as scoring_file:
+            temp_data = json.load(scoring_file)
+
+        datasets = temp_data.keys()
+        wws = temp_data[list(datasets)[0]]['bagdtw']['arguments']['window']
+
+        # clean dictionary of unnecessary data
+        for dataset in datasets:
+            temp_data[dataset].pop('properties')
+            metrics = temp_data[dataset].keys()
+            for metric in metrics:
+                temp_data[dataset][metric].pop('arguments')
+
+        all_files_data[wws] = temp_data
+
+    wwss = list(all_files_data.keys())
+    datasets = list(all_files_data[wwss[0]].keys())
+    metrics = list(all_files_data[wwss[0]][datasets[0]].keys())
+    scores = list(all_files_data[wwss[0]][datasets[0]][metrics[0]].keys())
+
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    plot = pp.TrendPlots(pgf_path, 'Mean Runtime', 'Mean Ranking', sources)
+
+    for metric in metrics:
+        table_data = []
+        for wws in wwss:
+            datasets = list(all_files_data[wws].keys())
+            accumulated_scoring = 0
+            accumulated_runtime = 0
+            for dataset in datasets:
+                accumulated_scoring += ranking(all_files_data[wws][dataset][metric], do_not_rank)
+                accumulated_runtime += all_files_data[wws][dataset][metric]['runtime']
+            table_data.append([accumulated_runtime / len(datasets), accumulated_scoring / len(datasets)])
+            plot.add_data(metric, table_data)
+            p.progress_increase()
+
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
+
+
 def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking', do_not_rank=None):
     path_dict = fo.path_dictionary(json_path)
     plot_file_name = f'pgfplot_{score_name}_{"".join([c for c in plot_name_specific if c != " "])}.tex'
     pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    sources = [json_path]
     with open(json_path) as json_file:
         data = json.load(json_file)
 
-        datasets = list(data.keys())
-        # read metrics and drop properties
-        metrics = list(data[datasets[0]].keys())
-        metrics.remove('properties')
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = list(data[datasets[0]].keys())
+    metrics.remove('properties')
 
-        p.progress_start(f'Writing datasets plots {plot_file_name}')
-        plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}')
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}', sources)
 
-        for metric in metrics:
-            # iterate over datasets for metric and find averages
-            accumulated_scoring = 0
-            accumulated_runtime = 0
-            for dataset in datasets:
-                if score_name == 'ranking':
-                    accumulated_scoring += ranking(data[dataset][metric], do_not_rank)
-                else:
-                    accumulated_scoring += data[dataset][metric][score_name]
-                accumulated_runtime += data[dataset][metric]['runtime']
+    for metric in metrics:
+        # iterate over datasets for metric and find averages
+        accumulated_scoring = 0
+        accumulated_runtime = 0
+        for dataset in datasets:
+            if score_name == 'ranking':
+                accumulated_scoring += ranking(data[dataset][metric], do_not_rank)
+            else:
+                accumulated_scoring += data[dataset][metric][score_name]
+            accumulated_runtime += data[dataset][metric]['runtime']
 
-            table_data = [[accumulated_runtime / len(datasets), accumulated_scoring / len(datasets)]]
-            plot.add_data(metric, table_data)
-            p.progress_increase()
-        del plot  # to ensure destructor is called before program exits
-        p.progress_end()
+        table_data = [[accumulated_runtime / len(datasets), accumulated_scoring / len(datasets)]]
+        plot.add_data(metric, table_data)
+        p.progress_increase()
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
 
 
 def generate_table(json_path, dataset_details_file, table_name_specific='', split_table_metrics=None, do_not_rank=None):
@@ -101,6 +159,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
         split_table_metrics = []
     if do_not_rank is None:
         do_not_rank = []
+    sources = [json_path, dataset_details_file]
 
     # load dataset details
     with open(dataset_details_file) as dd_file:
@@ -141,7 +200,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
             p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
             scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
-                                            table_caption, table_label, table_metrics_scheme, scores)
+                                            table_caption, table_label, table_metrics_scheme, scores, sources)
 
             for dataset in datasets:
                 table_line_list = [dataset_details[dataset]['short_name']]
@@ -159,6 +218,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
             p.progress_end()
 
 
+
 if __name__ == '__main__':
 
     json_store = './Benchmarks/json/'
@@ -169,6 +229,9 @@ if __name__ == '__main__':
     }
     wws_list = ['1.0', '0.3', '0.1']
 
+    uea_list = []
+    ucr_list = []
+
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
@@ -178,3 +241,9 @@ if __name__ == '__main__':
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+
+        uea_list.append(json_files_dict[wws][0])
+        ucr_list.append(json_files_dict[wws][1])
+
+    generate_trend_diagram(json_store, uea_list, 'UEA')
+    generate_trend_diagram(json_store, ucr_list, 'UCR')

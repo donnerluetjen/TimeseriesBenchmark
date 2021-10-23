@@ -11,7 +11,7 @@ import math
 
 
 class TexPlots(TexFile):
-    def __init__(self, tex_path='', x_label='x', y_label='y'):
+    def __init__(self, tex_path='', x_label='x', y_label='y', sources=None):
         self.x_label = x_label
         self.y_label = y_label
         self.marks_only = ''  # or '[only marks]'
@@ -20,7 +20,7 @@ class TexPlots(TexFile):
         self.inline_tables = []
         self.inline_plots = []
         self.inline_legends = []
-        super().__init__(tex_path, 'tikzpicture')
+        super().__init__(tex_path, 'tikzpicture', sources)
     
     def compile_file_lines(self):
         self.set_x_shifts()
@@ -111,3 +111,35 @@ class TexPlots(TexFile):
                                'wdtw': 'WDTW \\cite{jeong2011weighted}',
                                'wddtw': 'WWDTW \\cite{jeong2011weighted}'}
         return header_translations[header]
+
+
+class TrendPlots(TexPlots):
+
+    def compile_axis_header(self):
+        self.file_lines.append('\t\\begin{axis}[')
+        self.file_lines.append('\t\twidth = \\textwidth, height = 10cm,')
+        self.file_lines.append('\t\ttable/col sep = comma,')
+        self.file_lines.append('\t\txmode = log,')
+        self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
+        self.file_lines.append(f'\t\tylabel = {{{self.y_label}}},')
+        self.file_lines.append('\t\tgrid = both,')
+        self.file_lines.append('\t\tgrid style={line width=.2pt, draw=gray!10},')
+        self.file_lines.append('\t\tmajor grid style={line width=.2pt,draw=gray!50},')
+        self.file_lines.append('\t\tminor tick num=5,')
+        self.file_lines.append('\t\tlegend cell align={left},')
+        self.file_lines.append('\t\tlegend pos = south east,')
+        self.file_lines.append('\t\tlegend style={nodes={scale=0.7, transform shape}},')
+        self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
+        self.file_lines.append('\t\tnodes near coords, % print the value near node')
+        self.file_lines.append('\t]')
+
+    def compile_inline_plot_lines(self):
+        for data_name in self.data.keys():
+            xshift = self.plot_shifts[data_name]
+            scale = 0.4
+            xshift_offset = -10
+            yshift = 14
+            style = f'scale = {scale}, xshift = {xshift + xshift_offset}pt, yshift = {yshift}pt'
+            inline_plot = f'\t\t\\addplot+ [every node/.append style={{{style}}}] '
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
+            self.file_lines.append(inline_plot)

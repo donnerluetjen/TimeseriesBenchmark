@@ -11,10 +11,10 @@ from texfile import TexFile
 
 class TexTable(TexFile):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
-                 caption='abstract table', label='abstract-table'):
+                 caption='abstract table', label='abstract-table', sources=None):
         self.table_columns_formatter = table_columns_formatter
         self.payload_lines = []
-        super().__init__(tex_path, 'longtable', caption, label)
+        super().__init__(tex_path, 'longtable', sources, caption, label)
         if table_columns_formatter is None:
             raise ValueError('List of column formatters cannot be empty')
     
@@ -116,7 +116,7 @@ class TexTable(TexFile):
 class ScoreTexTable(TexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table',
-                 metrics=None, scores=None):
+                 metrics=None, scores=None, sources=None):
         """
 
         :param tex_path: string containing the tex file path
@@ -128,7 +128,7 @@ class ScoreTexTable(TexTable):
         """
         self.metrics = ['placeholder', 'metric'] if metrics is None else metrics
         self.scores = ['initialize', 'header', 'columns'] if scores is None else scores
-        super().__init__(tex_path, table_columns_formatter, caption, label)
+        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
 
     def sub_header(self):
         len_metrics = len(self.metrics)
@@ -165,7 +165,7 @@ class DetailsTexTable(TexTable):
 
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='tab:abstract-table',
-                 properties=None):
+                 properties=None, sources=None):
         """
 
         :param tex_path: string containing the tex file path
@@ -175,7 +175,7 @@ class DetailsTexTable(TexTable):
         :param properties: list containing strings with property names
         """
         self.properties = ['placeholder', 'properties'] if properties is None else properties
-        super().__init__(tex_path, table_columns_formatter, caption, label)
+        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
 
     def sub_header(self):
         len_names = 2  # Short Name and Name
