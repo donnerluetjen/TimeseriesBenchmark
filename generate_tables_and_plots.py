@@ -225,9 +225,10 @@ if __name__ == '__main__':
     json_files_dict = {
         '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
         '0.3': ['UEA_archive_wws-0-3.json', 'UCR_archive_wws-0-3.json'],
-        '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json']
+        '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json'],
+        'dis': ['UEA_distance_consolidations.json']
     }
-    wws_list = ['1.0', '0.3', '0.1']
+    wws_list = ['dis']  # '1.0', '0.3', '0.1']
 
     uea_list = []
     ucr_list = []
@@ -235,15 +236,15 @@ if __name__ == '__main__':
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}', ['bagdtw', 'dagdtw', 'sdtw'])
+                           f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
-
-        uea_list.append(json_files_dict[wws][0])
-        ucr_list.append(json_files_dict[wws][1])
-
-    generate_trend_diagram(json_store, uea_list, 'UEA')
-    generate_trend_diagram(json_store, ucr_list, 'UCR')
+    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
+    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+    #
+    #     uea_list.append(json_files_dict[wws][0])
+    #     ucr_list.append(json_files_dict[wws][1])
+    #
+    # generate_trend_diagram(json_store, uea_list, 'UEA')
+    # generate_trend_diagram(json_store, ucr_list, 'UCR')

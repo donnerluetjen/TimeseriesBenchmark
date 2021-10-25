@@ -157,7 +157,11 @@ class ScoreTexTable(TexTable):
                                'sdtw': 'SDTW \\cite{cuturi2017soft}',
                                'ddtw': 'DDTW \\cite{keogh2001derivative}',
                                'wdtw': 'WDTW \\cite{jeong2011weighted}',
-                               'wddtw': 'WWDTW \\cite{jeong2011weighted}'}
+                               'wddtw': 'WWDTW \\cite{jeong2011weighted}',
+                               'agdtw_manhattan': 'Manhattan (sect. \\ref{sct:manhattan})',
+                               'agdtw_euclidean': 'Manhattan (sect. \\ref{sct:manhattan})',
+                               'agdtw_chebishev': 'Manhattan (sect. \\ref{sct:manhattan})',
+                               'agdtw_minkowski': 'Manhattan (sect. \\ref{sct:manhattan})'}
         return header_translations[header]
 
 

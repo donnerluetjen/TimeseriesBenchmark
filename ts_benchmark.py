@@ -439,7 +439,7 @@ if __name__ == '__main__':
                 # 'wdtw', 'wddtw'
         'agdtw_manhattan',
         'agdtw_euclidean',
-        'sagdtw_chebyshev',
+        'agdtw_chebyshev',
         'agdtw_minkowski'
     ]
 
