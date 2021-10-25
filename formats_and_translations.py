@@ -8,7 +8,7 @@ def header_translation(header=''):
                            'wddtw': 'WWDTW \\cite{jeong2011weighted}',
                            'agdtw_manhattan': 'Manhattan (equation \\ref{equ:manhattan})',
                            'agdtw_euclidean': 'Euclidean (equation \\ref{equ:euclidean})',
-                           'sagdtw_chebyshev': 'Chebishev (equation \\ref{equ:chebishev})',
+                           'agdtw_chebyshev': 'Chebishev (equation \\ref{equ:chebishev})',
                            'agdtw_minkowski': 'Minkowski (equation \\ref{equ:minkowski})'}
     return header_translations[header]
 

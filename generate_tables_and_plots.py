@@ -338,6 +338,6 @@ if __name__ == '__main__':
     # generate_trend_diagram(json_store, uea_list, 'UEA')
     # generate_trend_diagram(json_store, ucr_list, 'UCR')
 
-    json_data_file = 'UEA_distance_consolidations.json'
+    json_data_file = 'distance_consolidations.json'
     generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
     generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')
