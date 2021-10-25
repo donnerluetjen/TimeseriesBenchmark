@@ -282,7 +282,7 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
     table_path = Path(path_dict['tex_dir'], table_file_name)
 
     table_caption = dataset_archive + ' Datasets for Distance Consolidation Methods'
-    table_label = dataset_archive + '_' + 'distance_consolidations'
+    table_label = dataset_archive + '-' + 'distance-consolidations'
 
     score_columns_formatter = 'c' * len(scores)
     # table_column_formatter works as formatter list since all formats are single chars
@@ -322,15 +322,15 @@ if __name__ == '__main__':
     uea_list = []
     ucr_list = []
 
-    # for wws in wws_list:
-    #     for json_file in json_files_dict[wws]:
-    #         generate_table(json_store + json_file, datasets_details_json_path,
-    #                        f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
-    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
-    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
-    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
-    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+    for wws in wws_list:
+        for json_file in json_files_dict[wws]:
+            generate_table(json_store + json_file, datasets_details_json_path,
+                           f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+            generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
     #
     #     uea_list.append(json_files_dict[wws][0])
     #     ucr_list.append(json_files_dict[wws][1])

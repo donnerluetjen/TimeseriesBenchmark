@@ -56,18 +56,24 @@ class TexPlots(TexFile):
         self.file_lines.append('\t\\end{axis}')
         self.file_lines.append(f'\\end{{{self.tex_object}}}')
 
+    def compatible_data_name(self, data_name):
+        data_name_elements, *all_but_first_element = data_name.split('_')
+        data_name_elements += ''.join([data_name_element.capitalize() for data_name_element in all_but_first_element])
+        return data_name_elements
+
     def compile_inline_table_lines(self):
         for data_name in self.data.keys():
             self.file_lines.append('\t\\pgfplotstableread[col sep=comma]{%')
             for data_row in self.data[data_name]:
                 self.file_lines.append('\t\t' + ', '.join(map(str, data_row)))
-            self.file_lines.append(f'\t}}\\{data_name}')
+            self.file_lines.append(f'\t}}\\{self.compatible_data_name(data_name)}')
 
     def compile_inline_plot_lines(self):
         for data_name in self.data.keys():
             xshift = self.plot_shifts[data_name]
             inline_plot = f'\t\t\\addplot+ [every node/.append style={{xshift={xshift}pt}}] '
-            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, ' \
+                           f'y index = {{1}}]{{\\{self.compatible_data_name(data_name)}}};'
             self.file_lines.append(inline_plot)
 
     def compile_legend(self):
