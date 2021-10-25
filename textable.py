@@ -6,6 +6,7 @@ __copyright__ = "Copyright 2021 – Ansgar Asseburg; " \
                 "information in"
 __email__ = "s2092795@stud.uni-frankfurt.de"
 
+from formats_and_translations import header_translation, float_format_pattern, format_ratios
 from texfile import TexFile
 
 
@@ -88,12 +89,9 @@ class TexTable(TexFile):
                 result.append(datum if not bold[index] else f'\\textbf{{{datum}}}')
                 index_offset += 1
             else:
-                number_data = f'{self.float_format_pattern() % datum}'
+                number_data = f'{float_format_pattern() % datum}'
                 result.append(f'${number_data}$' if not bold[index] else f'$\\boldsymbol{{{number_data}}}$')
         return result
-
-    def float_format_pattern(self):
-        return "%.4f"
 
     def replace_keywords_capitalized(self, prop):
         # replace num_of_ and _count with # and always put at beginning
@@ -140,7 +138,7 @@ class ScoreTexTable(TexTable):
 
         metrics_header = '\t\t'
         for metric in self.metrics:
-            metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{self.header_translation(metric)}}} '
+            metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{header_translation(metric)}}} '
 
         sub_header.append(f'{metrics_header}{self.EOL}')
 
@@ -149,20 +147,6 @@ class ScoreTexTable(TexTable):
         sub_header.append(f'\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}')
         sub_header.append('\t\t\\hline')
         return sub_header
-
-    def header_translation(self, header=''):
-        header_translations = {'dagdtw': 'DAGDTW (sect. \\ref{sct:dagdtw})',
-                               'bagdtw': 'BAGDTW (sect. \\ref{sct:bagdtw})',
-                               'dtw': 'DTW \\cite{bellman1959adaptive}',
-                               'sdtw': 'SDTW \\cite{cuturi2017soft}',
-                               'ddtw': 'DDTW \\cite{keogh2001derivative}',
-                               'wdtw': 'WDTW \\cite{jeong2011weighted}',
-                               'wddtw': 'WWDTW \\cite{jeong2011weighted}',
-                               'agdtw_manhattan': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_euclidean': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_chebishev': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_minkowski': 'Manhattan (sect. \\ref{sct:manhattan})'}
-        return header_translations[header]
 
 
 class DetailsTexTable(TexTable):
@@ -213,8 +197,5 @@ class ImbalanceTexTable(DetailsTexTable):
 
     def format_details(self, data):
         connector = ' - '
-        number_formatted_data_strings_list = self.format_ratios(data[2])
+        number_formatted_data_strings_list = format_ratios(data[2])
         return data[:2] + [connector.join(number_formatted_data_strings_list)]
-
-    def format_ratios(self, data):
-        return [f'{x * 100:.0f}\\%' for x in data]

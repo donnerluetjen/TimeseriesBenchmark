@@ -167,56 +167,146 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
 
     with open(json_path) as json_file:
         data = json.load(json_file)
-        high_scores = datasets_high_scores(data)
 
-        datasets = list(data.keys())
-        # read metrics and drop properties
-        metrics = list(data[datasets[0]].keys())
-        metrics.remove('properties')
+    high_scores = datasets_high_scores(data)
 
-        # split metrics into schemes for the two tables
-        table_metrics_schemes = [sorted(split_table_metrics), sorted(list(set(metrics) - set(split_table_metrics)))]
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = [key for key in data[datasets[0]] if key != 'properties']
 
-        # read scores and drop arguments
-        scores = list(data[datasets[0]][metrics[0]].keys())
-        scores.remove('arguments')
-        scores = [score for score in scores if score not in do_not_rank]
+    # split metrics into schemes for the two tables
+    table_metrics_schemes = [sorted(split_table_metrics), sorted(list(set(metrics) - set(split_table_metrics)))]
 
-        for table_metrics_scheme in table_metrics_schemes:
-            if len(table_metrics_scheme) == 0:
-                continue
-            table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
-            table_path = Path(path_dict['tex_dir'], table_file_name)
+    # read scores and drop arguments
+    omitted = do_not_rank + ['arguments']
+    scores = [key for key in data[datasets[0]][metrics[0]] if key not in omitted]
+    scores = [score for score in scores if score not in do_not_rank]
 
-            table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(
-                table_metrics_scheme).upper() + f' \\gls{{scb}} {table_name_specific}'
-            table_label = dataset_archive + '_' + '-'.join(
-                table_metrics_scheme) + f'_scb_{"".join([c for c in table_name_specific if c != " "])}'
+    for table_metrics_scheme in table_metrics_schemes:
+        if len(table_metrics_scheme) == 0:
+            continue
+        table_file_name = f'table_{dataset_archive}_{"-".join(table_metrics_scheme)}_{"".join([c for c in table_name_specific if c != " "])}.tex'
+        table_path = Path(path_dict['tex_dir'], table_file_name)
 
-            score_columns_formatter = 'c' * len(scores)
-            # table_column_formatter works as formatter list since all formats are single chars
-            table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(table_metrics_scheme)))}|'
+        table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(
+            table_metrics_scheme).upper() + f' \\gls{{scb}} {table_name_specific}'
+        table_label = dataset_archive + '_' + '-'.join(
+            table_metrics_scheme) + f'_scb_{"".join([c for c in table_name_specific if c != " "])}'
 
-            p.progress_start(f'Writing datasets scoring table {table_file_name}')
+        score_columns_formatter = 'c' * len(scores)
+        # table_column_formatter works as formatter list since all formats are single chars
+        table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(table_metrics_scheme)))}|'
 
-            scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
-                                            table_caption, table_label, table_metrics_scheme, scores, sources)
+        p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
-            for dataset in datasets:
-                table_line_list = [dataset_details[dataset]['short_name']]
+        scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
+                                        table_caption, table_label, table_metrics_scheme, scores, sources)
 
-                format_bold = [False]  # short_name should not be bold
+        for dataset in datasets:
+            table_line_list = [dataset_details[dataset]['short_name']]
 
-                for metric in table_metrics_scheme:
-                    for score in scores:
-                        table_line_list.append(data[dataset][metric][score])
-                        format_bold.append(True if high_scores[dataset][score] == metric else False)
-                scores_table.add_line(table_line_list, format_bold)
+            format_bold = [False]  # short_name should not be bold
 
-                p.progress_increase()
-            del scores_table  # to make sure destructor is called
-            p.progress_end()
+            for metric in table_metrics_scheme:
+                for score in scores:
+                    table_line_list.append(data[dataset][metric][score])
+                    format_bold.append(True if high_scores[dataset][score] == metric else False)
+            scores_table.add_line(table_line_list, format_bold)
 
+            p.progress_increase()
+        del scores_table  # to make sure destructor is called
+        p.progress_end()
+
+
+def generate_distance_consolidations_diagram(json_path, score_name='ranking', do_not_rank=None):
+    path_dict = fo.path_dictionary(json_path)
+    plot_file_name = f'pgfplot_{score_name}_distance_consolidations.tex'
+    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    sources = [json_path]
+    with open(json_path) as json_file:
+        data = json.load(json_file)
+
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = sorted([key for key in data[datasets[0]] if key != 'properties'])
+
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}', sources)
+
+    for metric in metrics:
+        # iterate over datasets for metric and find averages
+        accumulated_scoring = 0
+        accumulated_runtime = 0
+        for dataset in datasets:
+            if score_name == 'ranking':
+                accumulated_scoring += ranking(data[dataset][metric], do_not_rank)
+            else:
+                accumulated_scoring += data[dataset][metric][score_name]
+            accumulated_runtime += data[dataset][metric]['runtime']
+
+        table_data = [[accumulated_runtime / len(datasets), accumulated_scoring / len(datasets)]]
+        plot.add_data(metric, table_data)
+        p.progress_increase()
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
+
+
+def generate_distance_consolidations_table(json_path, dataset_details_file, do_not_rank=None):
+    path_dict = fo.path_dictionary(json_path)
+    dataset_archive = path_dict['archive']
+
+    if do_not_rank is None:
+        do_not_rank = []
+
+    sources = [json_path, dataset_details_file]
+
+    # load dataset details
+    with open(dataset_details_file) as dd_file:
+        dataset_details = json.load(dd_file)
+
+    with open(json_path) as json_file:
+        data = json.load(json_file)
+
+    high_scores = datasets_high_scores(data)
+
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = sorted([key for key in data[datasets[0]] if key != 'properties'])
+
+    # read scores and drop arguments
+    omitted = do_not_rank + ['arguments']
+    scores = [key for key in data[datasets[0]][metrics[0]] if key not in omitted]
+    scores = [score for score in scores if score not in do_not_rank]
+
+    table_file_name = f'table_{dataset_archive}_distance_consolidations.tex'
+    table_path = Path(path_dict['tex_dir'], table_file_name)
+
+    table_caption = dataset_archive + ' Datasets for Distance Consolidation Methods'
+    table_label = dataset_archive + '_' + 'distance_consolidations'
+
+    score_columns_formatter = 'c' * len(scores)
+    # table_column_formatter works as formatter list since all formats are single chars
+    table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(metrics)))}|'
+
+    p.progress_start(f'Writing datasets scoring table {table_file_name}')
+
+    scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
+                                    table_caption, table_label, metrics, scores, sources)
+
+    for dataset in datasets:
+        table_line_list = [dataset_details[dataset]['short_name']]
+
+        format_bold = [False]  # short_name should not be bold
+
+        for metric in metrics:
+            for score in scores:
+                table_line_list.append(data[dataset][metric][score])
+                format_bold.append(True if high_scores[dataset][score] == metric else False)
+        scores_table.add_line(table_line_list, format_bold)
+
+        p.progress_increase()
+    del scores_table  # to make sure destructor is called
+    p.progress_end()
 
 
 if __name__ == '__main__':
@@ -225,19 +315,18 @@ if __name__ == '__main__':
     json_files_dict = {
         '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
         '0.3': ['UEA_archive_wws-0-3.json', 'UCR_archive_wws-0-3.json'],
-        '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json'],
-        'dis': ['UEA_distance_consolidations.json']
+        '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json']
     }
-    wws_list = ['dis']  # '1.0', '0.3', '0.1']
+    wws_list = ['1.0', '0.3', '0.1']
 
     uea_list = []
     ucr_list = []
 
-    for wws in wws_list:
-        for json_file in json_files_dict[wws]:
-            generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
+    # for wws in wws_list:
+    #     for json_file in json_files_dict[wws]:
+    #         generate_table(json_store + json_file, datasets_details_json_path,
+    #                        f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
+    #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
     #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
     #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
     #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
@@ -248,3 +337,7 @@ if __name__ == '__main__':
     #
     # generate_trend_diagram(json_store, uea_list, 'UEA')
     # generate_trend_diagram(json_store, ucr_list, 'UCR')
+
+    json_data_file = 'UEA_distance_consolidations.json'
+    generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
+    generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')

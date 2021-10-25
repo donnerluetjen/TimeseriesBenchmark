@@ -8,6 +8,7 @@ __email__ = "s2092795@stud.uni-frankfurt.de"
 
 from texfile import TexFile
 import math
+from formats_and_translations import header_translation
 
 
 class TexPlots(TexFile):
@@ -71,7 +72,7 @@ class TexPlots(TexFile):
 
     def compile_legend(self):
         for data_name in self.data.keys():
-            self.file_lines.append(f'\t\t\\addlegendentry{{{self.header_translation(data_name)}}}')
+            self.file_lines.append(f'\t\t\\addlegendentry{{{header_translation(data_name)}}}')
 
     def add_data(self, data_name, data=None):
         if data is not None:
@@ -101,20 +102,6 @@ class TexPlots(TexFile):
                     shift = int(max((min_x_distance - abs(distance)) / 2, 0) * shift_factor)
                     if shift:  # only if <> 0
                         self.plot_shifts[data_to_shift] = -shift if distance < 0 else shift
-
-    def header_translation(self, header=''):
-        header_translations = {'dagdtw': 'DAGDTW (sect. \\ref{sct:dagdtw})',
-                               'bagdtw': 'BAGDTW (sect. \\ref{sct:bagdtw})',
-                               'dtw': 'DTW \\cite{bellman1959adaptive}',
-                               'sdtw': 'SDTW \\cite{cuturi2017soft}',
-                               'ddtw': 'DDTW \\cite{keogh2001derivative}',
-                               'wdtw': 'WDTW \\cite{jeong2011weighted}',
-                               'wddtw': 'WDDTW \\cite{jeong2011weighted}',
-                               'agdtw_manhattan': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_euclidean': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_chebishev': 'Manhattan (sect. \\ref{sct:manhattan})',
-                               'agdtw_minkowski': 'Manhattan (sect. \\ref{sct:manhattan})'}
-        return header_translations[header]
 
 
 class TrendPlots(TexPlots):
