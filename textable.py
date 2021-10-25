@@ -10,12 +10,12 @@ from formats_and_translations import header_translation, float_format_pattern, f
 from texfile import TexFile
 
 
-class LongTexTable(TexFile):
+class TexTable(TexFile):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table', sources=None):
         self.table_columns_formatter = table_columns_formatter
         self.payload_lines = []
-        super().__init__(tex_path, 'longtable', sources, caption, label)
+        super().__init__(tex_path, 'table', sources, caption, label)
         if table_columns_formatter is None:
             raise ValueError('List of column formatters cannot be empty')
     
@@ -23,6 +23,83 @@ class LongTexTable(TexFile):
         self.compile_header()
         self.compile_payload()
         self.compile_footer()
+
+    def compile_header(self):
+        table_columns_formatter = ''.join(self.table_columns_formatter)
+        table_column_count = len([cf for cf in self.table_columns_formatter if cf != '|'])
+
+        self.file_lines.append('{\\tiny')
+        self.file_lines.append(f'\t\\begin{{{self.tex_object}}}')
+        self.file_lines.append(f'\t\t\\begin{{tabular}}{{{table_columns_formatter}}}')
+        self.file_lines.append('')
+        self.file_lines.extend(self.sub_header())
+        self.file_lines.append('')
+
+    def sub_header(self):
+        header = ['\t\t\\hline']
+        header.append(f'\t\t\t\\multicolumn{{{3}}}{{c|}}{{Abstract Table}} {self.EOL}')
+        header.append('\t\t\t\\hline')
+        return header
+
+    def compile_payload(self):
+        self.file_lines.extend(self.payload_lines)
+
+    def compile_footer(self):
+        self.file_lines.append(f'\t\t\t\\hline')
+        self.file_lines.append(f'\t\t\\end{{tabular}}')
+        self.file_lines.append(f'\t\t\\caption{{{self.caption}}}')
+        self.file_lines.append(f'\t\t\\label{{tab:{self.label}}}')
+        self.file_lines.append(f'\t\\end{{{self.tex_object}}}')
+        self.file_lines.append('}')
+
+    def add_line(self, data=None, bold=None):
+        """
+        :param data: list of data to be added
+        :param bold: list that indicate which data to print bold
+        :return: nothing
+        """
+        if data is None:
+            raise ValueError('Data cannot be None.')
+        formatted_data = self.format_data(data, bold)
+        self.payload_lines.append(f'\t\t\t{" & ".join(formatted_data)} {self.EOL}')
+
+    def format_data(self, data, bold=None):
+        if bold is None:
+            bold = [False for _ in data]
+        result = []
+        index_offset = 0
+        for index, datum in enumerate(data):
+            if isinstance(datum, str):
+                result.append(datum if not bold[index] else f'\\textbf{{{datum}}}')
+                index_offset += 1
+            else:
+                number_data = f'{float_format_pattern() % datum}'
+                result.append(f'${number_data}$' if not bold[index] else f'$\\boldsymbol{{{number_data}}}$')
+        return result
+
+    def replace_keywords_capitalized(self, prop):
+        # replace num_of_ and _count with # and always put at beginning
+        # capitalize the rest
+        count_prop = False
+        # split string
+        prop_parts = prop.split('_')
+        for removable in self.replacements()['keywords']:
+            if prop_parts.count(removable):
+                prop_parts.remove(removable)
+                count_prop = True
+        if count_prop:
+            prop_parts.insert(0, self.replacements()['replacement'])
+        return ' '.join([pp.capitalize() for pp in prop_parts])
+
+    def replacements(self):
+        return {'keywords': [], 'replacement': ''}
+
+
+class LongTexTable(TexTable):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table', sources=None):
+        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
+        self.tex_object = 'longtable'
 
     def compile_header(self):
         table_columns_formatter = ''.join(self.table_columns_formatter)
@@ -58,9 +135,6 @@ class LongTexTable(TexFile):
         header.append('\t\t\\hline')
         return header
 
-    def compile_payload(self):
-        self.file_lines.extend(self.payload_lines)
-    
     def compile_footer(self):
         self.file_lines.append(f'\t\t\\hline')
         self.file_lines.append(f'\t\t\\caption{{{self.caption}}}')
@@ -78,80 +152,6 @@ class LongTexTable(TexFile):
             raise ValueError('Data cannot be None.')
         formatted_data = self.format_data(data, bold)
         self.payload_lines.append(f'\t\t{" & ".join(formatted_data)} {self.EOL}')
-
-    def format_data(self, data, bold=None):
-        if bold is None:
-            bold = [False for _ in data]
-        result = []
-        index_offset = 0
-        for index, datum in enumerate(data):
-            if isinstance(datum, str):
-                result.append(datum if not bold[index] else f'\\textbf{{{datum}}}')
-                index_offset += 1
-            else:
-                number_data = f'{float_format_pattern() % datum}'
-                result.append(f'${number_data}$' if not bold[index] else f'$\\boldsymbol{{{number_data}}}$')
-        return result
-
-    def replace_keywords_capitalized(self, prop):
-        # replace num_of_ and _count with # and always put at beginning
-        # capitalize the rest
-        count_prop = False
-        # split string
-        prop_parts = prop.split('_')
-        for removable in self.replacements()['keywords']:
-            if prop_parts.count(removable):
-                prop_parts.remove(removable)
-                count_prop = True
-        if count_prop:
-            prop_parts.insert(0, self.replacements()['replacement'])
-        return ' '.join([pp.capitalize() for pp in prop_parts])
-
-    def replacements(self):
-        return {'keywords': [], 'replacement': ''}
-
-
-class TexTable(LongTexTable):
-    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
-                 caption='abstract table', label='abstract-table', sources=None):
-        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
-        self.tex_object = 'table'
-
-    def compile_header(self):
-        table_columns_formatter = ''.join(self.table_columns_formatter)
-        table_column_count = len([cf for cf in self.table_columns_formatter if cf != '|'])
-
-        self.file_lines.append('{\\tiny')
-        self.file_lines.append(f'\t\\begin{{{self.tex_object}}}')
-        self.file_lines.append(f'\t\t\\begin{{tabular}}{{{table_columns_formatter}}}')
-        self.file_lines.append('')
-        self.file_lines.extend(self.sub_header())
-        self.file_lines.append('')
-
-    def sub_header(self):
-        header = ['\t\t\\hline']
-        header.append(f'\t\t\t\\multicolumn{{{3}}}{{c|}}{{Abstract Table}} {self.EOL}')
-        header.append('\t\t\t\\hline')
-        return header
-
-    def compile_footer(self):
-        self.file_lines.append(f'\t\t\t\\hline')
-        self.file_lines.append(f'\t\t\\end{{tabular}}')
-        self.file_lines.append(f'\t\t\\caption{{{self.caption}}}')
-        self.file_lines.append(f'\t\t\\label{{tab:{self.label}}}')
-        self.file_lines.append(f'\t\\end{{{self.tex_object}}}')
-        self.file_lines.append('}')
-
-    def add_line(self, data=None, bold=None):
-        """
-        :param data: list of data to be added
-        :param bold: list that indicate which data to print bold
-        :return: nothing
-        """
-        if data is None:
-            raise ValueError('Data cannot be None.')
-        formatted_data = self.format_data(data, bold)
-        self.payload_lines.append(f'\t\t\t{" & ".join(formatted_data)} {self.EOL}')
 
 
 class ScoreTexTable(LongTexTable):
@@ -192,7 +192,7 @@ class ScoreTexTable(LongTexTable):
         return sub_header
 
 
-class NormsTexTable(TexTable):
+class NormTexTable(LongTexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table',
                  metrics=None, scores=None, sources=None):

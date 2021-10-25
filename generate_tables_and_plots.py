@@ -94,7 +94,7 @@ def generate_trend_diagram(folder='', file_list=None, name='', do_not_rank=None)
     scores = list(all_files_data[wwss[0]][datasets[0]][metrics[0]].keys())
 
     p.progress_start(f'Writing datasets plots {plot_file_name}')
-    plot = pp.TrendPlots(pgf_path, 'Mean Runtime', 'Mean Ranking', sources)
+    plot = pp.TrendPlots(pgf_path, 'Mean Runtime', 'Mean Ranking', sources, True)
 
     for metric in metrics:
         table_data = []
@@ -127,7 +127,7 @@ def generate_score_diagram(json_path, plot_name_specific='', score_name='ranking
     metrics.remove('properties')
 
     p.progress_start(f'Writing datasets plots {plot_file_name}')
-    plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}', sources)
+    plot = pp.TexPlots(pgf_path, 'Mean Runtime', f'Mean {score_name.capitalize()}', sources, True)
 
     for metric in metrics:
         # iterate over datasets for metric and find averages
@@ -286,7 +286,7 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
 
     p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
-    norms_table = tt.NormsTexTable(table_path, table_column_formatter,
+    norms_table = tt.ScoreTexTable(table_path, table_column_formatter,
                                table_caption, table_label, metrics, scores, sources)
 
     for dataset in datasets:

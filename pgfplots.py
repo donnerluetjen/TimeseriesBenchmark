@@ -12,9 +12,11 @@ from formats_and_translations import header_translation
 
 
 class TexPlots(TexFile):
-    def __init__(self, tex_path='', x_label='x', y_label='y', sources=None):
+    def __init__(self, tex_path='', x_label='x', y_label='y', sources=None, x_axis_log=False, y_axis_log=False):
         self.x_label = x_label
         self.y_label = y_label
+        self.x_axis_log = x_axis_log
+        self.y_axis_log = y_axis_log
         self.marks_only = ''  # or '[only marks]'
         self.data = {}
         self.plot_shifts = {}
@@ -38,7 +40,10 @@ class TexPlots(TexFile):
     def compile_axis_header(self):
         self.file_lines.append('\t\\begin{axis}[')
         self.file_lines.append('\t\ttable/col sep = comma,')
-        self.file_lines.append('\t\txmode = log,')
+        if self.x_axis_log:
+            self.file_lines.append('\t\txmode = log,')
+        if self.y_axis_log:
+            self.file_lines.append('\t\tymode = log,')
         self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
         self.file_lines.append(f'\t\tylabel = {{{self.y_label}}},')
         self.file_lines.append('\t\tgrid = both,')
@@ -113,21 +118,7 @@ class TexPlots(TexFile):
 class TrendPlots(TexPlots):
 
     def compile_axis_header(self):
-        self.file_lines.append('\t\\begin{axis}[')
-        # self.file_lines.append('\t\twidth = \\textwidth, height = 8cm,')
-        self.file_lines.append('\t\ttable/col sep = comma,')
-        self.file_lines.append('\t\txmode = log,')
-        self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
-        self.file_lines.append(f'\t\tylabel = {{{self.y_label}}},')
-        self.file_lines.append('\t\tgrid = both,')
-        self.file_lines.append('\t\tgrid style={line width=.2pt, draw=gray!10},')
-        self.file_lines.append('\t\tmajor grid style={line width=.2pt,draw=gray!50},')
-        self.file_lines.append('\t\tminor tick num=5,')
-        self.file_lines.append('\t\tlegend cell align={left},')
-        self.file_lines.append('\t\tlegend pos = south east,')
-        self.file_lines.append('\t\tlegend style={nodes={scale=0.7, transform shape}},')
-        self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
-        self.file_lines.append('\t\tnodes near coords, % print the value near node')
+        super().compile_axis_header()
         self.file_lines.append('\t\tpoint meta = explicit symbolic, % read printed value from separate column')
         self.file_lines.append('\t]')
 
