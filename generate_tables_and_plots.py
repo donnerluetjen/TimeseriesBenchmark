@@ -33,12 +33,8 @@ def datasets_high_scores(data=None):
     if data is None:
         return None
     datasets = list(data.keys())
-    dataset_keys = list(data[datasets[0]].keys())
-    dataset_keys.remove('properties')
-    metrics = dataset_keys
-    metric_keys = list(data[datasets[0]][metrics[0]].keys())
-    metric_keys.remove('arguments')
-    scores = metric_keys
+    metrics = [key for key in data[datasets[0]].keys() if key != 'properties']
+    scores = [key for key in data[datasets[0]][metrics[0]].keys() if key != 'arguments']
     high_score_dict = {}
     for dataset in datasets:
 
@@ -278,11 +274,11 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
     scores = [key for key in data[datasets[0]][metrics[0]] if key not in omitted]
     scores = [score for score in scores if score not in do_not_rank]
 
-    table_file_name = f'table_{dataset_archive}_distance_consolidations.tex'
+    table_file_name = f'table_distance_consolidations.tex'
     table_path = Path(path_dict['tex_dir'], table_file_name)
 
-    table_caption = dataset_archive + ' Datasets for Distance Consolidation Methods'
-    table_label = dataset_archive + '-' + 'distance-consolidations'
+    table_caption = 'Datasets for Distance Consolidation Methods'
+    table_label = 'distance-consolidations'
 
     score_columns_formatter = 'c' * len(scores)
     # table_column_formatter works as formatter list since all formats are single chars
@@ -290,8 +286,8 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
 
     p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
-    scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
-                                    table_caption, table_label, metrics, scores, sources)
+    norms_table = tt.NormsTexTable(table_path, table_column_formatter,
+                               table_caption, table_label, metrics, scores, sources)
 
     for dataset in datasets:
         table_line_list = [dataset_details[dataset]['short_name']]
@@ -302,10 +298,11 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
             for score in scores:
                 table_line_list.append(data[dataset][metric][score])
                 format_bold.append(True if high_scores[dataset][score] == metric else False)
-        scores_table.add_line(table_line_list, format_bold)
+        norms_table.add_line(table_line_list, format_bold)
 
         p.progress_increase()
-    del scores_table  # to make sure destructor is called
+
+    del norms_table  # to make sure destructor is called
     p.progress_end()
 
 
@@ -325,19 +322,19 @@ if __name__ == '__main__':
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}')  #, ['bagdtw', 'dagdtw', 'sdtw'])
+                           f'size={wws}')  # , ['bagdtw', 'dagdtw', 'sdtw'])
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
             generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
-    #
-    #     uea_list.append(json_files_dict[wws][0])
-    #     ucr_list.append(json_files_dict[wws][1])
-    #
-    # generate_trend_diagram(json_store, uea_list, 'UEA')
-    # generate_trend_diagram(json_store, ucr_list, 'UCR')
 
-    json_data_file = 'distance_consolidations.json'
+        uea_list.append(json_files_dict[wws][0])
+        ucr_list.append(json_files_dict[wws][1])
+
+    generate_trend_diagram(json_store, uea_list, 'UEA')
+    generate_trend_diagram(json_store, ucr_list, 'UCR')
+
+    json_data_file = 'UEA_distance_consolidations.json'
     generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
     generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')

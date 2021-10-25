@@ -48,6 +48,18 @@ def update_dict(json_path, update_from_json_path):
         json.dump(data_to_update, json_file, indent=6)
         json_file.flush()
 
+def remove_key(json_path, key_to_remove):
+    with open(json_path) as json_file:
+        data_to_update = json.load(json_file)
+
+    for key in data_to_update.keys():
+        data_to_update[key].pop(key_to_remove, None)
+
+    with open(json_path, 'w') as json_file:
+        json.dump(data_to_update, json_file, indent=6)
+        json_file.flush()
+
+
 if __name__ == '__main__':
 
     json_store = './Benchmarks/json/'
@@ -62,8 +74,10 @@ if __name__ == '__main__':
     }
     wws_list = ['1.0', '0.3', '0.1']
 
-    for wws in wws_list:
-        for json_file in json_files_dict[wws]:
-            # update_agdtw_key(json_store + json_file)
-            # sort_keys(json_store + json_file)
-            update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
+    # for wws in wws_list:
+    #     for json_file in json_files_dict[wws]:
+    #         update_agdtw_key(json_store + json_file)
+    #         sort_keys(json_store + json_file)
+    #         update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
+    # update_dict(json_store + 'UEA_distance_consolidations.json', json_store + 'distance_consolidations.json')
+    # remove_key(json_store + 'UEA_distance_consolidations.json', 'sagdtw_chebyshev')

@@ -10,7 +10,7 @@ from formats_and_translations import header_translation, float_format_pattern, f
 from texfile import TexFile
 
 
-class TexTable(TexFile):
+class LongTexTable(TexFile):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table', sources=None):
         self.table_columns_formatter = table_columns_formatter
@@ -111,7 +111,50 @@ class TexTable(TexFile):
         return {'keywords': [], 'replacement': ''}
 
 
-class ScoreTexTable(TexTable):
+class TexTable(LongTexTable):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table', sources=None):
+        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
+        self.tex_object = 'table'
+
+    def compile_header(self):
+        table_columns_formatter = ''.join(self.table_columns_formatter)
+        table_column_count = len([cf for cf in self.table_columns_formatter if cf != '|'])
+
+        self.file_lines.append('{\\tiny')
+        self.file_lines.append(f'\t\\begin{{{self.tex_object}}}')
+        self.file_lines.append(f'\t\t\\begin{{tabular}}{{{table_columns_formatter}}}')
+        self.file_lines.append('')
+        self.file_lines.extend(self.sub_header())
+        self.file_lines.append('')
+
+    def sub_header(self):
+        header = ['\t\t\\hline']
+        header.append(f'\t\t\t\\multicolumn{{{3}}}{{c|}}{{Abstract Table}} {self.EOL}')
+        header.append('\t\t\t\\hline')
+        return header
+
+    def compile_footer(self):
+        self.file_lines.append(f'\t\t\t\\hline')
+        self.file_lines.append(f'\t\t\\end{{tabular}}')
+        self.file_lines.append(f'\t\t\\caption{{{self.caption}}}')
+        self.file_lines.append(f'\t\t\\label{{tab:{self.label}}}')
+        self.file_lines.append(f'\t\\end{{{self.tex_object}}}')
+        self.file_lines.append('}')
+
+    def add_line(self, data=None, bold=None):
+        """
+        :param data: list of data to be added
+        :param bold: list that indicate which data to print bold
+        :return: nothing
+        """
+        if data is None:
+            raise ValueError('Data cannot be None.')
+        formatted_data = self.format_data(data, bold)
+        self.payload_lines.append(f'\t\t\t{" & ".join(formatted_data)} {self.EOL}')
+
+
+class ScoreTexTable(LongTexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table',
                  metrics=None, scores=None, sources=None):
@@ -149,7 +192,45 @@ class ScoreTexTable(TexTable):
         return sub_header
 
 
-class DetailsTexTable(TexTable):
+class NormsTexTable(TexTable):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table',
+                 metrics=None, scores=None, sources=None):
+        """
+
+        :param tex_path: string containing the tex file path
+        :param table_columns_formatter: string containing the tex columns format
+        :param caption: string containing the table caption
+        :param label: string containing the table label, will be expanded to tab:<label>
+        :param metrics: list containing the strings with metric names
+        :param scores: list containing strings with score names
+        """
+        self.metrics = ['placeholder', 'metric'] if metrics is None else metrics
+        self.scores = ['initialize', 'header', 'columns'] if scores is None else scores
+        super().__init__(tex_path, table_columns_formatter, caption, label, sources)
+
+    def sub_header(self):
+        len_metrics = len(self.metrics)
+        len_scores = len(self.scores)
+
+
+        sub_header = ['\t\t\t\\hline']
+        sub_header.append(f'\t\t\t& \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {self.EOL}')
+
+        metrics_header = '\t\t\t'
+        for metric in self.metrics:
+            metrics_header += f'& \\multicolumn{{{len_scores}}}{{c|}}{{{header_translation(metric)}}} '
+
+        sub_header.append(f'{metrics_header}{self.EOL}')
+
+        capitalized_scores = [score.capitalize() for score in self.scores]
+
+        sub_header.append(f'\t\t\tDatasets & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}')
+        sub_header.append('\t\t\t\\hline')
+        return sub_header
+
+
+class DetailsTexTable(LongTexTable):
 
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='tab:abstract-table',
