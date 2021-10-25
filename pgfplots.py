@@ -135,6 +135,7 @@ class TrendPlots(TexPlots):
         self.file_lines.append('\t]')
 
     def compile_inline_plot_lines(self):
+        omit_data_display_list = ['wdtw', 'wddtw', 'sdtw']
         for data_name in self.data.keys():
             xshift = self.plot_shifts[data_name]
             scale = 1
@@ -142,5 +143,6 @@ class TrendPlots(TexPlots):
             yshift = 0
             style = f'scale = {scale}, xshift = {xshift + xshift_offset}pt, yshift = {yshift}pt'
             inline_plot = f'\t\t\\addplot+ [every node/.append style={{{style}}}] '
-            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}, meta = {{2}}]{{\\{data_name}}};'
+            meta = f', meta = {{2}}' if data_name not in omit_data_display_list else ''
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}{meta}]{{\\{data_name}}};'
             self.file_lines.append(inline_plot)

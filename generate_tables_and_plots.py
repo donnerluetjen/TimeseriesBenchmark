@@ -109,7 +109,7 @@ def generate_trend_diagram(folder='', file_list=None, name='', do_not_rank=None)
             for dataset in datasets:
                 accumulated_scoring += ranking(all_files_data[wws][dataset][metric], do_not_rank)
                 accumulated_runtime += all_files_data[wws][dataset][metric]['runtime']
-            table_data.append([accumulated_runtime / len(datasets), accumulated_scoring / len(datasets), wws])
+            table_data.append([accumulated_runtime / len(datasets), accumulated_scoring / len(datasets), abs(wws)])
             plot.add_data(metric, table_data)
             p.progress_increase()
 
@@ -245,5 +245,5 @@ if __name__ == '__main__':
         uea_list.append(json_files_dict[wws][0])
         ucr_list.append(json_files_dict[wws][1])
 
-    # generate_trend_diagram(json_store, uea_list, 'UEA')
-    # generate_trend_diagram(json_store, ucr_list, 'UCR')
+    generate_trend_diagram(json_store, uea_list, 'UEA')
+    generate_trend_diagram(json_store, ucr_list, 'UCR')
