@@ -1,0 +1,1080 @@
+{
+      "ArticularyWordRecognition": {
+            "properties": {
+                  "num_of_dimensions": 9,
+                  "num_of_instances": 431,
+                  "num_of_timestamps": 144,
+                  "num_of_classes": 25,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 431,
+                  "len test set": 144,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3472222222222222,
+                  "recall": 0.3697936507936508,
+                  "f1-score": 0.31680713404242816,
+                  "auroc": 0.6717675264550265,
+                  "runtime": 430.2397660400002
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3472222222222222,
+                  "recall": 0.3697936507936508,
+                  "f1-score": 0.31680713404242816,
+                  "auroc": 0.6717675264550265,
+                  "runtime": 421.21050160900086
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3472222222222222,
+                  "recall": 0.3697936507936508,
+                  "f1-score": 0.31680713404242816,
+                  "auroc": 0.6717675264550265,
+                  "runtime": 421.0750151560005
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3472222222222222,
+                  "recall": 0.3697936507936508,
+                  "f1-score": 0.31680713404242816,
+                  "auroc": 0.6717675264550265,
+                  "runtime": 420.38660803999846
+            }
+      },
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 22,
+                  "len test set": 8,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.4166666666666667,
+                  "f1-score": 0.4166666666666667,
+                  "auroc": 0.5625,
+                  "runtime": 5.103458965000755
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.4166666666666667,
+                  "f1-score": 0.4166666666666667,
+                  "auroc": 0.5625,
+                  "runtime": 5.083155299998907
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.4166666666666667,
+                  "f1-score": 0.4166666666666667,
+                  "auroc": 0.5625,
+                  "runtime": 5.1159559240004455
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.4166666666666667,
+                  "f1-score": 0.4166666666666667,
+                  "auroc": 0.5625,
+                  "runtime": 5.03057026299939
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 60,
+                  "len test set": 20,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9,
+                  "f1-score": 0.8647727272727272,
+                  "auroc": 0.9333333333333332,
+                  "runtime": 2.97343482100041
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9,
+                  "f1-score": 0.8647727272727272,
+                  "auroc": 0.9333333333333332,
+                  "runtime": 2.9273649499991734
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9,
+                  "f1-score": 0.8647727272727272,
+                  "auroc": 0.9333333333333332,
+                  "runtime": 2.956490845997905
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9,
+                  "f1-score": 0.8647727272727272,
+                  "auroc": 0.9333333333333332,
+                  "runtime": 3.057126147003146
+            }
+      },
+      "Epilepsy": {
+            "properties": {
+                  "num_of_dimensions": 3,
+                  "num_of_instances": 206,
+                  "num_of_timestamps": 206,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 206,
+                  "len test set": 69,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8840579710144928,
+                  "recall": 0.8805555555555555,
+                  "f1-score": 0.8811389759665622,
+                  "auroc": 0.9203703703703705,
+                  "runtime": 67.98528507900119
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8840579710144928,
+                  "recall": 0.8805555555555555,
+                  "f1-score": 0.8811389759665622,
+                  "auroc": 0.9203703703703705,
+                  "runtime": 66.34625983200021
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8840579710144928,
+                  "recall": 0.8805555555555555,
+                  "f1-score": 0.8811389759665622,
+                  "auroc": 0.9203703703703705,
+                  "runtime": 66.75739235500077
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8840579710144928,
+                  "recall": 0.8805555555555555,
+                  "f1-score": 0.8811389759665622,
+                  "auroc": 0.9203703703703705,
+                  "runtime": 68.64680591999786
+            }
+      },
+      "EyesOpenShut": {
+            "properties": {
+                  "num_of_dimensions": 14,
+                  "num_of_instances": 73,
+                  "num_of_timestamps": 128,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 73,
+                  "len test set": 25,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.72,
+                  "recall": 0.7211538461538461,
+                  "f1-score": 0.7199999999999999,
+                  "auroc": 0.7211538461538461,
+                  "runtime": 14.49738255199918
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.72,
+                  "recall": 0.7211538461538461,
+                  "f1-score": 0.7199999999999999,
+                  "auroc": 0.7211538461538461,
+                  "runtime": 14.532066644002043
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.72,
+                  "recall": 0.7211538461538461,
+                  "f1-score": 0.7199999999999999,
+                  "auroc": 0.7211538461538461,
+                  "runtime": 14.455750256998726
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.72,
+                  "recall": 0.7211538461538461,
+                  "f1-score": 0.7199999999999999,
+                  "auroc": 0.7211538461538461,
+                  "runtime": 14.753295015998447
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 312,
+                  "len test set": 104,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.4981259370314842,
+                  "f1-score": 0.4903374942209894,
+                  "auroc": 0.4981259370314842,
+                  "runtime": 89.83186500199736
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.4981259370314842,
+                  "f1-score": 0.4903374942209894,
+                  "auroc": 0.4981259370314842,
+                  "runtime": 88.31644201800009
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5089955022488756,
+                  "f1-score": 0.49981502034776176,
+                  "auroc": 0.5089955022488755,
+                  "runtime": 88.36995712299904
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.49038461538461536,
+                  "recall": 0.4981259370314842,
+                  "f1-score": 0.4903374942209894,
+                  "auroc": 0.4981259370314842,
+                  "runtime": 89.4153325039988
+            }
+      },
+      "HandMovementDirection": {
+            "properties": {
+                  "num_of_dimensions": 10,
+                  "num_of_instances": 175,
+                  "num_of_timestamps": 400,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 175,
+                  "len test set": 59,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2711864406779661,
+                  "recall": 0.24636994949494948,
+                  "f1-score": 0.24500442366026287,
+                  "auroc": 0.4975799663299664,
+                  "runtime": 557.549579085
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2711864406779661,
+                  "recall": 0.24636994949494948,
+                  "f1-score": 0.24500442366026287,
+                  "auroc": 0.4975799663299664,
+                  "runtime": 547.4697250470017
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2711864406779661,
+                  "recall": 0.24636994949494948,
+                  "f1-score": 0.24500442366026287,
+                  "auroc": 0.4975799663299664,
+                  "runtime": 553.2274254559998
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.2711864406779661,
+                  "recall": 0.24636994949494948,
+                  "f1-score": 0.24500442366026287,
+                  "auroc": 0.4975799663299664,
+                  "runtime": 562.771246409
+            }
+      },
+      "Libras": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 270,
+                  "num_of_timestamps": 45,
+                  "num_of_classes": 15,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 270,
+                  "len test set": 90,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6333333333333333,
+                  "recall": 0.65015873015873,
+                  "f1-score": 0.6310203086673675,
+                  "auroc": 0.8125850340136054,
+                  "runtime": 6.923985655001161
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6333333333333333,
+                  "recall": 0.65015873015873,
+                  "f1-score": 0.6310203086673675,
+                  "auroc": 0.8125850340136054,
+                  "runtime": 6.890349584999058
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6333333333333333,
+                  "recall": 0.65015873015873,
+                  "f1-score": 0.6310203086673675,
+                  "auroc": 0.8125850340136054,
+                  "runtime": 6.881068778999179
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6333333333333333,
+                  "recall": 0.65015873015873,
+                  "f1-score": 0.6310203086673675,
+                  "auroc": 0.8125850340136054,
+                  "runtime": 6.648775181998644
+            }
+      },
+      "NATOPS": {
+            "properties": {
+                  "num_of_dimensions": 24,
+                  "num_of_instances": 270,
+                  "num_of_timestamps": 51,
+                  "num_of_classes": 6,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 270,
+                  "len test set": 90,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5888888888888889,
+                  "recall": 0.5944444444444444,
+                  "f1-score": 0.5579752698673505,
+                  "auroc": 0.7566666666666667,
+                  "runtime": 58.387327411001024
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5888888888888889,
+                  "recall": 0.5944444444444444,
+                  "f1-score": 0.5579752698673505,
+                  "auroc": 0.7566666666666667,
+                  "runtime": 58.5464199809976
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5888888888888889,
+                  "recall": 0.5944444444444444,
+                  "f1-score": 0.5579752698673505,
+                  "auroc": 0.7566666666666667,
+                  "runtime": 58.179109339002025
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5888888888888889,
+                  "recall": 0.5944444444444444,
+                  "f1-score": 0.5579752698673505,
+                  "auroc": 0.7566666666666667,
+                  "runtime": 58.437001770998904
+            }
+      },
+      "RacketSports": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 227,
+                  "num_of_timestamps": 30,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 227,
+                  "len test set": 76,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7368421052631579,
+                  "recall": 0.7618925831202046,
+                  "f1-score": 0.7421766625866992,
+                  "auroc": 0.8412617220801364,
+                  "runtime": 5.678106621999177
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7368421052631579,
+                  "recall": 0.7618925831202046,
+                  "f1-score": 0.7421766625866992,
+                  "auroc": 0.8412617220801364,
+                  "runtime": 5.863637086997187
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7368421052631579,
+                  "recall": 0.7618925831202046,
+                  "f1-score": 0.7421766625866992,
+                  "auroc": 0.8412617220801364,
+                  "runtime": 5.36643760899824
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7368421052631579,
+                  "recall": 0.7618925831202046,
+                  "f1-score": 0.7421766625866992,
+                  "auroc": 0.8412617220801364,
+                  "runtime": 5.370623773000261
+            }
+      },
+      "SelfRegulationSCP1": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 420,
+                  "num_of_timestamps": 896,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 420,
+                  "len test set": 141,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8229548229548229,
+                  "f1-score": 0.8214014287885697,
+                  "auroc": 0.8229548229548229,
+                  "runtime": 9650.951151092002
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8229548229548229,
+                  "f1-score": 0.8214014287885697,
+                  "auroc": 0.8229548229548229,
+                  "runtime": 8125.5563524539975
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8229548229548229,
+                  "f1-score": 0.8214014287885697,
+                  "auroc": 0.8229548229548229,
+                  "runtime": 8301.423750478993
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8226950354609929,
+                  "recall": 0.8229548229548229,
+                  "f1-score": 0.8214014287885697,
+                  "auroc": 0.8229548229548229,
+                  "runtime": 9648.917418493002
+            }
+      },
+      "SelfRegulationSCP2": {
+            "properties": {
+                  "num_of_dimensions": 7,
+                  "num_of_instances": 285,
+                  "num_of_timestamps": 1152,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 285,
+                  "len test set": 95,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5255102040816326,
+                  "f1-score": 0.5254745254745254,
+                  "auroc": 0.5255102040816326,
+                  "runtime": 8697.726282305011
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5255102040816326,
+                  "f1-score": 0.5254745254745254,
+                  "auroc": 0.5255102040816326,
+                  "runtime": 8420.42579353301
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5255102040816326,
+                  "f1-score": 0.5254745254745254,
+                  "auroc": 0.5255102040816326,
+                  "runtime": 7883.016209064008
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5263157894736842,
+                  "recall": 0.5255102040816326,
+                  "f1-score": 0.5254745254745254,
+                  "auroc": 0.5255102040816326,
+                  "runtime": 8693.228040903981
+            }
+      },
+      "StandWalkJump": {
+            "properties": {
+                  "num_of_dimensions": 4,
+                  "num_of_instances": 20,
+                  "num_of_timestamps": 2500,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 20,
+                  "len test set": 7,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.3333333333333333,
+                  "f1-score": 0.11111111111111112,
+                  "auroc": 0.5,
+                  "runtime": 130.89422901999205
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.3333333333333333,
+                  "f1-score": 0.11111111111111112,
+                  "auroc": 0.5,
+                  "runtime": 134.72611866300576
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.3333333333333333,
+                  "f1-score": 0.11111111111111112,
+                  "auroc": 0.5,
+                  "runtime": 132.1343903609959
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.14285714285714285,
+                  "recall": 0.3333333333333333,
+                  "f1-score": 0.11111111111111112,
+                  "auroc": 0.5,
+                  "runtime": 134.40449887598515
+            }
+      },
+      "UWaveGestureLibrary": {
+            "properties": {
+                  "num_of_dimensions": 3,
+                  "num_of_instances": 330,
+                  "num_of_timestamps": 315,
+                  "num_of_classes": 8,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 330,
+                  "len test set": 110,
+                  "imbalance": 0
+            },
+            "agdtw_manhattan": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6272727272727273,
+                  "recall": 0.6657609037204626,
+                  "f1-score": 0.6037293243033539,
+                  "auroc": 0.8090062306974071,
+                  "runtime": 407.23478898001486
+            },
+            "agdtw_euclidean": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 1,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6272727272727273,
+                  "recall": 0.6657609037204626,
+                  "f1-score": 0.6037293243033539,
+                  "auroc": 0.8090062306974071,
+                  "runtime": 386.17665526701603
+            },
+            "agdtw_chebyshev": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 2,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6272727272727273,
+                  "recall": 0.6657609037204626,
+                  "f1-score": 0.6037293243033539,
+                  "auroc": 0.8090062306974071,
+                  "runtime": 385.05971773099736
+            },
+            "agdtw_minkowski": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": -1,
+                        "distance_composition": 3,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.6272727272727273,
+                  "recall": 0.6657609037204626,
+                  "f1-score": 0.6037293243033539,
+                  "auroc": 0.8090062306974071,
+                  "runtime": 385.8629260190064
+            }
+      }
+}
