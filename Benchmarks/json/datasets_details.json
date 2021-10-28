@@ -73,32 +73,6 @@
                   0.21666666666666667
             ]
       },
-      "Cricket": {
-            "short_name": "DS 4",
-            "name": "Cricket",
-            "num_of_train_instances": 135,
-            "num_of_test_instances": 45,
-            "num_of_dimensions": 6,
-            "num_of_timestamps": 1197,
-            "num_of_classes": 12,
-            "missing_values_count": 0,
-            "unique_lengths": true,
-            "imbalance": "5.19%",
-            "class_ratios": [
-                  0.1037037037037037,
-                  0.0962962962962963,
-                  0.0962962962962963,
-                  0.0962962962962963,
-                  0.08888888888888889,
-                  0.08888888888888889,
-                  0.08148148148148149,
-                  0.08148148148148149,
-                  0.07407407407407407,
-                  0.07407407407407407,
-                  0.06666666666666667,
-                  0.05185185185185185
-            ]
-      },
       "Epilepsy": {
             "short_name": "DS 5",
             "name": "Epilepsy",
