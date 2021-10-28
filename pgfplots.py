@@ -119,6 +119,7 @@ class TrendPlots(TexPlots):
 
     def compile_axis_header(self):
         super().compile_axis_header()
+        self.file_lines.pop()  # remove closing bracket
         self.file_lines.append('\t\tpoint meta = explicit symbolic, % read printed value from separate column')
         self.file_lines.append('\t]')
 
