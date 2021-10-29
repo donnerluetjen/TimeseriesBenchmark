@@ -415,12 +415,12 @@ class TimeseriesBenchmark:
 
     def wdtw(self):
         metric = 'wdtw'
-        kwargs = {'g': .115}
+        kwargs = {'g': .7}
         self.prepareClassifier(metric, **kwargs)
 
     def wddtw(self):
         metric = 'wddtw'
-        kwargs = {'g': .115}
+        kwargs = {'g': .7}
         self.prepareClassifier(metric, **kwargs)
 
     def sdtw(self):
