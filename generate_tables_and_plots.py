@@ -13,7 +13,9 @@ from pathlib import Path
 import pgfplots as pp
 import textable as tt
 import file_ops as fo
-from dataset_details import datasets_details_json_path, class_cardinalities, datasets_with_num_of_classes
+from dataset_details import datasets_details_json_path
+from dataset_details import class_cardinalities, datasets_with_num_of_classes
+from dataset_details import domains, datasets_with_domain
 import progress_indication as p
 import json
 
@@ -88,6 +90,41 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
     for metric in metrics:
         plot.add_data(metric, [[cardinality, metric_class_cardinality_scores[metric][cardinality]]
                                for cardinality in cardinalities])
+        p.progress_increase()
+
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
+
+
+def generate_domain_grouped_ranking_diagramm(uea_json_path, ucr_json_path, scb='1.0'):
+    path_dict = fo.path_dictionary(uea_json_path)
+    plot_file_name = f'pgfplot_{scb}_ranking_over_domain.tex'
+    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
+    with open(uea_json_path) as uea_json_file:
+        data = json.load(uea_json_file)
+    with open(ucr_json_path) as ucr_json_file:
+        data.update(json.load(ucr_json_file))
+    domain_list = domains()
+
+    metrics = [metric for metric in data[list(data.keys())[0]] if metric != 'properties']
+    domain_scores = {}
+    for domain in domain_list:
+        domain_scores[domain] = {}
+        domain_datasets = datasets_with_domain(domain)
+        for metric in metrics:
+            ranking_sum = 0
+            for dataset in domain_datasets:
+                ranking_sum += ranking(data[dataset][metric])
+            domain_scores[domain][metric] = ranking_sum / len(domain_datasets)
+    # we have the dictionary to be in the form of { domain: { metric: ranking } }
+
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    plot = pp.TexPlots(pgf_path, 'Domain', 'Mean Ranking', sources)
+
+    for metric in metrics:
+        plot.add_data(metric, [[domain, domain_scores[domain][metric]]
+                               for domain in domain_list])
         p.progress_increase()
 
     del plot  # to ensure destructor is called before program exits
@@ -382,3 +419,6 @@ if __name__ == '__main__':
         generate_class_number_grouped_ranking_diagramm(json_store + json_files_dict[wws][0],
                                                        json_store + json_files_dict[wws][1],
                                                        wws)
+        generate_domain_grouped_ranking_diagramm(json_store + json_files_dict[wws][0],
+                                                 json_store + json_files_dict[wws][1],
+                                                 wws)
