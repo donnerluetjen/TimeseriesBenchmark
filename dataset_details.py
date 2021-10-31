@@ -8,11 +8,26 @@ from sktime.datasets import load_UCR_UEA_dataset
 from sktime_dataset_analyses import count_of_missing_values_in_sktime_df, \
     has_equal_length_in_all_time_series
 
-from selected_datasets import datasets
+from selected_datasets import datasets, dataset_domains
 import progress_indication as p
 import textable as tt
 
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'
+
+
+def class_cardinalities():
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    cardinalities = set()
+    for dataset in datasets:
+        cardinalities.add(dataset_details[dataset]['num_of_classes'])
+    return sorted(cardinalities)
+
+
+def datasets_with_num_of_classes(cardinality):
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    return [dataset for dataset in datasets if dataset_details[dataset]['num_of_classes'] == cardinality]
 
 
 def generate_datasets_details(datasets):
@@ -48,6 +63,8 @@ def generate_datasets_details(datasets):
             train_test_split(X, y)
         properties = dataset_properties(X_train, y_train, y_test)
         result_dict[dataset].update(properties)
+        domain = dataset_domains[dataset]
+        result_dict[dataset]['domain'] = domain
         fo.writeJson(datasets_details_json_path, result_dict)
     p.progress_end()
 
@@ -150,13 +167,17 @@ def generate_imbalance_table(json_path):
         del imbalance_table
         p.progress_end()
 
+
 if __name__ == '__main__':
     # generate json file with dataset details
     generate_datasets_details(datasets)
 
     # generate the datasets details table
-    generate_details_tables(datasets_details_json_path)
+    # generate_details_tables(datasets_details_json_path)
 
     # generate datasets imbalance table
-    generate_imbalance_table(datasets_details_json_path)
+    # generate_imbalance_table(datasets_details_json_path)
+
+    # for cardinality in class_cardinalities():
+    #     print(f'datasets with {cardinality} classes:\n{datasets_with_num_of_classes(cardinality)}')
     

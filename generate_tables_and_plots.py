@@ -13,7 +13,7 @@ from pathlib import Path
 import pgfplots as pp
 import textable as tt
 import file_ops as fo
-from dataset_details import datasets_details_json_path
+from dataset_details import datasets_details_json_path, class_cardinalities, datasets_with_num_of_classes
 import progress_indication as p
 import json
 
@@ -51,6 +51,47 @@ def datasets_high_scores(data=None):
                     high_score = score_value
                     high_score_dict[dataset][score] = metric
     return high_score_dict
+
+
+def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path, scb='1.0'):
+    path_dict = fo.path_dictionary(uea_json_path)
+    plot_file_name = f'pgfplot_{scb}_ranking_over_class_number.tex'
+    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
+    with open(uea_json_path) as uea_json_file:
+        data = json.load(uea_json_file)
+    with open(ucr_json_path) as ucr_json_file:
+        data.update(json.load(ucr_json_file))
+    cardinalities = class_cardinalities()
+
+    metrics = [metric for metric in data[list(data.keys())[0]] if metric != 'properties']
+    class_cardinality_scores = {}
+    for cardinality in cardinalities:
+        class_cardinality_scores[cardinality] = {}
+        cardinality_datasets = datasets_with_num_of_classes(cardinality)
+        for metric in metrics:
+            ranking_sum = 0
+            for dataset in cardinality_datasets:
+                ranking_sum += ranking(data[dataset][metric])
+            class_cardinality_scores[cardinality][metric] = ranking_sum / len(cardinality_datasets)
+    # we have the dictionary to be in the form of { cardinality: { metric: ranking } }
+    # we want the dictionary to be in the form of { metric: { cardinality: ranking } }
+    metric_class_cardinality_scores = {}
+    for metric in metrics:
+        metric_class_cardinality_scores[metric] = {}
+        for cardinality in cardinalities:
+            metric_class_cardinality_scores[metric][cardinality] = class_cardinality_scores[cardinality][metric]
+
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    plot = pp.TexPlots(pgf_path, 'Class Cardinality', 'Mean Ranking', sources)
+
+    for metric in metrics:
+        plot.add_data(metric, [[cardinality, metric_class_cardinality_scores[metric][cardinality]]
+                               for cardinality in cardinalities])
+        p.progress_increase()
+
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
 
 
 def generate_trend_diagram(folder='', file_list=None, name='', do_not_rank=None):
@@ -287,7 +328,7 @@ def generate_distance_consolidations_table(json_path, dataset_details_file, do_n
     p.progress_start(f'Writing datasets scoring table {table_file_name}')
 
     norms_table = tt.ScoreTexTable(table_path, table_column_formatter,
-                               table_caption, table_label, metrics, scores, sources)
+                                   table_caption, table_label, metrics, scores, sources)
 
     for dataset in datasets:
         table_line_list = [dataset_details[dataset]['short_name']]
@@ -320,21 +361,24 @@ if __name__ == '__main__':
     ucr_list = []
 
     for wws in wws_list:
-        for json_file in json_files_dict[wws]:
-            generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}')  # , ['bagdtw', 'dagdtw', 'sdtw'])
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
-            generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
-
-        uea_list.append(json_files_dict[wws][0])
-        ucr_list.append(json_files_dict[wws][1])
-
-    generate_trend_diagram(json_store, uea_list, 'UEA')
-    generate_trend_diagram(json_store, ucr_list, 'UCR')
-
-    json_data_file = 'UEA_distance_consolidations_0-03.json'
-    generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
-    generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')
+        #    for json_file in json_files_dict[wws]:
+        #         generate_table(json_store + json_file, datasets_details_json_path,
+        #                        f'size={wws}')  # , ['bagdtw', 'dagdtw', 'sdtw'])
+        #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'ranking')
+        #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'accuracy')
+        #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'recall')
+        #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'f1-score')
+        #         generate_score_diagram(json_store + json_file, f'wws={wws}', 'auroc')
+        #
+        #     uea_list.append(json_files_dict[wws][0])
+        #     ucr_list.append(json_files_dict[wws][1])
+        #
+        # generate_trend_diagram(json_store, uea_list, 'UEA')
+        # generate_trend_diagram(json_store, ucr_list, 'UCR')
+        #
+        # json_data_file = 'UEA_distance_consolidations_0-03.json'
+        # generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
+        # generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')
+        generate_class_number_grouped_ranking_diagramm(json_store + json_files_dict[wws][0],
+                                                       json_store + json_files_dict[wws][1],
+                                                       wws)
