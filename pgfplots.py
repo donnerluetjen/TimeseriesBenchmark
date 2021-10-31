@@ -104,6 +104,8 @@ class TexPlots(TexFile):
                 data_to_shift_y = self.data[data_to_shift][0][1]
                 comparing_data_y = self.data[comparing_data][0][1]
 
+                if isinstance(self.data[data_to_shift][0][0], str):
+                    continue
                 if abs(comparing_data_y - data_to_shift_y) <= min_y_distance:
                     # for linear comparison
                     data_to_shift_x = math.log10(self.data[data_to_shift][0][0])

@@ -15,6 +15,19 @@ import textable as tt
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'
 
 
+def domains():
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    result = {dataset_details[dataset]['domain'] for dataset in dataset_details.keys()}
+    return sorted(result)
+
+
+def datasets_with_domain(domain):
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    return [dataset for dataset in dataset_details if dataset_details[dataset]['domain'] == domain]
+
+
 def class_cardinalities():
     with open(datasets_details_json_path) as dd:
         dataset_details = json.load(dd)
@@ -108,8 +121,7 @@ def generate_details_tables(json_path):
 
         datasets = list(data.keys())
         # read properties
-        properties = list(data[datasets[0]].keys())
-        properties.pop()  # remove class_ratios
+        properties = [key for key in data[datasets[0]] if key != "class_ratios"]  # remove class_ratios
 
         table_file_name = f'table_datasets_details.tex'
         table_path = Path(path_dict['tex_dir'], table_file_name)
@@ -121,14 +133,15 @@ def generate_details_tables(json_path):
 
         p.progress_start(f'Writing datasets imbalance table {table_file_name}')
 
-        details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties)
+        details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties,
+                                           [json_path])
 
         # iterate through all datasets
         for dataset in datasets:
             p.progress_increase()
             dataset_data = data[dataset]
-            dataset_values = list(dataset_data.values())
-            dataset_values.pop()  # remove class_ratios
+            dataset_values = [dataset_data[property] for property in dataset_data.keys()
+                              if property != 'class_ratios']  # remove class_ratios
             details_table.add_line(details_table.format_details(dataset_values))
 
         del details_table
@@ -155,7 +168,8 @@ def generate_imbalance_table(json_path):
 
         p.progress_start(f'Writing datasets details table {table_file_name}')
 
-        imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties)
+        imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties,
+                                               [json_path])
 
         # iterate through all datasets
         for dataset in datasets:
@@ -170,14 +184,17 @@ def generate_imbalance_table(json_path):
 
 if __name__ == '__main__':
     # generate json file with dataset details
-    generate_datasets_details(datasets)
+    # generate_datasets_details(datasets)
 
     # generate the datasets details table
-    # generate_details_tables(datasets_details_json_path)
+    generate_details_tables(datasets_details_json_path)
 
     # generate datasets imbalance table
-    # generate_imbalance_table(datasets_details_json_path)
+    generate_imbalance_table(datasets_details_json_path)
 
     # for cardinality in class_cardinalities():
     #     print(f'datasets with {cardinality} classes:\n{datasets_with_num_of_classes(cardinality)}')
+
+    # for domain in domains():
+    #     print(f'datasets with domain >{domain}<:\n{datasets_with_domain(domain)}')
     
