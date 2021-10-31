@@ -16,16 +16,16 @@ dataset_domains = {
     "UWaveGestureLibrary": "HAR",
 
     # datasets from UCR archive (univariate)
-    "ACSF1": "",
-    "ArrowHead": "DEVICE",
+    "ACSF1": "DEVICE",
+    "ArrowHead": "IMAGE",
     "Beef": "SPECTRO",
     "BeetleFly": "IMAGE",
-    "BirdChicken": "IMAFE",
+    "BirdChicken": "IMAGE",
     "BME": "SIMULATED",
     "Car": "SENSOR",
     "CBF": "SIMULATED",
     "Chinatown": "Traffic",
-    "Coffee": "",
+    "Coffee": "SPECTRO",
     "Computers": "DEVICE",
     "CricketX": "MOTION",
     "CricketY": "MOTION",
@@ -48,7 +48,7 @@ dataset_domains = {
     "MoteStrain": "SENSOR",
     "PowerCons": "DEVICE",
     "RefrigerationDevices": "DEVICE",
-    "Rock": "SPECRO",
+    "Rock": "SPECTRO",
     "ScreenType": "DEVICE",
     "SemgHandGenderCh2": "SPECTRO",
     "SemgHandMovementCh2": "SPECTRO",
@@ -72,3 +72,7 @@ dataset_domains = {
 }
 
 datasets = list(dataset_domains.keys())
+
+if __name__ == '__main__':
+    domains = {dataset_domains[dataset] for dataset in datasets}
+    print(sorted(list(domains)))
