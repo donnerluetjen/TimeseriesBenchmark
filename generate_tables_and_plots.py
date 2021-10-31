@@ -67,6 +67,10 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
     cardinalities = class_cardinalities()
 
     metrics = [metric for metric in data[list(data.keys())[0]] if metric != 'properties']
+
+    # find the average ranking for each metric
+    # ToDo: find the average ranking
+    metric_average_ranking = 0
     class_cardinality_scores = {}
     for cardinality in cardinalities:
         class_cardinality_scores[cardinality] = {}
@@ -75,7 +79,8 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
             ranking_sum = 0
             for dataset in cardinality_datasets:
                 ranking_sum += ranking(data[dataset][metric])
-            class_cardinality_scores[cardinality][metric] = ranking_sum / len(cardinality_datasets)
+            class_cardinality_scores[cardinality][metric] = ranking_sum / len(cardinality_datasets) \
+                                                            - metric_average_ranking  # remove metrics differences
     # we have the dictionary to be in the form of { cardinality: { metric: ranking } }
     # we want the dictionary to be in the form of { metric: { cardinality: ranking } }
     metric_class_cardinality_scores = {}
@@ -254,7 +259,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
     # read scores and drop arguments
     omitted = do_not_rank + ['arguments']
     scores = [key for key in data[datasets[0]][metrics[0]] if key not in omitted]
-    scores = [score for score in scores if score not in do_not_rank]
+    scores = [score for score in scores if score not in do_not_rank]  # FixMe: line seems to be redundant
 
     for table_metrics_scheme in table_metrics_schemes:
         if len(table_metrics_scheme) == 0:
