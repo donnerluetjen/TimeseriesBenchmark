@@ -446,14 +446,15 @@ if __name__ == '__main__':
     #
     #     bm.run_benchmark_over(["Cricket"], metrics)
 
-    bm = TimeseriesBenchmark(window=-1, njobs=-1, normalized=True)
+    bm = TimeseriesBenchmark(window=0.03, njobs=-1, normalized=True)
 
     metrics = [
-        # 'dagdtw',
-        # 'agdtw',
-        # 'dtw',
-        # 'sdtw', 'ddtw',
-        'wdtw', 'wddtw'
+        'dagdtw',
+        'agdtw',
+        'dtw',
+        # 'sdtw',
+        'ddtw',
+        # 'wdtw', 'wddtw'
         # 'agdtw_manhattan',
         # 'agdtw_euclidean',
         # 'agdtw_chebyshev',
