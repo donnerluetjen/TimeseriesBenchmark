@@ -1,0 +1,376 @@
+{
+      "ArticularyWordRecognition": {
+            "properties": {
+                  "num_of_dimensions": 9,
+                  "num_of_instances": 431,
+                  "num_of_timestamps": 144,
+                  "num_of_classes": 25,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 431,
+                  "len test set": 144,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3402777777777778,
+                  "recall": 0.36907936507936506,
+                  "f1-score": 0.30866947053634364,
+                  "auroc": 0.6713955026455026,
+                  "runtime": 55.864808675
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3472222222222222,
+                  "recall": 0.37407936507936507,
+                  "f1-score": 0.3255819210029736,
+                  "auroc": 0.6739996693121693,
+                  "runtime": 165.13349323200003
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.3263888888888889,
+                  "recall": 0.36574603174603176,
+                  "f1-score": 0.3034837006818431,
+                  "auroc": 0.6696593915343916,
+                  "runtime": 6.934341104999987
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.08333333333333333,
+                  "recall": 0.10242857142857142,
+                  "f1-score": 0.08577062619919763,
+                  "auroc": 0.532514880952381,
+                  "runtime": 9.486536376000004
+            }
+      },
+      "AtrialFibrillation": {
+            "properties": {
+                  "num_of_dimensions": 2,
+                  "num_of_instances": 22,
+                  "num_of_timestamps": 640,
+                  "num_of_classes": 3,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 22,
+                  "len test set": 8,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5833333333333334,
+                  "f1-score": 0.48888888888888893,
+                  "auroc": 0.6875,
+                  "runtime": 0.5486579889999916
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5833333333333334,
+                  "f1-score": 0.48888888888888893,
+                  "auroc": 0.6875,
+                  "runtime": 1.6990778530000057
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5,
+                  "recall": 0.5,
+                  "f1-score": 0.5,
+                  "auroc": 0.625,
+                  "runtime": 0.015971614000022782
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.25,
+                  "recall": 0.25,
+                  "f1-score": 0.21666666666666667,
+                  "auroc": 0.4375,
+                  "runtime": 0.02294360199999801
+            }
+      },
+      "BasicMotions": {
+            "properties": {
+                  "num_of_dimensions": 6,
+                  "num_of_instances": 60,
+                  "num_of_timestamps": 100,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 60,
+                  "len test set": 20,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8,
+                  "recall": 0.65,
+                  "f1-score": 0.6160714285714286,
+                  "auroc": 0.7666666666666666,
+                  "runtime": 0.644738072999985
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.95,
+                  "recall": 0.95,
+                  "f1-score": 0.9494949494949495,
+                  "auroc": 0.9666666666666668,
+                  "runtime": 1.224376751999955
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.9,
+                  "recall": 0.9375,
+                  "f1-score": 0.9226190476190477,
+                  "auroc": 0.9583333333333334,
+                  "runtime": 0.10796828599995933
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4,
+                  "recall": 0.38125,
+                  "f1-score": 0.3333333333333333,
+                  "auroc": 0.5875,
+                  "runtime": 0.14380081100000552
+            }
+      },
+      "Epilepsy": {
+            "properties": {
+                  "num_of_dimensions": 3,
+                  "num_of_instances": 206,
+                  "num_of_timestamps": 206,
+                  "num_of_classes": 4,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 206,
+                  "len test set": 69,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7971014492753623,
+                  "recall": 0.8111111111111111,
+                  "f1-score": 0.8040650406504064,
+                  "auroc": 0.8740740740740741,
+                  "runtime": 11.067919014999973
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.8985507246376812,
+                  "recall": 0.8972222222222223,
+                  "f1-score": 0.897064393939394,
+                  "auroc": 0.9314814814814816,
+                  "runtime": 24.747585017999995
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.7391304347826086,
+                  "recall": 0.746875,
+                  "f1-score": 0.7399864551083591,
+                  "auroc": 0.8312499999999999,
+                  "runtime": 0.9603386569999657
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.42028985507246375,
+                  "recall": 0.44062499999999993,
+                  "f1-score": 0.3999952107279694,
+                  "auroc": 0.6270833333333333,
+                  "runtime": 1.51137351400007
+            }
+      },
+      "EyesOpenShut": {
+            "properties": {
+                  "num_of_dimensions": 14,
+                  "num_of_instances": 73,
+                  "num_of_timestamps": 128,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 73,
+                  "len test set": 25,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.48,
+                  "recall": 0.4807692307692308,
+                  "f1-score": 0.48000000000000004,
+                  "auroc": 0.4807692307692307,
+                  "runtime": 2.6558916529999124
+            },
+            "agdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.52,
+                  "recall": 0.5160256410256411,
+                  "f1-score": 0.512987012987013,
+                  "auroc": 0.5160256410256411,
+                  "runtime": 4.269666955999924
+            },
+            "dtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.4,
+                  "recall": 0.40384615384615385,
+                  "f1-score": 0.3961352657004831,
+                  "auroc": 0.40384615384615385,
+                  "runtime": 0.16604324999991604
+            },
+            "ddtw": {
+                  "arguments": {
+                        "w": 0.03,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.52,
+                  "recall": 0.5160256410256411,
+                  "f1-score": 0.512987012987013,
+                  "auroc": 0.5160256410256411,
+                  "runtime": 0.21881419500004995
+            }
+      },
+      "FingerMovements": {
+            "properties": {
+                  "num_of_dimensions": 28,
+                  "num_of_instances": 312,
+                  "num_of_timestamps": 50,
+                  "num_of_classes": 2,
+                  "unique_lengths": true,
+                  "missing_values_count": 0,
+                  "len train set": 312,
+                  "len test set": 104,
+                  "imbalance": 0
+            },
+            "dagdtw": {
+                  "arguments": {
+                        "sigma": 1,
+                        "pseudo_distance": true,
+                        "average_aggregation": false,
+                        "window": 0.03,
+                        "distance_composition": 0,
+                        "njobs": -1,
+                        "z-normalized": true
+                  },
+                  "accuracy": 0.5192307692307693,
+                  "recall": 0.5217391304347826,
+                  "f1-score": 0.5185185185185185,
+                  "auroc": 0.5217391304347826,
+                  "runtime": 15.267627001999927
+            }
+      }
+}

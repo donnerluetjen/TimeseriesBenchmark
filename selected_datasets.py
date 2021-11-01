@@ -1,10 +1,10 @@
 dataset_domains = {
     # datasets from UEA archive (multivariate)
-    "ArticularyWordRecognition": "MOTION",
-    "AtrialFibrillation": "ECG",
-    "BasicMotions": "HAR",
-    "Epilepsy": "HAR",
-    "EyesOpenShut": "EEG",
+    # "ArticularyWordRecognition": "MOTION",
+    # "AtrialFibrillation": "ECG",
+    # "BasicMotions": "HAR",
+    # "Epilepsy": "HAR",
+    # "EyesOpenShut": "EEG",
     "FingerMovements": "EEG",
     "HandMovementDirection": "EEG",
     "Libras": "HAR",
