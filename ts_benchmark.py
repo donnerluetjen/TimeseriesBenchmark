@@ -451,9 +451,9 @@ if __name__ == '__main__':
     metrics = [
         # 'dagdtw',
         # 'agdtw',
-        'dtw',
+        # 'dtw',
         # 'sdtw', 'ddtw',
-        # 'wdtw', 'wddtw'
+        'wdtw', 'wddtw'
         # 'agdtw_manhattan',
         # 'agdtw_euclidean',
         # 'agdtw_chebyshev',

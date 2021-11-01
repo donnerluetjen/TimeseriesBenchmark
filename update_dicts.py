@@ -64,7 +64,7 @@ if __name__ == '__main__':
 
     json_store = './Benchmarks/json/'
 
-    json_update_list = ['UEA_archive_weight-115.json', 'UCR_archive_weight-115.json']
+    json_update_list = ['UEA_archive_weight-7.json', 'UCR_archive_weight-7.json']
 
     json_files_dict = {
         '1.0': ['UEA_archive_wws--1.json', 'UCR_archive_wws--1.json'],
@@ -74,10 +74,10 @@ if __name__ == '__main__':
     }
     wws_list = ['1.0', '0.3', '0.1']
 
-    # for wws in wws_list:
-    #     for json_file in json_files_dict[wws]:
+    for wws in wws_list:
+        for json_file in json_files_dict[wws]:
     #         update_agdtw_key(json_store + json_file)
     #         sort_keys(json_store + json_file)
-    #         update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
+            update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
     # update_dict(json_store + 'UEA_distance_consolidations.json', json_store + 'distance_consolidations.json')
     # remove_key(json_store + 'UEA_distance_consolidations.json', 'sagdtw_chebyshev')
