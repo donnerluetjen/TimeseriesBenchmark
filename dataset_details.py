@@ -43,6 +43,21 @@ def datasets_with_num_of_classes(cardinality):
     return [dataset for dataset in datasets if dataset_details[dataset]['num_of_classes'] == cardinality]
 
 
+def dimension_cardinalities():
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    cardinalities = set()
+    for dataset in datasets:
+        cardinalities.add(dataset_details[dataset]['num_of_dimensions'])
+    return sorted(cardinalities)
+
+
+def datasets_with_num_of_dimensions(cardinality):
+    with open(datasets_details_json_path) as dd:
+        dataset_details = json.load(dd)
+    return [dataset for dataset in datasets if dataset_details[dataset]['num_of_dimensions'] == cardinality]
+
+
 def generate_datasets_details(datasets):
     """
     loads datasets and generates analytics for them

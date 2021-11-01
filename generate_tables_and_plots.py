@@ -13,7 +13,7 @@ from pathlib import Path
 import pgfplots as pp
 import textable as tt
 import file_ops as fo
-from dataset_details import datasets_details_json_path
+from dataset_details import datasets_details_json_path, dimension_cardinalities, datasets_with_num_of_dimensions
 from dataset_details import class_cardinalities, datasets_with_num_of_classes
 from dataset_details import domains, datasets_with_domain
 import progress_indication as p
@@ -87,10 +87,10 @@ def datasets_high_scores(data=None):
     return high_score_dict
 
 
-def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path, scb='1.0'):
+def generate_classes_correlation_plot(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
     plot_file_name = f'pgfplot_{scb}_ranking_over_class_number.tex'
-    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    pgf_path = Path(path_dict['tex_corr'], plot_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
         data = json.load(uea_json_file)
@@ -103,13 +103,14 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
     # find the average ranking for each metric
     average_rankings = ranking_for_wws(scb)
     class_cardinality_scores = {}
+    xtick_labels = []
     for cardinality in cardinalities:
+        xtick_labels.append(str(cardinality))
         class_cardinality_scores[cardinality] = {}
         cardinality_datasets = datasets_with_num_of_classes(cardinality)
         for index, metric in enumerate(metrics):
             metric_average_ranking = average_rankings[metric]
             ranking_sum = 0
-            spread_normalized_ranking_ave = 0
             for dataset in cardinality_datasets:
                 ranking_sum += ranking(data[dataset][metric])
             ranking_ave = ranking_sum / len(cardinality_datasets)
@@ -118,7 +119,8 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
             class_cardinality_scores[cardinality][metric] = spread_normalized_ranking_ave
 
     p.progress_start(f'Writing datasets plots {plot_file_name}')
-    plot = pp.CorrelationPlots(pgf_path, 'Class Cardinality', 'Algorithm', sources)
+
+    plot = pp.CorrelationPlots(pgf_path, 'Class Cardinality', 'Algorithm', xtick_labels, sources)
 
     for metric in metrics:
         plot.add_data(metric, [[cardinality, class_cardinality_scores[cardinality][metric]]
@@ -129,10 +131,55 @@ def generate_class_number_grouped_ranking_diagramm(uea_json_path, ucr_json_path,
     p.progress_end()
 
 
-def generate_domain_grouped_ranking_diagramm(uea_json_path, ucr_json_path, scb='1.0'):
+def generate_dimensions_correlation_plot(uea_json_path, ucr_json_path, scb='1.0'):
+    path_dict = fo.path_dictionary(uea_json_path)
+    plot_file_name = f'pgfplot_{scb}_ranking_over_dimensions_number.tex'
+    pgf_path = Path(path_dict['tex_corr'], plot_file_name)
+    sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
+    with open(uea_json_path) as uea_json_file:
+        data = json.load(uea_json_file)
+    with open(ucr_json_path) as ucr_json_file:
+        data.update(json.load(ucr_json_file))
+    cardinalities = dimension_cardinalities()
+
+    metrics = [metric for metric in data[list(data.keys())[0]] if metric != 'properties']
+
+    # find the average ranking for each metric
+    average_rankings = ranking_for_wws(scb)
+    dimension_cardinality_scores = {}
+    xtick_labels = []
+
+    for cardinality in cardinalities:
+        xtick_labels.append(str(cardinality))
+        dimension_cardinality_scores[cardinality] = {}
+        cardinality_datasets = datasets_with_num_of_dimensions(cardinality)
+        for index, metric in enumerate(metrics):
+            metric_average_ranking = average_rankings[metric]
+            ranking_sum = 0
+            for dataset in cardinality_datasets:
+                ranking_sum += ranking(data[dataset][metric])
+            ranking_ave = ranking_sum / len(cardinality_datasets)
+            normalized_ranking_ave = ranking_ave / metric_average_ranking  # remove metrics differences
+            spread_normalized_ranking_ave = normalized_ranking_ave + index  # spread graphs
+            dimension_cardinality_scores[cardinality][metric] = spread_normalized_ranking_ave
+
+    p.progress_start(f'Writing datasets plots {plot_file_name}')
+
+    plot = pp.CorrelationPlots(pgf_path, 'Dimension Cardinality', 'Algorithm', xtick_labels, sources)
+
+    for metric in metrics:
+        plot.add_data(metric, [[cardinality, dimension_cardinality_scores[cardinality][metric]]
+                               for cardinality in cardinalities])
+        p.progress_increase()
+
+    del plot  # to ensure destructor is called before program exits
+    p.progress_end()
+
+
+def generate_domains_correlation_plot(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
     plot_file_name = f'pgfplot_{scb}_ranking_over_domain.tex'
-    pgf_path = Path(path_dict['tex_dir'], plot_file_name)
+    pgf_path = Path(path_dict['tex_corr'], plot_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
         data = json.load(uea_json_file)
@@ -141,22 +188,31 @@ def generate_domain_grouped_ranking_diagramm(uea_json_path, ucr_json_path, scb='
     domain_list = domains()
 
     metrics = [metric for metric in data[list(data.keys())[0]] if metric != 'properties']
+
+    # find the average ranking for each metric
+    average_rankings = ranking_for_wws(scb)
     domain_scores = {}
+    domain_labels = []
     for domain in domain_list:
+        domain_labels.append(domain)
         domain_scores[domain] = {}
         domain_datasets = datasets_with_domain(domain)
-        for metric in metrics:
+        for index, metric in enumerate(metrics):
+            metric_average_ranking = average_rankings[metric]
             ranking_sum = 0
             for dataset in domain_datasets:
                 ranking_sum += ranking(data[dataset][metric])
-            domain_scores[domain][metric] = ranking_sum / len(domain_datasets)
-    # we have the dictionary to be in the form of { domain: { metric: ranking } }
+            ranking_ave = ranking_sum / len(domain_datasets)
+            normalized_ranking_ave = ranking_ave / metric_average_ranking
+            spread_normalized_ranking_ave = normalized_ranking_ave + index
+            domain_scores[domain][metric] = spread_normalized_ranking_ave
 
     p.progress_start(f'Writing datasets plots {plot_file_name}')
-    plot = pp.TexPlots(pgf_path, 'Domain', 'Mean Ranking', sources)
+    plot = pp.CorrelationXStrPlots(pgf_path, 'Domain', 'Algorithm', domain_labels, sources)
 
     for metric in metrics:
-        plot.add_data(metric, [[domain, domain_scores[domain][metric]]
+        # we want to start at x = 1
+        plot.add_data(metric, [[domain_labels.index(domain) + 1, domain_scores[domain][metric]]
                                for domain in domain_list])
         p.progress_increase()
 
@@ -328,7 +384,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='', spli
 def generate_classes_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
     table_file_name = f'table_{scb}_ranking_over_class_number.tex'
-    table_path = Path(path_dict['tex_dir'], table_file_name)
+    table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
         data = json.load(uea_json_file)
@@ -336,15 +392,9 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
         data.update(json.load(ucr_json_file))
     cardinalities = class_cardinalities()
 
-    high_scores = datasets_high_scores(data)
-
     datasets = list(data.keys())
     # read metrics and drop properties
     metrics = [key for key in data[datasets[0]] if key != 'properties']
-
-    # read scores and drop arguments
-    omitted = ['arguments']
-    scores = [key for key in data[datasets[0]][metrics[0]] if key not in omitted]
 
     table_caption = 'Correlation of Number of Classes and Ranking'
     table_label = 'corr_classes'
@@ -368,7 +418,7 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
 
     p.progress_start(f'Writing classes-ranking-correlation table {table_file_name}')
     correlation_table = tt.CorrelationTexTable(table_path, table_column_formatter,
-                                         table_caption, table_label, metrics, ['Ranking'], 'Classes', sources)
+                                               table_caption, table_label, metrics, ['Ranking'], 'Classes', sources)
 
     for cardinality in cardinalities:
         table_line_list = [str(cardinality)]
@@ -377,6 +427,116 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
 
         for metric in metrics:
             table_line_list.append(class_cardinality_scores[cardinality][metric])
+            format_bold.append(False)  # (True if high_scores[dataset][score] == metric else False)
+        correlation_table.add_line(table_line_list, format_bold)
+
+        p.progress_increase()
+
+    del correlation_table  # to make sure destructor is called
+    p.progress_end()
+
+
+def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
+    path_dict = fo.path_dictionary(uea_json_path)
+    table_file_name = f'table_{scb}_ranking_over_dimensions_number.tex'
+    table_path = Path(path_dict['tex_corr'], table_file_name)
+    sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
+    with open(uea_json_path) as uea_json_file:
+        data = json.load(uea_json_file)
+    with open(ucr_json_path) as ucr_json_file:
+        data.update(json.load(ucr_json_file))
+    cardinalities = dimension_cardinalities()
+
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = [key for key in data[datasets[0]] if key != 'properties']
+
+    table_caption = 'Correlation of Number of Dimensions and Ranking'
+    table_label = 'corr_dimensions'
+
+    score_columns_formatter = 'c'
+    # table_column_formatter works as formatter list since all formats are single chars
+    table_column_formatter = f'|l|c|{"|".join(score_columns_formatter for _ in range(len(metrics)))}|'
+
+    dimension_cardinality_scores = {}
+    num_datasets_in_cardinality = {}
+    for cardinality in cardinalities:
+        dimension_cardinality_scores[cardinality] = {}
+        cardinality_datasets = datasets_with_num_of_dimensions(cardinality)
+        num_datasets_in_cardinality[cardinality] = len(cardinality_datasets)
+        for index, metric in enumerate(metrics):
+            ranking_sum = 0
+            for dataset in cardinality_datasets:
+                ranking_sum += ranking(data[dataset][metric])
+            ranking_ave = ranking_sum / len(cardinality_datasets)
+            dimension_cardinality_scores[cardinality][metric] = ranking_ave
+
+    p.progress_start(f'Writing dimension-ranking-correlation table {table_file_name}')
+    correlation_table = tt.CorrelationTexTable(table_path, table_column_formatter,
+                                               table_caption, table_label, metrics, ['Ranking'], 'Dimensions', sources)
+
+    for cardinality in cardinalities:
+        table_line_list = [str(cardinality)]
+        table_line_list.append(str(num_datasets_in_cardinality[cardinality]))
+        format_bold = [False, False]
+
+        for metric in metrics:
+            table_line_list.append(dimension_cardinality_scores[cardinality][metric])
+            format_bold.append(False)  # (True if high_scores[dataset][score] == metric else False)
+        correlation_table.add_line(table_line_list, format_bold)
+
+        p.progress_increase()
+
+    del correlation_table  # to make sure destructor is called
+    p.progress_end()
+
+
+def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
+    path_dict = fo.path_dictionary(uea_json_path)
+    table_file_name = f'table_{scb}_ranking_over_domain.tex'
+    table_path = Path(path_dict['tex_corr'], table_file_name)
+    sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
+    with open(uea_json_path) as uea_json_file:
+        data = json.load(uea_json_file)
+    with open(ucr_json_path) as ucr_json_file:
+        data.update(json.load(ucr_json_file))
+    domain_list = domains()
+
+    datasets = list(data.keys())
+    # read metrics and drop properties
+    metrics = [key for key in data[datasets[0]] if key != 'properties']
+
+    table_caption = 'Correlation of Domains and Ranking'
+    table_label = 'corr_domains'
+
+    score_columns_formatter = 'c'
+    # table_column_formatter works as formatter list since all formats are single chars
+    table_column_formatter = f'|l|c|{"|".join(score_columns_formatter for _ in range(len(metrics)))}|'
+
+    domain_scores = {}
+    num_datasets_in_domain = {}
+    for domain in domain_list:
+        domain_scores[domain] = {}
+        domain_datasets = datasets_with_domain(domain)
+        num_datasets_in_domain[domain] = len(domain_datasets)
+        for index, metric in enumerate(metrics):
+            ranking_sum = 0
+            for dataset in domain_datasets:
+                ranking_sum += ranking(data[dataset][metric])
+            ranking_ave = ranking_sum / len(domain_datasets)
+            domain_scores[domain][metric] = ranking_ave
+
+    p.progress_start(f'Writing domains-ranking-correlation table {table_file_name}')
+    correlation_table = tt.CorrelationTexTable(table_path, table_column_formatter,
+                                               table_caption, table_label, metrics, ['Ranking'], 'Domains', sources)
+
+    for domain in domain_list:
+        table_line_list = [domain]
+        table_line_list.append(str(num_datasets_in_domain[domain]))
+        format_bold = [False, False]
+
+        for metric in metrics:
+            table_line_list.append(domain_scores[domain][metric])
             format_bold.append(False)  # (True if high_scores[dataset][score] == metric else False)
         correlation_table.add_line(table_line_list, format_bold)
 
@@ -510,12 +670,21 @@ if __name__ == '__main__':
         # json_data_file = 'UEA_distance_consolidations_0-03.json'
         # generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
         # generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')
-        generate_class_number_grouped_ranking_diagramm(json_store + json_files_dict[wws][0],
-                                                       json_store + json_files_dict[wws][1],
-                                                       wws)
-        generate_classes_correlation_table(json_store + json_files_dict[wws][0],
-                                           json_store + json_files_dict[wws][1],
-                                           wws)
-        # generate_domain_grouped_ranking_diagramm(json_store + json_files_dict[wws][0],
-        #                                          json_store + json_files_dict[wws][1],
-        #                                          wws)
+        # generate_classes_correlation_plot(json_store + json_files_dict[wws][0],
+        #                                   json_store + json_files_dict[wws][1],
+        #                                   wws)
+        # generate_classes_correlation_table(json_store + json_files_dict[wws][0],
+        #                                    json_store + json_files_dict[wws][1],
+        #                                    wws)
+        generate_dimensions_correlation_plot(json_store + json_files_dict[wws][0],
+                                             json_store + json_files_dict[wws][1],
+                                             wws)
+        generate_dimensions_correlation_table(json_store + json_files_dict[wws][0],
+                                              json_store + json_files_dict[wws][1],
+                                              wws)
+        # generate_domains_correlation_plot(json_store + json_files_dict[wws][0],
+        #                                   json_store + json_files_dict[wws][1],
+        #                                   wws)
+        # generate_domains_correlation_table(json_store + json_files_dict[wws][0],
+        #                                    json_store + json_files_dict[wws][1],
+        #                                    wws)

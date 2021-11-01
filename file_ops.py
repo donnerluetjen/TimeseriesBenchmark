@@ -12,9 +12,12 @@ def writeJson(json_file_path, property_dict):
 def path_dictionary(json_path):
     tex_converted_json_path = Path(json_path.replace('json', 'tex'))
     archive = tex_converted_json_path.stem[0:3]
+    tex_root = Path(tex_converted_json_path.parent)
+    tex_corr = Path(tex_root, 'Correlations')
+    tex_corr.mkdir(parents=True, exist_ok=True)
     tex_dir = Path(tex_converted_json_path.parent, tex_converted_json_path.stem)
     tex_dir.mkdir(parents=True, exist_ok=True)
-    return {'tex_dir': tex_dir, 'archive': archive}
+    return {'tex_dir': tex_dir, 'archive': archive, 'tex_root': tex_root, 'tex_corr': tex_corr}
 
 
 def csv_path_for(metric, path_dict):
