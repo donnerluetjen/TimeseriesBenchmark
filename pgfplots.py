@@ -137,3 +137,67 @@ class TrendPlots(TexPlots):
             meta = f', meta = {{2}}' if data_name not in omit_data_display_list else ''
             inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}{meta}]{{\\{data_name}}};'
             self.file_lines.append(inline_plot)
+
+
+class CorrelationPlots(TexPlots):
+
+    def xticks(self):
+        sample_list = self.data[list(self.data.keys())[0]]
+        keys = [item[0] for item in sample_list]
+        values = [str(key) for key in keys]
+        return dict(zip(keys, values))
+
+    def yticks(self):
+        values = self.data.keys()
+        keys = range(1, len(values) + 1)
+        result = dict(zip(keys, values))
+        return result
+
+    def compile_axis_header(self):
+        self.file_lines.append('\t\\begin{axis}[')
+        self.file_lines.append('\t\ttable/col sep = comma,')
+        if self.x_axis_log:
+            self.file_lines.append('\t\txmode = log,')
+        if self.y_axis_log:
+            self.file_lines.append('\t\tymode = log,')
+        self.file_lines.append(f'\t\txlabel = {{{self.x_label}}},')
+        self.file_lines.append(f'\t\tylabel = {{{self.y_label}}},')
+        self.file_lines.append('\t\tgrid = both,')
+        self.file_lines.append('\t\tgrid style={line width=.2pt, draw=gray!10},')
+        self.file_lines.append('\t\tmajor grid style={line width=.2pt,draw=gray!50},')
+        self.file_lines.append('\t\tminor tick num=5,')
+        self.file_lines.append('\t\tytick = \\empty,')
+        ytick_dict = self.yticks()
+        ytick_keys = ytick_dict.keys()
+        ytick_positions = [str(key) for key in ytick_keys]
+        ytick_labels = [ytick_dict[key] for key in ytick_keys]
+        self.file_lines.append(f'\t\textra y ticks = {{{", ".join(ytick_positions)}}},')
+        self.file_lines.append(f'\t\textra y tick labels = {{{", ".join(ytick_labels)}}},')
+        self.file_lines.append('\t\tclip=false, % avoid clipping at edge of diagram')
+        # self.file_lines.append('\t\tnodes near coords, % print the value near node')
+        self.file_lines.append('\t]')
+
+    def compile_inline_plot_lines(self):
+        omit_data_display_list = ['wdtw', 'wddtw', 'sdtw']
+        for data_name in self.data.keys():
+            xshift = self.plot_shifts[data_name]
+            scale = 1
+            xshift_offset = -10
+            yshift = 0
+            style = f'scale = {scale}, xshift = {xshift + xshift_offset}pt, yshift = {yshift}pt'
+            inline_plot = f'\t\t\\addplot+ [every node/.append style={{{style}}}] '
+            # meta = f', meta = {{2}}' if data_name not in omit_data_display_list else ''
+            inline_plot += f'{self.marks_only} table[ x index = {{0}}, y index = {{1}}]{{\\{data_name}}};'
+            self.file_lines.append(inline_plot)
+            xtick_dict = self.xticks()
+            xtick_values = list(xtick_dict.values())
+            left = xtick_values[0]
+            right = xtick_values[-1]
+            data_name_index = list(self.yticks().values()).index(data_name)
+            data_name_key = list(self.yticks().keys())[data_name_index]
+            y = data_name_key
+            help_line = f'\t\t\\draw[help lines, thick, dashed] ({left}, {y}) -- ({right}, {y});'
+            self.file_lines.append(help_line)
+
+    def compile_legend(self):
+        pass
