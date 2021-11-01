@@ -192,6 +192,44 @@ class ScoreTexTable(LongTexTable):
         return sub_header
 
 
+class CorrelationTexTable(ScoreTexTable):
+    def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
+                 caption='abstract table', label='abstract-table',
+                 metrics=None, scores=None, correlation_property='', sources=None):
+        """
+
+        :param tex_path: string containing the tex file path
+        :param table_columns_formatter: string containing the tex columns format
+        :param caption: string containing the table caption
+        :param label: string containing the table label, will be expanded to tab:<label>
+        :param metrics: list containing the strings with metric names
+        :param scores: list containing strings with score names
+        """
+        if correlation_property == '':
+            raise ValueError('Correlation Property cannot be empty')
+        else:
+            self.correlation_property = correlation_property
+        super().__init__(tex_path, table_columns_formatter, caption, label, metrics, scores, sources)
+
+    def sub_header(self):
+        len_metrics = len(self.metrics)
+        len_scores = len(self.scores)
+
+
+        sub_header = ['\t\t\\hline']
+        sub_header.append(f'\t\t& & \\multicolumn{{{len_metrics * len_scores}}}{{c|}}{{Algorithms}} {self.EOL}')
+
+        metrics_header = '\t\t& & ' + ' & '.join([header_translation(metric) for metric in self.metrics])
+
+        sub_header.append(f'{metrics_header}{self.EOL}')
+
+        capitalized_scores = [score.capitalize() for score in self.scores]
+
+        sub_header.append(f'\t\t{self.correlation_property} & \# & {" & ".join(capitalized_scores * len_metrics)} {self.EOL}')
+        sub_header.append('\t\t\\hline')
+        return sub_header
+
+
 class NormTexTable(LongTexTable):
     def __init__(self, tex_path='abstract_table.tex', table_columns_formatter=None,
                  caption='abstract table', label='abstract-table',
