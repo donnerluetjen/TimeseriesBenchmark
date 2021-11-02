@@ -19,3 +19,20 @@ def float_format_pattern():
 
 def format_ratios(data):
     return [f'{x * 100:.0f}\\%' for x in data]
+
+
+def format_seconds(seconds):
+    minute = 60
+    hour = minute * 60
+    day = hour * 24
+    week = day * 7
+
+    weeks = int(seconds / week)
+    seconds -= weeks * week
+    days = int(seconds / day)
+    seconds -= days * day
+    hours = int(seconds / hour)
+    seconds -= hours * hour
+    minutes = int(seconds / minute)
+    seconds -= minutes * minute
+    return f'runtime was {weeks} weeks, {days} days, {hours} hours, {minutes} minutes and {seconds} seconds'

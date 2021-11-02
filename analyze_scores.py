@@ -8,6 +8,8 @@ __email__ = "s2092795@stud.uni-frankfurt.de"
 
 import json
 
+from formats_and_translations import format_seconds
+
 
 def conditions_met(metric_dict):
     # check scores for condition
@@ -29,6 +31,18 @@ def store_scores_one(dataset_name, metric_name, window_size, metric_dict,
     target_dict[dataset_name][window_size_key].setdefault(metric_name,
                                                           metric_dict)
 
+def benchmark_runtime(archive):
+    with open(archive) as scores_file:
+        data = json.load(scores_file)
+    datasets = [dataset for dataset in data.keys()]
+    metrics = [metric for metric in data[datasets[0]] if metric != 'properties']
+    runtime = 0
+    for dataset in datasets:
+        for metric in metrics:
+            runtime += data[dataset][metric]['runtime']
+    return runtime
+
+
 
 if __name__ == '__main__':
 
@@ -44,20 +58,23 @@ if __name__ == '__main__':
     }
     wws_list = ['1.0', '0.3', '0.1']
 
+    total_runtime = 0
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
-            with open(json_store + json_file) as scores_file:
-                dataset_scores = json.load(scores_file)
-
-            for dataset in dataset_scores:
-                metrics = sorted([metric for metric in dataset_scores[dataset]
-                                  if metric != 'properties'])
-                for metric in metrics:
-                    metric_dict = dataset_scores[dataset][metric]
-                    if conditions_met(metric_dict):
-                        store_scores_one(dataset, metric, wws, metric_dict,
-                                         datasets_with_scores_one)
-
-    with open(json_store + json_score_one_file, 'w') as score_one_file:
-        json.dump(datasets_with_scores_one, score_one_file, indent=6)
-        score_one_file.flush()
+            total_runtime += benchmark_runtime(json_store + json_file)
+    print(format_seconds(total_runtime))
+    #         with open(json_store + json_file) as scores_file:
+    #             dataset_scores = json.load(scores_file)
+    #
+    #         for dataset in dataset_scores:
+    #             metrics = sorted([metric for metric in dataset_scores[dataset]
+    #                               if metric != 'properties'])
+    #             for metric in metrics:
+    #                 metric_dict = dataset_scores[dataset][metric]
+    #                 if conditions_met(metric_dict):
+    #                     store_scores_one(dataset, metric, wws, metric_dict,
+    #                                      datasets_with_scores_one)
+    #
+    # with open(json_store + json_score_one_file, 'w') as score_one_file:
+    #     json.dump(datasets_with_scores_one, score_one_file, indent=6)
+    #     score_one_file.flush()
