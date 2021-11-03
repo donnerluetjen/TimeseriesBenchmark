@@ -15,47 +15,19 @@ import textable as tt
 datasets_details_json_path = './Benchmarks/json/datasets_details.json'
 
 
-def domains():
-    with open(datasets_details_json_path) as dd:
-        dataset_details = json.load(dd)
-    result = {dataset_details[dataset]['domain'] for dataset in dataset_details.keys()}
-    return sorted(result)
-
-
-def datasets_with_domain(domain):
-    with open(datasets_details_json_path) as dd:
-        dataset_details = json.load(dd)
-    return [dataset for dataset in dataset_details if dataset_details[dataset]['domain'] == domain]
-
-
-def class_cardinalities():
+def datasets_property_values_list(property=''):
     with open(datasets_details_json_path) as dd:
         dataset_details = json.load(dd)
     cardinalities = set()
     for dataset in datasets:
-        cardinalities.add(dataset_details[dataset]['num_of_classes'])
+        cardinalities.add(dataset_details[dataset][property])
     return sorted(cardinalities)
 
 
-def datasets_with_num_of_classes(cardinality):
+def datasets_with_property_value(property='', cardinality=0):
     with open(datasets_details_json_path) as dd:
         dataset_details = json.load(dd)
-    return [dataset for dataset in datasets if dataset_details[dataset]['num_of_classes'] == cardinality]
-
-
-def dimension_cardinalities():
-    with open(datasets_details_json_path) as dd:
-        dataset_details = json.load(dd)
-    cardinalities = set()
-    for dataset in datasets:
-        cardinalities.add(dataset_details[dataset]['num_of_dimensions'])
-    return sorted(cardinalities)
-
-
-def datasets_with_num_of_dimensions(cardinality):
-    with open(datasets_details_json_path) as dd:
-        dataset_details = json.load(dd)
-    return [dataset for dataset in datasets if dataset_details[dataset]['num_of_dimensions'] == cardinality]
+    return [dataset for dataset in datasets if dataset_details[dataset][property] == cardinality]
 
 
 def generate_datasets_details(datasets):
@@ -207,7 +179,7 @@ if __name__ == '__main__':
     # generate datasets imbalance table
     generate_imbalance_table(datasets_details_json_path)
 
-    # for cardinality in class_cardinalities():
+    # for cardinality in datasets_property_values_list():
     #     print(f'datasets with {cardinality} classes:\n{datasets_with_num_of_classes(cardinality)}')
 
     # for domain in domains():
