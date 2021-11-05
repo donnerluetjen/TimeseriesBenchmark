@@ -13,7 +13,7 @@ from pathlib import Path
 import pgfplots as pp
 import textable as tt
 import file_ops as fo
-from dataset_details import datasets_details_json_path
+from dataset_details import datasets_details_json_path, generate_datasets_details
 from dataset_details import datasets_property_values_list, \
     datasets_with_property_value
 import progress_indication as p
@@ -93,7 +93,7 @@ def generate_number_property_correlation_plot(uea_json_path, ucr_json_path,
                                               scb='1.0', property_name='',
                                               y_axis_name=''):
     path_dict = fo.path_dictionary(uea_json_path)
-    plot_file_name = f'pgfplot_{scb}_ranking_over_{property_name}.tex'
+    plot_file_name = f'pgfplot_{scb_name(scb)}_ranking_over_{property_name}.tex'
     pgf_path = Path(path_dict['tex_corr'], plot_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -126,7 +126,7 @@ def generate_number_property_correlation_plot(uea_json_path, ucr_json_path,
             class_cardinality_scores[cardinality][
                 metric] = spread_normalized_ranking_ave
 
-    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    progress = p.Progress(f'Writing datasets plots {plot_file_name}')
 
     plot = pp.CorrelationPlots(pgf_path, y_axis_name, 'Algorithm',
                                xtick_labels, sources)
@@ -135,17 +135,17 @@ def generate_number_property_correlation_plot(uea_json_path, ucr_json_path,
         plot.add_data(metric, [
             [cardinality, class_cardinality_scores[cardinality][metric]]
             for cardinality in cardinalities])
-        p.progress_increase()
+        progress.progress()
 
     del plot  # to ensure destructor is called before program exits
-    p.progress_end()
+    progress.end()
 
 
 def generate_string_property_correlation_plot(uea_json_path, ucr_json_path,
                                               scb='1.0', property_name='',
                                               y_axis_name=''):
     path_dict = fo.path_dictionary(uea_json_path)
-    plot_file_name = f'pgfplot_{scb}_ranking_over_{property_name}.tex'
+    plot_file_name = f'pgfplot_{scb_name(scb)}_ranking_over_{property_name}.tex'
     pgf_path = Path(path_dict['tex_corr'], plot_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -176,7 +176,7 @@ def generate_string_property_correlation_plot(uea_json_path, ucr_json_path,
             spread_normalized_ranking_ave = normalized_ranking_ave + index
             prop_value_scores[prop_value][metric] = spread_normalized_ranking_ave
 
-    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    progress = p.Progress(f'Writing datasets plots {plot_file_name}')
     plot = pp.CorrelationXStrPlots(pgf_path, y_axis_name, 'Algorithm',
                                    prop_value_labels, sources)
 
@@ -185,10 +185,10 @@ def generate_string_property_correlation_plot(uea_json_path, ucr_json_path,
         plot.add_data(metric, [
             [prop_value_labels.index(domain) + 1, prop_value_scores[domain][metric]]
             for domain in prop_value_list])
-        p.progress_increase()
+        progress.progress()
 
     del plot  # to ensure destructor is called before program exits
-    p.progress_end()
+    progress.end()
 
 
 def generate_trend_diagram(folder='', file_list=None, name='',
@@ -232,7 +232,7 @@ def generate_trend_diagram(folder='', file_list=None, name='',
     metrics = list(all_files_data[wwss[0]][datasets[0]].keys())
     scores = list(all_files_data[wwss[0]][datasets[0]][metrics[0]].keys())
 
-    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    progress = p.Progress(f'Writing datasets plots {plot_file_name}')
     plot = pp.TrendPlots(pgf_path, 'Mean Runtime', 'Mean Ranking', sources,
                          True)
 
@@ -250,10 +250,10 @@ def generate_trend_diagram(folder='', file_list=None, name='',
             table_data.append([accumulated_runtime / len(datasets),
                                accumulated_scoring / len(datasets), abs(wws)])
             plot.add_data(metric, table_data)
-            p.progress_increase()
+            progress.progress()
 
     del plot  # to ensure destructor is called before program exits
-    p.progress_end()
+    progress.end()
 
 
 def generate_score_diagram(json_path, plot_name_specific='',
@@ -270,7 +270,7 @@ def generate_score_diagram(json_path, plot_name_specific='',
     metrics = list(data[datasets[0]].keys())
     metrics.remove('properties')
 
-    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    progress = p.Progress(f'Writing datasets plots {plot_file_name}')
     plot = pp.TexPlots(pgf_path, 'Mean Runtime',
                        f'Mean {score_name.capitalize()}', sources, True)
 
@@ -289,9 +289,9 @@ def generate_score_diagram(json_path, plot_name_specific='',
         table_data = [[accumulated_runtime / len(datasets),
                        accumulated_scoring / len(datasets)]]
         plot.add_data(metric, table_data)
-        p.progress_increase()
+        progress.progress()
     del plot  # to ensure destructor is called before program exits
-    p.progress_end()
+    progress.end()
 
 
 def generate_table(json_path, dataset_details_file, table_name_specific='',
@@ -341,7 +341,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='',
         # table_column_formatter works as formatter list since all formats are single chars
         table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(table_metrics_scheme)))}|'
 
-        p.progress_start(f'Writing datasets scoring table {table_file_name}')
+        progress = p.Progress(f'Writing datasets scoring table {table_file_name}')
 
         scores_table = tt.ScoreTexTable(table_path, table_column_formatter,
                                         table_caption, table_label, table_metrics_scheme, scores, sources)
@@ -357,15 +357,15 @@ def generate_table(json_path, dataset_details_file, table_name_specific='',
                     format_bold.append(True if high_scores[dataset][score] == metric else False)
             scores_table.add_line(table_line_list, format_bold)
 
-            p.progress_increase()
+            progress.progress()
         del scores_table  # to make sure destructor is called
-        p.progress_end()
+        progress.end()
 
 
 def generate_classes_correlation_table(uea_json_path, ucr_json_path,
                                        scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
-    table_file_name = f'table_{scb}_ranking_over_class_number.tex'
+    table_file_name = f'table_{scb_name(scb)}_ranking_over_class_number.tex'
     table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -399,7 +399,7 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path,
             ranking_ave = ranking_sum / len(cardinality_datasets)
             class_cardinality_scores[cardinality][metric] = ranking_ave
 
-    p.progress_start(f'Writing classes-ranking-correlation table {table_file_name}')
+    progress = p.Progress(f'Writing classes-ranking-correlation table {table_file_name}')
     correlation_table = tt.CorrelationTexTable(table_path, table_column_formatter,
                                                table_caption, table_label, metrics, ['Ranking'], 'Classes', sources)
 
@@ -413,15 +413,15 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path,
             format_bold.append(False)  # (True if high_scores[dataset][score] == metric else False)
         correlation_table.add_line(table_line_list, format_bold)
 
-        p.progress_increase()
+        progress.progress()
 
     del correlation_table  # to make sure destructor is called
-    p.progress_end()
+    progress.end()
 
 
 def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
-    table_file_name = f'table_{scb}_ranking_over_dimensions_number.tex'
+    table_file_name = f'table_{scb_name(scb)}_ranking_over_dimensions_number.tex'
     table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -455,7 +455,7 @@ def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0
             ranking_ave = ranking_sum / len(cardinality_datasets)
             dimension_cardinality_scores[cardinality][metric] = ranking_ave
 
-    p.progress_start(f'Writing dimension-ranking-correlation table {table_file_name}')
+    progress = p.Progress(f'Writing dimension-ranking-correlation table {table_file_name}')
     correlation_table = tt.CorrelationTexTable(table_path, table_column_formatter,
                                                table_caption, table_label, metrics, ['Ranking'], 'Dimensions', sources)
 
@@ -469,15 +469,15 @@ def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0
             format_bold.append(False)  # (True if high_scores[dataset][score] == metric else False)
         correlation_table.add_line(table_line_list, format_bold)
 
-        p.progress_increase()
+        progress.progress()
 
     del correlation_table  # to make sure destructor is called
-    p.progress_end()
+    progress.end()
 
 
 def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
-    table_file_name = f'table_{scb}_ranking_over_domain.tex'
+    table_file_name = f'table_{scb_name(scb)}_ranking_over_domain.tex'
     table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -510,7 +510,7 @@ def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
             ranking_ave = ranking_sum / len(domain_datasets)
             domain_scores[domain][metric] = ranking_ave
 
-    p.progress_start(
+    progress = p.Progress(
         f'Writing domains-ranking-correlation table {table_file_name}')
     correlation_table = tt.CorrelationTexTable(table_path,
                                                table_column_formatter,
@@ -530,10 +530,10 @@ def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
 # else False)
         correlation_table.add_line(table_line_list, format_bold)
 
-        p.progress_increase()
+        progress.progress()
 
     del correlation_table  # to make sure destructor is called
-    p.progress_end()
+    progress.end()
 
 
 def generate_distance_consolidations_diagram(json_path, score_name='ranking',
@@ -549,7 +549,7 @@ def generate_distance_consolidations_diagram(json_path, score_name='ranking',
     # read metrics and drop properties
     metrics = sorted([key for key in data[datasets[0]] if key != 'properties'])
 
-    p.progress_start(f'Writing datasets plots {plot_file_name}')
+    progress = p.Progress(f'Writing datasets plots {plot_file_name}')
     plot = pp.TexPlots(pgf_path, 'Mean Runtime',
                        f'Mean {score_name.capitalize()}', sources)
 
@@ -568,9 +568,9 @@ def generate_distance_consolidations_diagram(json_path, score_name='ranking',
         table_data = [[accumulated_runtime / len(datasets),
                        accumulated_scoring / len(datasets)]]
         plot.add_data(metric, table_data)
-        p.progress_increase()
+        progress.progress()
     del plot  # to ensure destructor is called before program exits
-    p.progress_end()
+    progress.end()
 
 
 def generate_distance_consolidations_table(json_path, dataset_details_file,
@@ -613,7 +613,7 @@ def generate_distance_consolidations_table(json_path, dataset_details_file,
     # single chars
     table_column_formatter = f'|l|{"|".join(score_columns_formatter for _ in range(len(metrics)))}|'
 
-    p.progress_start(f'Writing datasets scoring table {table_file_name}')
+    progress = p.Progress(f'Writing datasets scoring table {table_file_name}')
 
     norms_table = tt.ScoreTexTable(table_path, table_column_formatter,
                                    table_caption, table_label, metrics, scores,
@@ -631,10 +631,19 @@ def generate_distance_consolidations_table(json_path, dataset_details_file,
                     True if high_scores[dataset][score] == metric else False)
         norms_table.add_line(table_line_list, format_bold)
 
-        p.progress_increase()
+        progress.progress()
 
     del norms_table  # to make sure destructor is called
-    p.progress_end()
+    progress.end()
+
+
+def scb_name(scb):
+    """
+    formats scb properly to be part of a file path
+    :param scb: string containing the scb size
+    :return: a formatted string
+    """
+    return f'scb-size_{scb.replace(".", "-")}'
 
 
 if __name__ == '__main__':
@@ -650,19 +659,21 @@ if __name__ == '__main__':
     uea_list = []
     ucr_list = []
 
+    generate_datasets_details()
+
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
             generate_table(json_store + json_file, datasets_details_json_path,
-                           f'size={wws}')  # , ['bagdtw', 'dagdtw', 'sdtw'])
-            generate_score_diagram(json_store + json_file, f'wws={wws}',
+                           scb_name(wws), ['bagdtw', 'dagdtw', 'sdtw'])
+            generate_score_diagram(json_store + json_file, scb_name(wws),
                                    'ranking')
-            generate_score_diagram(json_store + json_file, f'wws={wws}',
+            generate_score_diagram(json_store + json_file, scb_name(wws),
                                    'accuracy')
-            generate_score_diagram(json_store + json_file, f'wws={wws}',
+            generate_score_diagram(json_store + json_file, scb_name(wws),
                                    'recall')
-            generate_score_diagram(json_store + json_file, f'wws={wws}',
+            generate_score_diagram(json_store + json_file, scb_name(wws),
                                    'f1-score')
-            generate_score_diagram(json_store + json_file, f'wws={wws}',
+            generate_score_diagram(json_store + json_file, scb_name(wws),
                                    'auroc')
 
         uea_list.append(json_files_dict[wws][0])

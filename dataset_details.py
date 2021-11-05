@@ -30,7 +30,7 @@ def datasets_with_property_value(property='', cardinality=0):
     return [dataset for dataset in datasets if dataset_details[dataset][property] == cardinality]
 
 
-def generate_datasets_details(datasets):
+def generate_datasets_details_json(datasets):
     """
     loads datasets and generates analytics for them
     :param datasets: a list of datasets to be analyzed
@@ -49,10 +49,11 @@ def generate_datasets_details(datasets):
         - class ratios
     """
     result_dict = {}
-    p.progress_start('Processing datasets')
+
+    progress = p.Progress('Processing datasets')
     # load dataset
     for index, dataset in enumerate(datasets):
-        p.progress_increase()
+        progress.progress()
         result_dict[dataset] = {}
         short_name = f'DS {index + 1}'
         result_dict[dataset]['short_name'] = short_name
@@ -66,7 +67,7 @@ def generate_datasets_details(datasets):
         domain = dataset_domains[dataset]
         result_dict[dataset]['domain'] = domain
         fo.writeJson(datasets_details_json_path, result_dict)
-    p.progress_end()
+    progress.end()
 
 
 def dataset_properties(X_train, y_train, X_test):
@@ -118,21 +119,21 @@ def generate_details_tables(json_path):
 
         columns_formatter = f'|ll|{"c" * (len(properties) - 2)}|'  # works as list since all formats are single chars
 
-        p.progress_start(f'Writing datasets imbalance table {table_file_name}')
+        progress = p.Progress(f'Writing datasets imbalance table {table_file_name}')
 
         details_table = tt.DetailsTexTable(table_path, columns_formatter, table_caption, table_label, properties,
                                            [json_path])
 
         # iterate through all datasets
         for dataset in datasets:
-            p.progress_increase()
+            progress.progress()
             dataset_data = data[dataset]
             dataset_values = [dataset_data[property] for property in dataset_data.keys()
                               if property != 'class_ratios']  # remove class_ratios
             details_table.add_line(details_table.format_details(dataset_values))
 
         del details_table
-        p.progress_end()
+        progress.end()
 
 
 def generate_imbalance_table(json_path):
@@ -153,25 +154,25 @@ def generate_imbalance_table(json_path):
 
         columns_formatter = ['|', 'l', 'l', '|', 'p{17cm}', '|']
 
-        p.progress_start(f'Writing datasets details table {table_file_name}')
+        progress = p.Progress(f'Writing datasets details table {table_file_name}')
 
         imbalance_table = tt.ImbalanceTexTable(table_path, columns_formatter, table_caption, table_label, properties,
                                                [json_path])
 
         # iterate through all datasets
         for dataset in datasets:
-            p.progress_increase()
+            progress.progress()
             dataset_data = data[dataset]
             dataset_values = [dataset_data[prop] for prop in properties]
             imbalance_table.add_line(imbalance_table.format_details(dataset_values))
 
         del imbalance_table
-        p.progress_end()
+        progress.end()
 
 
-if __name__ == '__main__':
+def generate_datasets_details():
     # generate json file with dataset details
-    # generate_datasets_details(datasets)
+    generate_datasets_details_json(datasets)
 
     # generate the datasets details table
     generate_details_tables(datasets_details_json_path)
@@ -179,9 +180,7 @@ if __name__ == '__main__':
     # generate datasets imbalance table
     generate_imbalance_table(datasets_details_json_path)
 
-    # for cardinality in datasets_property_values_list():
-    #     print(f'datasets with {cardinality} classes:\n{datasets_with_num_of_classes(cardinality)}')
 
-    # for domain in domains():
-    #     print(f'datasets with domain >{domain}<:\n{datasets_with_domain(domain)}')
+if __name__ == '__main__':
+    generate_datasets_details()
     
