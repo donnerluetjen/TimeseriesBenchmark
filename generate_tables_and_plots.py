@@ -448,7 +448,7 @@ def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0
     metrics = [key for key in data[datasets[0]] if key != 'properties']
 
     table_caption = 'Correlation of Number of Dimensions and Ranking'
-    table_label = 'corr_dimensions'
+    table_label = 'corr-dimensions'
 
     score_columns_formatter = 'c'
     # table_column_formatter works as formatter list since all formats are single chars
@@ -504,7 +504,7 @@ def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
     metrics = [key for key in data[datasets[0]] if key != 'properties']
 
     table_caption = 'Correlation of Domains and Ranking'
-    table_label = 'corr_domains'
+    table_label = 'corr-domains'
 
     score_columns_formatter = 'c'
     # table_column_formatter works as formatter list since all formats are single chars
