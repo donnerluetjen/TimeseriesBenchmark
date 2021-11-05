@@ -333,7 +333,7 @@ def generate_table(json_path, dataset_details_file, table_name_specific='',
         table_path = Path(path_dict['tex_dir'], table_file_name)
 
         table_caption = dataset_archive + ' Datasets for Metrics ' + ', '.join(
-            table_metrics_scheme).upper() + f' \\gls{{scb}} {table_name_specific}'
+            table_metrics_scheme).upper() + f' \\gls{{scb}} {human_readable(table_name_specific.removeprefix("scb"))}'
         table_label = dataset_archive + '_' + '-'.join(
             table_metrics_scheme) + f'_scb_{"".join([c for c in table_name_specific if c != " "])}'
 
@@ -362,10 +362,23 @@ def generate_table(json_path, dataset_details_file, table_name_specific='',
         progress.end()
 
 
+def human_readable(message):
+    """
+    format message in human readable form
+    :param message: string containing message with unwanted characters
+    :return: formatted string
+    """
+    split_message = message.split('_')
+    split_message = [m.strip() for m in split_message]
+    name = ' '.join([m.capitalize() for m in split_message[0].split('-')]).strip()
+    value = split_message[1].replace('-', '.')
+    return f'{name} {value}'
+
+
 def generate_classes_correlation_table(uea_json_path, ucr_json_path,
                                        scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
-    table_file_name = f'table_{scb_name(scb)}_ranking_over_class_number.tex'
+    table_file_name = f'table_{scb_name(scb)}_ranking_over_num_of_classes.tex'
     table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -421,7 +434,7 @@ def generate_classes_correlation_table(uea_json_path, ucr_json_path,
 
 def generate_dimensions_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
     path_dict = fo.path_dictionary(uea_json_path)
-    table_file_name = f'table_{scb_name(scb)}_ranking_over_dimensions_number.tex'
+    table_file_name = f'table_{scb_name(scb)}_ranking_over_num_of_dimensions.tex'
     table_path = Path(path_dict['tex_corr'], table_file_name)
     sources = [uea_json_path, ucr_json_path, datasets_details_json_path]
     with open(uea_json_path) as uea_json_file:
@@ -659,7 +672,7 @@ if __name__ == '__main__':
     uea_list = []
     ucr_list = []
 
-    generate_datasets_details()
+    # generate_datasets_details()
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:

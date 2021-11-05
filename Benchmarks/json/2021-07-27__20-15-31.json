@@ -1,9 +1,0 @@
-{
-      "AtrialFibrillation": {
-            "properties": {
-                  "num_of_dimensions": 2,
-                  "num_of_instances": 22,
-                  "num_of_timestamps": 640,
-                  "num_of_classes": 3,
-                  "unique_lengths": true,
-                  "missing_values_count": 
