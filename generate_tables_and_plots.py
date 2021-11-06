@@ -540,7 +540,7 @@ def generate_domains_correlation_table(uea_json_path, ucr_json_path, scb='1.0'):
             table_line_list.append(domain_scores[domain][metric])
             format_bold.append(
                 False)  # (True if high_scores[dataset][score] == metric
-# else False)
+        # else False)
         correlation_table.add_line(table_line_list, format_bold)
 
         progress.progress()
@@ -668,62 +668,44 @@ if __name__ == '__main__':
         '0.1': ['UEA_archive_wws-0-1.json', 'UCR_archive_wws-0-1.json']
     }
     wws_list = ['1.0', '0.3', '0.1']
+    scoring_methods = ['ranking', 'accuracy', 'recall', 'f1-score', 'auroc']
 
     uea_list = []
     ucr_list = []
 
-    # generate_datasets_details()
+    generate_datasets_details()
 
     for wws in wws_list:
         for json_file in json_files_dict[wws]:
-            generate_table(json_store + json_file, datasets_details_json_path,
-                           scb_name(wws), ['bagdtw', 'dagdtw', 'sdtw'])
-            generate_score_diagram(json_store + json_file, scb_name(wws),
-                                   'ranking')
-            generate_score_diagram(json_store + json_file, scb_name(wws),
-                                   'accuracy')
-            generate_score_diagram(json_store + json_file, scb_name(wws),
-                                   'recall')
-            generate_score_diagram(json_store + json_file, scb_name(wws),
-                                   'f1-score')
-            generate_score_diagram(json_store + json_file, scb_name(wws),
-                                   'auroc')
+            generate_table(json_store + json_file, datasets_details_json_path, scb_name(wws),
+                           ['bagdtw', 'dagdtw', 'sdtw'])
+            for score in scoring_methods:
+                generate_score_diagram(json_store + json_file, scb_name(wws), score)
 
-        uea_list.append(json_files_dict[wws][0])
+        generate_number_property_correlation_plot(json_store + json_files_dict[wws][0],
+                                                  json_store + json_files_dict[wws][1], wws,
+                                                  'num_of_classes', 'Class Cardinality')
+        generate_classes_correlation_table(json_store + json_files_dict[wws][0],
+                                           json_store + json_files_dict[wws][1], wws)
+
+        generate_number_property_correlation_plot(json_store + json_files_dict[wws][0],
+                                                  json_store + json_files_dict[wws][1], wws,
+                                                  'num_of_dimensions', 'Dimension Cardinality')
+        generate_dimensions_correlation_table(json_store + json_files_dict[wws][0],
+                                              json_store + json_files_dict[wws][1], wws)
+
+        generate_string_property_correlation_plot(json_store + json_files_dict[wws][0],
+                                                  json_store + json_files_dict[wws][1], wws,
+                                                  'domain', 'Domain')
+        generate_domains_correlation_table(json_store + json_files_dict[wws][0],
+                                           json_store + json_files_dict[wws][1], wws)
+
+        uea_list.append(json_files_dict[wws][0])  # build file lists for the trend diagrams
         ucr_list.append(json_files_dict[wws][1])
 
-        generate_trend_diagram(json_store, uea_list, 'UEA')
-        generate_trend_diagram(json_store, ucr_list, 'UCR')
+    generate_trend_diagram(json_store, uea_list, 'UEA')
+    generate_trend_diagram(json_store, ucr_list, 'UCR')
 
-        json_data_file = 'UEA_distance_consolidations_0-03.json'
-        generate_distance_consolidations_table(json_store + json_data_file,
-                                               datasets_details_json_path)
-        generate_distance_consolidations_diagram(json_store +
-                                                 json_data_file, 'ranking')
-
-        generate_number_property_correlation_plot(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1], wws,
-            'num_of_classes', 'Class Cardinality')
-        generate_classes_correlation_table(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1],
-            wws)
-
-        generate_number_property_correlation_plot(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1], wws,
-            'num_of_dimensions', 'Dimension Cardinality')
-        generate_dimensions_correlation_table(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1],
-            wws)
-
-        generate_string_property_correlation_plot(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1], wws,
-            'domain', 'Domain')
-        generate_domains_correlation_table(
-            json_store + json_files_dict[wws][0],
-            json_store + json_files_dict[wws][1],
-            wws)
+    json_data_file = 'UEA_distance_consolidations_0-03.json'
+    generate_distance_consolidations_table(json_store + json_data_file, datasets_details_json_path)
+    generate_distance_consolidations_diagram(json_store + json_data_file, 'ranking')
