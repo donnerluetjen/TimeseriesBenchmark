@@ -430,21 +430,17 @@ class TimeseriesBenchmark:
 
 
 if __name__ == '__main__':
-    # for wws in [-1, 0.3, 0.03]:
-    #     bm = TimeseriesBenchmark(window=wws, njobs=-1, normalized=True)
-    #
-    #     metrics = [
-    #         'dagdtw',
-    #         'agdtw', 'dtw',
-    #         'sdtw', 'ddtw',
-    #         'wdtw', 'wddtw'
-    #         # 'agdtw_manhattan',
-    #         # 'agdtw_euclidean',
-    #         # 'agdtw_chebyshev',
-    #         # 'agdtw_minkowski'
-    #     ]
-    #
-    #     bm.run_benchmark_over(["Cricket"], metrics)
+    for wws in [-1, 0.3, 0.03]:
+        bm = TimeseriesBenchmark(window=wws, njobs=-1, normalized=True)
+
+        metrics = [
+            'dagdtw',
+            'agdtw', 'dtw',
+            'sdtw', 'ddtw',
+            'wdtw', 'wddtw'
+        ]
+
+        bm.run_benchmark_over(["Cricket"], metrics)
 
     bm = TimeseriesBenchmark(window=0.03, njobs=-1, normalized=True)
 
