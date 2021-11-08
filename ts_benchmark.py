@@ -198,149 +198,6 @@ class TimeseriesBenchmark:
             json.dump(self.result_dict, json_file, indent=6)
             json_file.flush()
 
-    def agdtwbt_sigma_1_cumulative_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': 1, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point66_cumulative_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .66, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point33_cumulative_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .33, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_1_average_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': 1, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point66_average_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .66, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point33_average_similarity(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .33, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_1_cumulative_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': 1, 'pseudo_distance': True,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point66_cumulative_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .66, 'pseudo_distance': True,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point33_cumulative_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .33, 'pseudo_distance': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_1_average_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': 1, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point66_average_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .66, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def agdtwbt_sigma_point33_average_pseudodistance(self):
-        metric = 'agdtwbt'
-        kwargs = {'sigma': .33, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_1_cumulative_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': 1, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point66_cumulative_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .66, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point33_cumulative_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .33, 'pseudo_distance': False,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_1_average_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': 1, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point66_average_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .66, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point33_average_similarity(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .33, 'pseudo_distance': False,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_1_cumulative_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': 1, 'pseudo_distance': True,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point66_cumulative_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .66, 'pseudo_distance': True,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point33_cumulative_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .33, 'pseudo_distance': True,
-                  'average_aggregation': False}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_1_average_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': 1, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point66_average_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .66, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
-    def sagdtw_sigma_point33_average_pseudodistance(self):
-        metric = 'sagdtw'
-        kwargs = {'sigma': .33, 'pseudo_distance': True,
-                  'average_aggregation': True}
-        self.prepareClassifier(metric, **kwargs)
-
     def dagdtw(self):
         return self.sagdtw_manhattan()
 
@@ -430,34 +287,15 @@ class TimeseriesBenchmark:
 
 
 if __name__ == '__main__':
-    # for wws in [-1, 0.3, 0.03]:
-    #     bm = TimeseriesBenchmark(window=wws, njobs=-1, normalized=True)
-    #
-    #     metrics = [
-    #         'dagdtw',
-    #         'agdtw', 'dtw',
-    #         'sdtw', 'ddtw',
-    #         'wdtw', 'wddtw'
-    #         # 'agdtw_manhattan',
-    #         # 'agdtw_euclidean',
-    #         # 'agdtw_chebyshev',
-    #         # 'agdtw_minkowski'
-    #     ]
-    #
-    #     bm.run_benchmark_over(["Cricket"], metrics)
+    for wws in [-1, 0.3, 0.03]:
+        bm = TimeseriesBenchmark(window=wws, njobs=-1, normalized=True)
 
-    bm = TimeseriesBenchmark(window=-1, njobs=-1, normalized=True)
+        metrics = [
+            'dagdtw',
+            'agdtw', 'dtw',
+            'sdtw', 'ddtw',
+            'wdtw', 'wddtw'
+        ]
 
-    metrics = [
-        # 'dagdtw',
-        # 'agdtw',
-        # 'dtw',
-        # 'sdtw', 'ddtw',
-        'wdtw', 'wddtw'
-        # 'agdtw_manhattan',
-        # 'agdtw_euclidean',
-        # 'agdtw_chebyshev',
-        # 'agdtw_minkowski'
-    ]
+        bm.run_benchmark_over(["Cricket"], metrics)
 
-    bm.run_benchmark_over(datasets, metrics)
