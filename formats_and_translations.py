@@ -6,10 +6,10 @@ def header_translation(header=''):
                            'ddtw': 'DDTW \\cite{keogh2001derivative}',
                            'wdtw': 'WDTW \\cite{jeong2011weighted}',
                            'wddtw': 'WWDTW \\cite{jeong2011weighted}',
-                           'agdtw_manhattan': 'Manhattan (equation \\ref{equ:manhattan-gen})',
-                           'agdtw_euclidean': 'Euclidean (equation \\ref{equ:euclidean-gen})',
-                           'agdtw_chebyshev': 'Chebishev (equation \\ref{equ:chebishev-gen})',
-                           'agdtw_minkowski': 'Minkowski (equation \\ref{equ:minkowski-gen})'}
+                           'bagdtw_manhattan': 'Manhattan (equation \\ref{equ:manhattan-gen})',
+                           'bagdtw_euclidean': 'Euclidean (equation \\ref{equ:euclidean-gen})',
+                           'bagdtw_chebyshev': 'Chebishev (equation \\ref{equ:chebishev-gen})',
+                           'bagdtw_minkowski': 'Minkowski (equation \\ref{equ:minkowski-gen})'}
     return header_translations[header]
 
 

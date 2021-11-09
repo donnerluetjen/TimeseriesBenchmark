@@ -198,62 +198,62 @@ class TimeseriesBenchmark:
             json_file.flush()
 
     def dagdtw(self):
-        return self.sagdtw_manhattan()
+        return self.dagdtw_manhattan()
 
-    def sagdtw_manhattan(self):
+    def dagdtw_manhattan(self):
         metric = 'sagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 0}
         self.prepareClassifier(metric, **kwargs)
 
-    def sagdtw_euclidean(self):
+    def dagdtw_euclidean(self):
         metric = 'sagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 1}
         self.prepareClassifier(metric, **kwargs)
 
-    def sagdtw_chebyshev(self):
+    def dagdtw_chebyshev(self):
         metric = 'sagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 2}
         self.prepareClassifier(metric, **kwargs)
 
-    def sagdtw_minkowski(self):
+    def dagdtw_minkowski(self):
         metric = 'sagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 3}
         self.prepareClassifier(metric, **kwargs)
 
-    def agdtw(self):
-        return self.agdtw_manhattan()
+    def bagdtw(self):
+        return self.bagdtw_manhattan()
 
-    def agdtw_manhattan(self):
-        metric = 'agdtw'
+    def bagdtw_manhattan(self):
+        metric = 'bagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 0}
         self.prepareClassifier(metric, **kwargs)
 
-    def agdtw_euclidean(self):
-        metric = 'agdtw'
+    def bagdtw_euclidean(self):
+        metric = 'bagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 1}
         self.prepareClassifier(metric, **kwargs)
 
-    def agdtw_chebyshev(self):
-        metric = 'agdtw'
+    def bagdtw_chebyshev(self):
+        metric = 'bagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 2}
         self.prepareClassifier(metric, **kwargs)
 
-    def agdtw_minkowski(self):
-        metric = 'agdtw'
+    def bagdtw_minkowski(self):
+        metric = 'bagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 3}
@@ -291,7 +291,7 @@ if __name__ == '__main__':
 
         metrics = [
             'dagdtw',
-            'agdtw', 'dtw',
+            'bagdtw', 'dtw',
             'sdtw', 'ddtw',
             'wdtw', 'wddtw'
         ]
