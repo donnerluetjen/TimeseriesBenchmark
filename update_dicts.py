@@ -14,7 +14,7 @@ def update_agdtw_key(json_path):
         if new_key_name in data[dataset].keys():
             raise ValueError("New key name exists already. Aborting ...")
         for metric in data[dataset]:
-            if metric == 'agdtw':
+            if metric == 'bagdtw':
                 data[dataset][new_key_name] = data[dataset].pop(metric)
                 break
     with open(json_path, 'w') as json_file:
@@ -80,4 +80,4 @@ if __name__ == '__main__':
     #         sort_keys(json_store + json_file)
             update_dict(json_store + json_file, json_store + json_update_list[json_files_dict[wws].index(json_file)])
     # update_dict(json_store + 'UEA_distance_consolidations.json', json_store + 'distance_consolidations.json')
-    # remove_key(json_store + 'UEA_distance_consolidations.json', 'sagdtw_chebyshev')
+    # remove_key(json_store + 'UEA_distance_consolidations.json', 'dagdtw_chebyshev')
