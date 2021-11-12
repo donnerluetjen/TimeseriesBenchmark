@@ -201,7 +201,7 @@ class TimeseriesBenchmark:
         return self.dagdtw_manhattan()
 
     def dagdtw_manhattan(self):
-        metric = 'sagdtw'
+        metric = 'dagdtw'
         kwargs = {'sigma': 1, 'pseudo_distance': True,
                   'average_aggregation': False, 'window': self.window,
                   'distance_composition': 0}
@@ -296,4 +296,4 @@ if __name__ == '__main__':
             'wdtw', 'wddtw'
         ]
 
-        bm.run_benchmark_over(["Cricket"], metrics)
+        bm.run_benchmark_over(datasets, metrics)
